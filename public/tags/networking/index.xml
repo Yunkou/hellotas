@@ -25,14 +25,7 @@
 				<link>//:1313/events/industry-visit-2026/</link>
 				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
 				<guid>//:1313/events/industry-visit-2026/</guid>
-				<description>Industry Visit 2026.</description>
-			</item>
-			<item>
-				<title>JBS/HUON Company Visit 2026</title>
-				<link>//:1313/events/jbs-huon-company-visit-2026/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>//:1313/events/jbs-huon-company-visit-2026/</guid>
-				<description>A visit to JBS/HUON.</description>
+				<description>A 2026 visit connecting students with industry.</description>
 			</item>
 			<item>
 				<title>ICT Careers Night 2025</title>
@@ -53,7 +46,7 @@
 				<link>//:1313/events/tasict-festival-2026/</link>
 				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
 				<guid>//:1313/events/tasict-festival-2026/</guid>
-				<description>TasICT Festival 2026.</description>
+				<description>The 2026 TasICT Festival.</description>
 			</item>
 	</channel>
 </rss>

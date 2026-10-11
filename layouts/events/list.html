@@ -25,7 +25,6 @@
     {{ range $years }}
     <a class="year-tab{{ if eq . 2025 }} active{{ end }}" href="#year-{{ . }}">{{ . }}</a>
     {{ end }}
-    <span class="year-stats">{{ len .Pages }} events · 2025–2026</span>
   </div>
 
   {{ range $years }}
@@ -52,9 +51,13 @@
           {{ range .Params.tags }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
           {{ if eq .Params.cost "Free" }}<span class="tag tag-free">FREE</span>{{ end }}
           {{ if eq .Params.cost "GPA requirement" }}<span class="tag tag-gpa">GPA REQUIRED</span>{{ end }}
+          {{ if eq .Params.cost "To be confirmed" }}<span class="tag tag-normal">COST TO BE CONFIRMED</span>{{ end }}
+          {{ if eq .Params.eligibility "To be confirmed" }}<span class="tag tag-normal">ELIGIBILITY TO BE CONFIRMED</span>{{ end }}
         </div>
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ if or .Params.location .Params.event_time }}
+        {{ if and (eq .Params.location "To be confirmed") (eq .Params.event_time "To be confirmed") }}
+        <p class="event-meta">Event details to be confirmed</p>
+        {{ else if or .Params.location .Params.event_time }}
         <p class="event-meta">{{ with .Params.location }}{{ . }}{{ end }}{{ if and .Params.location .Params.event_time }} · {{ end }}{{ with .Params.event_time }}{{ . }}{{ end }}</p>
         {{ end }}
         {{ with .Params.summary }}<p class="event-summary">{{ . }}</p>{{ end }}
@@ -68,6 +71,16 @@
           <p class="voice-quote">"{{ . }}"</p>
           <p class="voice-role">— {{ $event.Params.student_role }}</p>
         </div>
+        {{ else }}
+        {{ if eq $event.Params.year 2026 }}
+        <div class="student-voice">
+          <div class="voice-head">
+            <span class="linkedin-icon">in</span>
+            <span class="linkedin-label">Student voice</span>
+          </div>
+          <p class="voice-quote">Student feedback to be added.</p>
+        </div>
+        {{ end }}
         {{ end }}
       </div>
     </article>
