@@ -26,7 +26,7 @@
 
     {{ if .Params.image }}
     <div class="event-hero-image">
-      <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+      <img src="{{ strings.TrimPrefix "/" .Params.image | relURL }}" alt="{{ .Title }}">
     </div>
     {{ else }}
     <div class="event-hero-image placeholder">Hero image</div>
@@ -80,7 +80,7 @@
       {{ range .Params.projects }}
       <article class="project-card">
         {{ if .image }}
-        <div class="project-image"><img src="{{ .image | relURL }}" alt="{{ .name }}"></div>
+        <div class="project-image"><img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .name }}"></div>
         {{ else }}
         <div class="project-image placeholder">Project photo</div>
         {{ end }}
@@ -150,7 +150,7 @@
     <div class="gallery-grid">
       {{ range .Params.gallery }}
       <div class="gallery-item">
-        <img src="{{ . | relURL }}" alt="Event photo">
+        <img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="Event photo">
       </div>
       {{ end }}
     </div>
