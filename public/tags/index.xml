@@ -10,14 +10,21 @@
 		
 		
 		
-			<lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Fri, 07 Aug 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="//:1313/tags/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Annual</title>
 				<link>//:1313/tags/annual/</link>
-				<pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
+				<pubDate>Fri, 07 Aug 2026 00:00:00 +0000</pubDate>
 				<guid>//:1313/tags/annual/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Career</title>
+				<link>//:1313/tags/career/</link>
+				<pubDate>Fri, 07 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>//:1313/tags/career/</guid>
 				<description></description>
 			</item>
 			<item>
@@ -25,13 +32,6 @@
 				<link>//:1313/tags/networking/</link>
 				<pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
 				<guid>//:1313/tags/networking/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Career</title>
-				<link>//:1313/tags/career/</link>
-				<pubDate>Sat, 25 Oct 2025 00:00:00 +0000</pubDate>
-				<guid>//:1313/tags/career/</guid>
 				<description></description>
 			</item>
 			<item>
@@ -49,13 +49,6 @@
 				<description></description>
 			</item>
 			<item>
-				<title>ICT</title>
-				<link>//:1313/tags/ict/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>//:1313/tags/ict/</guid>
-				<description></description>
-			</item>
-			<item>
 				<title>Industry</title>
 				<link>//:1313/tags/industry/</link>
 				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -67,13 +60,6 @@
 				<link>//:1313/tags/it-jobs/</link>
 				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
 				<guid>//:1313/tags/it-jobs/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Projects</title>
-				<link>//:1313/tags/projects/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>//:1313/tags/projects/</guid>
 				<description></description>
 			</item>
 			<item>

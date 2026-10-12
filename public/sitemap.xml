@@ -24,8 +24,6 @@
     <loc>//:1313/events/tasict-festival-2025/</loc>
     <lastmod>2025-09-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//:1313/events/ict-showcase-2026/</loc>
-  </url><url>
     <loc>//:1313/events/tasict-festival-2026/</loc>
   </url><url>
     <loc>//:1313/posts/hello/</loc>
@@ -38,19 +36,22 @@
     <lastmod>2026-10-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//:1313/tags/annual/</loc>
-    <lastmod>2025-11-12T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//:1313/tags/career/</loc>
+    <lastmod>2026-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//:1313/events/</loc>
-    <lastmod>2025-11-12T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//:1313/events/ict-showcase-2026/</loc>
+    <lastmod>2026-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//:1313/tags/</loc>
+    <lastmod>2026-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//:1313/tags/networking/</loc>
     <lastmod>2025-11-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//:1313/tags/</loc>
-    <lastmod>2025-11-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//:1313/tags/career/</loc>
-    <lastmod>2025-10-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//:1313/tags/one-off/</loc>
     <lastmod>2025-10-05T00:00:00+00:00</lastmod>
@@ -60,13 +61,9 @@
   </url><url>
     <loc>//:1313/categories/</loc>
   </url><url>
-    <loc>//:1313/tags/ict/</loc>
-  </url><url>
     <loc>//:1313/tags/industry/</loc>
   </url><url>
     <loc>//:1313/tags/it-jobs/</loc>
-  </url><url>
-    <loc>//:1313/tags/projects/</loc>
   </url><url>
     <loc>//:1313/tags/tasict/</loc>
   </url>

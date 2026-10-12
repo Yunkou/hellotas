@@ -10,7 +10,7 @@
 		
 		
 		
-			<lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Fri, 07 Aug 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="//:1313/tags/annual/index.xml" rel="self" type="application/rss+xml" />
 			<item>
@@ -26,6 +26,13 @@
 				<pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
 				<guid>//:1313/events/tasict-festival-2025/</guid>
 				<description>Tasmania&amp;rsquo;s biggest ICT industry festival.</description>
+			</item>
+			<item>
+				<title>ICT Showcase 2026</title>
+				<link>//:1313/events/ict-showcase-2026/</link>
+				<pubDate>Fri, 07 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>//:1313/events/ict-showcase-2026/</guid>
+				<description>The biggest student event of the year. Students present real projects to industry guests.</description>
 			</item>
 	</channel>
 </rss>
