@@ -12,6 +12,9 @@ cost: "Free"
 eligibility: "Open to all ICT students"
 summary: "Alumni and industry guests shared career paths."
 outcome: "Students asked real questions, got real answers"
+about:
+  - "Alumni and industry guests shared how they found their first jobs after graduation and talked about their career paths."
+  - "Students had the chance to ask practical questions and hear first-hand perspectives on starting a career in ICT."
 student_voice: "Hearing how alumni found their first job made me feel like my own path was possible. I stopped panicking and started planning."
 student_role: "ICT Student · 1st year"
 draft: false

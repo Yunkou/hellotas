@@ -7,14 +7,21 @@
 
   <div class="container event-hero">
     <h1>{{ .Title }}</h1>
-    <p class="event-detail-meta">{{ .Params.location }}</p>
-    <p class="event-detail-meta">{{ .Params.event_time }}</p>
+    {{ with .Params.summary }}<p class="event-summary">{{ . }}</p>{{ end }}
+    {{ if and (eq .Params.location "To be confirmed") (eq .Params.event_time "To be confirmed") }}
+    <p class="event-detail-meta">Event details to be confirmed</p>
+    {{ else }}
+    {{ with .Params.location }}<p class="event-detail-meta">{{ . }}</p>{{ end }}
+    {{ with .Params.event_time }}<p class="event-detail-meta">{{ . }}</p>{{ end }}
+    {{ end }}
 
     <div class="event-tags">
-      <span class="tag tag-type">{{ .Params.event_type }}</span>
+      {{ with .Params.event_type }}<span class="tag tag-type">{{ . }}</span>{{ end }}
       {{ range .Params.tags }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
       {{ if eq .Params.cost "Free" }}<span class="tag tag-free">FREE</span>{{ end }}
       {{ if eq .Params.cost "GPA requirement" }}<span class="tag tag-gpa">GPA REQUIRED</span>{{ end }}
+      {{ if eq .Params.cost "To be confirmed" }}<span class="tag tag-normal">COST TO BE CONFIRMED</span>{{ end }}
+      {{ with .Params.eligibility }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
     </div>
 
     {{ if .Params.image }}
@@ -26,6 +33,14 @@
     {{ end }}
   </div>
 
+  {{ with .Params.outcome }}
+  <div class="container">
+    <div class="event-detail-outcome">
+      <strong>Outcome:</strong> {{ . }}
+    </div>
+  </div>
+  {{ end }}
+
   {{ if .Params.about }}
   <div class="container event-section">
     <h2 class="section-heading">About this event</h2>
@@ -35,6 +50,12 @@
         <p>{{ . }}</p>
       {{ end }}
     </div>
+  </div>
+  {{ else if .Content }}
+  <div class="container event-section">
+    <h2 class="section-heading">About this event</h2>
+    <div class="section-divider"></div>
+    <div class="event-detail-content">{{ .Content }}</div>
   </div>
   {{ end }}
 
@@ -64,22 +85,22 @@
         <div class="project-image placeholder">Project photo</div>
         {{ end }}
         <h3>{{ .name }}</h3>
-        <p class="project-award">{{ .award }}</p>
+        {{ with .award }}<p class="project-award">{{ . }}</p>{{ end }}
         <p class="project-description">{{ .description }}</p>
-        <p class="project-team">{{ .team }}</p>
+        {{ with .team }}<p class="project-team">{{ . }}</p>{{ end }}
       </article>
       {{ end }}
     </div>
   </div>
   {{ end }}
 
-  {{ if .Params.linkedin_posts }}
   <section class="linkedin-section">
     <div class="container">
       <h2 class="section-heading red">What students said on LinkedIn</h2>
-      <p class="section-sub">Real posts from students and industry guests after the event.</p>
+      <p class="section-sub">Student reflections and posts from the event.</p>
 
       <div class="linkedin-grid">
+        {{ if .Params.linkedin_posts }}
         {{ range .Params.linkedin_posts }}
         <article class="linkedin-card">
           <div class="linkedin-header">
@@ -100,10 +121,27 @@
           <a href="{{ .url }}" class="linkedin-link">Read full post</a>
         </article>
         {{ end }}
+        {{ else if .Params.student_voice }}
+        <article class="linkedin-card">
+          <div class="linkedin-header">
+            <span class="linkedin-icon">in</span>
+            <span class="linkedin-label">Student voice</span>
+          </div>
+          <p class="linkedin-quote">"{{ .Params.student_voice }}"</p>
+          {{ with .Params.student_role }}<p class="voice-role">— {{ . }}</p>{{ end }}
+        </article>
+        {{ else }}
+        <article class="linkedin-card">
+          <div class="linkedin-header">
+            <span class="linkedin-icon">in</span>
+            <span class="linkedin-label">Student voice</span>
+          </div>
+          <p class="linkedin-quote">Student reflections will be added after the event.</p>
+        </article>
+        {{ end }}
       </div>
     </div>
   </section>
-  {{ end }}
 
   {{ if .Params.gallery }}
   <div class="container event-section">
@@ -119,7 +157,7 @@
   </div>
   {{ end }}
 
-  {{ if .Params.student_voice }}
+  {{ if and .Params.student_voice .Params.linkedin_posts }}
   <div class="container event-section">
     <div class="bottom-quote">
       <div class="voice-head">

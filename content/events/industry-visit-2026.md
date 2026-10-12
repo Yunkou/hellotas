@@ -11,6 +11,9 @@ eligibility: "To be confirmed"
 image: "/images/events/2026-industry-visit.JPG"
 summary: "A 2026 visit connecting students with industry."
 outcome: "To be confirmed"
+about:
+  - "The 2026 Industry Visit is planned as an opportunity for ICT students to connect with industry."
+  - "The date, venue, schedule, cost, and eligibility are still to be confirmed."
 draft: false
 ---
 

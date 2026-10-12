@@ -12,6 +12,9 @@ eligibility: "Open to all ICT students"
 image: "/images/events/2025tasict.png"
 summary: "Tasmania's biggest ICT industry festival."
 outcome: "Industry leaders · talks · networking"
+about:
+  - "Students attended Tasmania's ICT industry festival, where they met industry leaders and took part in talks."
+  - "The festival also gave students an opportunity to connect with Tasmania's local ICT community."
 student_voice: "TasICT Festival was the moment I realised ICT in Tasmania is a real, growing community — and I could be part of it."
 student_role: "ICT Graduate · 1st year out"
 draft: false

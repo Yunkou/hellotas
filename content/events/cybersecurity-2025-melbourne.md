@@ -12,6 +12,9 @@ eligibility: "High GPA students only"
 image: "/images/events/cybersecurity-melbourne-2025.jpg"
 summary: "Industry conference for cyber security students."
 outcome: "Real industry exposure outside Tasmania"
+about:
+  - "Selected cyber security students travelled to Melbourne to attend an industry conference and meet leading security professionals."
+  - "The conference gave students exposure to the cyber security industry beyond Tasmania. Selection was based on academic performance."
 student_voice: "I never thought I'd be in the same room as leading security professionals. That trip changed what I believed was possible for my career."
 student_role: "Cyber Security student"
 draft: false

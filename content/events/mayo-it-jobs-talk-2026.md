@@ -11,6 +11,9 @@ eligibility: "To be confirmed"
 image: "/images/events/2026ictcaree.jpg"
 summary: "A Mayo talk about IT jobs and career opportunities."
 outcome: "To be confirmed"
+about:
+  - "This planned talk by Mayo will focus on IT jobs and career opportunities."
+  - "The date, location, schedule, cost, and eligibility have not yet been confirmed."
 draft: false
 ---
 

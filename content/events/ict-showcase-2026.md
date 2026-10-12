@@ -8,7 +8,7 @@ location: "University of Tasmania · Sandy Bay Campus, Hobart"
 event_time: "Thursday 7 August 2026 · Full day event"
 cost: "Free"
 eligibility: "Open to all ICT students"
-image: "/images/events/2026ictshowcase.png"
+image: "/images/events/2026showcase.jpeg"
 summary: "The biggest student event of the year. Students present real projects to industry guests."
 outcome: "15 projects · 200+ attendees · 30+ industry guests"
 
