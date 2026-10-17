@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
+<html{{- if eq .Language.Lang "zh" }} lang="zh-CN"{{ else }} lang="{{ .Language.LanguageCode }}"{{ end }}>
 <head>
   {{ $style := resources.Get "css/custom.css" | fingerprint }}
   <meta charset="UTF-8">

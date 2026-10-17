@@ -1,0 +1,55 @@
+# Navigation
+home: "Home"
+journey: "Journey"
+stories: "Stories"
+events: "Events"
+volunteering: "Volunteering"
+sports: "Sports"
+forStaff: "For Staff"
+
+# Header
+siteName: "Tasmania Welcome"
+shareYourStory: "Share your story"
+
+# Footer
+footerTagline: "Built by and for international ICT students in Tasmania."
+
+# Events list page
+eventsTitle: "ICT Events Archive & Student Voices"
+eventsSubtitle: "Your roadmap to success in Tasmania. See how past ICT students transitioned from day one to their dream jobs."
+eventsShareLabel: "Pass on the wisdom. These aren't just event archives—they are proof of how ICT students in Tasmania learn, connect, and thrive together."
+eventsCopyLink: "Copy link"
+eventsLinkCopied: "Copied ✓"
+eventsBottomTitle: "Each year, students build on what came before."
+eventsBottomText1: "These are not just event records. They are proof that ICT students in Tasmania learn, connect, and grow."
+eventsBottomText2: "New students can look at this page and think: people like me have done this. I can do this too."
+
+# Event tags
+tagFree: "FREE"
+tagGPARequired: "GPA REQUIRED"
+tagCostTBC: "COST TO BE CONFIRMED"
+tagEligibilityTBC: "ELIGIBILITY TO BE CONFIRMED"
+studentVoice: "Student voice"
+studentFeedbackTBA: "Student feedback to be added."
+
+# Event details
+backToEvents: "← Back to all events"
+eventDetailsTBC: "Event details to be confirmed"
+outcomeLabel: "Outcome:"
+aboutThisEvent: "About this event"
+whatStudentsBuilt: "What students built"
+whatStudentsSaid: "What students said on LinkedIn"
+whatStudentsSaidSubtitle: "Student reflections and posts from the event."
+linkedInPost: "LinkedIn Post"
+readFullPost: "Read full post"
+studentReflectionsTBA: "Student reflections will be added after the event."
+photosFromTheDay: "Photos from the day"
+
+# Project placeholders
+eventPhoto: "Event photo"
+heroImage: "Hero image"
+projectPhoto: "Project photo"
+linkedInScreenshot: "LinkedIn screenshot"
+
+# Dates and meta
+thumbPlaceholder: "Event photo"

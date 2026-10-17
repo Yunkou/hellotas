@@ -1,24 +1,45 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-logo">Tasmania Welcome</div>
-      <p>Built by and for international ICT students in Tasmania.</p>
+      <div class="footer-logo">{{ i18n "siteName" }}</div>
+      <p>{{ i18n "footerTagline" }}</p>
     </div>
     <div class="footer-links">
       <div class="footer-col">
-        <a href="{{ site.Home.RelPermalink }}">Home</a>
-        <a href="{{ "journey/" | relURL }}">Journey</a>
-        <a href="{{ "stories/" | relURL }}">Stories</a>
-        <a href="{{ "events/" | relURL }}">Events</a>
+        <a href="{{ .Site.Home.RelPermalink }}">{{ i18n "home" }}</a>
+        <a href="{{ with .Site.GetPage "/journey" }}{{ .RelPermalink }}{{ else }}{{ relURL "journey/" }}{{ end }}">{{ i18n "journey" }}</a>
+        <a href="{{ with .Site.GetPage "/stories" }}{{ .RelPermalink }}{{ else }}{{ relURL "stories/" }}{{ end }}">{{ i18n "stories" }}</a>
+        <a href="{{ with .Site.GetPage "/events" }}{{ .RelPermalink }}{{ else }}{{ relURL "events/" }}{{ end }}">{{ i18n "events" }}</a>
       </div>
       <div class="footer-col">
-        <a href="{{ "volunteering/" | relURL }}">Volunteering</a>
-        <a href="{{ "sports/" | relURL }}">Sports</a>
-        <a href="{{ "for-staff/" | relURL }}">For Staff</a>
+        <a href="{{ with .Site.GetPage "/volunteering" }}{{ .RelPermalink }}{{ else }}{{ relURL "volunteering/" }}{{ end }}">{{ i18n "volunteering" }}</a>
+        <a href="{{ with .Site.GetPage "/sports" }}{{ .RelPermalink }}{{ else }}{{ relURL "sports/" }}{{ end }}">{{ i18n "sports" }}</a>
+        <a href="{{ with .Site.GetPage "/for-staff" }}{{ .RelPermalink }}{{ else }}{{ relURL "for-staff/" }}{{ end }}">{{ i18n "forStaff" }}</a>
       </div>
       <div class="footer-col">
-        <a href="#">EN</a>
-        <a href="#">中文</a>
+        {{ if eq .Language.Lang "en" }}
+          <a href="#">English</a>
+          {{ if .IsTranslated }}
+            {{ range .Translations }}
+              {{ if eq .Language.Lang "zh" }}
+                <a href="{{ .RelPermalink }}">简体中文</a>
+              {{ end }}
+            {{ end }}
+          {{ else }}
+            <a href="{{ relURL "zh/" }}">简体中文</a>
+          {{ end }}
+        {{ else if eq .Language.Lang "zh" }}
+          {{ if .IsTranslated }}
+            {{ range .Translations }}
+              {{ if eq .Language.Lang "en" }}
+                <a href="{{ .RelPermalink }}">English</a>
+              {{ end }}
+            {{ end }}
+          {{ else }}
+            <a href="{{ relURL "/" }}">English</a>
+          {{ end }}
+          <a href="#">简体中文</a>
+        {{ end }}
       </div>
     </div>
   </div>

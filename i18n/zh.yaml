@@ -1,0 +1,55 @@
+# Navigation
+home: "首页"
+journey: "成长之路"
+stories: "学生故事"
+events: "活动"
+volunteering: "志愿服务"
+sports: "运动"
+forStaff: "教职员工"
+
+# Header
+siteName: "塔斯马尼亚欢迎"
+shareYourStory: "分享你的故事"
+
+# Footer
+footerTagline: "由塔斯马尼亚国际ICT学生打造,为国际ICT学生服务。"
+
+# Events list page
+eventsTitle: "ICT活动档案与学生心声"
+eventsSubtitle: "在塔斯马尼亚成功的路线图。了解往届ICT学生如何从第一天过渡到理想的工作岗位。"
+eventsShareLabel: "传承智慧。这些不仅仅是活动档案——它们证明了塔斯马尼亚的ICT学生如何学习、建立联系并共同成长。"
+eventsCopyLink: "复制链接"
+eventsLinkCopied: "已复制 ✓"
+eventsBottomTitle: "每一年,学生都在前人的基础上继续前进。"
+eventsBottomText1: "这些不只是活动记录。它们证明了塔斯马尼亚的ICT学生能够学习、建立联系并成长。"
+eventsBottomText2: "新生可以看到这个页面并想:像我这样的人做到了。我也可以做到。"
+
+# Event tags
+tagFree: "免费"
+tagGPARequired: "需要GPA"
+tagCostTBC: "费用待定"
+tagEligibilityTBC: "资格待定"
+studentVoice: "学生心声"
+studentFeedbackTBA: "学生反馈将在活动后添加。"
+
+# Event details
+backToEvents: "← 返回所有活动"
+eventDetailsTBC: "活动详情待定"
+outcomeLabel: "成果:"
+aboutThisEvent: "关于本次活动"
+whatStudentsBuilt: "学生作品"
+whatStudentsSaid: "学生在LinkedIn上的分享"
+whatStudentsSaidSubtitle: "活动中学生的反思与分享。"
+linkedInPost: "LinkedIn帖子"
+readFullPost: "阅读完整帖子"
+studentReflectionsTBA: "学生的反思将在活动后添加。"
+photosFromTheDay: "活动照片"
+
+# Project placeholders
+eventPhoto: "活动照片"
+heroImage: "首图"
+projectPhoto: "项目照片"
+linkedInScreenshot: "LinkedIn截图"
+
+# Dates and meta
+thumbPlaceholder: "活动照片"

@@ -2,14 +2,18 @@
 <article class="event-detail-page">
 
   <div class="container">
-    <a href="{{ "events/" | relURL }}" class="back-link">← Back to all events</a>
+    {{ $eventsPath := "events" }}
+    {{ if eq .Language.Lang "zh" }}
+      {{ $eventsPath = "zh/events" }}
+    {{ end }}
+    <a href="{{ relURL $eventsPath }}" class="back-link">{{ i18n "backToEvents" }}</a>
   </div>
 
   <div class="container event-hero">
     <h1>{{ .Title }}</h1>
     {{ with .Params.summary }}<p class="event-summary">{{ . }}</p>{{ end }}
     {{ if and (eq .Params.location "To be confirmed") (eq .Params.event_time "To be confirmed") }}
-    <p class="event-detail-meta">Event details to be confirmed</p>
+    <p class="event-detail-meta">{{ i18n "eventDetailsTBC" }}</p>
     {{ else }}
     {{ with .Params.location }}<p class="event-detail-meta">{{ . }}</p>{{ end }}
     {{ with .Params.event_time }}<p class="event-detail-meta">{{ . }}</p>{{ end }}
@@ -18,9 +22,9 @@
     <div class="event-tags">
       {{ with .Params.event_type }}<span class="tag tag-type">{{ . }}</span>{{ end }}
       {{ range .Params.tags }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
-      {{ if eq .Params.cost "Free" }}<span class="tag tag-free">FREE</span>{{ end }}
-      {{ if eq .Params.cost "GPA requirement" }}<span class="tag tag-gpa">GPA REQUIRED</span>{{ end }}
-      {{ if eq .Params.cost "To be confirmed" }}<span class="tag tag-normal">COST TO BE CONFIRMED</span>{{ end }}
+      {{ if eq .Params.cost "Free" }}<span class="tag tag-free">{{ i18n "tagFree" }}</span>{{ end }}
+      {{ if eq .Params.cost "GPA requirement" }}<span class="tag tag-gpa">{{ i18n "tagGPARequired" }}</span>{{ end }}
+      {{ if eq .Params.cost "To be confirmed" }}<span class="tag tag-normal">{{ i18n "tagCostTBC" }}</span>{{ end }}
       {{ with .Params.eligibility }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
     </div>
 
@@ -29,21 +33,21 @@
       <img src="{{ strings.TrimPrefix "/" .Params.image | relURL }}" alt="{{ .Title }}">
     </div>
     {{ else }}
-    <div class="event-hero-image placeholder">Hero image</div>
+    <div class="event-hero-image placeholder">{{ i18n "heroImage" }}</div>
     {{ end }}
   </div>
 
   {{ with .Params.outcome }}
   <div class="container">
     <div class="event-detail-outcome">
-      <strong>Outcome:</strong> {{ . }}
+      <strong>{{ i18n "outcomeLabel" }}</strong> {{ . }}
     </div>
   </div>
   {{ end }}
 
   {{ if .Params.about }}
   <div class="container event-section">
-    <h2 class="section-heading">About this event</h2>
+    <h2 class="section-heading">{{ i18n "aboutThisEvent" }}</h2>
     <div class="section-divider"></div>
     <div class="about-text">
       {{ range .Params.about }}
@@ -53,7 +57,7 @@
   </div>
   {{ else if .Content }}
   <div class="container event-section">
-    <h2 class="section-heading">About this event</h2>
+    <h2 class="section-heading">{{ i18n "aboutThisEvent" }}</h2>
     <div class="section-divider"></div>
     <div class="event-detail-content">{{ .Content }}</div>
   </div>
@@ -74,7 +78,7 @@
 
   {{ if .Params.projects }}
   <div class="container event-section">
-    <h2 class="section-heading">What students built</h2>
+    <h2 class="section-heading">{{ i18n "whatStudentsBuilt" }}</h2>
     <div class="section-divider"></div>
     <div class="projects-grid">
       {{ range .Params.projects }}
@@ -82,7 +86,7 @@
         {{ if .image }}
         <div class="project-image"><img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .name }}"></div>
         {{ else }}
-        <div class="project-image placeholder">Project photo</div>
+        <div class="project-image placeholder">{{ i18n "projectPhoto" }}</div>
         {{ end }}
         <h3>{{ .name }}</h3>
         {{ with .award }}<p class="project-award">{{ . }}</p>{{ end }}
@@ -96,8 +100,8 @@
 
   <section class="linkedin-section">
     <div class="container">
-      <h2 class="section-heading red">What students said on LinkedIn</h2>
-      <p class="section-sub">Student reflections and posts from the event.</p>
+      <h2 class="section-heading red">{{ i18n "whatStudentsSaid" }}</h2>
+      <p class="section-sub">{{ i18n "whatStudentsSaidSubtitle" }}</p>
 
       <div class="linkedin-grid">
         {{ if .Params.linkedin_posts }}
@@ -105,7 +109,7 @@
         <article class="linkedin-card">
           <div class="linkedin-header">
             <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">LinkedIn Post</span>
+            <span class="linkedin-label">{{ i18n "linkedInPost" }}</span>
           </div>
           <div class="linkedin-author">
             <div class="author-avatar">👤</div>
@@ -114,18 +118,18 @@
               <div class="author-role">{{ .role }}</div>
             </div>
           </div>
-          <div class="linkedin-image placeholder">LinkedIn screenshot</div>
+          <div class="linkedin-image placeholder">{{ i18n "linkedInScreenshot" }}</div>
           <div class="linkedin-title">{{ .title }}</div>
           <p class="linkedin-quote">"{{ .quote }}"</p>
           <div class="linkedin-stats">👍 {{ .likes }}   💬 {{ .comments }}</div>
-          <a href="{{ .url }}" class="linkedin-link">Read full post</a>
+          <a href="{{ .url }}" class="linkedin-link">{{ i18n "readFullPost" }}</a>
         </article>
         {{ end }}
         {{ else if .Params.student_voice }}
         <article class="linkedin-card">
           <div class="linkedin-header">
             <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">Student voice</span>
+            <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
           </div>
           <p class="linkedin-quote">"{{ .Params.student_voice }}"</p>
           {{ with .Params.student_role }}<p class="voice-role">— {{ . }}</p>{{ end }}
@@ -134,9 +138,9 @@
         <article class="linkedin-card">
           <div class="linkedin-header">
             <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">Student voice</span>
+            <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
           </div>
-          <p class="linkedin-quote">Student reflections will be added after the event.</p>
+          <p class="linkedin-quote">{{ i18n "studentReflectionsTBA" }}</p>
         </article>
         {{ end }}
       </div>
@@ -145,7 +149,7 @@
 
   {{ if .Params.gallery }}
   <div class="container event-section">
-    <h2 class="section-heading">Photos from the day</h2>
+    <h2 class="section-heading">{{ i18n "photosFromTheDay" }}</h2>
     <div class="section-divider"></div>
     <div class="gallery-grid">
       {{ range .Params.gallery }}
@@ -162,7 +166,7 @@
     <div class="bottom-quote">
       <div class="voice-head">
         <span class="linkedin-icon">in</span>
-        <span class="linkedin-label">Student voice</span>
+        <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
       </div>
       <p class="voice-quote">"{{ .Params.student_voice }}"</p>
       <p class="voice-role">— {{ .Params.student_role }}</p>
