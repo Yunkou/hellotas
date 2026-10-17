@@ -1,11 +1,11 @@
 ---
 title: "ICT Careers Night 2025"
 date: 2025-10-25
-weight: 5
+weight: 4
 year: 2025
 event_type: "Career Night"
 tags: ["Career", "Networking"]
-image: "/images/events/2025ictcaree.jpg"
+image: "/images/events/2025/ict-careers-night/2025ictcaree.jpg"
 location: "Hobart"
 event_time: "5:30 PM – 8:00 PM"
 cost: "Free"
@@ -17,6 +17,7 @@ about:
   - "Students had the chance to ask practical questions and hear first-hand perspectives on starting a career in ICT."
 student_voice: "Hearing how alumni found their first job made me feel like my own path was possible. I stopped panicking and started planning."
 student_role: "ICT Student · 1st year"
+aliases: ["/events/ict-careers-night-2025/"]
 draft: false
 ---
 

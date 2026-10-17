@@ -9,7 +9,7 @@ location: "Tasmania"
 event_time: "10:00 AM – 3:00 PM"
 cost: "Free"
 eligibility: "Open to all ICT students"
-image: "/images/events/industryvisit2025.jpg"
+image: "/images/events/2025/industry-visit/industryvisit2025.jpg"
 summary: "Students visited local ICT companies in person."
 outcome: "First industry connection for many students"
 about:
@@ -17,6 +17,7 @@ about:
   - "The visit offered students a closer look at local ICT workplaces and a chance to make professional connections."
 student_voice: "The Industry Visit opened my eyes to what working in Tasmania actually looks like. I made my first real connection there."
 student_role: "ICT Graduate · 1st year out"
+aliases: ["/events/industry-visit-2025/"]
 draft: false
 ---
 
