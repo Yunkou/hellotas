@@ -1,0 +1,50 @@
+steps:
+  - id: 1
+    image: images/home/step-1-arrival.jpg
+    anchor: step-1
+    ctaPath: journey/
+  - id: 2
+    image: images/home/step-2-language.jpg
+    anchor: step-2
+    ctaPath: journey/
+  - id: 3
+    image: images/home/step-3-community.jpg
+    anchor: step-3
+    ctaPath: journey/
+  - id: 4
+    image: images/home/step-4-events.jpg
+    anchor: step-4
+    ctaPath: events/
+  - id: 5
+    image: images/home/step-5-linkedin.jpg
+    anchor: step-5
+    ctaPath: journey/
+  - id: 6
+    image: images/home/step-6-volunteering.jpg
+    anchor: step-6
+    ctaPath: volunteering/
+  - id: 7
+    image: images/home/step-7-career.jpg
+    anchor: step-7
+    ctaPath: stories/
+    final: true
+
+stories:
+  - image: images/home/story-luoyan.jpg
+    year: "2026"
+    nameKey: homeStory1Name
+    roleKey: homeStory1Role
+    quoteKey: homeStory1Quote
+    placeholder: false
+  - image: images/home/story-placeholder-1.jpg
+    year: "2025"
+    nameKey: homeStory2Name
+    roleKey: homeStory2Role
+    quoteKey: homeStory2Quote
+    placeholder: true
+  - image: images/home/story-placeholder-2.jpg
+    year: "2024"
+    nameKey: homeStory3Name
+    roleKey: homeStory3Role
+    quoteKey: homeStory3Quote
+    placeholder: true

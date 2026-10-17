@@ -53,3 +53,76 @@ linkedInScreenshot: "LinkedIn screenshot"
 
 # Dates and meta
 thumbPlaceholder: "Event photo"
+
+# Homepage — hero
+homeHeroTitle: "From Step 1 to the person"
+homeHeroTitleHighlight: "you want to become."
+homeHeroSubtitle: "Learn, grow and connect in Tasmania. A step-by-step journey for international ICT students. Your career will follow."
+homeHeroNote: "Built by and for international ICT students in Tasmania."
+homeHeroCtaStart: "Start Step 1"
+homeHeroCtaJourney: "See full journey"
+homeHeroImageAlt: "Hobart waterfront and Mount Wellington"
+
+# Homepage — trust strip
+homeTrustStrip: "<strong>Finding a professional job needs Experience + References.</strong> Start building both from your first semester, not after graduation."
+
+# Homepage — journey
+homeJourneyTitle: "Your journey, step by step"
+homeJourneyLead: "Seven practical stages from arrival to your first ICT role in Tasmania. Take them in order — but revisit any step whenever you need."
+
+homeStep1Title: "Start your life here"
+homeStep1Text: "Find accommodation (share house, homestay, or UTAS housing), set up your phone and bank account, learn Hobart transport, and stock groceries. <strong>Check your visa conditions</strong> (work hours, course attendance, OSHC) on VEVO and keep enrolment documents handy. Feeling overwhelmed is normal — settle in first, then build momentum."
+homeStep1Cta: "Arrival checklist"
+homeStep1ImageAlt: "Student arriving and settling into accommodation in Hobart"
+
+homeStep2Title: "Build your voice"
+homeStep2Text: "If you still need to pass your English test, make this your main focus. Join fixed local volunteering near UTAS to practise English in a safe, structured setting."
+homeStep2Cta: "Language centre + volunteering"
+homeStep2ImageAlt: "Students in a language class"
+
+homeStep3Title: "Join community"
+homeStep3Text: "Missed Open Day? Discover UTAS clubs, library services, and real student projects. Check your UTAS email and MyLO — important events and deadlines are posted there."
+homeStep3Cta: "Explore clubs & library"
+homeStep3ImageAlt: "Students collaborating on a campus project"
+
+homeStep4Title: "Attend ICT events"
+homeStep4Text: "See what happened before and what is coming next — GDG Hobart, TasICT Festival, industry visits, CyberSecurity Melbourne, and more."
+homeStep4Cta: "ICT events list"
+homeStep4ImageAlt: "ICT conference and networking event"
+
+homeStep5Title: "Open doors"
+homeStep5Text: "Open your first door into the industry you want to work in. Connect with tutors, alumni, event speakers, and local ICT people on LinkedIn."
+homeStep5Cta: "LinkedIn starter guide"
+homeStep5ImageAlt: "Professional networking and LinkedIn"
+
+homeStep6Title: "Build trust"
+homeStep6Text: "In Australia, references are often required before you can get a job. Build experience through UTAS Motorsport, Food Hub, Source Garden, Red Cross, and similar roles."
+homeStep6Cta: "Experience & references guide"
+homeStep6ImageAlt: "Volunteers working together in the community"
+
+homeStep7Title: "Grow into your future"
+homeStep7Text: "Apply, interview, and start your career in Tasmania. Then share your story so the next student believes it is possible."
+homeStep7Cta: "Job ready + Stories"
+homeStep7ImageAlt: "Graduate celebrating a job offer"
+
+# Homepage — habits
+homeHabitsTitle: "Build good habits, early"
+homeHabitSportsTitle: "Make sport a habit"
+homeHabitSportsText: "Free weekly Parkrun, squash clubs, trail runs — Tasmania has world-class outdoor and indoor sports that help you stay healthy and meet people outside class."
+homeHabitSportsCta: "See free sports activities"
+homeHabitGrowthTitle: "Become who you want to be, early"
+homeHabitGrowthText: "Break big goals into small weekly habits. Join a project, volunteer, meet people — consistency beats cramming before graduation."
+homeHabitGrowthCta: "See free growth opportunities"
+
+# Homepage — graduate stories
+homeStoriesTitle: "Graduate stories"
+homeStoriesViewAll: "View all stories →"
+homeStory1Name: "Luoyan Wei"
+homeStory1Role: "ICT Graduate · Hobart"
+homeStory1Quote: "\"I started from UTAS Language Center. Now I work in tech in Tasmania.\""
+homeStory2Name: "Story coming soon"
+homeStory2Role: "ICT Graduate · Tasmania"
+homeStory2Quote: "\"Placeholder — we are collecting more graduate voices from recent years.\""
+homeStory3Name: "Story coming soon"
+homeStory3Role: "ICT Graduate · Tasmania"
+homeStory3Quote: "\"Placeholder — share your journey to inspire the next cohort.\""
