@@ -1,21 +1,21 @@
 {{ define "main" }}
 <section class="hero-section">
   <div class="container">
-    <h1>ICT Events Archive &amp; Student Voices</h1>
-      <p class="hero-sub">Your roadmap to success in Tasmania. See how past ICT students transitioned from day one to their dream jobs.</p>
+    <h1>{{ i18n "eventsTitle" }}</h1>
+      <p class="hero-sub">{{ i18n "eventsSubtitle" }}</p>
   </div>
 </section>
 
 <section class="container">
   <div class="share-bar">
     <div class="share-left">
-      <div class="share-label">Pass on the wisdom. These aren't just event archives—they are proof of how ICT students in Tasmania learn, connect, and thrive together.</div>
+      <div class="share-label">{{ i18n "eventsShareLabel" }}</div>
           <div class="share-url">
-             <span>https://weiluoyan.github.io/hellotas/events/</span>
-               <button type="button" onclick="navigator.clipboard.writeText('https://weiluoyan.github.io/hellotas/events/'); this.textContent='Copied ✓'">Copy</button>
+             <span>{{ .Permalink }}</span>
+               <button type="button" onclick="navigator.clipboard.writeText('{{ .Permalink }}'); this.textContent='{{ i18n "eventsLinkCopied" }}'">{{ i18n "eventsCopyLink" }}</button>
           </div>    
       </div>
-    <button class="btn-primary share-btn" onclick="navigator.clipboard.writeText('https://weiluoyan.github.io/hellotas/events/')">Copy link</button>
+    <button class="btn-primary share-btn" onclick="navigator.clipboard.writeText('{{ .Permalink }}')">{{ i18n "eventsCopyLink" }}</button>
   </div>
 </section>
 
@@ -42,7 +42,7 @@
   {{ if .Params.image }}
   <img src="{{ strings.TrimPrefix "/" .Params.image | relURL }}" alt="{{ .Title }}">
   {{ else }}
-    <div class="thumb-placeholder">Event photo<br><span class="thumb-sub">{{ .Title }}</span></div>
+    <div class="thumb-placeholder">{{ i18n "eventPhoto" }}<br><span class="thumb-sub">{{ .Title }}</span></div>
   {{ end }}
 </div>  
 
@@ -50,14 +50,14 @@
         <div class="event-tags">
           <span class="tag tag-type">{{ .Params.event_type }}</span>
           {{ range .Params.tags }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
-          {{ if eq .Params.cost "Free" }}<span class="tag tag-free">FREE</span>{{ end }}
-          {{ if eq .Params.cost "GPA requirement" }}<span class="tag tag-gpa">GPA REQUIRED</span>{{ end }}
-          {{ if eq .Params.cost "To be confirmed" }}<span class="tag tag-normal">COST TO BE CONFIRMED</span>{{ end }}
-          {{ if eq .Params.eligibility "To be confirmed" }}<span class="tag tag-normal">ELIGIBILITY TO BE CONFIRMED</span>{{ end }}
+          {{ if eq .Params.cost "Free" }}<span class="tag tag-free">{{ i18n "tagFree" }}</span>{{ end }}
+          {{ if eq .Params.cost "GPA requirement" }}<span class="tag tag-gpa">{{ i18n "tagGPARequired" }}</span>{{ end }}
+          {{ if eq .Params.cost "To be confirmed" }}<span class="tag tag-normal">{{ i18n "tagCostTBC" }}</span>{{ end }}
+          {{ if eq .Params.eligibility "To be confirmed" }}<span class="tag tag-normal">{{ i18n "tagEligibilityTBC" }}</span>{{ end }}
         </div>
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
         {{ if and (eq .Params.location "To be confirmed") (eq .Params.event_time "To be confirmed") }}
-        <p class="event-meta">Event details to be confirmed</p>
+        <p class="event-meta">{{ i18n "eventDetailsTBC" }}</p>
         {{ else if or .Params.location .Params.event_time }}
         <p class="event-meta">{{ with .Params.location }}{{ . }}{{ end }}{{ if and .Params.location .Params.event_time }} · {{ end }}{{ with .Params.event_time }}{{ . }}{{ end }}</p>
         {{ end }}
@@ -67,7 +67,7 @@
         <div class="student-voice">
           <div class="voice-head">
             <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">Student voice</span>
+            <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
           </div>
           <p class="voice-quote">"{{ . }}"</p>
           <p class="voice-role">— {{ $event.Params.student_role }}</p>
@@ -77,9 +77,9 @@
         <div class="student-voice">
           <div class="voice-head">
             <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">Student voice</span>
+            <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
           </div>
-          <p class="voice-quote">Student feedback to be added.</p>
+          <p class="voice-quote">{{ i18n "studentFeedbackTBA" }}</p>
         </div>
         {{ end }}
         {{ end }}
@@ -94,9 +94,9 @@
 <section class="container">
   <div class="bottom-note">
     <div class="bottom-note-inner">
-      <h3>Each year, students build on what came before.</h3>
-      <p>These are not just event records. They are proof that ICT students in Tasmania learn, connect, and grow.</p>
-      <p>New students can look at this page and think: people like me have done this. I can do this too.</p>
+      <h3>{{ i18n "eventsBottomTitle" }}</h3>
+      <p>{{ i18n "eventsBottomText1" }}</p>
+      <p>{{ i18n "eventsBottomText2" }}</p>
     </div>
   </div>
 </section>
