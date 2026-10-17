@@ -10,32 +10,40 @@
       <a href="{{ with .Site.GetPage "/sports" }}{{ .RelPermalink }}{{ else }}{{ relURL "sports/" }}{{ end }}">{{ i18n "sports" }}</a>
     </div>
     <div class="nav-right">
-      <span class="lang">
-        {{ if eq .Language.Lang "en" }}
-          <span>English</span>
-          {{ if .IsTranslated }}
-            {{ range .Translations }}
-              {{ if eq .Language.Lang "zh" }}
-                | <a href="{{ .RelPermalink }}">简体中文</a>
-              {{ end }}
-            {{ end }}
-          {{ else }}
-            | <a href="{{ relURL "zh/" }}">简体中文</a>
+      {{ $page := . }}
+      <details class="lang-picker">
+        <summary class="lang-current" aria-haspopup="menu" title="Language">
+          {{ range .Site.Languages }}
+            {{ if eq .Lang $page.Language.Lang }}<span class="lang-name">{{ .LanguageName }}</span>{{ end }}
           {{ end }}
-        {{ else if eq .Language.Lang "zh" }}
-          {{ if .IsTranslated }}
-            {{ range .Translations }}
-              {{ if eq .Language.Lang "en" }}
-                <a href="{{ .RelPermalink }}">English</a>
+          <span class="lang-caret" aria-hidden="true">▾</span>
+        </summary>
+        <div class="lang-menu" role="menu">
+          {{ range .Site.Languages }}
+            {{ $lang := . }}
+            {{ if eq $lang.Lang $page.Language.Lang }}
+              <span class="lang-menu-item lang-menu-current" role="menuitem" aria-current="true">{{ $lang.LanguageName }}</span>
+            {{ else }}
+              {{ $url := "" }}
+              {{ range $page.Translations }}
+                {{ if eq .Language.Lang $lang.Lang }}{{ $url = .RelPermalink }}{{ end }}
               {{ end }}
+              {{ if not $url }}
+                {{ if eq $lang.Lang "en" }}{{ $url = relURL "/" }}{{ else }}{{ $url = relURL (printf "%s/" $lang.Lang) }}{{ end }}
+              {{ end }}
+              <a class="lang-menu-item" role="menuitem" href="{{ $url }}">{{ $lang.LanguageName }}</a>
             {{ end }}
-          {{ else }}
-            <a href="{{ relURL "/" }}">English</a>
           {{ end }}
-          | <span>简体中文</span>
-        {{ end }}
-      </span>
+        </div>
+      </details>
       <a href="#" class="btn-primary">{{ i18n "shareYourStory" }}</a>
     </div>
   </nav>
+  <script>
+    document.addEventListener('click', function (e) {
+      document.querySelectorAll('details.lang-picker').forEach(function (d) {
+        if (d.open && !d.contains(e.target)) { d.open = false; }
+      });
+    });
+  </script>
 </header>

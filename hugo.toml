@@ -23,6 +23,12 @@ defaultContentLanguageInSubdir = false
   title = "塔斯马尼亚欢迎"
   weight = 2
 
+[languages.ne]
+  languageCode = "ne-np"
+  languageName = "नेपाली"
+  title = "तस्मानियामा स्वागत"
+  weight = 3
+
 [[languages.en.menu.main]]
   name = "Home"
   url = "/"
@@ -41,4 +47,14 @@ defaultContentLanguageInSubdir = false
 [[languages.zh.menu.main]]
   name = "往期活动"
   url = "/zh/events/"
+  weight = 2
+
+[[languages.ne.menu.main]]
+  name = "गृहपृष्ठ"
+  url = "/ne/"
+  weight = 1
+
+[[languages.ne.menu.main]]
+  name = "पछिल्ला कार्यक्रमहरू"
+  url = "/ne/events/"
   weight = 2
