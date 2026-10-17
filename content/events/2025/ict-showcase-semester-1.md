@@ -1,0 +1,54 @@
+---
+title: "ICT Capstone Project Expo 2025 (Semester 1)"
+date: 2025-05-28
+weight: 9
+year: 2025
+event_type: "Showcase"
+tags: ["Career"]
+location: "Studio Theatre, University Centre, Sandy Bay Campus, Hobart"
+event_time: "Wednesday 28 May 2025 · 10:00 AM – 12:00 PM"
+cost: "Free"
+eligibility: "Open to all ICT students"
+image: "/images/events/2025/ict-showcase-semester-1/ict-project-showcase-2025.jpg"
+summary: "The first of the School's twice-yearly showcases, reviving Demo Day so KIT300 capstone teams could demonstrate apps, websites and games to industry and alumni."
+outcome: "Live demos for staff, alumni and industry"
+about:
+  - "Organised by Dr Lindsay Wells, this expo brought back the School of ICT Demo Day, which had last run over a decade earlier. Staff, students, alumni and industry members were invited to see live demos of mobile apps, websites and games built by the KIT300 Capstone Project teams."
+  - "Alongside the capstone projects, the program featured selected work from KIT109 Games Fundamentals, KIT207 Games Design and Production, KIT305/KIT721 Mobile Application Development, KIT208 Virtual and Mixed Reality and KIT307 Computer Graphics and Animation. A digital program let visitors view the project posters, play the games and watch the project videos."
+  - "Many alumni came back to support the students, and the School announced a second showcase for October 2025 with twice as many projects."
+projects:
+  - name: "Student projects"
+    description: "KIT300 capstone teams and students from games, mobile app, mixed reality and graphics units demonstrated their projects to industry guests and alumni."
+linkedin_posts:
+  - name: "Lindsay Wells"
+    role: "Lecturer, Games and Mobile Apps, University of Tasmania"
+    title: "Bringing back the School of ICT Demo Day"
+    quote: "Staff, students, alumni, and industry members are invited to join us to celebrate and share the work of our KIT300 Capstone Project teams. See live-demos of student-made mobile apps, websites, and games!"
+    likes: "46"
+    comments: "5"
+    url: "https://www.linkedin.com/posts/lindsay-wells-24658b76_ive-been-working-hard-to-bring-back-the-share-7327841456260292623-FuAS/"
+  - name: "Lindsay Wells"
+    role: "Lecturer, Games and Mobile Apps, University of Tasmania"
+    title: "Expo wrap-up from the organiser"
+    quote: "Great success! Thanks to everyone who attended, and to the students who have done the School proud. So great to see so many familiar alumni faces come out to support us."
+    likes: "43"
+    comments: "3"
+    url: "https://www.linkedin.com/posts/lindsay-wells-24658b76_great-success-thanks-to-everyone-who-attended-share-7333363715813113856-_T4-/"
+  - name: "Yu Wang"
+    role: "Master of IT and Systems student at UTAS (now ICT Graduate at TasWater)"
+    title: "Presenting a mobile app at the ICT Project Expo"
+    quote: "It is a great experience to join the ICT Project Expo and present my app from the Mobile Application Development course. When I started, I knew very little about programming."
+    likes: "35"
+    comments: "0"
+    url: "https://www.linkedin.com/posts/yu-wang-solana_ictprojectexpo-utas-universityoftasmania-ugcPost-7333462253070884864-Ew3c/"
+gallery:
+  - "/images/events/2025/ict-showcase-semester-1/ict-project-showcase-2025-2.jpg"
+  - "/images/events/2025/ict-showcase-semester-1/ict-project-showcase-2025-3.jpg"
+  - "/images/events/2025/ict-showcase-semester-1/ict-project-showcase-2025-4.jpg"
+student_voice: "It was inspiring to see so many amazing projects at the expo, including SeaTalk, smart recycling systems, price comparison sites, and creative games."
+student_role: "Yu Wang · Master of IT and Systems student"
+aliases: ["/events/ict-project-showcase-2025/"]
+draft: false
+---
+
+KIT300 capstone teams and students from games and mobile app units demonstrated their work to industry guests and alumni.

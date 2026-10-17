@@ -1,0 +1,75 @@
+---
+title: "School of ICT Showcase Expo 2026 (Semester 1)"
+date: 2026-05-28
+weight: 7
+year: 2026
+event_type: "Showcase"
+tags: ["Career", "Industry"]
+location: "Studio Theatre, University Centre, Sandy Bay Campus, Hobart"
+event_time: "Thursday 28 May 2026 · 10:00 AM – 2:00 PM"
+cost: "Free"
+eligibility: "Open to all ICT students"
+image: "/images/events/2026/ict-showcase-semester-1/ict-showcase-2026-semester-1-1.jpg"
+summary: "The School's third showcase, with 16 graduating project teams, curriculum Major hubs and activities for visiting school students."
+outcome: "16 project teams · 250+ attendees · People's Choice and InVent prizes"
+about:
+  - "The School of ICT's Semester 1 showcase celebrated 16 graduating Bachelor and Master's project teams who had spent 12 weeks working with clients from across the ICT industry and beyond. Despite a fire alarm the night before, the expo ran in full swing at the University Centre."
+  - "Beyond the project booths, Major hubs showcased Application and Web Development, Artificial Intelligence, Cyber Security, Games and Creative Technologies, and the Internet of Things. Tasmanian school students in Years 9 to 12 joined dedicated information sessions, campus tours and hands-on workshops."
+  - "TasICT CEO Russell Kelly reported more than 250 attendees. Intuit Technologies sponsored the People's Choice Award and UTAS InVent sponsored prizes for commercial acumen."
+  - "In June 2026, the ICT Showcase was up for a TasICT Excellence Award for developing employment opportunities."
+stats:
+  - number: "16"
+    label: "Student project teams"
+  - number: "250+"
+    label: "Attendees"
+  - number: "5"
+    label: "Major hubs"
+projects:
+  - name: "PharmaGene App"
+    award: "Intuit Technologies Award for Best Project & UTAS InVent Prize for Commercial Acumen (MITS)"
+    description: "An app that helps healthcare professionals quickly check whether a drug has pharmacogenetic recommendations and access clear guidance for safer, more personalised prescribing."
+    team: "Chhunly Chhek, Eusha Gazi, My Xuan, Linh Ngoc Huynh, Rizwana Runi"
+  - name: "Gamifying Business Law for Postgraduates"
+    award: "UTAS InVent Prize for Commercial Acumen (BICT)"
+    description: "A game that turns business law content into an engaging learning experience, developed in partnership with the UTAS Law School."
+    team: "Stevan Djeric, Will Rummery, Runae Bojorges Oleinikoff, Xavier Scott, Abir Hossain"
+  - name: "Cybersecurity Honeypot Network for Tasmanian SMEs"
+    description: "A honeypot network that captures and maps live attack traffic to help Tasmanian small and medium businesses understand the threats they face."
+    image: "/images/events/2026/ict-showcase-semester-1/ict-showcase-2026-semester-1-honeypot.jpg"
+linkedin_posts:
+  - name: "Russell Kelly"
+    role: "CEO, TasICT"
+    title: "Industry reflection on the School of ICT Showcase Expo"
+    quote: "Over 250 attendees including students from local schools got to see the efforts of 16 teams of graduating students who have worked tirelessly with clients from across the ICT industry and beyond to tackle real world problems."
+    likes: "108"
+    comments: "3"
+    url: "https://www.linkedin.com/posts/russellkellyauthor_the-school-of-ict-showcase-expo-event-was-ugcPost-7467115546069749760-G2sJ/"
+  - name: "Lindsay Wells"
+    role: "Lecturer, Games and Mobile Apps, University of Tasmania"
+    title: "Two days to go: Intuit People's Choice Award"
+    quote: "This time, we're really pleased to announce that the People's Choice Award for the event will be sponsored by Intuit Technologies!"
+    likes: "24"
+    comments: "5"
+    url: "https://www.linkedin.com/posts/lindsay-wells-24658b76_just-two-days-to-go-now-until-the-bi-annual-share-7464871143334780929-jNdz/"
+  - name: "Lindsay Wells"
+    role: "Lecturer, Games and Mobile Apps, University of Tasmania"
+    title: "Showcase up for a TasICT award"
+    quote: "The melting pot of students and industry members that is the showcase has proven to be not only a wonderful celebration of our students work, but a chance for our students to put their best foot forward amongst their future peers."
+    likes: "38"
+    comments: "1"
+    url: "https://www.linkedin.com/posts/lindsay-wells-24658b76_excited-for-tonights-tasict-awards-extra-share-7476176198272827392-jAZn/"
+  - name: "Lindsay Wells"
+    role: "Lecturer, Games and Mobile Apps, University of Tasmania"
+    title: "Live from the expo floor"
+    quote: "Despite a fire alarm last night, the ICT expo is in full swing, come along and join us at the University Center until 2pm today, we’ve got food!"
+    likes: "37"
+    comments: "1"
+    url: "https://www.linkedin.com/posts/lindsay-wells-24658b76_despite-a-fire-alarm-last-night-the-ict-ugcPost-7465568426124685316-j-1b/"
+gallery:
+  - "/images/events/2026/ict-showcase-semester-1/ict-showcase-2026-semester-1-2.jpg"
+  - "/images/events/2026/ict-showcase-semester-1/ict-showcase-2026-semester-1-3.jpg"
+aliases: ["/events/ict-showcase-2026-semester-1/"]
+draft: false
+---
+
+Sixteen graduating teams presented their client projects, with Major hubs and school activities alongside the expo.

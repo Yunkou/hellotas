@@ -1,0 +1,29 @@
+# Hugo build output (GitHub Actions builds the site and deploys it to the gh-pages branch)
+/public/
+/resources/_gen/
+.hugo_build.lock
+hugo_stats.json
+
+# Local Hugo binaries
+hugo
+hugo.exe
+
+# Operating system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor and IDE settings
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node tooling (if added later)
+node_modules/
+
+# Environment and log files
+.env
+.env.*
+*.log
