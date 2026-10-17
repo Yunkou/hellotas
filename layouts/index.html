@@ -1,0 +1,101 @@
+{{ define "main" }}
+<div class="page-home">
+  <section class="home-hero">
+    <div class="container home-hero-inner">
+      <div class="home-hero-copy">
+        <h1>{{ i18n "homeHeroTitle" }} <span class="text-brand">{{ i18n "homeHeroTitleHighlight" }}</span></h1>
+        <p class="home-hero-sub">{{ i18n "homeHeroSubtitle" }}</p>
+        <p class="home-hero-note">{{ i18n "homeHeroNote" }}</p>
+        <div class="home-hero-ctas">
+          <a href="{{ "journey/" | relLangURL }}#step-1" class="btn-primary">{{ i18n "homeHeroCtaStart" }}</a>
+          <a href="{{ "journey/" | relLangURL }}" class="btn-outline">{{ i18n "homeHeroCtaJourney" }}</a>
+        </div>
+      </div>
+      <div class="home-hero-media">
+        <img src="{{ "images/home/hero.jpg" | relURL }}" alt="{{ i18n "homeHeroImageAlt" }}" width="640" height="480">
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <aside class="home-trust-strip">
+      <p>{{ i18n "homeTrustStrip" | safeHTML }}</p>
+    </aside>
+  </div>
+
+  <section class="home-journey">
+    <div class="container">
+      <h2 class="home-section-title">{{ i18n "homeJourneyTitle" }}</h2>
+      <p class="home-section-lead">{{ i18n "homeJourneyLead" }}</p>
+
+      <ol class="home-timeline">
+        {{ range site.Data.homepage.steps }}
+        <li class="home-step{{ if .final }} home-step--final{{ end }}" id="{{ .anchor }}">
+          <div class="home-step-marker" aria-hidden="true">
+            <span class="home-step-num">{{ .id }}</span>
+          </div>
+          <div class="home-step-body">
+            <div class="home-step-image">
+              <img src="{{ .image | relURL }}" alt="{{ i18n (printf "homeStep%dImageAlt" .id) }}" loading="lazy" width="400" height="280">
+            </div>
+            <div class="home-step-content">
+              <h3>{{ i18n (printf "homeStep%dTitle" .id) }}</h3>
+              <p>{{ i18n (printf "homeStep%dText" .id) | safeHTML }}</p>
+              <a href="{{ if eq .ctaPath "journey/" }}{{ .ctaPath | relLangURL }}#{{ .anchor }}{{ else }}{{ .ctaPath | relLangURL }}{{ end }}" class="{{ if .final }}btn-success{{ else }}btn-primary btn-sm{{ end }}">{{ i18n (printf "homeStep%dCta" .id) }}</a>
+            </div>
+          </div>
+        </li>
+        {{ end }}
+      </ol>
+    </div>
+  </section>
+
+  <section class="home-habits">
+    <div class="container">
+      <h2 class="home-section-title">{{ i18n "homeHabitsTitle" }}</h2>
+      <div class="home-habits-grid">
+        <article class="home-habit-card">
+          <div class="home-habit-accent" aria-hidden="true"></div>
+          <div class="home-habit-inner">
+            <h3>{{ i18n "homeHabitSportsTitle" }}</h3>
+            <p>{{ i18n "homeHabitSportsText" }}</p>
+            <a href="{{ "sports/" | relLangURL }}" class="btn-outline btn-sm">{{ i18n "homeHabitSportsCta" }}</a>
+          </div>
+        </article>
+        <article class="home-habit-card">
+          <div class="home-habit-accent" aria-hidden="true"></div>
+          <div class="home-habit-inner">
+            <h3>{{ i18n "homeHabitGrowthTitle" }}</h3>
+            <p>{{ i18n "homeHabitGrowthText" }}</p>
+            <a href="{{ "volunteering/" | relLangURL }}" class="btn-outline btn-sm">{{ i18n "homeHabitGrowthCta" }}</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-stories">
+    <div class="container">
+      <div class="home-stories-header">
+        <h2 class="home-section-title text-brand">{{ i18n "homeStoriesTitle" }}</h2>
+        <a href="{{ "stories/" | relLangURL }}" class="home-stories-link">{{ i18n "homeStoriesViewAll" }}</a>
+      </div>
+      <div class="home-stories-grid">
+        {{ range site.Data.homepage.stories }}
+        <article class="home-story-card{{ if .placeholder }} home-story-card--placeholder{{ end }}">
+          <div class="home-story-image">
+            <img src="{{ .image | relURL }}" alt="{{ i18n .nameKey }}" loading="lazy" width="360" height="220">
+            <span class="home-story-year">{{ .year }}</span>
+          </div>
+          <div class="home-story-body">
+            <h3>{{ i18n .nameKey }}</h3>
+            <p class="home-story-role">{{ i18n .roleKey }}</p>
+            <blockquote>{{ i18n .quoteKey }}</blockquote>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+</div>
+{{ end }}
