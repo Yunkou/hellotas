@@ -84,6 +84,22 @@ img { max-width: 100%; display: block; }
 .lang {
   font-size: 15px;
   color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.lang-current {
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.lang a { color: var(--text-dark); }
+
+.lang a:hover { color: var(--brand); }
+
+@media (max-width: 768px) {
+  .nav-right { gap: 12px; }
+  .lang { font-size: 14px; }
+  .btn-primary { padding: 8px 16px; font-size: 13px; }
 }
 
 .btn-primary {

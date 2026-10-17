@@ -3,8 +3,8 @@
 
   <div class="container">
     {{ $eventsPath := "events" }}
-    {{ if eq .Language.Lang "zh" }}
-      {{ $eventsPath = "zh/events" }}
+    {{ if ne .Language.Lang "en" }}
+      {{ $eventsPath = printf "%s/events" .Language.Lang }}
     {{ end }}
     <a href="{{ relURL $eventsPath }}" class="back-link">{{ i18n "backToEvents" }}</a>
   </div>

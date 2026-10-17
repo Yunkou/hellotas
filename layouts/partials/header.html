@@ -11,28 +11,21 @@
     </div>
     <div class="nav-right">
       <span class="lang">
-        {{ if eq .Language.Lang "en" }}
-          <span>English</span>
-          {{ if .IsTranslated }}
-            {{ range .Translations }}
-              {{ if eq .Language.Lang "zh" }}
-                | <a href="{{ .RelPermalink }}">简体中文</a>
-              {{ end }}
-            {{ end }}
+        {{ $page := . }}
+        {{ range $i, $lang := .Site.Languages }}
+          {{ if gt $i 0 }} | {{ end }}
+          {{ if eq $lang.Lang $page.Language.Lang }}
+            <span class="lang-current">{{ $lang.LanguageName }}</span>
           {{ else }}
-            | <a href="{{ relURL "zh/" }}">简体中文</a>
-          {{ end }}
-        {{ else if eq .Language.Lang "zh" }}
-          {{ if .IsTranslated }}
-            {{ range .Translations }}
-              {{ if eq .Language.Lang "en" }}
-                <a href="{{ .RelPermalink }}">English</a>
-              {{ end }}
+            {{ $url := "" }}
+            {{ range $page.Translations }}
+              {{ if eq .Language.Lang $lang.Lang }}{{ $url = .RelPermalink }}{{ end }}
             {{ end }}
-          {{ else }}
-            <a href="{{ relURL "/" }}">English</a>
+            {{ if not $url }}
+              {{ if eq $lang.Lang "en" }}{{ $url = relURL "/" }}{{ else }}{{ $url = relURL (printf "%s/" $lang.Lang) }}{{ end }}
+            {{ end }}
+            <a href="{{ $url }}">{{ $lang.LanguageName }}</a>
           {{ end }}
-          | <span>简体中文</span>
         {{ end }}
       </span>
       <a href="#" class="btn-primary">{{ i18n "shareYourStory" }}</a>
