@@ -49,3 +49,134 @@ step1:
     - journeyStep1Checklist3
     - journeyStep1Checklist4
     - journeyStep1Checklist5
+
+step2:
+  why:
+    titleKey: journeyStep2WhyTitle
+    textKey: journeyStep2WhyText
+  sections:
+    - titleKey: journeyStep2Section1Title
+      activities:
+        - image: images/journey/step-2/step-2-lingo.jpg
+          altKey: journeyStep2LingoImageAlt
+          titleKey: journeyStep2LingoTitle
+          tagKey: journeyStep2LingoTag
+          tagClass: tag-free
+          textKey: journeyStep2LingoText
+          details:
+            - labelKey: journeyStep2WhenLabel
+              valueKey: journeyStep2LingoWhen
+            - labelKey: journeyStep2WhereLabel
+              valueKey: journeyStep2LingoWhere
+        - image: images/journey/step-2/step-2-library.jpg
+          altKey: journeyStep2LibraryImageAlt
+          titleKey: journeyStep2LibraryTitle
+          tagKey: journeyStep2LibraryTag
+          tagClass: tag-free
+          textKey: journeyStep2LibraryText
+          details:
+            - labelKey: journeyStep2WhenLabel
+              valueKey: journeyStep2LibraryWhen
+            - labelKey: journeyStep2WhereLabel
+              valueKey: journeyStep2LibraryAddress
+          mapImage: images/journey/step-2/step-2-map-library.jpg
+          mapAltKey: journeyStep2LibraryMapAlt
+          contact:
+            - labelKey: journeyStep2AddressLabel
+              valueKey: journeyStep2LibraryAddress
+            - labelKey: journeyStep2PhoneLabel
+              valueKey: journeyStep2LibraryPhone
+              href: tel:+61361655597
+            - labelKey: journeyStep2EmailLabel
+              valueKey: journeyStep2LibraryEmail
+              href: mailto:hobartlend.library@libraries.tas.gov.au
+            - labelKey: journeyStep2LinkLabel
+              valueKey: journeyStep2LibraryLink
+              href: https://libraries.tas.gov.au/locations/hobart-library/
+        - image: images/journey/step-2/step-2-mathers.jpg
+          altKey: journeyStep2MathersImageAlt
+          titleKey: journeyStep2MathersTitle
+          tagKey: journeyStep2MathersTag
+          tagClass: tag-normal
+          textKey: journeyStep2MathersText
+          details:
+            - labelKey: journeyStep2WhenLabel
+              valueKey: journeyStep2MathersWhen
+            - labelKey: journeyStep2WhereLabel
+              valueKey: journeyStep2MathersAddress
+          mapImage: images/journey/step-2/step-2-map-mathers.jpg
+          mapAltKey: journeyStep2MathersMapAlt
+          contact:
+            - labelKey: journeyStep2AddressLabel
+              valueKey: journeyStep2MathersAddress
+            - labelKey: journeyStep2PhoneLabel
+              valueKey: journeyStep2MathersPhone
+              href: tel:+61362341441
+            - labelKey: journeyStep2EmailLabel
+              valueKey: journeyStep2MathersEmail
+              href: mailto:mathersplace@hobartcity.com.au
+            - labelKey: journeyStep2LinkLabel
+              valueKey: journeyStep2MathersLink
+              href: https://www.hobartcity.com.au/Things-To-Do/Mathers-House
+    - titleKey: journeyStep2Section2Title
+      activities:
+        - image: images/journey/step-2/step-2-redcross.jpg
+          altKey: journeyStep2RedCrossImageAlt
+          titleKey: journeyStep2RedCrossTitle
+          tagKey: journeyStep2RedCrossTag
+          tagClass: tag-type
+          textKey: journeyStep2RedCrossText
+          details:
+            - labelKey: journeyStep2WhenLabel
+              valueKey: journeyStep2RedCrossWhen
+            - labelKey: journeyStep2WhereLabel
+              valueKey: journeyStep2RedCrossAddress
+          mapImage: images/journey/step-2/step-2-map-redcross.jpg
+          mapAltKey: journeyStep2RedCrossMapAlt
+          contact:
+            - labelKey: journeyStep2AddressLabel
+              valueKey: journeyStep2RedCrossAddress
+            - labelKey: journeyStep2PhoneLabel
+              valueKey: journeyStep2RedCrossPhone
+              href: tel:1300559992
+            - labelKey: journeyStep2EmailLabel
+              valueKey: journeyStep2RedCrossEmail
+              href: mailto:agedcarevolunteers@redcross.org.au
+            - labelKey: journeyStep2LinkLabel
+              valueKey: journeyStep2RedCrossLink
+              href: https://www.redcross.org.au/agedcarevolunteer
+  people:
+    - image: images/journey/step-2/step-2-people-tusa.jpg
+      altKey: journeyStep2PeopleTusaImageAlt
+      titleKey: journeyStep2PeopleTusaTitle
+      itemKeys:
+        - journeyStep2PeopleTusa1
+        - journeyStep2PeopleTusa2
+        - journeyStep2PeopleTusa3
+    - image: images/journey/step-2/step-2-people-mrc.jpg
+      altKey: journeyStep2PeopleMrcImageAlt
+      titleKey: journeyStep2PeopleMrcTitle
+      itemKeys:
+        - journeyStep2PeopleMrc1
+        - journeyStep2PeopleMrc2
+        - journeyStep2PeopleMrc3
+    - image: images/journey/step-2/step-2-people-libraries.jpg
+      altKey: journeyStep2PeopleLibrariesImageAlt
+      titleKey: journeyStep2PeopleLibrariesTitle
+      itemKeys:
+        - journeyStep2PeopleLibraries1
+        - journeyStep2PeopleLibraries2
+        - journeyStep2PeopleLibraries3
+  tips:
+    - titleKey: journeyStep2Tip1Title
+      textKey: journeyStep2Tip1Text
+    - titleKey: journeyStep2Tip2Title
+      textKey: journeyStep2Tip2Text
+    - titleKey: journeyStep2Tip3Title
+      textKey: journeyStep2Tip3Text
+    - titleKey: journeyStep2Tip4Title
+      textKey: journeyStep2Tip4Text
+  next:
+    titleKey: journeyStep2NextTitle
+    textKey: journeyStep2NextText
+    ctaKey: journeyStep2NextCta

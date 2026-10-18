@@ -6,7 +6,7 @@ steps:
   - id: 2
     image: images/home/step-2-language.jpg
     anchor: step-2
-    ctaPath: journey/
+    ctaPath: journey/step-2/
   - id: 3
     image: images/home/step-3-community.jpg
     anchor: step-3
