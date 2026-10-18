@@ -212,7 +212,7 @@ homeHeroSubtitle: "Learn, grow and connect in Tasmania. A step-by-step journey f
 homeHeroNote: "Built by and for international ICT students in Tasmania."
 homeHeroCtaStart: "Start Step 1"
 homeHeroCtaJourney: "See full journey"
-homeHeroImageAlt: "Hobart waterfront and Mount Wellington"
+homeHeroImageAlt: "UTAS students, staff and industry partners with their awards at the 2026 TasICT Awards"
 
 # Homepage — trust strip
 homeTrustStrip: "<strong>Finding a professional job needs Experience + References.</strong> Start building both from your first semester, not after graduation."
@@ -224,37 +224,37 @@ homeJourneyLead: "Seven practical stages from arrival to your first ICT role in 
 homeStep1Title: "Start your life here"
 homeStep1Text: "Find accommodation (share house, homestay, or UTAS housing), set up your phone and bank account, learn Hobart transport, and stock groceries. <strong>Check your visa conditions</strong> (work hours, course attendance, OSHC) on VEVO and keep enrolment documents handy. Feeling overwhelmed is normal — settle in first, then build momentum."
 homeStep1Cta: "Arrival checklist"
-homeStep1ImageAlt: "Student arriving and settling into accommodation in Hobart"
+homeStep1ImageAlt: "Students walking among tree ferns inside The Forest building at UTAS"
 
 homeStep2Title: "Build your voice"
 homeStep2Text: "If you still need to pass your English test, make this your main focus. Join fixed local volunteering near UTAS to practise English in a safe, structured setting."
 homeStep2Cta: "Language centre + volunteering"
-homeStep2ImageAlt: "Students in a language class"
+homeStep2ImageAlt: "Students watching the sunrise from the kunanyi / Mount Wellington lookout"
 
 homeStep3Title: "Join community"
 homeStep3Text: "Missed Open Day? Discover UTAS clubs, library services, and real student projects. Check your UTAS email and MyLO — important events and deadlines are posted there."
 homeStep3Cta: "Explore clubs & library"
-homeStep3ImageAlt: "Students collaborating on a campus project"
+homeStep3ImageAlt: "Students at an outdoor campus festival with club stalls"
 
 homeStep4Title: "Attend ICT events"
 homeStep4Text: "See what happened before and what is coming next — GDG Hobart, TasICT Festival, industry visits, CyberSecurity Melbourne, and more."
 homeStep4Cta: "ICT events list"
-homeStep4ImageAlt: "ICT conference and networking event"
+homeStep4ImageAlt: "Busy UTAS campus plaza with student club tents"
 
 homeStep5Title: "Open doors"
 homeStep5Text: "Open your first door into the industry you want to work in. Connect with tutors, alumni, event speakers, and local ICT people on LinkedIn."
 homeStep5Cta: "LinkedIn starter guide"
-homeStep5ImageAlt: "Professional networking and LinkedIn"
+homeStep5ImageAlt: "LinkedIn profile of the Head of the UTAS School of ICT"
 
 homeStep6Title: "Build trust"
 homeStep6Text: "In Australia, references are often required before you can get a job. Build experience through UTAS Motorsport, Food Hub, Source Garden, Red Cross, and similar roles."
 homeStep6Cta: "Experience & references guide"
-homeStep6ImageAlt: "Volunteers working together in the community"
+homeStep6ImageAlt: "Student volunteers in high-visibility vests after a volunteering shift"
 
 homeStep7Title: "Grow into your future"
 homeStep7Text: "Apply, interview, and start your career in Tasmania. Then share your story so the next student believes it is possible."
 homeStep7Cta: "Job ready + Stories"
-homeStep7ImageAlt: "Graduate celebrating a job offer"
+homeStep7ImageAlt: "UTAS \"Good news\" graphic"
 
 # Homepage — habits
 homeHabitsTitle: "Build good habits, early"
@@ -277,3 +277,20 @@ homeStory2Quote: "\"Placeholder — we are collecting more graduate voices from 
 homeStory3Name: "Story coming soon"
 homeStory3Role: "ICT Graduate · Tasmania"
 homeStory3Quote: "\"Placeholder — share your journey to inspire the next cohort.\""
+
+# Homepage — sources & acknowledgements
+homeSourcesTitle: "Sources & Acknowledgements"
+homeSourcesIntro: "Information and event details are referenced from official UTAS publications and student LinkedIn posts."
+homeSourcesIctLead: "For more information about UTAS ICT, visit:"
+homeSourcesPhotosTitle: "Referenced photos"
+homeSourcesLinkText: "Source"
+homeSourceHero: "TasICT Awards 2026 (homepage hero)"
+homeSourceStep1: "Study at UTAS — The Forest building (Step 1)"
+homeSourceStep2: "Direct Entry Program — kunanyi / Mount Wellington (Step 2)"
+homeSourceCampus: "Campus life in Hobart (Steps 3 & 4)"
+homeSourceClubs: "Clubs & societies (Steps 3 & 4)"
+homeSourceLinkedin: "Student and staff LinkedIn posts (Steps 5 & 6)"
+homeSourceGoodNews: "UTAS News & Stories (Step 7)"
+homeSourceStoryLuoyan: "Luoyan's path to a master's degree (Graduate stories)"
+homeSourceStoryBronson: "Scenic route leads Bronson to the right destination (Graduate stories)"
+homeSourceStoryZoe: "Zoe's journey from curiosity to opportunity (Graduate stories)"

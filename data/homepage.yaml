@@ -1,22 +1,22 @@
 steps:
   - id: 1
-    image: images/home/step-1-arrival.jpg
+    image: images/home/step-1-forest-building.jpg
     anchor: step-1
     ctaPath: journey/step-1/
   - id: 2
-    image: images/home/step-2-language.jpg
+    image: images/home/step-2-kunanyi-lookout.jpg
     anchor: step-2
     ctaPath: journey/step-2/
   - id: 3
-    image: images/home/step-3-community.jpg
+    image: images/home/step-3-campus-fair.jpg
     anchor: step-3
     ctaPath: journey/
   - id: 4
-    image: images/home/step-4-events.jpg
+    image: images/home/step-4-campus-plaza.jpg
     anchor: step-4
     ctaPath: events/
   - id: 5
-    image: images/home/step-5-linkedin.jpg
+    image: images/home/step-5-linkedin-post.jpg
     anchor: step-5
     ctaPath: journey/
   - id: 6
@@ -24,27 +24,60 @@ steps:
     anchor: step-6
     ctaPath: volunteering/
   - id: 7
-    image: images/home/step-7-career.jpg
+    image: images/home/step-7-good-news.jpg
     anchor: step-7
     ctaPath: stories/
     final: true
 
 stories:
-  - image: images/home/story-luoyan.jpg
+  - image: images/home/story-luoyan-graduation.jpg
     year: "2026"
     nameKey: homeStory1Name
     roleKey: homeStory1Role
     quoteKey: homeStory1Quote
     placeholder: false
-  - image: images/home/story-placeholder-1.jpg
+  - image: images/home/story-bronson.jpg
     year: "2025"
     nameKey: homeStory2Name
     roleKey: homeStory2Role
     quoteKey: homeStory2Quote
     placeholder: true
-  - image: images/home/story-placeholder-2.jpg
+  - image: images/home/story-zoe.jpg
     year: "2024"
     nameKey: homeStory3Name
     roleKey: homeStory3Role
     quoteKey: homeStory3Quote
     placeholder: true
+
+# Photo credits shown in the "Sources & Acknowledgements" block (issue #20).
+# url is optional; items without a url render as plain text.
+sources:
+  - labelKey: homeSourceHero
+    publisher: UTAS
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2026/rising-star-win-caps-standout-night-at-tasict-awards
+  - labelKey: homeSourceStep1
+    publisher: UTAS
+    url: https://www.utas.edu.au/study
+  - labelKey: homeSourceStep2
+    publisher: UTAS
+    url: https://www.utas.edu.au/study/pathways-to-university/english-language-courses/direct-entry-program
+  - labelKey: homeSourceCampus
+    publisher: UTAS
+    url: https://www.utas.edu.au/about/campuses/hobart
+  - labelKey: homeSourceClubs
+    publisher: TUSA
+    url: https://tusa.org.au/find-a-club-society/
+  - labelKey: homeSourceLinkedin
+    publisher: LinkedIn
+  - labelKey: homeSourceGoodNews
+    publisher: UTAS
+    url: https://www.utas.edu.au/about/news-and-stories
+  - labelKey: homeSourceStoryLuoyan
+    publisher: UTAS
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2026/luoyans-path-to-a-masters-degree-started-with-a-fitness-competition-and-a-desire-to-learn-english
+  - labelKey: homeSourceStoryBronson
+    publisher: UTAS
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2026/scenic-route-leads-bronson-to-the-right-destination
+  - labelKey: homeSourceStoryZoe
+    publisher: UTAS
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2025/zoes-journey-from-curiosity-to-opportunity-through-studying-ict
