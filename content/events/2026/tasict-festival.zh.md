@@ -1,7 +1,7 @@
 ---
 title: "塔斯马尼亚科技节2026"
 date: 2026-03-18
-weight: 9
+weight: 10
 year: 2026
 event_type: "科技节"
 tags: ["社交", "TasICT"]

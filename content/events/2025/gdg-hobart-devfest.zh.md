@@ -18,10 +18,17 @@ about:
 linkedin_posts:
   - name: "GDG Hobart"
     role: "Google Developer Group, Hobart"
-    title: "2025年霍巴特DevFest圆满结束"
-    quote: "看到霍巴特的科技社区聚在一起度过学习、启发和交流的夜晚,令人鼓舞。"
-    likes: "26"
-    comments: "1"
+    avatar: "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-avatar.jpg"
+    images:
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-1.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-2.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-3.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-4.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-5.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-6.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-7.jpg"
+    content: "看到霍巴特的科技社区聚在一起度过学习、启发和交流的夜晚,令人鼓舞。"
+    summary: "GDG Hobart对DevFest Hobart 2025的回顾:超过25位开发者、学生和技术爱好者来到UTAS参加活动。帖子感谢了专程从悉尼赶来的Google讲者Oscar Wahltinez,他分享了AI的实际应用并带来互动AI游戏,也感谢了本地讲者Amber Nguyen(Hydro Tasmania)和Pul Khut(警察、消防与应急管理部)。"
     url: "https://www.linkedin.com/posts/gdghobart-devfest2025-ai-ugcPost-7394310281155301377-if20/"
 gallery:
   - "/images/events/2025/gdg-hobart-devfest/gdg-hobart-devfest-2025-2.jpg"

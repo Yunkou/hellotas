@@ -1,0 +1,43 @@
+{{- /*
+  One LinkedIn post, shown wide: photos on one side, the full post text on the other.
+  Call with a dict:
+    post   one entry of the event's linkedin_posts
+    page   the event page (for alt text)
+    flip   true to put the photos on the right
+*/ -}}
+{{- $post := .post -}}
+<article class="lp{{ if .flip }} lp--flip{{ end }}{{ if not $post.images }} lp--text-only{{ end }}">
+  {{- with $post.images }}
+  <div class="lp-media">
+    {{ partial "carousel.html" (dict "images" . "alt" (printf "%s · %s · LinkedIn" $post.name $.page.Title) "class" "lp-carousel" "lazy" true "backdrop" true "lightbox" true) }}
+  </div>
+  {{- end }}
+  <div class="lp-body">
+    <div class="lp-author">
+      {{- with $post.avatar }}
+      <img class="author-avatar" src="{{ strings.TrimPrefix "/" . | relURL }}" alt="" loading="lazy" width="44" height="44">
+      {{- else }}
+      <span class="author-avatar author-initials" aria-hidden="true">{{ partial "initials.html" $post.name }}</span>
+      {{- end }}
+      <div>
+        <div class="author-name">{{ $post.name }}</div>
+        {{ with $post.role }}<div class="author-role">{{ . }}</div>{{ end }}
+      </div>
+    </div>
+    {{- with $post.content }}
+    <div class="lp-text">{{ . | htmlEscape | replaceRE `(^|\s)(#[\p{L}\p{N}_]+)` `$1<span class="lp-tag">$2</span>` | safeHTML }}</div>
+    {{- end }}
+    {{- with $post.summary }}
+    <div class="lp-summary">
+      <span class="lp-summary-label">{{ i18n "postSummaryLabel" }}</span>
+      <p>{{ . }}</p>
+    </div>
+    {{- end }}
+    {{- with $post.url }}
+    <a href="{{ . }}" class="linkedin-footer" target="_blank" rel="noopener">
+      <span class="linkedin-icon" aria-hidden="true">in</span>
+      <span class="linkedin-label">{{ i18n "visitOriginalPost" }}</span>
+    </a>
+    {{- end }}
+  </div>
+</article>

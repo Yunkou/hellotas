@@ -1,6 +1,6 @@
 ---
 title: "Industry Visit 2026"
-weight: 11
+weight: 12
 year: 2026
 event_type: "Industry Visit"
 tags: ["Networking", "Industry"]

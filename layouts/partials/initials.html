@@ -1,0 +1,6 @@
+{{- /* Returns up to two capital initials for a name, e.g. "Lindsay Wells" → "LW". Used where a photo is missing. */ -}}
+{{- $out := "" -}}
+{{- range first 2 (split (trim . " ") " ") -}}
+  {{- with . }}{{ $out = printf "%s%s" $out (substr . 0 1 | upper) }}{{ end -}}
+{{- end -}}
+{{- return $out -}}

@@ -10,6 +10,7 @@ forStaff: "कर्मचारीहरूका लागि"
 # Header
 siteName: "तस्मानियामा स्वागत"
 shareYourStory: "आफ्नो कथा साझा गर्नुहोस्"
+shareShort: "साझा"
 
 # Footer
 footerTagline: "तस्मानियाका अन्तर्राष्ट्रिय ICT विद्यार्थीहरूद्वारा निर्मित, तिनैका लागि समर्पित।"
@@ -34,14 +35,31 @@ studentFeedbackTBA: "विद्यार्थीहरूको प्रत�
 
 # Event details
 backToEvents: "← सबै कार्यक्रमहरूमा फर्किनुहोस्"
+backToTop: "माथि फर्कनुहोस्"
 eventDetailsTBC: "कार्यक्रमको विवरण निश्चित हुन बाँकी"
 outcomeLabel: "नतिजा:"
+sourceLabel: "स्रोत:"
 aboutThisEvent: "यो कार्यक्रमको बारेमा"
 whatStudentsBuilt: "विद्यार्थीहरूले बनाएका कुराहरू"
 whatStudentsSaid: "विद्यार्थीहरूले LinkedIn मा लेखेका कुराहरू"
 whatStudentsSaidSubtitle: "कार्यक्रमबाट विद्यार्थीहरूका प्रतिबिम्ब र पोस्टहरू।"
 linkedInPost: "LinkedIn पोस्ट"
 readFullPost: "पूरा पोस्ट पढ्नुहोस्"
+visitOriginalPost: "मूल पोस्ट हेर्नुहोस्"
+postPrev: "अघिल्लो पोस्ट"
+postNext: "अर्को पोस्ट"
+postSummaryLabel: "यो पोस्टबारे"
+linkedInPostsCount:
+  one: "कार्यक्रमको 1 LinkedIn पोस्ट"
+  other: "कार्यक्रमका {{ .Count }} LinkedIn पोस्टहरू"
+noPostsTitle: "यो कार्यक्रमबारे अहिलेसम्म LinkedIn पोस्ट छैन"
+noPostsText: "तपाईं त्यहाँ हुनुहुन्थ्यो? LinkedIn मा आफूले सिकेको कुरा साझा गर्नुहोस्, अनि हामीलाई जानकारी दिनुहोस्, हामी यहाँ राख्नेछौँ।"
+photoBooth: "फोटो बुथ"
+carouselPrev: "अघिल्लो फोटो"
+carouselNext: "अर्को फोटो"
+carouselPause: "स्लाइडशो रोक्नुहोस्"
+carouselPlay: "स्लाइडशो चलाउनुहोस्"
+lightboxClose: "फोटो बन्द गर्नुहोस्"
 studentReflectionsTBA: "कार्यक्रमपछि विद्यार्थीहरूका प्रतिबिम्ब थपिनेछन्।"
 photosFromTheDay: "त्यस दिनका तस्बिरहरू"
 

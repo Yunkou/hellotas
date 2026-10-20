@@ -39,8 +39,11 @@
     {{ $event := . }}
     <article class="event-card">
 <div class="event-thumb">
-  {{ if .Params.image }}
-  <img src="{{ strings.TrimPrefix "/" .Params.image | relURL }}" alt="{{ .Title }}">
+  {{ $photos := slice }}
+  {{ with .Params.image }}{{ $photos = $photos | append . }}{{ end }}
+  {{ with .Params.gallery }}{{ $photos = $photos | append . }}{{ end }}
+  {{ if $photos }}
+  {{ partial "carousel.html" (dict "images" $photos "alt" .Title "lazy" true) }}
   {{ else }}
     <div class="thumb-placeholder">{{ i18n "eventPhoto" }}<br><span class="thumb-sub">{{ .Title }}</span></div>
   {{ end }}
@@ -73,14 +76,18 @@
           <p class="voice-role">— {{ $event.Params.student_role }}</p>
         </div>
         {{ else }}
-        {{ if eq $event.Params.year 2026 }}
-        <div class="student-voice">
-          <div class="voice-head">
-            <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
-          </div>
-          <p class="voice-quote">{{ i18n "studentFeedbackTBA" }}</p>
-        </div>
+        {{/* No quote: point to the LinkedIn posts instead, or show nothing rather than an empty box */}}
+        {{ with $event.Params.linkedin_posts }}
+        <a class="voice-peek" href="{{ $event.RelPermalink }}#linkedin">
+          <span class="voice-peek-faces" aria-hidden="true">
+            {{ range first 4 . }}
+            {{ $post := . }}
+            {{ with .avatar }}<img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="" loading="lazy" width="32" height="32">{{ else }}<span class="author-initials">{{ partial "initials.html" $post.name }}</span>{{ end }}
+            {{ end }}
+          </span>
+          <span class="voice-peek-text">{{ i18n "linkedInPostsCount" (len .) }}</span>
+          <span class="voice-peek-arrow" aria-hidden="true">→</span>
+        </a>
         {{ end }}
         {{ end }}
       </div>
