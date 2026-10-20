@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="home-hero-media">
-        <img src="{{ "images/home/hero.jpg" | relURL }}" alt="{{ i18n "homeHeroImageAlt" }}" width="640" height="480">
+        <img src="{{ "images/home/hero-tasict-awards-2026.jpg" | relURL }}" alt="{{ i18n "homeHeroImageAlt" }}" width="640" height="480">
       </div>
     </div>
   </section>
@@ -95,6 +95,24 @@
         </article>
         {{ end }}
       </div>
+    </div>
+  </section>
+
+  <section class="home-sources" aria-labelledby="home-sources-title">
+    <div class="container">
+      <h2 class="home-sources-title" id="home-sources-title">{{ i18n "homeSourcesTitle" }}</h2>
+      <p class="home-sources-text">{{ i18n "homeSourcesIntro" }}</p>
+      <p class="home-sources-text">{{ i18n "homeSourcesIctLead" }} <a href="https://www.utas.edu.au/ict" target="_blank" rel="noopener">https://www.utas.edu.au/ict</a></p>
+      <h3 class="home-sources-subtitle">{{ i18n "homeSourcesPhotosTitle" }}</h3>
+      <ul class="home-sources-list">
+        {{ range site.Data.homepage.sources }}
+        <li>
+          <span class="home-sources-label">{{ i18n .labelKey }}</span>
+          <span class="home-sources-publisher">{{ .publisher }}</span>
+          {{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "homeSourcesLinkText" }}</a>{{ end }}
+        </li>
+        {{ end }}
+      </ul>
     </div>
   </section>
 </div>

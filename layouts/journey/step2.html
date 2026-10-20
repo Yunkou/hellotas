@@ -1,0 +1,118 @@
+{{ define "main" }}
+<div class="page-journey-step" id="step-2">
+  <section class="journey-hero">
+    <div class="container">
+      <a class="journey-crumb" href="{{ "journey/" | relLangURL }}">{{ i18n "journeyBackToJourney" }}</a>
+      <p class="journey-eyebrow">{{ i18n "journeyStep2Eyebrow" }}</p>
+      <h1>{{ i18n "journeyStep2Title" }}</h1>
+      <p class="journey-hero-sub">{{ i18n "journeyStep2Lead" }}</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="journey-main">
+      <aside class="journey-why">
+        <h2>{{ i18n site.Data.journey.step2.why.titleKey }}</h2>
+        <p>{{ i18n site.Data.journey.step2.why.textKey }}</p>
+      </aside>
+
+      {{ range site.Data.journey.step2.sections }}
+      <section class="journey-voice-section">
+        <h2 class="journey-basics-title">{{ i18n .titleKey }}</h2>
+        <div class="section-divider"></div>
+        <div class="journey-activities">
+          {{ range .activities }}
+          <article class="journey-activity">
+            <div class="journey-activity-top">
+              <div class="journey-activity-media">
+                <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" loading="lazy" width="480" height="360">
+              </div>
+              <div class="journey-activity-body">
+                <div class="journey-activity-head">
+                  <h3>{{ i18n .titleKey }}</h3>
+                  <span class="tag {{ .tagClass }}">{{ i18n .tagKey }}</span>
+                </div>
+                <p class="journey-activity-text">{{ i18n .textKey }}</p>
+                <ul class="journey-activity-details">
+                  {{ range .details }}
+                  <li><span class="journey-activity-label">{{ i18n .labelKey }}</span>{{ i18n .valueKey }}</li>
+                  {{ end }}
+                </ul>
+              </div>
+            </div>
+            {{ if or .mapImage .contact }}
+            {{ $act := . }}
+            <div class="journey-activity-meta">
+              {{ with .mapImage }}
+              <div class="journey-activity-map">
+                <img src="{{ . | relURL }}" alt="{{ i18n $act.mapAltKey }}" loading="lazy" width="640" height="360">
+              </div>
+              {{ end }}
+              {{ with .contact }}
+              <ul class="journey-activity-contact">
+                {{ range . }}
+                <li>
+                  <span class="journey-contact-label">{{ i18n .labelKey }}</span>
+                  {{ if .href }}
+                  <a href="{{ .href | safeURL }}" {{ if strings.HasPrefix .href "http" }}target="_blank" rel="noopener"{{ end }}>{{ i18n .valueKey }}</a>
+                  {{ else }}
+                  <span>{{ i18n .valueKey }}</span>
+                  {{ end }}
+                </li>
+                {{ end }}
+              </ul>
+              {{ end }}
+            </div>
+            {{ end }}
+          </article>
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+
+      <section class="journey-basics-section">
+        <h2 class="journey-basics-title">{{ i18n "journeyStep2Section3Title" }}</h2>
+        <div class="section-divider"></div>
+        <div class="journey-basics-grid">
+          {{ range site.Data.journey.step2.people }}
+          <article class="journey-basic-card">
+            <div class="journey-basic-head">
+              <div class="journey-basic-icon">
+                <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" loading="lazy" width="60" height="60">
+              </div>
+              <h3>{{ i18n .titleKey }}</h3>
+            </div>
+            <ul class="journey-basic-list">
+              {{ range .itemKeys }}
+              <li>{{ i18n . | safeHTML }}</li>
+              {{ end }}
+            </ul>
+          </article>
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="journey-tips">
+        <h2 class="journey-basics-title">{{ i18n "journeyStep2TipsTitle" }}</h2>
+        <p class="journey-checklist-lead">{{ i18n "journeyStep2TipsLead" }}</p>
+        <div class="journey-tips-grid">
+          {{ range site.Data.journey.step2.tips }}
+          <article class="journey-tip-card">
+            <h3>{{ i18n .titleKey }}</h3>
+            <p>{{ i18n .textKey }}</p>
+          </article>
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="journey-next">
+        <div class="journey-next-copy">
+          <h3>{{ i18n site.Data.journey.step2.next.titleKey }}</h3>
+          <p>{{ i18n site.Data.journey.step2.next.textKey }}</p>
+        </div>
+        <a href="{{ "journey/" | relLangURL }}#step-3" class="btn-primary journey-next-btn">{{ i18n site.Data.journey.step2.next.ctaKey }}</a>
+      </section>
+    </div>
+  </div>
+</div>
+{{ end }}
