@@ -43,7 +43,7 @@ stories:
     quoteKey: homeStory2Quote
     placeholder: true
   - image: images/home/story-zoe.jpg
-    year: "2024"
+    year: "2025"
     nameKey: homeStory3Name
     roleKey: homeStory3Role
     quoteKey: homeStory3Quote
