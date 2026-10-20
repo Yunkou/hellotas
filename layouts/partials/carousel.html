@@ -1,0 +1,40 @@
+{{- /*
+  Image carousel. Call with a dict:
+    images   slice of image paths (required)
+    alt      alt text for every slide
+    label    accessible name for the carousel
+    class    extra class on the wrapper (sets the size)
+    autoplay true to advance on its own (detail page hero only)
+    lazy     true to lazy-load the first slide too
+    backdrop true to fill letterbox space with a blurred copy of each photo
+    lightbox true to open photos in the photo viewer when clicked
+  With one image it renders a plain image, no controls.
+*/ -}}
+{{- $images := .images -}}
+{{- $n := len $images -}}
+{{- $multi := gt $n 1 -}}
+<div class="carousel{{ with .class }} {{ . }}{{ end }}"{{ if .lightbox }} data-lightbox{{ end }}{{ if $multi }} data-carousel{{ if .autoplay }} data-autoplay="5000"{{ end }} role="region" aria-roledescription="carousel" aria-label="{{ .label | default .alt }}"{{ end }}>
+  <div class="carousel-track">
+    {{- range $i, $src := $images }}
+    <div class="carousel-slide"{{ if $multi }} role="group" aria-roledescription="slide" aria-label="{{ add $i 1 }} / {{ $n }}"{{ end }}>
+      {{- if $.backdrop }}
+      <img class="carousel-backdrop" src="{{ strings.TrimPrefix "/" $src | relURL }}" alt="" aria-hidden="true" loading="lazy">
+      {{- end }}
+      <img src="{{ strings.TrimPrefix "/" $src | relURL }}" alt="{{ $.alt }}"{{ if or $.lazy (gt $i 0) }} loading="lazy"{{ end }}>
+    </div>
+    {{- end }}
+  </div>
+  {{- if $multi }}
+  <button type="button" class="carousel-btn carousel-prev" aria-label="{{ i18n "carouselPrev" }}">‹</button>
+  <button type="button" class="carousel-btn carousel-next" aria-label="{{ i18n "carouselNext" }}">›</button>
+  <span class="carousel-count" aria-hidden="true"><span class="carousel-current">1</span> / {{ $n }}</span>
+  <div class="carousel-dots">
+    {{- range $i, $_ := $images }}
+    <button type="button" class="carousel-dot" aria-label="{{ add $i 1 }} / {{ $n }}"{{ if eq $i 0 }} aria-current="true"{{ end }}></button>
+    {{- end }}
+  </div>
+  {{- if .autoplay }}
+  <button type="button" class="carousel-pause" aria-label="{{ i18n "carouselPause" }}" data-label-pause="{{ i18n "carouselPause" }}" data-label-play="{{ i18n "carouselPlay" }}"></button>
+  {{- end }}
+  {{- end }}
+</div>

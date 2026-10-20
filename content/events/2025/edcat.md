@@ -18,10 +18,14 @@ about:
 linkedin_posts:
   - name: "Yu Wang"
     role: "Master of IT and Systems student at UTAS (now ICT Graduate at TasWater)"
-    title: "EdCAT 2025 reflections"
-    quote: "It was a great experience meeting industry professionals and fellow students. The talks were very insightful, covering topics from AI development to job hunting strategies."
-    likes: "23"
-    comments: "2"
+    avatar: "/images/events/2025/edcat/linkedin-yu-wang-avatar.jpg"
+    images:
+      - "/images/events/2025/edcat/linkedin-yu-wang-1.jpg"
+      - "/images/events/2025/edcat/linkedin-yu-wang-2.jpg"
+      - "/images/events/2025/edcat/linkedin-yu-wang-3.jpg"
+      - "/images/events/2025/edcat/linkedin-yu-wang-4.jpg"
+    content: "It was a great experience meeting industry professionals and fellow students. The talks were very insightful, covering topics from AI development to job hunting strategies."
+    summary: "Yu Wang's reflection on EdCAT, where industry professionals and students met for talks ranging from AI development to job-hunting strategy. The career stream stood out most, with practical advice and personal stories that helped students prepare for the workforce."
     url: "https://www.linkedin.com/posts/yu-wang-solana_edcat-ugcPost-7316077249206620161-KQXC/"
 gallery:
   - "/images/events/2025/edcat/edcat-2025-2.jpg"

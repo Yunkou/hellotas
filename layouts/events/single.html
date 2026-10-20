@@ -9,8 +9,16 @@
     <a href="{{ relURL $eventsPath }}" class="back-link">{{ i18n "backToEvents" }}</a>
   </div>
 
+  {{/* Slides in under the header once the title has scrolled away (assets/js/carousel.js) */}}
+  <div class="event-subbar" data-subbar aria-hidden="true">
+    <div class="container event-subbar-inner">
+      <a href="{{ relURL $eventsPath }}" class="event-subbar-back" tabindex="-1">{{ i18n "backToEvents" }}</a>
+      <button type="button" class="event-subbar-title" tabindex="-1" title="{{ i18n "backToTop" }}">{{ .Title }}</button>
+    </div>
+  </div>
+
   <div class="container event-hero">
-    <h1>{{ .Title }}</h1>
+    <h1 data-subbar-anchor>{{ .Title }}</h1>
     {{ with .Params.summary }}<p class="event-summary">{{ . }}</p>{{ end }}
     {{ if and (eq .Params.location "To be confirmed") (eq .Params.event_time "To be confirmed") }}
     <p class="event-detail-meta">{{ i18n "eventDetailsTBC" }}</p>
@@ -28,10 +36,11 @@
       {{ with .Params.eligibility }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
     </div>
 
-    {{ if .Params.image }}
-    <div class="event-hero-image">
-      <img src="{{ strings.TrimPrefix "/" .Params.image | relURL }}" alt="{{ .Title }}">
-    </div>
+    {{ $photos := slice }}
+    {{ with .Params.image }}{{ $photos = $photos | append . }}{{ end }}
+    {{ with .Params.gallery }}{{ $photos = $photos | append . }}{{ end }}
+    {{ if $photos }}
+    {{ partial "carousel.html" (dict "images" $photos "alt" .Title "class" "event-hero-image" "autoplay" true "lightbox" true) }}
     {{ else }}
     <div class="event-hero-image placeholder">{{ i18n "heroImage" }}</div>
     {{ end }}
@@ -63,6 +72,12 @@
   </div>
   {{ end }}
 
+  {{ with .Params.source }}
+  <div class="container">
+    <p class="event-source">{{ i18n "sourceLabel" }} <a href="{{ . }}" target="_blank" rel="noopener">{{ (urls.Parse .).Host }}</a></p>
+  </div>
+  {{ end }}
+
   {{ if .Params.stats }}
   <div class="container event-section">
     <div class="stats-grid">
@@ -80,13 +95,15 @@
   <div class="container event-section">
     <h2 class="section-heading">{{ i18n "whatStudentsBuilt" }}</h2>
     <div class="section-divider"></div>
-    <div class="projects-grid">
+    <div class="projects-grid" data-lightbox>
       {{ range .Params.projects }}
       <article class="project-card">
         {{ if .image }}
         <div class="project-image"><img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .name }}"></div>
         {{ else }}
-        <div class="project-image placeholder">{{ i18n "projectPhoto" }}</div>
+        <div class="project-image project-cover project-cover--{{ mod (len .name) 4 }}" aria-hidden="true">
+          <span class="project-monogram">{{ partial "initials.html" .name }}</span>
+        </div>
         {{ end }}
         <h3>{{ .name }}</h3>
         {{ with .award }}<p class="project-award">{{ . }}</p>{{ end }}
@@ -98,67 +115,82 @@
   </div>
   {{ end }}
 
-  <section class="linkedin-section">
+  <section class="linkedin-section" id="linkedin">
     <div class="container">
       <h2 class="section-heading red">{{ i18n "whatStudentsSaid" }}</h2>
       <p class="section-sub">{{ i18n "whatStudentsSaidSubtitle" }}</p>
 
-      <div class="linkedin-grid">
-        {{ if .Params.linkedin_posts }}
-        {{ range .Params.linkedin_posts }}
-        <article class="linkedin-card">
-          <div class="linkedin-header">
-            <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">{{ i18n "linkedInPost" }}</span>
-          </div>
-          <div class="linkedin-author">
-            <div class="author-avatar">👤</div>
-            <div>
-              <div class="author-name">{{ .name }}</div>
-              <div class="author-role">{{ .role }}</div>
-            </div>
-          </div>
-          <div class="linkedin-image placeholder">{{ i18n "linkedInScreenshot" }}</div>
-          <div class="linkedin-title">{{ .title }}</div>
-          <p class="linkedin-quote">"{{ .quote }}"</p>
-          <div class="linkedin-stats">👍 {{ .likes }}   💬 {{ .comments }}</div>
-          <a href="{{ .url }}" class="linkedin-link">{{ i18n "readFullPost" }}</a>
-        </article>
-        {{ end }}
-        {{ else if .Params.student_voice }}
-        <article class="linkedin-card">
-          <div class="linkedin-header">
-            <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
-          </div>
-          <p class="linkedin-quote">"{{ .Params.student_voice }}"</p>
-          {{ with .Params.student_role }}<p class="voice-role">— {{ . }}</p>{{ end }}
-        </article>
-        {{ else }}
-        <article class="linkedin-card">
-          <div class="linkedin-header">
-            <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
-          </div>
-          <p class="linkedin-quote">{{ i18n "studentReflectionsTBA" }}</p>
-        </article>
+      {{ with .Params.linkedin_posts }}
+      {{ $posts := . }}
+      {{ if le (len $posts) 3 }}
+      {{/* 1-3 posts: wide posts stacked, photos alternating sides */}}
+      <div class="lp-stack">
+        {{ range $i, $post := $posts }}
+        {{ partial "linkedin-post.html" (dict "post" $post "page" $ "flip" (ne (mod $i 2) 0)) }}
         {{ end }}
       </div>
+      {{ else }}
+      {{/* 4+ posts: reader view, one post at a time; without JS every post shows stacked */}}
+      <div class="lp-reader" data-reader>
+        <div class="lp-tabs">
+          <div class="lp-tablist" role="tablist" aria-label="{{ i18n "whatStudentsSaid" }}">
+            {{ range $i, $post := $posts }}
+            <button type="button" class="lp-tab" role="tab" id="lp-tab-{{ $i }}" aria-controls="lp-post-{{ $i }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }} title="{{ $post.name }}">
+              {{ with $post.avatar }}<img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="" width="40" height="40">{{ else }}<span class="author-initials" aria-hidden="true">{{ partial "initials.html" $post.name }}</span>{{ end }}
+              <span class="sr-only">{{ $post.name }}</span>
+            </button>
+            {{ end }}
+          </div>
+          <div class="lp-nav">
+            <button type="button" class="lp-prev" aria-label="{{ i18n "postPrev" }}">‹</button>
+            <span class="lp-count"><span class="lp-current">1</span> / {{ len $posts }}</span>
+            <button type="button" class="lp-next" aria-label="{{ i18n "postNext" }}">›</button>
+          </div>
+        </div>
+        {{ range $i, $post := $posts }}
+        <div class="lp-panel" role="tabpanel" id="lp-post-{{ $i }}" aria-labelledby="lp-tab-{{ $i }}">
+          {{ partial "linkedin-post.html" (dict "post" $post "page" $) }}
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+      {{ else }}
+      {{ with .Params.student_voice }}
+      <figure class="voice-feature">
+        <blockquote>{{ . }}</blockquote>
+        {{ with $.Params.student_role }}<figcaption>— {{ . }}</figcaption>{{ end }}
+      </figure>
+      {{ else }}
+      <div class="lp-empty">
+        <span class="lp-empty-icon" aria-hidden="true">in</span>
+        <h3>{{ i18n "noPostsTitle" }}</h3>
+        <p>{{ i18n "noPostsText" }}</p>
+      </div>
+      {{ end }}
+      {{ end }}
     </div>
   </section>
 
-  {{ if .Params.gallery }}
-  <div class="container event-section">
-    <h2 class="section-heading">{{ i18n "photosFromTheDay" }}</h2>
+  {{ $booth := slice }}
+  {{ with .Params.image }}{{ $booth = $booth | append . }}{{ end }}
+  {{ with .Params.gallery }}{{ $booth = $booth | append . }}{{ end }}
+  {{ range .Params.projects }}{{ with .image }}{{ $booth = $booth | append . }}{{ end }}{{ end }}
+  {{ range .Params.linkedin_posts }}{{ with .images }}{{ $booth = $booth | append . }}{{ end }}{{ end }}
+  {{ $hide := hugo.Data.photo_booth_hide | default slice }}
+  {{ $shown := slice }}
+  {{ range uniq $booth }}{{ if not (in $hide .) }}{{ $shown = $shown | append . }}{{ end }}{{ end }}
+  {{ with $shown }}
+  <section class="container event-section photo-booth" id="photo-booth">
+    <h2 class="section-heading">{{ i18n "photoBooth" }}</h2>
     <div class="section-divider"></div>
-    <div class="gallery-grid">
-      {{ range .Params.gallery }}
-      <div class="gallery-item">
-        <img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="Event photo">
-      </div>
+    <div data-lightbox class="booth-wall{{ if le (len .) 2 }} booth-wall--{{ len . }}{{ end }}">
+      {{ range . }}
+      <a class="booth-frame" href="{{ strings.TrimPrefix "/" . | relURL }}" target="_blank" rel="noopener">
+        <img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="{{ i18n "photoBooth" }} · {{ $.Title }}" loading="lazy">
+      </a>
       {{ end }}
     </div>
-  </div>
+  </section>
   {{ end }}
 
   {{ if and .Params.student_voice .Params.linkedin_posts }}

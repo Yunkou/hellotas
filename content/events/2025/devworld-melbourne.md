@@ -23,10 +23,15 @@ projects:
 linkedin_posts:
   - name: "Yu Wang"
     role: "Master of IT and Systems student at UTAS (now ICT Graduate at TasWater)"
-    title: "Representing UTAS at /dev/world 2025"
-    quote: "I had the opportunity to represent the University of Tasmania at /dev/world 2025 in Melbourne, where I shared my experience building an AFL app across three different platforms: Android, iOS, and Flutter."
-    likes: "54"
-    comments: "11"
+    avatar: "/images/events/2025/devworld-melbourne/linkedin-yu-wang-avatar.jpg"
+    images:
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-1.jpg"
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-2.jpg"
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-3.jpg"
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-4.jpg"
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-5.jpg"
+    content: "I had the opportunity to represent the University of Tasmania at /dev/world 2025 in Melbourne, where I shared my experience building an AFL app across three different platforms: Android, iOS, and Flutter."
+    summary: "Yu Wang represented UTAS at /dev/world 2025 in Melbourne, presenting an AFL app built three ways: Android, iOS and Flutter. It was Yu's first full talk in English to a room of experienced developers, and the post also mentions sessions on data models, cryptography and iOS Live Activities."
     url: "https://www.linkedin.com/posts/yu-wang-solana_devworld2005-devworld-ios-ugcPost-7370414703635857408-_t4g/"
 gallery:
   - "/images/events/2025/devworld-melbourne/devworld-2025-2.jpg"

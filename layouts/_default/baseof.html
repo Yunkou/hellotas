@@ -7,11 +7,13 @@
   <title>{{ if .Title }}{{ .Title }} · {{ end }}{{ .Site.Title }}</title>
   <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 </head>
-<body>
+<body data-lb-close="{{ i18n "lightboxClose" }}" data-lb-prev="{{ i18n "carouselPrev" }}" data-lb-next="{{ i18n "carouselNext" }}">
   {{ partial "header.html" . }}
   <main>
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+  {{ $carousel := resources.Get "js/carousel.js" | minify | fingerprint }}
+  <script src="{{ $carousel.RelPermalink }}" defer></script>
 </body>
 </html>

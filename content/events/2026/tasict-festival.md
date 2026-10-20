@@ -1,7 +1,7 @@
 ---
 title: "Tas Tech Fest 2026"
 date: 2026-03-18
-weight: 9
+weight: 10
 year: 2026
 event_type: "Festival"
 tags: ["Networking", "TasICT"]

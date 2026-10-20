@@ -1,6 +1,6 @@
 ---
 title: "Mayo讲座: IT工作2026"
-weight: 12
+weight: 13
 year: 2026
 event_type: "讲座"
 tags: ["职业", "IT工作"]

@@ -1,7 +1,7 @@
 ---
 title: "तस्मानिया टेक फेस्ट 2026"
 date: 2026-03-18
-weight: 9
+weight: 10
 year: 2026
 event_type: "महोत्सव"
 tags: ["नेटवर्किङ", "TasICT"]

@@ -1,6 +1,6 @@
 ---
 title: "Mayo वार्ता: IT कामहरू 2026"
-weight: 12
+weight: 13
 year: 2026
 event_type: "वार्ता"
 tags: ["करियर", "IT कामहरू"]

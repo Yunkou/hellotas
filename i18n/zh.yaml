@@ -10,6 +10,7 @@ forStaff: "教职员工"
 # Header
 siteName: "塔斯马尼亚欢迎"
 shareYourStory: "分享你的故事"
+shareShort: "分享"
 
 # Footer
 footerTagline: "由塔斯马尼亚国际ICT学生打造,为国际ICT学生服务。"
@@ -34,14 +35,30 @@ studentFeedbackTBA: "学生反馈将在活动后添加。"
 
 # Event details
 backToEvents: "← 返回所有活动"
+backToTop: "回到顶部"
 eventDetailsTBC: "活动详情待定"
 outcomeLabel: "成果:"
+sourceLabel: "来源:"
 aboutThisEvent: "关于本次活动"
 whatStudentsBuilt: "学生作品"
 whatStudentsSaid: "学生在LinkedIn上的分享"
 whatStudentsSaidSubtitle: "活动中学生的反思与分享。"
 linkedInPost: "LinkedIn帖子"
 readFullPost: "阅读完整帖子"
+visitOriginalPost: "查看原帖"
+postPrev: "上一篇"
+postNext: "下一篇"
+postSummaryLabel: "关于这篇帖子"
+linkedInPostsCount:
+  other: "活动相关的 {{ .Count }} 篇 LinkedIn 帖子"
+noPostsTitle: "这场活动还没有 LinkedIn 帖子"
+noPostsText: "你参加了吗?在 LinkedIn 上分享你的收获,然后告诉我们,我们会把它展示在这里。"
+photoBooth: "照片墙"
+carouselPrev: "上一张"
+carouselNext: "下一张"
+carouselPause: "暂停轮播"
+carouselPlay: "播放轮播"
+lightboxClose: "关闭照片"
 studentReflectionsTBA: "学生的反思将在活动后添加。"
 photosFromTheDay: "活动照片"
 

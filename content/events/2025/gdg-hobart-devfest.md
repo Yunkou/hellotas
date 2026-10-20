@@ -18,10 +18,17 @@ about:
 linkedin_posts:
   - name: "GDG Hobart"
     role: "Google Developer Group, Hobart"
-    title: "That's a wrap on DevFest Hobart 2025"
-    quote: "It was inspiring to see Hobart's tech community come together for an evening of learning, inspiration, and connection."
-    likes: "26"
-    comments: "1"
+    avatar: "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-avatar.jpg"
+    images:
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-1.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-2.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-3.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-4.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-5.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-6.jpg"
+      - "/images/events/2025/gdg-hobart-devfest/linkedin-gdg-hobart-7.jpg"
+    content: "It was inspiring to see Hobart's tech community come together for an evening of learning, inspiration, and connection."
+    summary: "GDG Hobart's wrap-up of DevFest Hobart 2025, which brought more than 25 developers, students and tech enthusiasts to UTAS. It thanks Oscar Wahltinez from Google, who flew in from Sydney to talk about practical AI and run an interactive AI game, along with local speakers Amber Nguyen (Hydro Tasmania) and Pul Khut (Department of Police, Fire and Emergency Management)."
     url: "https://www.linkedin.com/posts/gdghobart-devfest2025-ai-ugcPost-7394310281155301377-if20/"
 gallery:
   - "/images/events/2025/gdg-hobart-devfest/gdg-hobart-devfest-2025-2.jpg"

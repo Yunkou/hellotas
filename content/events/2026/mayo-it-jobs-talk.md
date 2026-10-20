@@ -1,6 +1,6 @@
 ---
 title: "Mayo Talk: IT Jobs 2026"
-weight: 12
+weight: 13
 year: 2026
 event_type: "Talk"
 tags: ["Career", "IT Jobs"]
