@@ -20,51 +20,9 @@
       <section class="journey-voice-section">
         <h2 class="journey-basics-title">{{ i18n .titleKey }}</h2>
         <div class="section-divider"></div>
-        <div class="journey-activities">
-          {{ range .activities }}
-          <article class="journey-activity">
-            <div class="journey-activity-top">
-              <div class="journey-activity-media">
-                <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" loading="lazy" width="480" height="360">
-              </div>
-              <div class="journey-activity-body">
-                <div class="journey-activity-head">
-                  <h3>{{ i18n .titleKey }}</h3>
-                  <span class="tag {{ .tagClass }}">{{ i18n .tagKey }}</span>
-                </div>
-                <p class="journey-activity-text">{{ i18n .textKey }}</p>
-                <ul class="journey-activity-details">
-                  {{ range .details }}
-                  <li><span class="journey-activity-label">{{ i18n .labelKey }}</span>{{ i18n .valueKey }}</li>
-                  {{ end }}
-                </ul>
-              </div>
-            </div>
-            {{ if or .mapImage .contact }}
-            {{ $act := . }}
-            <div class="journey-activity-meta">
-              {{ with .mapImage }}
-              <div class="journey-activity-map">
-                <img src="{{ . | relURL }}" alt="{{ i18n $act.mapAltKey }}" loading="lazy" width="640" height="360">
-              </div>
-              {{ end }}
-              {{ with .contact }}
-              <ul class="journey-activity-contact">
-                {{ range . }}
-                <li>
-                  <span class="journey-contact-label">{{ i18n .labelKey }}</span>
-                  {{ if .href }}
-                  <a href="{{ .href | safeURL }}" {{ if strings.HasPrefix .href "http" }}target="_blank" rel="noopener"{{ end }}>{{ i18n .valueKey }}</a>
-                  {{ else }}
-                  <span>{{ i18n .valueKey }}</span>
-                  {{ end }}
-                </li>
-                {{ end }}
-              </ul>
-              {{ end }}
-            </div>
-            {{ end }}
-          </article>
+        <div class="place-list">
+          {{ range .places }}
+          {{ partial "place-card.html" . }}
           {{ end }}
         </div>
       </section>
@@ -115,4 +73,5 @@
     </div>
   </div>
 </div>
+{{ partial "place-lightbox.html" . }}
 {{ end }}
