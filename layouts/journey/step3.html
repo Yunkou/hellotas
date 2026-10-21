@@ -29,7 +29,9 @@
         <div class="life-gallery">
           {{ range site.Data.journey.step3.gallery }}
           <figure>
-            <img src="{{ .src | relURL }}" alt="{{ i18n .captionKey }}" loading="lazy" width="480" height="360">
+            <button type="button" class="place-photo" data-full="{{ .src | relURL }}" data-alt="{{ i18n .captionKey }}" aria-label="{{ i18n "placePhotoEnlarge" }}: {{ i18n .captionKey }}">
+              <img src="{{ .src | relURL }}" alt="{{ i18n .captionKey }}" loading="lazy" width="480" height="360">
+            </button>
             <figcaption>{{ i18n .captionKey }}</figcaption>
           </figure>
           {{ end }}
