@@ -2665,3 +2665,45 @@ html:has(.lightbox[open]) { overflow: hidden; }
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== Place / club cards (Journey Step 2 & 3) ===== */
+.place-list { display: flex; flex-direction: column; gap: 28px; margin-top: 24px; }
+.place-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 2px 10px rgba(200, 16, 46, 0.04); }
+.place-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.place-card-head h3 { margin: 0; font-size: 1.5rem; color: var(--text-dark); }
+.place-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.place-card-text { margin: 12px 0 20px; color: var(--text-mid); line-height: 1.6; }
+.place-gallery { list-style: none; margin: 0 0 24px; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.place-gallery li { margin: 0; }
+.place-photo { position: relative; display: block; width: 100%; aspect-ratio: 13 / 10; padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: #E2E8F0; cursor: zoom-in; }
+.place-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
+.place-photo:hover img, .place-photo:focus-visible img { transform: scale(1.05); }
+.place-photo:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+.place-photo-zoom { position: absolute; right: 8px; bottom: 8px; width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,.9); font-size: 12px; line-height: 24px; text-align: center; }
+.place-card-meta { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.place-map { display: flex; flex-direction: column; gap: 6px; }
+.place-map iframe { width: 100%; aspect-ratio: 16 / 10; border: 1px solid var(--border); border-radius: 14px; background: #F8FAFC; }
+.place-map-link { font-size: .85rem; color: var(--brand); }
+.place-details { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.place-details dt { font-weight: 700; color: var(--text-dark); }
+.place-details dd { margin: 2px 0 0; color: var(--text-mid); overflow-wrap: anywhere; }
+.place-details a { color: var(--brand); font-weight: 600; text-decoration: underline; }
+.place-lightbox { border: 0; border-radius: 16px; padding: 12px; max-width: min(92vw, 1000px); background: #fff; }
+.place-lightbox::backdrop { background: rgba(15, 23, 42, .75); }
+.place-lightbox img { display: block; max-width: 100%; max-height: 78vh; margin: 0 auto; border-radius: 10px; }
+.place-lightbox-caption { margin: 8px 4px 0; color: var(--text-mid); font-size: .9rem; }
+.place-lightbox-close { position: absolute; top: 8px; right: 12px; border: 0; background: rgba(255,255,255,.9); border-radius: 50%; width: 36px; height: 36px; font-size: 24px; cursor: pointer; }
+.life-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+.life-gallery figure { margin: 0; position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background: #E2E8F0; }
+.life-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.life-gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 14px; color: #fff; font-weight: 600; background: linear-gradient(transparent, rgba(0,0,0,.65)); }
+@media (max-width: 900px) {
+  .place-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .place-card-meta { grid-template-columns: 1fr; }
+  .life-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .place-card { padding: 20px; }
+  .place-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .life-gallery { grid-template-columns: 1fr; }
+}

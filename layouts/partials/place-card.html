@@ -1,0 +1,44 @@
+{{/* Reusable "place / club" card (Journey Step 2 & 3).
+     Context: one item from data/journey.yaml with
+     titleKey, tags[{key,class}], textKey, photos[{src,altKey}],
+     map{query,labelKey}, details[{labelKey,valueKey,href}] */}}
+{{ $p := . }}
+<article class="place-card" id="{{ $p.id }}">
+  <div class="place-card-head">
+    <h3>{{ i18n $p.titleKey }}</h3>
+    <div class="place-card-tags">
+      {{ range $p.tags }}<span class="tag {{ .class | default "tag-type" }}">{{ i18n .key }}</span>{{ end }}
+    </div>
+  </div>
+  <p class="place-card-text">{{ i18n $p.textKey }}</p>
+
+  {{ with $p.photos }}
+  <ul class="place-gallery" aria-label="{{ i18n "placePhotosLabel" }}">
+    {{ range $i, $ph := . }}
+    <li>
+      <button type="button" class="place-photo" data-full="{{ $ph.src | relURL }}" data-alt="{{ i18n $ph.altKey }}" aria-label="{{ i18n "placePhotoEnlarge" }}: {{ i18n $ph.altKey }}">
+        <img src="{{ $ph.src | relURL }}" alt="{{ i18n $ph.altKey }}" loading="lazy" width="260" height="200">
+        <span class="place-photo-zoom" aria-hidden="true">🔍</span>
+      </button>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+  <div class="place-card-meta">
+    {{ with $p.map }}
+    <div class="place-map">
+      <iframe title="{{ i18n "placeMapTitle" }}: {{ i18n $p.titleKey }}" src="https://maps.google.com/maps?q={{ .query | urlquery }}&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <a class="place-map-link" href="https://www.google.com/maps/search/?api=1&query={{ .query | urlquery }}" target="_blank" rel="noopener">{{ i18n "placeOpenInMaps" }} ↗</a>
+    </div>
+    {{ end }}
+    <dl class="place-details">
+      {{ range $p.details }}
+      <div>
+        <dt>{{ i18n .labelKey }}</dt>
+        <dd>{{ if .href }}<a href="{{ .href | safeURL }}"{{ if strings.HasPrefix .href "http" }} target="_blank" rel="noopener"{{ end }}>{{ i18n .valueKey }}</a>{{ else }}{{ i18n .valueKey }}{{ end }}</dd>
+      </div>
+      {{ end }}
+    </dl>
+  </div>
+</article>

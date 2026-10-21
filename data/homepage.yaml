@@ -10,7 +10,7 @@ steps:
   - id: 3
     image: images/home/step-3-campus-fair.jpg
     anchor: step-3
-    ctaPath: journey/
+    ctaPath: journey/step-3/
   - id: 4
     image: images/home/step-4-campus-plaza.jpg
     anchor: step-4

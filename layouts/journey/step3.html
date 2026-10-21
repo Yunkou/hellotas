@@ -1,0 +1,50 @@
+{{ define "main" }}
+<div class="page-journey-step" id="step-3">
+  <section class="journey-hero">
+    <div class="container">
+      <a class="journey-crumb" href="{{ "journey/" | relLangURL }}">{{ i18n "journeyBackToJourney" }}</a>
+      <p class="journey-eyebrow">{{ i18n "journeyStep3Eyebrow" }}</p>
+      <h1>{{ i18n "journeyStep3Title" }}</h1>
+      <p class="journey-hero-sub">{{ i18n "journeyStep3Lead" }}</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="journey-main">
+      {{ range site.Data.journey.step3.sections }}
+      <section class="journey-voice-section">
+        <h2 class="journey-basics-title">{{ i18n .titleKey }}</h2>
+        <div class="section-divider"></div>
+        <div class="place-list">
+          {{ range .places }}
+          {{ partial "place-card.html" . }}
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+
+      <section class="journey-life">
+        <h2 class="journey-basics-title">{{ i18n "journeyStep3GalleryTitle" }}</h2>
+        <p class="journey-checklist-lead">{{ i18n "journeyStep3GalleryLead" }}</p>
+        <div class="life-gallery">
+          {{ range site.Data.journey.step3.gallery }}
+          <figure>
+            <img src="{{ .src | relURL }}" alt="{{ i18n .captionKey }}" loading="lazy" width="480" height="360">
+            <figcaption>{{ i18n .captionKey }}</figcaption>
+          </figure>
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="journey-next">
+        <div class="journey-next-copy">
+          <h3>{{ i18n "journeyStep3NextTitle" }}</h3>
+          <p>{{ i18n "journeyStep3NextText" }}</p>
+        </div>
+        <a href="{{ "journey/" | relLangURL }}" class="btn-primary journey-next-btn">{{ i18n "journeyStep3NextCta" }}</a>
+      </section>
+    </div>
+  </div>
+</div>
+{{ partial "place-lightbox.html" . }}
+{{ end }}
