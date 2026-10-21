@@ -150,14 +150,16 @@ step3:
           textKey: journeyStep3MotorsportText
           photos:
             - { src: images/journey/utas/utas-engineering-site.jpg, altKey: journeyStep3MotorsportPhoto1Alt }
-            - { src: images/journey/utas/utas-researcher.jpg, altKey: journeyStep3MotorsportPhoto2Alt }
+            - { src: images/journey/step-3/step-3-fsae-1.jpg, altKey: journeyStep3MotorsportPhoto2Alt }
+            - { src: images/journey/step-3/step-3-fsae-2.jpg, altKey: journeyStep3MotorsportPhoto3Alt }
+            - { src: images/journey/step-3/step-3-av-lab.jpg, altKey: journeyStep3MotorsportPhoto4Alt }
           map: { query: "School of Engineering, University of Tasmania, Sandy Bay TAS 7005" }
           details:
             - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3MotorsportWhen }
             - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3MotorsportWhere }
             - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3WhoAll }
             - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3MotorsportLink, href: "https://www.utas.edu.au/about/colleges-and-schools/cose/engineering/motorsport-team" }
-        - id: sectalks-hobart
+        - id: utas-cybersecurity-club
           titleKey: journeyStep3CyberTitle
           tags:
             - { key: tagTech, class: tag-normal }
@@ -165,41 +167,40 @@ step3:
           textKey: journeyStep3CyberText
           photos:
             - { src: images/journey/utas/utas-sdg-workshop.jpg, altKey: journeyStep3CyberPhoto1Alt }
-          map: { query: "Mathers House, 108 Bathurst Street, Hobart TAS 7000" }
+          map: { query: "University of Tasmania Sandy Bay Campus, Churchill Avenue, Sandy Bay TAS 7005" }
           details:
             - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3CyberWhen }
             - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3CyberWhere }
             - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3CyberWho }
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3CyberLink, href: "https://www.meetup.com/sectalks-hobart/" }
-        - id: tusa-clubs
-          titleKey: journeyStep3TusaTitle
+        - id: utas-programming-club
+          titleKey: journeyStep3ProgTitle
           tags:
             - { key: tagStudentLed, class: tag-type }
-          textKey: journeyStep3TusaText
+          textKey: journeyStep3ProgText
           photos:
-            - { src: images/journey/utas/utas-students-hobart.jpg, altKey: journeyStep3TusaPhoto1Alt }
-            - { src: images/journey/utas/utas-rugby.jpg, altKey: journeyStep3TusaPhoto2Alt }
-          map: { query: "University of Tasmania Sandy Bay Campus, Churchill Avenue, Sandy Bay TAS 7005" }
+            - { src: images/journey/utas/utas-students-hobart.jpg, altKey: journeyStep3ProgPhoto1Alt }
+          map: { query: "Centenary Building, University of Tasmania, Sandy Bay TAS 7005" }
           details:
-            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3TusaWhen }
-            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3TusaWhere }
-            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3WhoAll }
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3TusaLink, href: "https://tusa.org.au/find-a-club-society/" }
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3ProgWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3ProgWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3ProgWho }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3ProgLink, href: "https://programmingclub.com.au/" }
     - titleKey: journeyStep3SectionVolunteerTitle
       places:
-        - id: volunteering-tasmania
-          titleKey: journeyStep3VolTasTitle
+        - id: glenorchy-community-care
+          titleKey: journeyStep3GccTitle
           tags:
             - { key: tagVolunteer, class: tag-type }
-          textKey: journeyStep3VolTasText
+            - { key: tagFoodAccess, class: tag-free }
+          textKey: journeyStep3GccText
           photos:
-            - { src: images/journey/utas/utas-fieldwork.jpg, altKey: journeyStep3VolTasPhoto1Alt }
-          map: { query: "Volunteering Tasmania, Hobart TAS" }
+            - { src: images/journey/step-3/step-3-food-hub.jpg, altKey: journeyStep3GccPhoto1Alt }
+          map: { query: "Glenorchy Uniting Church Hall, 21 Kensington Street, Glenorchy TAS 7010" }
           details:
-            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3VolTasWhen }
-            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3VolTasWhere }
-            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3WhoAll }
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3VolTasLink, href: "https://www.volunteeringtas.org.au/" }
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3GccWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3GccWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3GccWho }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3GccLink, href: "https://gccare.au/" }
         - id: rotary-hobart
           titleKey: journeyStep3RotaryTitle
           tags:
@@ -213,9 +214,9 @@ step3:
             - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3RotaryWho }
             - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3RotaryLink, href: "https://rotaryhobart.org/" }
   gallery:
-    - { src: images/journey/utas/utas-engineering-site.jpg, captionKey: journeyStep3Gallery1 }
-    - { src: images/journey/utas/utas-sdg-workshop.jpg, captionKey: journeyStep3Gallery2 }
-    - { src: images/journey/utas/utas-students-hobart.jpg, captionKey: journeyStep3Gallery3 }
-    - { src: images/journey/utas/utas-fieldwork.jpg, captionKey: journeyStep3Gallery4 }
-    - { src: images/journey/utas/utas-rugby.jpg, captionKey: journeyStep3Gallery5 }
-    - { src: images/journey/utas/utas-observatory.jpg, captionKey: journeyStep3Gallery6 }
+    - { src: images/journey/step-3/step-3-fsae-2.jpg, captionKey: journeyStep3Gallery1 }
+    - { src: images/journey/step-3/step-3-av-lab.jpg, captionKey: journeyStep3Gallery2 }
+    - { src: images/journey/utas/utas-sdg-workshop.jpg, captionKey: journeyStep3Gallery3 }
+    - { src: images/journey/step-3/step-3-food-hub.jpg, captionKey: journeyStep3Gallery4 }
+    - { src: images/journey/utas/utas-students-hobart.jpg, captionKey: journeyStep3Gallery5 }
+    - { src: images/journey/step-3/step-3-fsae-1.jpg, captionKey: journeyStep3Gallery6 }
