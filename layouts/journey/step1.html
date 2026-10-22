@@ -52,14 +52,15 @@
                   <h3>{{ i18n .titleKey }}</h3>
                 </div>
                 <p>{{ i18n .textKey }}</p>
-                {{ with .links }}
-                <div class="journey-tip-links">
-                  {{ range . }}<a href="{{ .href | safeURL }}" target="_blank" rel="noopener">{{ .label }} ↗</a>{{ end }}
-                </div>
-                {{ end }}
               </li>
               {{ end }}
             </ul>
+            {{ end }}
+            {{ if .links }}
+            <div class="journey-tip-links">
+              <span>{{ i18n .linksLabelKey }}</span>
+              {{ range .links }}<a href="{{ .href | safeURL }}" target="_blank" rel="noopener">{{ .label }} ↗</a>{{ end }}
+            </div>
             {{ end }}
             {{ with .warnKeys }}
             <ul class="journey-warn">

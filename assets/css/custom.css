@@ -2431,8 +2431,16 @@ img.author-avatar {
 .journey-tip-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 14px;
+}
+
+.journey-tip-links span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-right: 4px;
 }
 
 .journey-tip-links a {

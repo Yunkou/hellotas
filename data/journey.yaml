@@ -15,14 +15,13 @@ step1:
       textKey: journeyStep1Priority1Text
       tips:
         - { icon: "📄", titleKey: journeyStep1IncomeResumeTitle, textKey: journeyStep1IncomeResumeText }
-        - icon: "🚪"
-          titleKey: journeyStep1IncomeApplyTitle
-          textKey: journeyStep1IncomeApplyText
-          links:
-            - { label: Seek, href: "https://www.seek.com.au/" }
-            - { label: Indeed, href: "https://au.indeed.com/" }
-            - { label: Jora, href: "https://au.jora.com/" }
+        - { icon: "🚪", titleKey: journeyStep1IncomeApplyTitle, textKey: journeyStep1IncomeApplyText }
         - { icon: "🛵", titleKey: journeyStep1IncomeDeliveryTitle, textKey: journeyStep1IncomeDeliveryText }
+      linksLabelKey: journeyStep1IncomeLinksLabel
+      links:
+        - { label: Seek, href: "https://www.seek.com.au/" }
+        - { label: Indeed, href: "https://au.indeed.com/" }
+        - { label: Jora, href: "https://au.jora.com/" }
       warnKeys:
         - journeyStep1IncomeWarn1
         - journeyStep1IncomeWarn2
