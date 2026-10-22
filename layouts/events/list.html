@@ -7,15 +7,15 @@
 </section>
 
 <section class="container">
-  <div class="share-bar">
-    <div class="share-left">
-      <div class="share-label">{{ i18n "eventsShareLabel" }}</div>
-          <div class="share-url">
-             <span>{{ .Permalink }}</span>
-               <button type="button" onclick="navigator.clipboard.writeText('{{ .Permalink }}'); this.textContent='{{ i18n "eventsLinkCopied" }}'">{{ i18n "eventsCopyLink" }}</button>
-          </div>    
-      </div>
-    <button class="btn-primary share-btn" onclick="navigator.clipboard.writeText('{{ .Permalink }}')">{{ i18n "eventsCopyLink" }}</button>
+  <div class="passon-bar">
+    <div class="passon-copy">
+      <span class="passon-eyebrow">{{ i18n "eventsShareTitle" }}</span>
+      <p class="passon-message">{{ i18n "eventsShareLabel" }}</p>
+    </div>
+    <div class="passon-action">
+      <span class="passon-url" title="{{ .Permalink }}">{{ .Permalink }}</span>
+      <button type="button" class="passon-btn" data-copy="{{ .Permalink }}" data-copied="{{ i18n "eventsLinkCopied" }}">{{ i18n "eventsCopyLink" }}</button>
+    </div>
   </div>
 </section>
 

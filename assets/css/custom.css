@@ -212,35 +212,93 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===== Share bar ===== */
-.share-bar {
-  background: #FFFFFF;
-  border-left: 6px solid var(--brand);
-  border-radius: 16px;
-  padding: 24px 32px;
+.passon-bar {
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-  margin-bottom: 56px;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 24px 40px;
   flex-wrap: wrap;
+  margin: -84px 0 56px; /* overlaps the bottom of the pink intro (which has a 48px bottom margin) */
+  padding: 26px 32px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #8E0B22 0%, #6A0819 60%, #55061A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 14px 34px rgba(110, 8, 25, 0.22);
 }
 
-.share-label {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--brand);
+.passon-copy {
+  flex: 1 1 380px;
+  min-width: 0;
+}
+
+.passon-eyebrow {
+  display: block;
   margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.72);
 }
 
-.share-url {
+.passon-message {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #FFFFFF;
+}
+
+.passon-action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.passon-url {
+  min-width: 0;
+  max-width: 340px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
   font-size: 14px;
-  color: var(--text-dark);
+  color: rgba(255, 255, 255, 0.92);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.share-btn {
-  padding: 12px 26px;
-  border-radius: 22px;
+.passon-btn {
+  flex: none;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: var(--brand);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.passon-btn:hover { background: var(--brand-light); }
+.passon-btn:active { transform: scale(0.97); }
+
+.passon-btn.is-copied {
+  background: #E8F5E9;
+  color: #1B5E20;
+}
+
+@media (max-width: 768px) {
+  .passon-bar { margin-top: -76px; padding: 22px 20px; }
+  .passon-message { font-size: 15px; }
+  .passon-action { width: 100%; }
+  .passon-url { flex: 1; max-width: none; }
 }
 
 /* ===== Year tabs ===== */

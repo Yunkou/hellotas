@@ -96,12 +96,12 @@
     <h2 class="section-heading">{{ i18n "whatStudentsBuilt" }}</h2>
     <div class="section-divider"></div>
     <div class="projects-grid" data-lightbox>
-      {{ range .Params.projects }}
+      {{ range $i, $project := .Params.projects }}
       <article class="project-card">
         {{ if .image }}
         <div class="project-image"><img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .name }}"></div>
         {{ else }}
-        <div class="project-image project-cover project-cover--{{ mod (len .name) 4 }}" aria-hidden="true">
+        <div class="project-image project-cover project-cover--{{ mod $i 4 }}" aria-hidden="true">
           <span class="project-monogram">{{ partial "initials.html" .name }}</span>
         </div>
         {{ end }}

@@ -1,4 +1,4 @@
-// Image carousels (layouts/partials/carousel.html), the LinkedIn reader view, the event sub-bar and the photo viewer.
+// Image carousels (layouts/partials/carousel.html), the LinkedIn reader view, the event sub-bar, copy-link buttons and the photo viewer.
 // Sliding is plain CSS scroll-snap, so swiping and scrolling still work if this file fails to load.
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -201,7 +201,31 @@
     update();
   }
 
+  // "Copy link" buttons: copy data-copy to the clipboard and show data-copied for a moment.
+  function initCopy(button) {
+    var label = button.textContent;
+    var timer;
+    button.addEventListener('click', function () {
+      var text = button.dataset.copy;
+      var done = function () {
+        button.textContent = button.dataset.copied;
+        button.classList.add('is-copied');
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          button.textContent = label;
+          button.classList.remove('is-copied');
+        }, 2000);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, function () { window.prompt('', text); });
+      } else {
+        window.prompt('', text); // older browsers / plain http: let the visitor copy it by hand
+      }
+    });
+  }
+
   document.querySelectorAll('[data-carousel]').forEach(initCarousel);
+  document.querySelectorAll('[data-copy]').forEach(initCopy);
   document.querySelectorAll('[data-subbar]').forEach(initSubbar);
   document.querySelectorAll('[data-reader]').forEach(initReader);
   initLightbox();
