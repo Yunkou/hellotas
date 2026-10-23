@@ -2314,10 +2314,34 @@ img.author-avatar {
   display: grid;
   grid-template-columns: 48px 1fr;
   column-gap: 14px;
-  align-items: start;
+}
+
+.journey-first-card > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.journey-first-links {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.journey-first-links a {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.journey-first-links a:hover {
+  text-decoration: underline;
 }
 
 .journey-first-icon {
+  align-self: start;
   position: relative;
   width: 48px;
   height: 48px;
@@ -2481,6 +2505,26 @@ img.author-avatar {
 
 .journey-warn strong {
   color: var(--brand);
+}
+
+.journey-tip p a,
+.journey-warn a,
+.journey-basic-list a {
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.journey-priority-card[id] {
+  scroll-margin-top: 96px;
+}
+
+.journey-credit {
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--text-light);
+  text-align: center;
 }
 
 @media (max-width: 900px) {

@@ -24,6 +24,14 @@
             <div>
               <h3>{{ i18n $s.titleKey }}</h3>
               <p>{{ i18n $s.textKey }}</p>
+              {{ with $s.links }}
+              <div class="journey-first-links">
+                {{ range . }}
+                {{ $external := strings.HasPrefix .href "http" }}
+                <a href="{{ .href | safeURL }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ with .labelKey }}{{ i18n . }}{{ end }}{{ .label }} {{ if $external }}↗{{ else }}↓{{ end }}</a>
+                {{ end }}
+              </div>
+              {{ end }}
             </div>
           </li>
           {{ end }}
@@ -32,9 +40,9 @@
 
       <section class="journey-priorities">
         {{ range site.Data.journey.step1.priorities }}
-        <article class="journey-priority-card{{ with .tips }} journey-priority-card--detailed{{ end }}">
+        <article class="journey-priority-card{{ with .tips }} journey-priority-card--detailed{{ end }}"{{ with .id }} id="{{ . }}"{{ end }}>
           <div class="journey-priority-media">
-            <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" width="140" height="140">
+            <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" width="140" height="140"{{ with .imagePosition }} style="object-position: {{ . | safeCSS }}"{{ end }}>
           </div>
           <div class="journey-priority-body">
             <div class="journey-priority-head">
@@ -51,7 +59,7 @@
                   <span class="journey-tip-icon" aria-hidden="true">{{ .icon }}</span>
                   <h3>{{ i18n .titleKey }}</h3>
                 </div>
-                <p>{{ i18n .textKey }}</p>
+                <p>{{ i18n .textKey | safeHTML }}</p>
               </li>
               {{ end }}
             </ul>
@@ -117,6 +125,8 @@
         </div>
         <a href="{{ "journey/step-2/" | relLangURL }}" class="btn-primary journey-next-btn">{{ i18n "journeyStep1NextCta" }}</a>
       </section>
+
+      <p class="journey-credit">{{ i18n "journeyStep1PhotoCredit" }}</p>
     </div>
   </div>
 </div>
