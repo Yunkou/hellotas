@@ -232,6 +232,7 @@ step3:
             - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3CyberWhen }
             - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3CyberWhere }
             - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3CyberWho }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3CyberLink, href: "https://lnkd.in/p/g4J54Ywy" }
         - id: utas-programming-club
           titleKey: journeyStep3ProgTitle
           tags:
