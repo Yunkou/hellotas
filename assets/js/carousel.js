@@ -1,4 +1,4 @@
-// Image carousels (layouts/partials/carousel.html), the LinkedIn reader view, the event sub-bar, copy-link buttons and the photo viewer.
+// Site scripts: mobile menu, image carousels, LinkedIn reader view, events filter and search, event sub-bar, copy-link buttons and the photo viewer.
 // Sliding is plain CSS scroll-snap, so swiping and scrolling still work if this file fails to load.
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -224,8 +224,118 @@
     });
   }
 
+  // Events list: year buttons (All / 2026 / 2025 …), a text search over each card's data-search, and the event count.
+  // Every word typed must appear somewhere in the event. The choice is kept in the address (?year=…&q=…)
+  // so a filtered view can be bookmarked or shared. Without this script every event stays visible.
+  function initEventFilter(root) {
+    var tabs = root.querySelectorAll('.year-tab');
+    var input = root.querySelector('.events-search-input');
+    var status = root.querySelector('.events-status');
+    var count = root.querySelector('.events-count');
+    var clearLink = status.querySelector('.events-clear');
+    var announce = root.querySelector('.events-announce');
+    var empty = root.querySelector('.events-empty');
+    var groups = root.querySelectorAll('.events-year');
+    var year = 'all';
+
+    // Case, accents and full-width letters don't matter: "Pax", "PAX" and "ＰＡＸ" all match.
+    function fold(text) {
+      return text.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    }
+
+    var cards = Array.prototype.map.call(root.querySelectorAll('.event-card'), function (card) {
+      return { el: card, text: fold(card.dataset.search || '') };
+    });
+
+    function apply() {
+      var terms = fold(input.value).split(/\s+/).filter(Boolean);
+      var shown = 0;
+
+      groups.forEach(function (group) {
+        var inYear = year === 'all' || group.dataset.year === year;
+        var visible = 0;
+        cards.forEach(function (card) {
+          if (!group.contains(card.el)) return;
+          var match = inYear && terms.every(function (t) { return card.text.indexOf(t) !== -1; });
+          card.el.hidden = !match;
+          if (match) visible++;
+        });
+        group.hidden = visible === 0;
+        shown += visible;
+      });
+
+      tabs.forEach(function (tab) {
+        var on = tab.dataset.year === year;
+        tab.classList.toggle('active', on);
+        tab.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+
+      var filtering = year !== 'all' || terms.length > 0;
+      var message = (shown === 1 ? count.dataset.single : count.dataset.plural).replace('{n}', shown);
+      status.hidden = shown === 0; // the empty-state box says it instead
+      clearLink.hidden = !filtering;
+      empty.hidden = shown > 0;
+      count.textContent = message;
+      announce.textContent = message;
+
+      var params = new URLSearchParams(location.search);
+      if (year === 'all') params.delete('year'); else params.set('year', year);
+      if (input.value.trim()) params.set('q', input.value.trim()); else params.delete('q');
+      var query = params.toString();
+      history.replaceState(null, '', location.pathname + (query ? '?' + query : '') + location.hash);
+    }
+
+    function clear() {
+      year = 'all';
+      input.value = '';
+      apply();
+      input.focus();
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () { year = tab.dataset.year; apply(); });
+    });
+    input.addEventListener('input', apply);
+    root.querySelectorAll('.events-clear').forEach(function (button) {
+      button.addEventListener('click', clear);
+    });
+
+    // Restore a filtered view from the address, e.g. events/?year=2025&q=melbourne
+    var params = new URLSearchParams(location.search);
+    if (params.get('year') && root.querySelector('.year-tab[data-year="' + params.get('year') + '"]')) year = params.get('year');
+    if (params.get('q')) input.value = params.get('q');
+    apply();
+  }
+
+  // Narrow screens: the ☰ button opens the menu panel under the header.
+  // Closes on a link click, a click outside, Esc, or when the window widens back to desktop.
+  function initMobileMenu(button) {
+    var menu = document.getElementById(button.getAttribute('aria-controls'));
+    if (!menu) return;
+
+    function setOpen(open) {
+      button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      button.setAttribute('aria-label', open ? button.dataset.labelClose : button.dataset.labelOpen);
+      menu.hidden = !open;
+    }
+
+    button.addEventListener('click', function () { setOpen(menu.hidden); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('click', function (e) {
+      if (!menu.hidden && !menu.contains(e.target) && !button.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.hidden) { setOpen(false); button.focus(); }
+    });
+    window.addEventListener('resize', function () {
+      if (getComputedStyle(button).display === 'none') setOpen(false);
+    });
+  }
+
+  document.querySelectorAll('.nav-toggle').forEach(initMobileMenu);
   document.querySelectorAll('[data-carousel]').forEach(initCarousel);
   document.querySelectorAll('[data-copy]').forEach(initCopy);
+  document.querySelectorAll('[data-event-filter]').forEach(initEventFilter);
   document.querySelectorAll('[data-subbar]').forEach(initSubbar);
   document.querySelectorAll('[data-reader]').forEach(initReader);
   initLightbox();

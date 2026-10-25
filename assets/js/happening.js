@@ -1,0 +1,569 @@
+// Happening page: sorts events into "Happening Now" and "Upcoming" by today's date in Hobart, writes dates in the
+// page's language, makes "Add to calendar" files and draws the month / week calendar.
+// Without this script every event stays listed under Upcoming.
+(function () {
+  var root = document.querySelector('[data-happening]');
+  if (!root) return;
+
+  var data = JSON.parse(root.querySelector('.happening-data').textContent);
+  var S = data.strings;
+  var locale = root.dataset.locale;
+  var TZ = 'Australia/Hobart';
+  var DAY = 86400000;
+
+  // ---- Days ----------------------------------------------------------------------------------------------
+  // Events are compared by their calendar day in Hobart, written as "2026-11-19" keys, whatever the
+  // visitor's own time zone is.
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  var keyParts = new Intl.DateTimeFormat('en-AU', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' });
+  function dayKey(date) {
+    var p = {};
+    keyParts.formatToParts(date).forEach(function (x) { p[x.type] = x.value; });
+    return p.year + '-' + p.month + '-' + p.day;
+  }
+
+  // A key as a UTC midnight timestamp, for day arithmetic and for labels formatted in UTC.
+  function keyTime(key) {
+    var a = key.split('-');
+    return Date.UTC(+a[0], +a[1] - 1, +a[2]);
+  }
+  function timeKey(t) {
+    var d = new Date(t);
+    return d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate());
+  }
+  function addDays(key, n) { return timeKey(keyTime(key) + n * DAY); }
+  function weekday(key) { return (new Date(keyTime(key)).getUTCDay() + 6) % 7; } // Monday 0 … Sunday 6
+  function mondayOf(key) { return addDays(key, -weekday(key)); }
+  function monthStart(key) { return key.slice(0, 8) + '01'; }
+  function addMonths(key, n) {
+    var d = new Date(keyTime(monthStart(key)));
+    d.setUTCMonth(d.getUTCMonth() + n);
+    return timeKey(d.getTime());
+  }
+  function monthEnd(key) { return addDays(addMonths(key, 1), -1); }
+
+  // ---- Wording -------------------------------------------------------------------------------------------
+
+  // The browser's own date wording when it knows the language. Some browsers have no Nepali data, so then
+  // dates are put together from the month and weekday names in the language files.
+  var nativeDates = Intl.DateTimeFormat.supportedLocalesOf([locale]).length > 0;
+  var names = {
+    monthShort: S.monthsShort.split(','), monthLong: S.monthsLong.split(','),
+    weekdayShort: S.weekdaysShort.split(','), weekdayLong: S.weekdaysLong.split(',')
+  };
+  function PlainFormat(options) {
+    var parts = new Intl.DateTimeFormat('en-AU', {
+      timeZone: options.timeZone, year: 'numeric', month: 'numeric', day: 'numeric',
+      weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+    });
+    var weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    this.format = function (date) {
+      var p = {};
+      parts.formatToParts(date).forEach(function (x) { p[x.type] = x.value; });
+      p.day = String(+p.day);
+      if (options.hour) return p.hour + ':' + p.minute;
+      var month = (options.month === 'long' ? names.monthLong : names.monthShort)[+p.month - 1];
+      var weekday = (options.weekday === 'long' ? names.weekdayLong : names.weekdayShort)[weekdays.indexOf(p.weekday)];
+      if (!options.day) {
+        if (options.weekday) return weekday;
+        return options.year ? month + ' ' + p.year : month;
+      }
+      if (!options.month) return p.day;
+      return (options.weekday ? weekday + ', ' : '') + p.day + ' ' + month + (options.year ? ' ' + p.year : '');
+    };
+    this.formatRange = function (a, b) { return this.format(a) + ' – ' + this.format(b); };
+  }
+  function fmt(options, utc) {
+    options.timeZone = utc ? 'UTC' : TZ;
+    return nativeDates ? new Intl.DateTimeFormat(locale, options) : new PlainFormat(options);
+  }
+  var fmtDate = fmt({ weekday: 'short', day: 'numeric', month: 'short' });
+  var fmtTime = fmt({ hour: 'numeric', minute: '2-digit' });
+  var fmtWeekday = fmt({ weekday: 'short' });
+  var fmtMonthShort = fmt({ month: 'short' });
+  var fmtDayNum = fmt({ day: 'numeric' });
+  var fmtMonthYear = fmt({ month: 'long', year: 'numeric' });
+  var keyMonthYear = fmt({ month: 'long', year: 'numeric' }, true);
+  var keyMonthName = fmt({ month: 'long' }, true);
+  var keyWeekdayShort = fmt({ weekday: 'short' }, true);
+  var keyDayNum = fmt({ day: 'numeric' }, true);
+  var keyMonthShort = fmt({ month: 'short' }, true);
+  var keyDayMonth = fmt({ day: 'numeric', month: 'short' }, true);
+  var keyFull = fmt({ weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }, true);
+  var keyDayMonthYear = fmt({ day: 'numeric', month: 'short', year: 'numeric' }, true);
+
+  function range(f, a, b) {
+    return f.formatRange ? f.formatRange(a, b) : f.format(a) + ' – ' + f.format(b);
+  }
+  function count(n) { return n === 1 ? S.oneEvent : S.events.replace('{n}', n); }
+
+  // "Thu 19 Nov · 5:15 – 6:45 pm"; "Wed 9 – Thu 10 Dec · 10:00 am – 7:00 pm"; "November 2026 · Date to be confirmed"
+  function when(e, timeOnly) {
+    if (e.dateTbc) return fmtMonthYear.format(e.startDate) + ' · ' + S.dateTbc;
+    var multi = e.startKey !== e.endKey;
+    var times = multi ? fmtTime.format(e.startDate) + ' – ' + fmtTime.format(e.endDate) : range(fmtTime, e.startDate, e.endDate);
+    var day = timeOnly && !multi ? fmtWeekday.format(e.startDate) : multi ? range(fmtDate, e.startDate, e.endDate) : fmtDate.format(e.startDate);
+    return day + ' · ' + times;
+  }
+
+  // ---- Events --------------------------------------------------------------------------------------------
+
+  var events = data.events.map(function (e) {
+    e.startDate = new Date(e.start);
+    e.endDate = new Date(e.end);
+    if (e.dateTbc) {
+      e.startKey = monthStart(dayKey(e.startDate));
+      e.endKey = monthEnd(e.startKey);
+    } else {
+      e.startKey = dayKey(e.startDate);
+      e.endKey = dayKey(e.endDate);
+    }
+    e.card = root.querySelector('.hp-card[data-event="' + e.id + '"]');
+    e.row = root.querySelector('.hp-row[data-event="' + e.id + '"]');
+    return e;
+  });
+  var byId = {};
+  events.forEach(function (e) { byId[e.id] = e; });
+
+  //   past      over
+  //   live      on right now (or a multi-day event part-way through)
+  //   today / tomorrow / week (within the next 7 days) / later
+  //   tbc       only the month is known
+  function statusOf(e, now, today) {
+    if (e.dateTbc) return today > e.endKey ? 'past' : 'tbc';
+    if (now >= e.endDate) return 'past';
+    if (now >= e.startDate) return e.startKey === e.endKey ? 'live' : 'today';
+    if (e.startKey === today) return 'today';
+    if (e.startKey === addDays(today, 1)) return 'tomorrow';
+    if (e.startKey <= addDays(today, 6)) return 'week';
+    return 'later';
+  }
+  function isNow(status) { return status === 'live' || status === 'today' || status === 'tomorrow'; }
+
+  var badgeText = { live: S.liveNow, today: S.today, tomorrow: S.tomorrow, week: S.thisWeek, tbc: S.dateTbc };
+  var liveIcon = '<svg class="live-icon" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true" focusable="false"><circle class="live-ring live-ring--outer" cx="10" cy="10" r="8.25"/><circle class="live-ring live-ring--inner" cx="10" cy="10" r="5.25"/><circle class="live-dot" cx="10" cy="10" r="2.5"/></svg>';
+
+  function setBadge(el, status) {
+    var badge = el && el.querySelector('[data-status]');
+    if (!badge) return;
+    var text = badgeText[status];
+    badge.hidden = !text;
+    badge.className = 'hp-status hp-status--' + status;
+    badge.innerHTML = status === 'live' ? liveIcon : '';
+    badge.appendChild(document.createTextNode(text || ''));
+  }
+
+  // Dates in the page's language (the HTML carries an English fallback)
+  events.forEach(function (e) {
+    [e.card, e.row].forEach(function (el) {
+      if (!el) return;
+      var w = el.querySelector('[data-when]');
+      if (w) w.textContent = when(e, w.hasAttribute('data-time-only'));
+      var m = el.querySelector('[data-month]');
+      if (m) m.textContent = fmtMonthShort.format(e.startDate);
+      var d = el.querySelector('[data-day]');
+      if (d) d.textContent = e.dateTbc ? '?' : fmtDayNum.format(e.startDate);
+    });
+  });
+
+  // ---- Happening Now / Upcoming --------------------------------------------------------------------------
+
+  var nowList = root.querySelector('[data-now-list]');
+  var nowEmpty = root.querySelector('[data-now-empty]');
+  var cardList = root.querySelector('[data-upcoming-cards]');
+  var rowList = root.querySelector('[data-upcoming-list]');
+  var upcomingEmpty = root.querySelector('[data-upcoming-empty]');
+  var view = 'cards';
+
+  function sortEvents(now) {
+    var today = dayKey(now);
+    var happening = [];
+    var upcoming = [];
+    events.forEach(function (e) {
+      e.status = statusOf(e, now, today);
+      var here = isNow(e.status);
+      if (e.card) {
+        (here ? nowList : cardList).appendChild(e.card); // appended in date order, so each list stays sorted
+        e.card.hidden = e.status === 'past';
+        e.card.classList.remove('hp-card--feature');
+        setBadge(e.card, e.status);
+      }
+      if (e.row) {
+        e.row.hidden = e.status === 'past' || here;
+        setBadge(e.row, e.status);
+      }
+      if (here) happening.push(e);
+      else if (e.status !== 'past') upcoming.push(e);
+    });
+
+    if (happening.length) happening[0].card.classList.add('hp-card--feature');
+    nowList.classList.toggle('hp-now--several', happening.length > 1);
+    nowList.hidden = !happening.length;
+    nowEmpty.hidden = happening.length > 0;
+
+    // Nothing today or tomorrow: point to the next event instead
+    var next = upcoming[0];
+    nowEmpty.querySelector('[data-next-up]').hidden = !next;
+    nowEmpty.querySelector('[data-next-none]').hidden = !!next;
+    nowEmpty.querySelector('.hp-btn-outline').hidden = !next;
+    if (next) {
+      var link = nowEmpty.querySelector('[data-next-link]');
+      link.textContent = next.title;
+      link.href = '#event-' + next.id;
+      nowEmpty.querySelector('[data-next-when]').textContent = '· ' + when(next);
+    }
+
+    upcomingEmpty.hidden = upcoming.length > 0;
+    cardList.hidden = view !== 'cards' || !upcoming.length;
+    rowList.hidden = view !== 'list' || !upcoming.length;
+  }
+
+  // Cards / List switch, remembered on this device
+  var viewButtons = root.querySelectorAll('[data-view]');
+  function setView(value) {
+    view = value;
+    viewButtons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.view === view ? 'true' : 'false'); });
+    var any = upcomingEmpty.hidden;
+    cardList.hidden = view !== 'cards' || !any;
+    rowList.hidden = view !== 'list' || !any;
+    try { localStorage.setItem('happening-view', view); } catch (err) { /* private mode */ }
+  }
+  viewButtons.forEach(function (b) {
+    b.addEventListener('click', function () { setView(b.dataset.view); });
+  });
+
+  // ---- Add to calendar (.ics) ----------------------------------------------------------------------------
+
+  function icsText(s) {
+    return String(s || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+  }
+  function icsStamp(d) { return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''); }
+  // Lines over 75 octets are folded onto continuation lines that start with a space.
+  function icsFold(line) {
+    var out = [];
+    var chunk = '';
+    var bytes = 0;
+    Array.from(line).forEach(function (ch) {
+      var size = new TextEncoder().encode(ch).length;
+      if (bytes + size > 73) { out.push(chunk); chunk = ''; bytes = 0; }
+      chunk += ch;
+      bytes += size;
+    });
+    out.push(chunk);
+    return out.join('\r\n ');
+  }
+  function downloadIcs(e) {
+    var lines = [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Tasmania Welcome//Happening//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      'UID:' + e.id + '@tasmania-welcome',
+      'DTSTAMP:' + icsStamp(new Date()),
+      'DTSTART:' + icsStamp(e.startDate),
+      'DTEND:' + icsStamp(e.endDate),
+      'SUMMARY:' + icsText(e.title),
+      'DESCRIPTION:' + icsText(e.summary + (e.url ? '\n\n' + e.url : '')),
+      'LOCATION:' + icsText(e.format === 'online' ? S.online : e.location)
+    ];
+    if (e.url) lines.push('URL:' + e.url);
+    lines.push('END:VEVENT', 'END:VCALENDAR');
+    var blob = new Blob([lines.map(icsFold).join('\r\n') + '\r\n'], { type: 'text/calendar;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = e.id + '.ics';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  }
+
+  root.querySelectorAll('[data-ics]').forEach(function (button) {
+    var e = byId[button.dataset.ics];
+    if (!e || e.dateTbc) return;
+    button.hidden = false;
+  });
+  root.addEventListener('click', function (ev) {
+    var button = ev.target.closest('[data-ics]');
+    if (button && byId[button.dataset.ics]) downloadIcs(byId[button.dataset.ics]);
+  });
+
+  // ---- Calendar ------------------------------------------------------------------------------------------
+
+  var cal = root.querySelector('[data-calendar]');
+
+  // Everything that falls on a day: upcoming events on every day they run, archive events on their date
+  var dayItems = {};
+  var tbcByMonth = {};
+  function addItem(key, item) { (dayItems[key] = dayItems[key] || []).push(item); }
+  events.forEach(function (e) {
+    if (e.dateTbc) {
+      (tbcByMonth[e.startKey.slice(0, 7)] = tbcByMonth[e.startKey.slice(0, 7)] || []).push(e);
+      return;
+    }
+    for (var k = e.startKey; k <= e.endKey; k = addDays(k, 1)) addItem(k, { event: e });
+  });
+  data.archive.forEach(function (a) { addItem(a.date, { archive: a }); });
+  Object.keys(dayItems).forEach(function (k) {
+    dayItems[k].sort(function (x, y) { return (x.event ? x.event.startDate : 0) - (y.event ? y.event.startDate : 0); });
+  });
+
+  var years = [dayKey(new Date()).slice(0, 4)];
+  Object.keys(dayItems).forEach(function (k) { years.push(k.slice(0, 4)); });
+  Object.keys(tbcByMonth).forEach(function (k) { years.push(k.slice(0, 4)); });
+  var minYear = Math.min.apply(null, years.map(Number));
+  var maxYear = Math.max.apply(null, years.map(Number)) + 1;
+
+  function h(tag, attrs, children) {
+    var el = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (name) {
+      if (attrs[name] === false || attrs[name] == null) return;
+      if (name === 'text') el.textContent = attrs[name];
+      else if (name === 'html') el.innerHTML = attrs[name];
+      else el.setAttribute(name, attrs[name] === true ? '' : attrs[name]);
+    });
+    (children || []).forEach(function (c) { if (c) el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return el;
+  }
+  function option(value, label) { return h('option', { value: value, text: label }); }
+
+  var calView = 'month';
+  try { calView = localStorage.getItem('happening-cal-view') === 'week' ? 'week' : 'month'; } catch (err) { /* private mode */ }
+  var cursor;    // a day inside the period on screen
+  var selected;  // the day whose events are listed under the grid
+  var today;
+
+  var prevBtn = h('button', { type: 'button', class: 'cal-arrow', html: '<span aria-hidden="true">‹</span>' });
+  var nextBtn = h('button', { type: 'button', class: 'cal-arrow', html: '<span aria-hidden="true">›</span>' });
+  var todayBtn = h('button', { type: 'button', class: 'cal-today-btn', text: S.today });
+  var title = h('h3', { class: 'cal-title', 'aria-live': 'polite' });
+  var yearSel = h('select', { class: 'cal-select', 'aria-label': S.year });
+  var monthSel = h('select', { class: 'cal-select', 'aria-label': S.month });
+  var weekSel = h('select', { class: 'cal-select cal-select--week', 'aria-label': S.week });
+  var viewBtns = ['month', 'week'].map(function (v) {
+    return h('button', { type: 'button', class: 'cal-view-btn', 'data-cal-view': v, text: S[v] });
+  });
+  for (var y = minYear; y <= maxYear; y++) yearSel.appendChild(option(String(y), String(y)));
+  for (var m = 1; m <= 12; m++) monthSel.appendChild(option(pad(m), keyMonthName.format(new Date(Date.UTC(2026, m - 1, 1)))));
+
+  var weekdays = h('div', { class: 'cal-weekdays', 'aria-hidden': 'true' });
+  for (var i = 0; i < 7; i++) weekdays.appendChild(h('span', { text: keyWeekdayShort.format(new Date(keyTime(addDays('2026-11-02', i)))) }));
+  var tbcStrip = h('div', { class: 'cal-tbc', hidden: true });
+  var grid = h('div', { class: 'cal-grid' });
+  var legend = h('div', { class: 'cal-legend', 'aria-hidden': 'true' }, [
+    h('span', { class: 'cal-key cal-key--today', text: S.today }),
+    h('span', { class: 'cal-key cal-key--upcoming', text: S.upcoming }),
+    h('span', { class: 'cal-key cal-key--past', text: S.past })
+  ]);
+  var panelTitle = h('h4', { class: 'cal-panel-title' });
+  var panelList = h('ol', { class: 'hp-list cal-panel-list' });
+  var panel = h('div', { class: 'cal-panel', 'aria-live': 'polite' }, [panelTitle, panelList]);
+
+  cal.innerHTML = '';
+  cal.appendChild(h('div', { class: 'cal-toolbar' }, [
+    h('div', { class: 'cal-nav' }, [prevBtn, todayBtn, nextBtn, title]),
+    h('div', { class: 'cal-controls' }, [
+      h('div', { class: 'cal-pickers' }, [yearSel, monthSel, weekSel]),
+      h('div', { class: 'cal-view-toggle', role: 'group' }, viewBtns)
+    ])
+  ]));
+  cal.appendChild(tbcStrip);
+  var board = h('div', { class: 'cal-board' }, [weekdays, grid]);
+  cal.appendChild(board);
+  cal.appendChild(legend);
+  cal.appendChild(panel);
+
+  // The days on screen: whole weeks covering the month, or the one week
+  function visibleDays() {
+    var first = calView === 'month' ? mondayOf(monthStart(cursor)) : mondayOf(cursor);
+    var last = calView === 'month' ? addDays(mondayOf(monthEnd(cursor)), 6) : addDays(first, 6);
+    var days = [];
+    for (var k = first; k <= last; k = addDays(k, 1)) days.push(k);
+    return days;
+  }
+
+  function itemStatus(item) {
+    if (item.archive) return 'past';
+    return item.event.status === 'past' ? 'past' : isNow(item.event.status) ? 'now' : 'upcoming';
+  }
+
+  function chip(item, withTime) {
+    var status = itemStatus(item);
+    var text = item.archive ? item.archive.title : item.event.title;
+    var time = withTime && item.event && item.event.startKey === item.event.endKey ? fmtTime.format(item.event.startDate) + ' ' : '';
+    return h('span', { class: 'cal-chip cal-chip--' + status + (item.archive ? ' cal-chip--archive' : '') }, [
+      time ? h('span', { class: 'cal-chip-time', text: time }) : null,
+      h('span', { class: 'cal-chip-title', text: text })
+    ]);
+  }
+
+  function renderGrid() {
+    var days = visibleDays();
+    var month = cursor.slice(0, 7);
+    grid.innerHTML = '';
+    grid.className = 'cal-grid cal-grid--' + calView;
+    board.className = 'cal-board cal-board--' + calView;
+    days.forEach(function (key) {
+      var items = dayItems[key] || [];
+      var outside = calView === 'month' && key.slice(0, 7) !== month;
+      var label = keyFull.format(new Date(keyTime(key))) + (items.length ? ', ' + count(items.length) : '');
+      var cell = h('button', {
+        type: 'button',
+        class: 'cal-day' + (outside ? ' is-outside' : '') + (key === today ? ' is-today' : '') + (key < today ? ' is-past' : '') + (items.length ? ' has-items' : ''),
+        'data-day': key,
+        'aria-pressed': key === selected ? 'true' : 'false',
+        'aria-label': label,
+        'aria-current': key === today ? 'date' : false
+      });
+      var head = h('span', { class: 'cal-day-head', 'aria-hidden': 'true' }, [
+        calView === 'week' ? h('span', { class: 'cal-day-weekday', text: keyWeekdayShort.format(new Date(keyTime(key))) }) : null,
+        h('span', { class: 'cal-day-num', text: keyDayNum.format(new Date(keyTime(key))) })
+      ]);
+      cell.appendChild(head);
+      var body = h('span', { class: 'cal-day-items', 'aria-hidden': 'true' });
+      var limit = calView === 'month' ? 2 : items.length;
+      items.slice(0, limit).forEach(function (item) { body.appendChild(chip(item, calView === 'week')); });
+      if (items.length > limit) body.appendChild(h('span', { class: 'cal-more', text: S.more.replace('{n}', items.length - limit) }));
+      cell.appendChild(body);
+      grid.appendChild(cell);
+    });
+
+    // Events with only a month so far sit above the grid
+    var tbc = calView === 'month' ? (tbcByMonth[month] || []).filter(function (e) { return e.status !== 'past'; }) : [];
+    tbcStrip.hidden = !tbc.length;
+    tbcStrip.innerHTML = '';
+    if (tbc.length) {
+      tbcStrip.appendChild(h('span', { class: 'cal-tbc-label', text: S.tbcThisMonth }));
+      tbc.forEach(function (e) { tbcStrip.appendChild(h('a', { href: '#event-' + e.id, class: 'cal-chip cal-chip--upcoming', text: e.title })); });
+    }
+  }
+
+  // The selected day's events, in the same rows as the Upcoming list view
+  function panelItem(item) {
+    var e = item.event;
+    var a = item.archive;
+    var startDate = e ? e.startDate : new Date(keyTime(a.date));
+    var monthFmt = e ? fmtMonthShort : keyMonthShort;
+    var dayFmt = e ? fmtDayNum : keyDayNum;
+    var status = itemStatus(item);
+    var badge = a ? null : status === 'past' ? S.past : badgeText[e.status];
+    var actions = [];
+    if (e && e.url) {
+      actions.push(h('a', { class: 'hp-row-link', href: e.url, target: '_blank', rel: 'noopener' }, [
+        S.official + ' ', h('span', { 'aria-hidden': 'true', text: '↗' }), h('span', { class: 'sr-only', text: ' (' + S.newTab + ')' })
+      ]));
+    }
+    if (e && status !== 'past' && !e.dateTbc) actions.push(h('button', { type: 'button', class: 'hp-row-more', 'data-ics': e.id, text: S.addToCalendar }));
+    var howItWent = a ? a.url : e.previous;
+    if (howItWent) actions.push(h('a', { class: a ? 'hp-row-link hp-row-link--ghost' : 'hp-row-more', href: howItWent, text: S.seeHowItWent + ' →' }));
+
+    return h('li', { class: 'hp-row' + (status === 'past' ? ' hp-row--past' : '') }, [
+      h('span', { class: 'hp-row-date' }, [
+        h('span', { class: 'hp-row-month', text: monthFmt.format(startDate) }),
+        h('span', { class: 'hp-row-day', text: e && e.dateTbc ? '?' : dayFmt.format(startDate) })
+      ]),
+      h('span', { class: 'hp-row-main' }, [
+        h('span', { class: 'hp-row-title', text: e ? e.title : a.title }),
+        h('span', { class: 'hp-row-host', text: e ? e.type + (e.host ? ' · ' + e.host : '') : S.archived })
+      ]),
+      h('span', { class: 'hp-row-place', text: e ? (e.format === 'online' ? S.online : e.location) : '' }),
+      h('span', { class: 'hp-row-when' }, [
+        e ? h('time', { datetime: e.start, text: when(e, true) }) : null,
+        badge ? h('span', { class: 'hp-status hp-status--' + (status === 'past' ? 'past' : e.status), text: badge }) : null
+      ]),
+      h('span', { class: 'hp-row-actions' }, actions)
+    ]);
+  }
+
+  function renderPanel() {
+    panelTitle.textContent = keyFull.format(new Date(keyTime(selected)));
+    panelList.innerHTML = '';
+    var items = dayItems[selected] || [];
+    if (!items.length) panelList.appendChild(h('li', { class: 'cal-panel-none', text: S.noEvents }));
+    items.forEach(function (item) { panelList.appendChild(panelItem(item)); });
+  }
+
+  function renderControls() {
+    var first = mondayOf(cursor);
+    title.textContent = calView === 'month'
+      ? keyMonthYear.format(new Date(keyTime(cursor)))
+      : range(keyDayMonthYear, new Date(keyTime(first)), new Date(keyTime(addDays(first, 6))));
+    prevBtn.setAttribute('aria-label', calView === 'month' ? S.prevMonth : S.prevWeek);
+    nextBtn.setAttribute('aria-label', calView === 'month' ? S.nextMonth : S.nextWeek);
+    yearSel.value = cursor.slice(0, 4);
+    monthSel.value = cursor.slice(5, 7);
+    viewBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.calView === calView ? 'true' : 'false'); });
+
+    // Week picker: the weeks that touch the chosen month
+    weekSel.hidden = calView !== 'week';
+    weekSel.innerHTML = '';
+    var start = mondayOf(monthStart(cursor));
+    for (var k = start; k <= monthEnd(cursor); k = addDays(k, 7)) {
+      weekSel.appendChild(option(k, range(keyDayMonth, new Date(keyTime(k)), new Date(keyTime(addDays(k, 6))))));
+    }
+    weekSel.value = first;
+    if (weekSel.value !== first) { // a week that starts in the previous month
+      weekSel.insertBefore(option(first, range(keyDayMonth, new Date(keyTime(first)), new Date(keyTime(addDays(first, 6))))), weekSel.firstChild);
+      weekSel.value = first;
+    }
+  }
+
+  // Keep the selected day on screen: today if it's showing, else the first day with something on, else the first day
+  function settleSelection() {
+    var days = visibleDays().filter(function (k) { return calView === 'week' || k.slice(0, 7) === cursor.slice(0, 7); });
+    if (days.indexOf(selected) !== -1) return;
+    selected = days.indexOf(today) !== -1 ? today
+      : days.filter(function (k) { return dayItems[k]; })[0] || days[0];
+  }
+
+  function render() {
+    settleSelection();
+    renderControls();
+    renderGrid();
+    renderPanel();
+  }
+
+  function go(key) { cursor = key; render(); }
+
+  prevBtn.addEventListener('click', function () { go(calView === 'month' ? addMonths(cursor, -1) : addDays(cursor, -7)); });
+  nextBtn.addEventListener('click', function () { go(calView === 'month' ? addMonths(cursor, 1) : addDays(cursor, 7)); });
+  todayBtn.addEventListener('click', function () { selected = today; go(today); });
+  yearSel.addEventListener('change', function () { go(yearSel.value + '-' + monthSel.value + '-01'); });
+  monthSel.addEventListener('change', function () { go(yearSel.value + '-' + monthSel.value + '-01'); });
+  weekSel.addEventListener('change', function () { go(weekSel.value); });
+  viewBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      calView = b.dataset.calView;
+      try { localStorage.setItem('happening-cal-view', calView); } catch (err) { /* private mode */ }
+      // Switching to week view opens the week of the selected day
+      go(calView === 'week' && selected ? selected : cursor);
+    });
+  });
+  grid.addEventListener('click', function (ev) {
+    var cell = ev.target.closest('[data-day]');
+    if (!cell) return;
+    selected = cell.dataset.day;
+    grid.querySelectorAll('[data-day]').forEach(function (c) { c.setAttribute('aria-pressed', c === cell ? 'true' : 'false'); });
+    renderPanel();
+  });
+
+  // ---- Start, and keep up as the clock moves on ----------------------------------------------------------
+
+  // Every minute the events are re-sorted; the calendar is only redrawn when the date changes,
+  // so it doesn't move under someone who is using it.
+  function refresh() {
+    var now = new Date();
+    var newToday = dayKey(now);
+    sortEvents(now);
+    if (newToday === today) return;
+    var follow = !cursor || cursor.slice(0, 7) === (today || newToday).slice(0, 7);
+    today = newToday;
+    if (follow) { cursor = today; selected = today; }
+    render();
+  }
+
+  try { if (localStorage.getItem('happening-view') === 'list') view = 'list'; } catch (err) { /* private mode */ }
+  refresh();
+  setView(view);
+  setInterval(refresh, 60000);
+})();

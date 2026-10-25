@@ -1,0 +1,19 @@
+{{- /*
+  Dark red "pass it on" bar with a copy-link button (events list, Happening page).
+  Call with a dict:
+    page     the page whose link is copied
+    message  the line under the "Share this page" title
+  Class names avoid "share-": ad blockers' social filters hide those.
+*/ -}}
+<section class="container">
+  <div class="passon-bar">
+    <div class="passon-copy">
+      <span class="passon-eyebrow">{{ i18n "eventsShareTitle" }}</span>
+      <p class="passon-message">{{ .message }}</p>
+    </div>
+    <div class="passon-action">
+      <span class="passon-url" title="{{ .page.Permalink }}">{{ .page.Permalink }}</span>
+      <button type="button" class="passon-btn" data-copy="{{ .page.Permalink }}" data-copied="{{ i18n "eventsLinkCopied" }}">{{ i18n "eventsCopyLink" }}</button>
+    </div>
+  </div>
+</section>

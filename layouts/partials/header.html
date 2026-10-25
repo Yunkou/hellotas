@@ -1,14 +1,21 @@
 <header class="site-header">
   <nav class="nav">
-    <a href="{{ .Site.Home.RelPermalink }}" class="logo">{{ i18n "siteName" }}</a>
-    <div class="nav-links">
-      <a href="{{ .Site.Home.RelPermalink }}">{{ i18n "home" }}</a>
-      <a href="{{ with .Site.GetPage "/journey" }}{{ .RelPermalink }}{{ else }}{{ relURL "journey/" }}{{ end }}">{{ i18n "journey" }}</a>
-      <a href="{{ with .Site.GetPage "/stories" }}{{ .RelPermalink }}{{ else }}{{ relURL "stories/" }}{{ end }}">{{ i18n "stories" }}</a>
-      <a href="{{ with .Site.GetPage "/events" }}{{ .RelPermalink }}{{ else }}{{ relURL "events/" }}{{ end }}">{{ i18n "events" }}</a>
-      <a href="{{ with .Site.GetPage "/volunteering" }}{{ .RelPermalink }}{{ else }}{{ relURL "volunteering/" }}{{ end }}">{{ i18n "volunteering" }}</a>
-      <a href="{{ with .Site.GetPage "/sports" }}{{ .RelPermalink }}{{ else }}{{ relURL "sports/" }}{{ end }}">{{ i18n "sports" }}</a>
-    </div>
+    <a href="{{ .Site.Home.RelPermalink }}" class="logo"><img src="{{ "images/brand/logo.svg" | relURL }}" alt="{{ i18n "siteName" }}" width="330" height="84"></a>
+    {{- /* Menu links, defined once: shown inline on wide screens and in the menu panel on narrower ones */ -}}
+    {{- $links := slice (dict "key" "home" "url" .Site.Home.RelPermalink "current" .IsHome) -}}
+    {{- range slice "journey" "stories" "events" "volunteering" "sports" "happening" -}}
+      {{- $url := relURL (printf "%s/" .) -}}
+      {{- with site.GetPage (printf "/%s" .) }}{{ $url = .RelPermalink }}{{ end -}}
+      {{- $links = $links | append (dict "key" . "url" $url "current" (eq $.Section .)) -}}
+    {{- end }}
+    {{- define "partials/nav-link-items" -}}
+      {{- range . -}}
+      <a href="{{ .url }}"{{ if eq .key "happening" }} class="nav-live"{{ end }}{{ if .current }} aria-current="page"{{ end }}>
+        {{- if eq .key "happening" }}<svg class="live-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle class="live-ring live-ring--outer" cx="10" cy="10" r="8.25"/><circle class="live-ring live-ring--inner" cx="10" cy="10" r="5.25"/><circle class="live-dot" cx="10" cy="10" r="2.5"/></svg>{{ end -}}
+        {{ i18n .key }}</a>
+      {{- end -}}
+    {{- end }}
+    <div class="nav-links">{{ partial "nav-link-items" $links }}</div>
     <div class="nav-right">
       {{ $page := . }}
       <details class="lang-picker">
@@ -37,8 +44,16 @@
         </div>
       </details>
       <a href="#" class="btn-primary"><span class="label-full">{{ i18n "shareYourStory" }}</span><span class="label-short" aria-hidden="true">{{ i18n "shareShort" }}</span></a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="{{ i18n "menuOpen" }}" data-label-open="{{ i18n "menuOpen" }}" data-label-close="{{ i18n "menuClose" }}">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    {{- partial "nav-link-items" $links -}}
+    {{- /* On the smallest phones the header's Share button moves in here */ -}}
+    <a href="#" class="btn-primary mobile-menu-cta">{{ i18n "shareYourStory" }}</a>
+  </div>
   <script>
     document.addEventListener('click', function (e) {
       document.querySelectorAll('details.lang-picker').forEach(function (d) {

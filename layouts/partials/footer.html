@@ -1,7 +1,7 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-logo">{{ i18n "siteName" }}</div>
+      <div class="footer-logo"><img src="{{ "images/brand/logo.svg" | relURL }}" alt="{{ i18n "siteName" }}" width="330" height="84"></div>
       <p>{{ i18n "footerTagline" }}</p>
     </div>
     <div class="footer-links">
@@ -14,6 +14,7 @@
       <div class="footer-col">
         <a href="{{ with .Site.GetPage "/volunteering" }}{{ .RelPermalink }}{{ else }}{{ relURL "volunteering/" }}{{ end }}">{{ i18n "volunteering" }}</a>
         <a href="{{ with .Site.GetPage "/sports" }}{{ .RelPermalink }}{{ else }}{{ relURL "sports/" }}{{ end }}">{{ i18n "sports" }}</a>
+        <a href="{{ with .Site.GetPage "/happening" }}{{ .RelPermalink }}{{ else }}{{ relURL "happening/" }}{{ end }}">{{ i18n "happening" }}</a>
         <a href="{{ with .Site.GetPage "/for-staff" }}{{ .RelPermalink }}{{ else }}{{ relURL "for-staff/" }}{{ end }}">{{ i18n "forStaff" }}</a>
       </div>
       <div class="footer-col">

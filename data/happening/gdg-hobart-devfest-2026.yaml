@@ -1,0 +1,26 @@
+title:
+  en: "GDG Hobart DevFest 2026: AI-Powered Development & Digital Analytics"
+  zh: "GDG Hobart DevFest 2026：AI驱动开发与数字分析"
+  ne: "GDG Hobart DevFest 2026: AI-संचालित विकास र डिजिटल एनालिटिक्स"
+start: "2026-11-19T17:15:00+11:00"
+end: "2026-11-19T18:45:00+11:00"
+type: "workshop"
+format: "in_person"
+topics: [ai, development, data]
+host: "GDG Hobart"
+location:
+  en: "Room 132, Centenary Building, UTAS Sandy Bay"
+  zh: "UTAS Sandy Bay校区Centenary Building 132室"
+  ne: "कोठा 132, Centenary Building, UTAS स्यान्डी बे"
+cost:
+  en: "Free · RSVP required, limited seats"
+  zh: "免费 · 名额有限，需报名"
+  ne: "निःशुल्क · सीमित सिट, RSVP आवश्यक"
+summary:
+  en: "Get hands-on with Gemini in Android Studio (Kartik Arora, Bilue), then turn Google Analytics and Play Console data into Looker Studio dashboards (Cynthia Wilanda, MyState)."
+  zh: "动手体验Android Studio中的Gemini（Bilue的Kartik Arora），再学习把Google Analytics和Play Console数据做成Looker Studio仪表板（MyState的Cynthia Wilanda）。"
+  ne: "Android Studio मा Gemini सँग प्रत्यक्ष अभ्यास (Bilue का Kartik Arora), त्यसपछि Google Analytics र Play Console को डेटालाई Looker Studio ड्यासबोर्डमा बदल्ने (MyState की Cynthia Wilanda)।"
+image: "/images/happening/gdg-hobart-devfest-2026/gdg-hobart-devfest-2026-1.jpg"
+url: "https://gdg.community.dev/events/details/google-gdg-hobart-presents-devfest-2026-explore-ai-powered-development-amp-digital-analytics/"
+previous: "events/2025/gdg-hobart-devfest"
+previous_photos: 2

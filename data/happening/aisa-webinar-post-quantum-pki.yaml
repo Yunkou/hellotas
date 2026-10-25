@@ -1,0 +1,20 @@
+title:
+  en: "AISA Webinar: The Good, the Broken and the Hybrid"
+  zh: "AISA网络研讨会：后量子密码PKI的实战抉择"
+  ne: "AISA वेबिनार: पोस्ट-क्वान्टम क्रिप्टोग्राफी PKI का वास्तविक निर्णयहरू"
+start: "2026-10-28T12:00:00+11:00"
+end: "2026-10-28T13:00:00+11:00"
+type: "webinar"
+format: "online"
+topics: [cyber]
+host: "AISA Online Branch"
+cost:
+  en: "Free for AISA members"
+  zh: "AISA会员免费"
+  ne: "AISA सदस्यहरूका लागि निःशुल्क"
+summary:
+  en: "Keyfactor's Tomas Gustavsson and Sven Rajala walk through the real decisions behind deploying post-quantum cryptography in PKI: which algorithms to choose, and whether to go hybrid."
+  zh: "Keyfactor的Tomas Gustavsson和Sven Rajala讲解在PKI中部署后量子密码时的实际抉择：选用哪些算法，以及是否采用混合方案。"
+  ne: "Keyfactor का Tomas Gustavsson र Sven Rajala ले PKI मा पोस्ट-क्वान्टम क्रिप्टोग्राफी लागू गर्दा गरिने वास्तविक निर्णयहरू — कुन एल्गोरिदम छान्ने र हाइब्रिड अपनाउने कि नअपनाउने — बारे बताउनुहुन्छ।"
+image: "/images/happening/aisa-webinar-post-quantum-pki/aisa-webinar-post-quantum-pki-1.jpg"
+url: "https://www.aisa.org.au/Event.aspx?EventKey=OB260826"

@@ -1,0 +1,47 @@
+{{- /*
+  One upcoming event (Happening page). Takes the event dict built in layouts/happening/list.html.
+  The script moves the card into "Happening Now" when it's on today or tomorrow, hides it once it's over,
+  and rewrites the date text and status badge in the visitor's language.
+*/ -}}
+{{- $start := time .start -}}
+<article class="hp-card" id="event-{{ .id }}" data-event="{{ .id }}" data-start="{{ .start }}" data-end="{{ .end }}"{{ if .dateTbc }} data-tbc{{ end }}>
+  <div class="hp-card-media{{ if .photos }} hp-card-media--photos{{ else }} hp-card-media--{{ .format }}{{ end }}">
+    {{ with .photos }}
+    {{ partial "carousel.html" (dict "images" . "captions" $.captions "alt" $.title "class" "carousel--fit" "lazy" true "backdrop" true "lightbox" true) }}
+    {{ else }}
+    <svg class="hp-card-glyph" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true" focusable="false">
+      {{- if eq $.format "online" -}}
+      <rect x="6" y="9" width="36" height="24" rx="3"/><path d="M18 39h12M24 33v6"/><path d="M20 18l-4 3 4 3M28 18l4 3-4 3"/>
+      {{- else -}}
+      <path d="M24 42s-13-11.2-13-21a13 13 0 0 1 26 0c0 9.8-13 21-13 21z"/><circle cx="24" cy="21" r="5"/>
+      {{- end -}}
+    </svg>
+    {{ with .host }}<span class="hp-card-host" aria-hidden="true">{{ . }}</span>{{ end }}
+    {{ end }}
+  </div>
+  <div class="hp-card-body">
+    <div class="hp-tags">
+      <span class="hp-status" data-status hidden></span>
+      <span class="tag tag-type">{{ .type }}</span>
+      {{ range .topics }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
+    </div>
+    <div class="hp-card-head">
+      <span class="hp-date" aria-hidden="true">
+        <span class="hp-date-month" data-month>{{ $start.Format "Jan" }}</span>
+        <span class="hp-date-day" data-day>{{ $start.Format "2" }}</span>
+      </span>
+      <h3 class="hp-card-title">{{ .title }}</h3>
+    </div>
+    <ul class="hp-facts">
+      <li><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><rect x="1.75" y="2.75" width="12.5" height="11.5" rx="2"/><path d="M1.75 6.25h12.5M5 1.25v3M11 1.25v3"/></svg><time datetime="{{ .start }}" data-when>{{ .fallbackDate }}</time></li>
+      <li><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false">{{ if eq .format "online" }}<rect x="1.75" y="2.75" width="12.5" height="8.5" rx="1.5"/><path d="M5.5 14h5M8 11.25V14"/>{{ else }}<path d="M8 14.5s-4.75-4-4.75-7.75a4.75 4.75 0 0 1 9.5 0C12.75 10.5 8 14.5 8 14.5z"/><circle cx="8" cy="6.75" r="1.6"/>{{ end }}</svg><span>{{ if eq .format "online" }}{{ .formatLabel }}{{ else }}{{ .location }}{{ end }}{{ with .host }} · {{ . }}{{ end }}</span></li>
+      {{ with .cost }}<li><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M8.6 1.75H13a1.25 1.25 0 0 1 1.25 1.25v4.4a1.25 1.25 0 0 1-.37.88l-6.1 6.1a1.25 1.25 0 0 1-1.77 0L1.62 10a1.25 1.25 0 0 1 0-1.77l6.1-6.1a1.25 1.25 0 0 1 .88-.37z"/><circle cx="10.75" cy="5.25" r="1.1"/></svg><span>{{ . }}</span></li>{{ end }}
+    </ul>
+    {{ with .summary }}<p class="hp-summary">{{ . }}</p>{{ end }}
+    <div class="hp-actions">
+      {{ with .url }}<a class="btn-primary hp-btn" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "happeningOfficialPage" }} <span aria-hidden="true">↗</span><span class="sr-only"> ({{ i18n "happeningNewTab" }})</span></a>{{ end }}
+      <button type="button" class="hp-btn-outline" data-ics="{{ .id }}" hidden>{{ i18n "happeningAddToCalendar" }}</button>
+    </div>
+    {{ with .previous }}<a class="hp-prev-link" href="{{ . }}">{{ i18n "happeningHowItWent" }} →</a>{{ end }}
+  </div>
+</article>
