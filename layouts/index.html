@@ -81,16 +81,20 @@
         <a href="{{ "stories/" | relLangURL }}" class="home-stories-link">{{ i18n "homeStoriesViewAll" }}</a>
       </div>
       <div class="home-stories-grid">
-        {{ range site.Data.homepage.stories }}
-        <article class="home-story-card{{ if .placeholder }} home-story-card--placeholder{{ end }}">
+        {{ $lang := site.Language.Lang }}
+        {{ range first 3 site.Data.stories.items }}
+        {{ $name := .name }}
+        {{ with .localName }}{{ with index . $lang }}{{ $name = . }}{{ end }}{{ end }}
+        <article class="home-story-card">
           <div class="home-story-image">
-            <img src="{{ .image | relURL }}" alt="{{ i18n .nameKey }}" loading="lazy" width="360" height="220">
+            <img src="{{ .image | relURL }}" alt="{{ $name }}" loading="lazy" width="360" height="220"{{ with .imagePosition }} style="object-position: {{ . | safeCSS }}"{{ end }}>
             <span class="home-story-year">{{ .year }}</span>
           </div>
           <div class="home-story-body">
-            <h3>{{ i18n .nameKey }}</h3>
-            <p class="home-story-role">{{ i18n .roleKey }}</p>
-            <blockquote>{{ i18n .quoteKey }}</blockquote>
+            <h3>{{ $name }}</h3>
+            <p class="home-story-role">{{ index .title $lang | default .title.en }}</p>
+            <blockquote>“{{ .quote }}”</blockquote>
+            <a class="home-story-more" href="{{ .url }}" target="_blank" rel="noopener">{{ i18n "storiesReadFull" }}</a>
           </div>
         </article>
         {{ end }}

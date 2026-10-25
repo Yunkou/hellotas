@@ -29,25 +29,7 @@ steps:
     ctaPath: stories/
     final: true
 
-stories:
-  - image: images/home/story-luoyan-graduation.jpg
-    year: "2026"
-    nameKey: homeStory1Name
-    roleKey: homeStory1Role
-    quoteKey: homeStory1Quote
-    placeholder: false
-  - image: images/home/story-bronson.jpg
-    year: "2025"
-    nameKey: homeStory2Name
-    roleKey: homeStory2Role
-    quoteKey: homeStory2Quote
-    placeholder: true
-  - image: images/home/story-zoe.jpg
-    year: "2024"
-    nameKey: homeStory3Name
-    roleKey: homeStory3Role
-    quoteKey: homeStory3Quote
-    placeholder: true
+# Graduate stories now come from data/stories.yaml (issue #36).
 
 # Photo credits shown in the "Sources & Acknowledgements" block (issue #20).
 # url is optional; items without a url render as plain text.
