@@ -1,10 +1,13 @@
 # Navigation
 home: "गृहपृष्ठ"
 journey: "यात्रा"
+community: "समुदाय"
 stories: "कथाहरू"
 events: "कार्यक्रमहरू"
+industryEvents: "उद्योग कार्यक्रमहरू"
 volunteering: "स्वयंसेवा"
 sports: "खेलकुद"
+afterClass: "कक्षापछिको गतिविधि"
 forStaff: "कर्मचारीहरूका लागि"
 
 # Header

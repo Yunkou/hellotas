@@ -1,10 +1,13 @@
 # Navigation
 home: "Home"
 journey: "Journey"
+community: "Community"
 stories: "Stories"
 events: "Events"
+industryEvents: "Industry Events"
 volunteering: "Volunteering"
 sports: "Sports"
+afterClass: "After Class"
 forStaff: "For Staff"
 
 # Header
