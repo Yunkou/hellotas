@@ -1,19 +1,78 @@
 step1:
+  firstSteps:
+    - icon: "📱"
+      titleKey: journeyStep1First1Title
+      textKey: journeyStep1First1Text
+      links:
+        - { labelKey: journeyStep1LinkMovingGuide, href: "https://www.utas.edu.au/uni-life/moving" }
+    - icon: "🏠"
+      titleKey: journeyStep1First2Title
+      textKey: journeyStep1First2Text
+      links:
+        - { labelKey: journeyStep1LinkFindRoom, href: "#accommodation" }
+    - icon: "🏦"
+      titleKey: journeyStep1First3Title
+      textKey: journeyStep1First3Text
+      links:
+        - { label: CommBank, href: "https://www.commbank.com.au/moving-to-australia/study-in-australia.html" }
+        - { labelKey: journeyStep1LinkHobartBranch, href: "https://www.commbank.com.au/personal/locate-us/tas/hobart/067000.html" }
+    - icon: "🧾"
+      titleKey: journeyStep1First4Title
+      textKey: journeyStep1First4Text
+      links:
+        - { labelKey: journeyStep1LinkAto, href: "https://www.ato.gov.au/individuals-and-families/tax-file-number/apply-for-a-tfn/foreign-passport-holders-permanent-migrants-and-temporary-visitors-tfn-application" }
+    - icon: "🚌"
+      titleKey: journeyStep1First5Title
+      textKey: journeyStep1First5Text
+      links:
+        - { labelKey: journeyStep1LinkMetro, href: "https://www.metrotas.com.au/communication/blog/2026/free-bus-travel-2026/" }
+    - icon: "💼"
+      titleKey: journeyStep1First6Title
+      textKey: journeyStep1First6Text
+      links:
+        - { label: Seek, href: "https://www.seek.com.au/" }
+        - { label: Indeed, href: "https://au.indeed.com/" }
+        - { label: Jora, href: "https://au.jora.com/" }
   priorities:
-    - image: images/journey/step-1/step-1-survival-income.jpg
+    - image: images/journey/step-1/step-1-income-banner.jpg
+      imagePosition: "50% 72%"
       altKey: journeyStep1Priority1ImageAlt
       titleKey: journeyStep1Priority1Title
       tagKey: journeyStep1Priority1Tag
       tagClass: tag-free
       textKey: journeyStep1Priority1Text
-      subKey: journeyStep1Priority1Sub
-    - image: images/journey/step-1/step-1-accommodation.jpg
+      tips:
+        - { icon: "📄", titleKey: journeyStep1IncomeResumeTitle, textKey: journeyStep1IncomeResumeText }
+        - { icon: "🚪", titleKey: journeyStep1IncomeApplyTitle, textKey: journeyStep1IncomeApplyText }
+        - { icon: "🛵", titleKey: journeyStep1IncomeDeliveryTitle, textKey: journeyStep1IncomeDeliveryText }
+      linksLabelKey: journeyStep1IncomeLinksLabel
+      links:
+        - { label: Seek, href: "https://www.seek.com.au/" }
+        - { label: Indeed, href: "https://au.indeed.com/" }
+        - { label: Jora, href: "https://au.jora.com/" }
+        - { label: UTAS Careers, href: "https://www.utas.edu.au/uni-life/support-and-wellbeing/career-guidance" }
+      warnKeys:
+        - journeyStep1IncomeWarn1
+        - journeyStep1IncomeWarn2
+    - id: accommodation
+      image: images/journey/step-1/step-1-accommodation-banner.jpg
+      imagePosition: "50% 45%"
       altKey: journeyStep1Priority2ImageAlt
       titleKey: journeyStep1Priority2Title
       tagKey: journeyStep1Priority2Tag
       tagClass: tag-normal
       textKey: journeyStep1Priority2Text
-      subKey: journeyStep1Priority2Sub
+      tips:
+        - { icon: "🔍", titleKey: journeyStep1HomeSearchTitle, textKey: journeyStep1HomeSearchText }
+        - { icon: "👥", titleKey: journeyStep1HomeGroupsTitle, textKey: journeyStep1HomeGroupsText }
+        - { icon: "🎓", titleKey: journeyStep1HomeAskTitle, textKey: journeyStep1HomeAskText }
+      linksLabelKey: journeyStep1HomeLinksLabel
+      links:
+        - { label: Flatmates, href: "https://flatmates.com.au/" }
+        - { label: Facebook Marketplace, href: "https://www.facebook.com/marketplace/hobart/propertyrentals" }
+      warnKeys:
+        - journeyStep1HomeWarn1
+        - journeyStep1HomeWarn2
   basics:
     - image: images/journey/step-1/step-1-eat.jpg
       altKey: journeyStep1EatImageAlt
@@ -49,6 +108,7 @@ step1:
     - journeyStep1Checklist3
     - journeyStep1Checklist4
     - journeyStep1Checklist5
+    - journeyStep1Checklist6
 
 step2:
   why:
@@ -56,95 +116,53 @@ step2:
     textKey: journeyStep2WhyText
   sections:
     - titleKey: journeyStep2Section1Title
-      activities:
-        - image: images/journey/step-2/step-2-lingo.jpg
-          altKey: journeyStep2LingoImageAlt
+      places:
+        - id: language-lounge
           titleKey: journeyStep2LingoTitle
-          tagKey: journeyStep2LingoTag
-          tagClass: tag-free
+          tags:
+            - { key: tagFree, class: tag-free }
+            - { key: tagOnCampus, class: tag-normal }
           textKey: journeyStep2LingoText
+          photos:
+            - { src: images/journey/step-2/step-2-lingo.jpg, altKey: journeyStep2LingoImageAlt }
+            - { src: images/journey/utas/utas-students-hobart.jpg, altKey: journeyStep2LingoPhoto2Alt }
+            - { src: images/journey/utas/utas-sdg-workshop.jpg, altKey: journeyStep2LingoPhoto3Alt }
+          map: { query: "Morris Miller Library, University of Tasmania, Sandy Bay TAS 7005" }
           details:
-            - labelKey: journeyStep2WhenLabel
-              valueKey: journeyStep2LingoWhen
-            - labelKey: journeyStep2WhereLabel
-              valueKey: journeyStep2LingoWhere
-        - image: images/journey/step-2/step-2-library.jpg
-          altKey: journeyStep2LibraryImageAlt
-          titleKey: journeyStep2LibraryTitle
-          tagKey: journeyStep2LibraryTag
-          tagClass: tag-free
-          textKey: journeyStep2LibraryText
-          details:
-            - labelKey: journeyStep2WhenLabel
-              valueKey: journeyStep2LibraryWhen
-            - labelKey: journeyStep2WhereLabel
-              valueKey: journeyStep2LibraryAddress
-          mapImage: images/journey/step-2/step-2-map-library.jpg
-          mapAltKey: journeyStep2LibraryMapAlt
-          contact:
-            - labelKey: journeyStep2AddressLabel
-              valueKey: journeyStep2LibraryAddress
-            - labelKey: journeyStep2PhoneLabel
-              valueKey: journeyStep2LibraryPhone
-              href: tel:+61361655597
-            - labelKey: journeyStep2EmailLabel
-              valueKey: journeyStep2LibraryEmail
-              href: mailto:hobartlend.library@libraries.tas.gov.au
-            - labelKey: journeyStep2LinkLabel
-              valueKey: journeyStep2LibraryLink
-              href: https://libraries.tas.gov.au/locations/hobart-library/
-        - image: images/journey/step-2/step-2-mathers.jpg
-          altKey: journeyStep2MathersImageAlt
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep2LingoWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep2LingoWhere }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep2LingoLink, href: "https://www.utas.edu.au/students/international" }
+        - id: mathers-house
           titleKey: journeyStep2MathersTitle
-          tagKey: journeyStep2MathersTag
-          tagClass: tag-normal
+          tags:
+            - { key: tagVolunteer, class: tag-type }
+            - { key: tagLowCostLunch, class: tag-normal }
           textKey: journeyStep2MathersText
+          photos:
+            - { src: images/journey/step-2/step-2-mathers.jpg, altKey: journeyStep2MathersImageAlt }
+          map: { query: "Mathers House, 108 Bathurst Street, Hobart TAS 7000" }
           details:
-            - labelKey: journeyStep2WhenLabel
-              valueKey: journeyStep2MathersWhen
-            - labelKey: journeyStep2WhereLabel
-              valueKey: journeyStep2MathersAddress
-          mapImage: images/journey/step-2/step-2-map-mathers.jpg
-          mapAltKey: journeyStep2MathersMapAlt
-          contact:
-            - labelKey: journeyStep2AddressLabel
-              valueKey: journeyStep2MathersAddress
-            - labelKey: journeyStep2PhoneLabel
-              valueKey: journeyStep2MathersPhone
-              href: tel:+61362341441
-            - labelKey: journeyStep2EmailLabel
-              valueKey: journeyStep2MathersEmail
-              href: mailto:mathersplace@hobartcity.com.au
-            - labelKey: journeyStep2LinkLabel
-              valueKey: journeyStep2MathersLink
-              href: https://www.hobartcity.com.au/Things-To-Do/Mathers-House
-    - titleKey: journeyStep2Section2Title
-      activities:
-        - image: images/journey/step-2/step-2-redcross.jpg
-          altKey: journeyStep2RedCrossImageAlt
-          titleKey: journeyStep2RedCrossTitle
-          tagKey: journeyStep2RedCrossTag
-          tagClass: tag-type
-          textKey: journeyStep2RedCrossText
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep2MathersWhen }
+            - { labelKey: journeyStep2AddressLabel, valueKey: journeyStep2MathersAddress }
+            - { labelKey: journeyStep2PhoneLabel, valueKey: journeyStep2MathersPhone, href: "tel:+61362341441" }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep2MathersLink, href: "https://www.hobartcity.com.au/Things-To-Do/Mathers-House" }
+        - id: source-eco-hub
+          titleKey: journeyStep2EcoHubTitle
+          tags:
+            - { key: tagVolunteer, class: tag-type }
+          textKey: journeyStep2EcoHubText
+          photos:
+            - { src: images/journey/step-2/step-2-ecohub-1.jpg, altKey: journeyStep2EcoHubPhoto1Alt }
+            - { src: images/journey/step-2/step-2-ecohub-2.jpg, altKey: journeyStep2EcoHubPhoto2Alt }
+            - { src: images/journey/step-2/step-2-ecohub-3.jpg, altKey: journeyStep2EcoHubPhoto3Alt }
+            - { src: images/journey/step-2/step-2-ecohub-4.jpg, altKey: journeyStep2EcoHubPhoto4Alt }
+            - { src: images/journey/step-2/step-2-ecohub-5.jpg, altKey: journeyStep2EcoHubPhoto5Alt }
+            - { src: images/journey/step-2/step-2-ecohub-6.jpg, altKey: journeyStep2EcoHubPhoto6Alt }
+          map: { query: "Source Eco Hub, 12 French Street, Sandy Bay TAS 7005" }
           details:
-            - labelKey: journeyStep2WhenLabel
-              valueKey: journeyStep2RedCrossWhen
-            - labelKey: journeyStep2WhereLabel
-              valueKey: journeyStep2RedCrossAddress
-          mapImage: images/journey/step-2/step-2-map-redcross.jpg
-          mapAltKey: journeyStep2RedCrossMapAlt
-          contact:
-            - labelKey: journeyStep2AddressLabel
-              valueKey: journeyStep2RedCrossAddress
-            - labelKey: journeyStep2PhoneLabel
-              valueKey: journeyStep2RedCrossPhone
-              href: tel:1300559992
-            - labelKey: journeyStep2EmailLabel
-              valueKey: journeyStep2RedCrossEmail
-              href: mailto:agedcarevolunteers@redcross.org.au
-            - labelKey: journeyStep2LinkLabel
-              valueKey: journeyStep2RedCrossLink
-              href: https://www.redcross.org.au/agedcarevolunteer
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep2EcoHubWhen }
+            - { labelKey: journeyStep2AddressLabel, valueKey: journeyStep2EcoHubAddress }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep2EcoHubLink, href: "https://ecohubsource.org.au/" }
   people:
     - image: images/journey/step-2/step-2-people-tusa.jpg
       altKey: journeyStep2PeopleTusaImageAlt
@@ -180,3 +198,85 @@ step2:
     titleKey: journeyStep2NextTitle
     textKey: journeyStep2NextText
     ctaKey: journeyStep2NextCta
+step3:
+  sections:
+    - titleKey: journeyStep3SectionTechTitle
+      places:
+        - id: utas-motorsport
+          titleKey: journeyStep3MotorsportTitle
+          tags:
+            - { key: tagHandsOn, class: tag-type }
+            - { key: tagTech, class: tag-normal }
+          textKey: journeyStep3MotorsportText
+          photos:
+            - { src: images/journey/utas/utas-engineering-site.jpg, altKey: journeyStep3MotorsportPhoto1Alt }
+            - { src: images/journey/step-3/step-3-fsae-1.jpg, altKey: journeyStep3MotorsportPhoto2Alt }
+            - { src: images/journey/step-3/step-3-fsae-2.jpg, altKey: journeyStep3MotorsportPhoto3Alt }
+            - { src: images/journey/step-3/step-3-av-lab.jpg, altKey: journeyStep3MotorsportPhoto4Alt }
+          map: { query: "School of Engineering, University of Tasmania, Sandy Bay TAS 7005" }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3MotorsportWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3MotorsportWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3WhoAll }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3MotorsportLink, href: "https://www.utas.edu.au/about/colleges-and-schools/cose/engineering/motorsport-team" }
+        - id: utas-cybersecurity-club
+          titleKey: journeyStep3CyberTitle
+          tags:
+            - { key: tagTech, class: tag-normal }
+            - { key: tagNetworking, class: tag-free }
+          textKey: journeyStep3CyberText
+          photos:
+            - { src: images/journey/utas/utas-sdg-workshop.jpg, altKey: journeyStep3CyberPhoto1Alt }
+          map: { query: "University of Tasmania Sandy Bay Campus, Churchill Avenue, Sandy Bay TAS 7005" }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3CyberWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3CyberWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3CyberWho }
+        - id: utas-programming-club
+          titleKey: journeyStep3ProgTitle
+          tags:
+            - { key: tagStudentLed, class: tag-type }
+          textKey: journeyStep3ProgText
+          photos:
+            - { src: images/journey/utas/utas-students-hobart.jpg, altKey: journeyStep3ProgPhoto1Alt }
+          map: { query: "Centenary Building, University of Tasmania, Sandy Bay TAS 7005" }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3ProgWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3ProgWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3ProgWho }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3ProgLink, href: "https://programmingclub.com.au/" }
+    - titleKey: journeyStep3SectionVolunteerTitle
+      places:
+        - id: glenorchy-community-care
+          titleKey: journeyStep3GccTitle
+          tags:
+            - { key: tagVolunteer, class: tag-type }
+            - { key: tagFoodAccess, class: tag-free }
+          textKey: journeyStep3GccText
+          photos:
+            - { src: images/journey/step-3/step-3-food-hub.jpg, altKey: journeyStep3GccPhoto1Alt }
+          map: { query: "Glenorchy Uniting Church Hall, 21 Kensington Street, Glenorchy TAS 7010" }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3GccWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3GccWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3GccWho }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3GccLink, href: "https://gccare.au/" }
+        - id: rotary-hobart
+          titleKey: journeyStep3RotaryTitle
+          tags:
+            - { key: tagVolunteer, class: tag-type }
+            - { key: tagNetworking, class: tag-free }
+          textKey: journeyStep3RotaryText
+          map: { query: "Hotel Grand Chancellor, 1 Davey Street, Hobart TAS 7000" }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3RotaryWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3RotaryWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3RotaryWho }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3RotaryLink, href: "https://rotaryhobart.org/" }
+  gallery:
+    - { src: images/journey/step-3/step-3-fsae-2.jpg, captionKey: journeyStep3Gallery1 }
+    - { src: images/journey/step-3/step-3-av-lab.jpg, captionKey: journeyStep3Gallery2 }
+    - { src: images/journey/utas/utas-sdg-workshop.jpg, captionKey: journeyStep3Gallery3 }
+    - { src: images/journey/step-3/step-3-food-hub.jpg, captionKey: journeyStep3Gallery4 }
+    - { src: images/journey/utas/utas-students-hobart.jpg, captionKey: journeyStep3Gallery5 }
+    - { src: images/journey/step-3/step-3-fsae-1.jpg, captionKey: journeyStep3Gallery6 }
