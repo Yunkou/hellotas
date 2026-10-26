@@ -7,6 +7,8 @@
 
   var data = JSON.parse(root.querySelector('.happening-data').textContent);
   var S = data.strings;
+  // Animated in-page changes come from carousel.js; without it, changes just happen
+  var transition = window.siteTransition || function (update) { update(); return null; };
   var locale = root.dataset.locale;
   var TZ = 'Australia/Hobart';
   var DAY = 86400000;
@@ -231,7 +233,10 @@
     try { localStorage.setItem('happening-view', view); } catch (err) { /* private mode */ }
   }
   viewButtons.forEach(function (b) {
-    b.addEventListener('click', function () { setView(b.dataset.view); });
+    b.addEventListener('click', function () {
+      if (b.dataset.view === view) return;
+      transition(function () { setView(b.dataset.view); });
+    });
   });
 
   // ---- Add to calendar (.ics) ----------------------------------------------------------------------------
@@ -364,7 +369,7 @@
     h('div', { class: 'cal-nav' }, [prevBtn, todayBtn, nextBtn, title]),
     h('div', { class: 'cal-controls' }, [
       h('div', { class: 'cal-pickers' }, [yearSel, monthSel, weekSel]),
-      h('div', { class: 'cal-view-toggle', role: 'group' }, viewBtns)
+      h('div', { class: 'cal-view-toggle', role: 'group', 'data-segmented': true }, viewBtns)
     ])
   ]));
   cal.appendChild(tbcStrip);
@@ -523,7 +528,16 @@
     renderPanel();
   }
 
-  function go(key) { cursor = key; render(); }
+  // Moving the calendar slides the month or week in the direction of travel (cal-board keyframes in custom.css)
+  function go(key, direction) {
+    var dir = direction || (key > cursor ? 'next' : key < cursor ? 'prev' : 'fade');
+    var html = document.documentElement;
+    board.dataset.vt = 'cal-board';
+    html.dataset.calSlide = dir;
+    var t = transition(function () { cursor = key; render(); }, [board]);
+    var done = function () { delete html.dataset.calSlide; };
+    if (t) t.finished.then(done, done); else done();
+  }
 
   prevBtn.addEventListener('click', function () { go(calView === 'month' ? addMonths(cursor, -1) : addDays(cursor, -7)); });
   nextBtn.addEventListener('click', function () { go(calView === 'month' ? addMonths(cursor, 1) : addDays(cursor, 7)); });
@@ -533,10 +547,11 @@
   weekSel.addEventListener('change', function () { go(weekSel.value); });
   viewBtns.forEach(function (b) {
     b.addEventListener('click', function () {
+      if (b.dataset.calView === calView) return;
       calView = b.dataset.calView;
       try { localStorage.setItem('happening-cal-view', calView); } catch (err) { /* private mode */ }
       // Switching to week view opens the week of the selected day
-      go(calView === 'week' && selected ? selected : cursor);
+      go(calView === 'week' && selected ? selected : cursor, 'fade');
     });
   });
   grid.addEventListener('click', function (ev) {

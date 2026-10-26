@@ -1,7 +1,58 @@
-// Site scripts: mobile menu, image carousels, LinkedIn reader view, events filter and search, event sub-bar, copy-link buttons and the photo viewer.
+// Site scripts: mobile menu, image carousels, LinkedIn reader view, events filter and search, event sub-bar, copy-link buttons,
+// the photo viewer, sliding toggle pills and animated in-page changes.
 // Sliding is plain CSS scroll-snap, so swiping and scrolling still work if this file fails to load.
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // An animated change inside a page (View Transitions): the browser cross-fades the page and glides each element
+  // in `named` from where it was to where it ends up. The names are only set for this change and cleared after, so
+  // they never clash with the page-to-page transition. Browsers without the API, and reduced motion, just update.
+  // Also used by happening.js.
+  function transition(update, named) {
+    if (reduceMotion || !document.startViewTransition) { update(); return null; }
+    named = named || [];
+    named.forEach(function (el, i) { el.style.viewTransitionName = el.dataset.vt || 'vt-' + i; });
+    var t = document.startViewTransition(update);
+    var done = function () { named.forEach(function (el) { el.style.viewTransitionName = ''; }); };
+    // A newer change skips this animation (the update itself still happens); that isn't an error
+    t.ready.catch(function () {});
+    t.finished.then(done, done);
+    return t;
+  }
+  window.siteTransition = transition;
+
+  // Toggle groups ([data-segmented]): one pill sits behind the pressed button and slides when another is pressed.
+  // It follows aria-pressed, so the scripts that own the buttons don't need to know about it.
+  function initSegmented(group) {
+    var pill = document.createElement('span');
+    pill.className = 'seg-pill';
+    pill.setAttribute('aria-hidden', 'true');
+    group.insertBefore(pill, group.firstChild);
+
+    var at = null;
+    function place() {
+      var on = group.querySelector('[aria-pressed="true"]');
+      pill.hidden = !on;
+      if (!on) return;
+      var to = on.offsetLeft + ',' + on.offsetTop;
+      // Moving to another button: replay the stretch (seg-flow in custom.css); a resize just re-measures
+      if (at !== null && to !== at && group.classList.contains('seg-animate')) {
+        pill.classList.remove('seg-moving');
+        void pill.offsetWidth;
+        pill.classList.add('seg-moving');
+      }
+      at = to;
+      pill.style.width = on.offsetWidth + 'px';
+      pill.style.height = on.offsetHeight + 'px';
+      pill.style.transform = 'translate(' + on.offsetLeft + 'px, ' + on.offsetTop + 'px)';
+    }
+
+    place();
+    group.classList.add('seg-ready');
+    requestAnimationFrame(function () { group.classList.add('seg-animate'); }); // no slide-in on first paint
+    new MutationObserver(place).observe(group, { subtree: true, attributes: true, attributeFilter: ['aria-pressed'] });
+    if (window.ResizeObserver) new ResizeObserver(place).observe(group);
+  }
 
   // Advance a carousel on its own every `delay` ms.
   //   root      the .carousel element (pause button: root.querySelector('.carousel-pause'))
@@ -285,17 +336,37 @@
       history.replaceState(null, '', location.pathname + (query ? '?' + query : '') + location.hash);
     }
 
+    // Year and clear-filter changes animate: cards fade out or in and the rest glide to their new places.
+    // Typing stays instant; cards that come back fade in (.events-typing in custom.css).
+    var controls = root.querySelector('.events-controls');
+    controls.dataset.vt = 'ev-controls';
+    function animated(update) {
+      var moving = [controls].concat(
+        Array.prototype.slice.call(root.querySelectorAll('.year-heading, .year-divider, .event-card, .events-empty')),
+        Array.prototype.slice.call(document.querySelectorAll('.bottom-note, .site-footer'))
+      );
+      transition(update, moving);
+    }
+
     function clear() {
-      year = 'all';
-      input.value = '';
-      apply();
+      animated(function () {
+        year = 'all';
+        input.value = '';
+        apply();
+      });
       input.focus();
     }
 
     tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () { year = tab.dataset.year; apply(); });
+      tab.addEventListener('click', function () {
+        if (tab.dataset.year === year) return;
+        animated(function () { year = tab.dataset.year; apply(); });
+      });
     });
-    input.addEventListener('input', apply);
+    input.addEventListener('input', function () {
+      root.classList.add('events-typing');
+      apply();
+    });
     root.querySelectorAll('.events-clear').forEach(function (button) {
       button.addEventListener('click', clear);
     });
@@ -339,4 +410,8 @@
   document.querySelectorAll('[data-subbar]').forEach(initSubbar);
   document.querySelectorAll('[data-reader]').forEach(initReader);
   initLightbox();
+  // After the deferred page scripts (happening.js builds its calendar toggle) have run
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-segmented]').forEach(initSegmented);
+  });
 })();

@@ -16,7 +16,7 @@ title: "成长之路"
 
 错过了开放日？走进 UTAS 的社团生态：加入 ICT 社团，做真实项目，找到你的专业圈子。
 
-- **技术与行业社团：**[UTAS Motorsport]({{< relref "step-3" >}}#utas-motorsport)、[UTAS Cybersecurity Club]({{< relref "step-3" >}}#utas-cybersecurity-club)、[UTAS Programming Club]({{< relref "step-3" >}}#utas-programming-club)
-- **志愿服务与回馈社区：**[Glenorchy Community Care]({{< relref "step-3" >}}#glenorchy-community-care)、[Rotary Club of Hobart]({{< relref "step-3" >}}#rotary-hobart)
+- **技术与行业社团：**[UTAS Cybersecurity Club]({{< relref "step-3" >}}#utas-cybersecurity-club)、[UTAS Programming Club]({{< relref "step-3" >}}#utas-programming-club)、[UTAS Motorsport]({{< relref "step-3" >}}#utas-motorsport)
+- **志愿服务与回馈社区：**[Rotary Club of Hobart]({{< relref "step-3" >}}#rotary-hobart)、[Glenorchy Community Care]({{< relref "step-3" >}}#glenorchy-community-care)
 
 [打开第三步指南 →]({{< relref "step-3" >}})

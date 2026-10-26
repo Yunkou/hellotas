@@ -15,7 +15,47 @@
         {{ i18n .key }}</a>
       {{- end -}}
     {{- end }}
-    <div class="nav-links">{{ partial "nav-link-items" $links }}</div>
+    <div class="nav-links"><span class="nav-pill" aria-hidden="true"></span>{{ partial "nav-link-items" $links }}</div>
+    <script>
+      // The red pill behind the current menu item, placed before the first paint. Arriving from another page,
+      // it starts where it was on that page and slides over, like the year selector's pill (.nav-pill in custom.css).
+      (function () {
+        var nav = document.currentScript.previousElementSibling;
+        var pill = nav.firstElementChild;
+        var on = nav.querySelector('a[aria-current="page"]');
+        function spot() { return { x: on.offsetLeft, y: on.offsetTop, w: on.offsetWidth, h: on.offsetHeight }; }
+        function put(r) {
+          pill.style.width = r.w + 'px';
+          pill.style.height = r.h + 'px';
+          pill.style.transform = 'translate(' + r.x + 'px, ' + r.y + 'px)';
+        }
+        function place() {
+          pill.hidden = !on || !on.offsetWidth; // no current item, or the menu is folded into ☰
+          if (!pill.hidden) put(spot());
+        }
+        var from = null;
+        try { from = JSON.parse(sessionStorage.getItem('navPill')); sessionStorage.removeItem('navPill'); } catch (e) {}
+        place();
+        if (!pill.hidden && from && from.x !== on.offsetLeft && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          put(from);
+          void pill.offsetWidth;
+          requestAnimationFrame(function () {
+            nav.classList.add('nav-pill-animate');
+            pill.classList.add('is-moving');
+            put(spot());
+          });
+        } else {
+          requestAnimationFrame(function () { nav.classList.add('nav-pill-animate'); });
+        }
+        nav.classList.add('nav-pill-ready');
+        addEventListener('resize', place);
+        if (document.fonts) document.fonts.ready.then(place);
+        addEventListener('pagehide', function () {
+          if (pill.hidden) return;
+          try { sessionStorage.setItem('navPill', JSON.stringify(spot())); } catch (e) {}
+        });
+      })();
+    </script>
     <div class="nav-right">
       {{ $page := . }}
       <details class="lang-picker">

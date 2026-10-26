@@ -202,6 +202,41 @@ step3:
   sections:
     - titleKey: journeyStep3SectionTechTitle
       places:
+        - id: utas-cybersecurity-club
+          titleKey: journeyStep3CyberTitle
+          tags:
+            - { key: tagTech, class: tag-normal }
+            - { key: tagNetworking, class: tag-free }
+          textKey: journeyStep3CyberText
+          photos:
+            - { src: images/journey/step-3/step-3-cyber-club-1.jpg, altKey: journeyStep3CyberPhoto1Alt }
+            - { src: images/journey/step-3/step-3-cyber-club-2.jpg, altKey: journeyStep3CyberPhoto2Alt }
+            - { src: images/journey/step-3/step-3-cyber-club-3.jpg, altKey: journeyStep3CyberPhoto3Alt }
+          map: { query: "University of Tasmania Sandy Bay Campus, Churchill Avenue, Sandy Bay TAS 7005" }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3CyberWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3CyberWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3CyberWho }
+        - id: utas-programming-club
+          titleKey: journeyStep3ProgTitle
+          tags:
+            - { key: tagStudentLed, class: tag-type }
+          textKey: journeyStep3ProgText
+          photos:
+            - { src: images/journey/step-3/step-3-programming-meetup-2024.jpg, altKey: journeyStep3ProgPhoto1Alt }
+            - { src: images/journey/step-3/step-3-programming-meetup-2023.jpg, altKey: journeyStep3ProgPhoto2Alt }
+            - { src: images/journey/step-3/step-3-programming-holiday-meetup-2022.jpg, altKey: journeyStep3ProgPhoto3Alt }
+            - { src: images/journey/step-3/step-3-programming-first-meetup-2021.jpg, altKey: journeyStep3ProgPhoto4Alt }
+            - { src: images/journey/step-3/step-3-programming-pcjam25-1.jpg, altKey: journeyStep3ProgPhoto5Alt }
+            - { src: images/journey/step-3/step-3-programming-pcjam25-2.jpg, altKey: journeyStep3ProgPhoto6Alt }
+            - { src: images/journey/step-3/step-3-programming-tasjam-2024-1.jpg, altKey: journeyStep3ProgPhoto7Alt }
+            - { src: images/journey/step-3/step-3-programming-tasjam-2024-2.jpg, altKey: journeyStep3ProgPhoto8Alt }
+          map: { query: "Centenary Building, University of Tasmania, Sandy Bay TAS 7005" }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3ProgWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3ProgWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3ProgWho }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3ProgLink, href: "https://programmingclub.com.au/" }
         - id: utas-motorsport
           titleKey: journeyStep3MotorsportTitle
           tags:
@@ -219,48 +254,8 @@ step3:
             - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3MotorsportWhere }
             - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3WhoAll }
             - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3MotorsportLink, href: "https://www.utas.edu.au/about/colleges-and-schools/cose/engineering/motorsport-team" }
-        - id: utas-cybersecurity-club
-          titleKey: journeyStep3CyberTitle
-          tags:
-            - { key: tagTech, class: tag-normal }
-            - { key: tagNetworking, class: tag-free }
-          textKey: journeyStep3CyberText
-          photos:
-            - { src: images/journey/utas/utas-sdg-workshop.jpg, altKey: journeyStep3CyberPhoto1Alt }
-          map: { query: "University of Tasmania Sandy Bay Campus, Churchill Avenue, Sandy Bay TAS 7005" }
-          details:
-            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3CyberWhen }
-            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3CyberWhere }
-            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3CyberWho }
-        - id: utas-programming-club
-          titleKey: journeyStep3ProgTitle
-          tags:
-            - { key: tagStudentLed, class: tag-type }
-          textKey: journeyStep3ProgText
-          photos:
-            - { src: images/journey/utas/utas-students-hobart.jpg, altKey: journeyStep3ProgPhoto1Alt }
-          map: { query: "Centenary Building, University of Tasmania, Sandy Bay TAS 7005" }
-          details:
-            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3ProgWhen }
-            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3ProgWhere }
-            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3ProgWho }
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3ProgLink, href: "https://programmingclub.com.au/" }
     - titleKey: journeyStep3SectionVolunteerTitle
       places:
-        - id: glenorchy-community-care
-          titleKey: journeyStep3GccTitle
-          tags:
-            - { key: tagVolunteer, class: tag-type }
-            - { key: tagFoodAccess, class: tag-free }
-          textKey: journeyStep3GccText
-          photos:
-            - { src: images/journey/step-3/step-3-food-hub.jpg, altKey: journeyStep3GccPhoto1Alt }
-          map: { query: "Glenorchy Uniting Church Hall, 21 Kensington Street, Glenorchy TAS 7010" }
-          details:
-            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3GccWhen }
-            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3GccWhere }
-            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3GccWho }
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3GccLink, href: "https://gccare.au/" }
         - id: rotary-hobart
           titleKey: journeyStep3RotaryTitle
           tags:
@@ -273,6 +268,21 @@ step3:
             - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3RotaryWhere }
             - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3RotaryWho }
             - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3RotaryLink, href: "https://rotaryhobart.org/" }
+        - id: glenorchy-community-care
+          titleKey: journeyStep3GccTitle
+          tags:
+            - { key: tagVolunteer, class: tag-type }
+            - { key: tagFoodAccess, class: tag-free }
+          textKey: journeyStep3GccText
+          photos:
+            - { src: images/journey/step-3/step-3-food-hub.jpg, altKey: journeyStep3GccPhoto1Alt }
+            - { src: images/journey/step-3/step-3-gcc-volunteers.jpg, altKey: journeyStep3GccPhoto2Alt }
+          map: { query: "Glenorchy Uniting Church Hall, 21 Kensington Street, Glenorchy TAS 7010" }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3GccWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep3GccWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3GccWho }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3GccLink, href: "https://gccare.au/" }
   gallery:
     - { src: images/journey/step-3/step-3-fsae-2.jpg, captionKey: journeyStep3Gallery1 }
     - { src: images/journey/step-3/step-3-av-lab.jpg, captionKey: journeyStep3Gallery2 }

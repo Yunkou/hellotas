@@ -17,7 +17,7 @@
 
   <div class="events-controls">
     <div class="events-toolbar">
-      <div class="year-tabs" role="group" aria-label="{{ i18n "eventsYearFilterLabel" }}">
+      <div class="year-tabs" data-segmented role="group" aria-label="{{ i18n "eventsYearFilterLabel" }}">
         <button type="button" class="year-tab active" data-year="all" aria-pressed="true">{{ i18n "eventsFilterAll" }}</button>
         {{ range $years }}
         <button type="button" class="year-tab" data-year="{{ . }}" aria-pressed="false">{{ . }}</button>
