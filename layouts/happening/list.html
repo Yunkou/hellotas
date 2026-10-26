@@ -49,8 +49,13 @@
       {{- range first $borrow $theirs }}{{ $photos = $photos | append . }}{{ $captions = $captions | append (i18n "happeningPhotoFromLast") }}{{ end -}}
     {{- end -}}
   {{- end -}}
+  {{- /* Everything a visitor might search for; dates in English and in the page's language */ -}}
+  {{- $search := slice (partial "happening-text.html" (dict "v" $e.title "lang" $lang)) (partial "happening-text.html" (dict "v" $e.title "lang" "en")) ($e.host | default "") (partial "happening-text.html" (dict "v" $e.location "lang" $lang)) (partial "happening-text.html" (dict "v" $e.cost "lang" $lang)) (partial "happening-text.html" (dict "v" $e.summary "lang" $lang)) (i18n (printf "happeningType%s" (strings.FirstUpper ($e.type | default "event")))) (i18n (index $formatKeys ($e.format | default "in_person"))) ($start.Format "Monday 2 January 2006") (time.Format ":date_long" $start) -}}
+  {{- $search = $search | append $topics -}}
+  {{- $search = $search | append (index (split (i18n "happeningMonthsLong") ",") (sub (int $start.Month) 1)) -}}
   {{- $events = $events | append (dict
       "id" $id
+      "search" (delimit $search " " | plainify | lower)
       "ts" $start.Unix
       "start" ($start.Format "2006-01-02T15:04:05Z07:00")
       "end" ($end.Format "2006-01-02T15:04:05Z07:00")
@@ -135,6 +140,11 @@
         <h2>{{ i18n "happeningUpcomingTitle" }}</h2>
         <p>{{ i18n "happeningUpcomingSub" }}</p>
       </div>
+      <div class="hp-tools">
+      <div class="events-search hp-search">
+        <svg class="events-search-icon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75"/><path d="m13 13 4.25 4.25"/></svg>
+        <input type="search" class="events-search-input" data-search placeholder="{{ i18n "eventsSearchPlaceholder" }}" aria-label="{{ i18n "eventsSearchPlaceholder" }}" autocomplete="off" spellcheck="false">
+      </div>
       <div class="hp-view-toggle" data-segmented role="group" aria-label="{{ i18n "happeningViewLabel" }}">
         <button type="button" class="hp-view-btn" data-view="cards" aria-pressed="true">
           <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.2"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.2"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.2"/><rect x="9" y="9" width="5.5" height="5.5" rx="1.2"/></svg>{{ i18n "happeningViewCards" }}
@@ -143,8 +153,14 @@
           <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M5 3.5h9.5M5 8h9.5M5 12.5h9.5"/><circle cx="2" cy="3.5" r="1"/><circle cx="2" cy="8" r="1"/><circle cx="2" cy="12.5" r="1"/></svg>{{ i18n "happeningViewList" }}
         </button>
       </div>
+      </div>
     </div>
     <p class="hp-tz-note">{{ i18n "happeningTimezone" }}</p>
+    <div class="events-status hp-search-status" data-search-status hidden>
+      <span class="events-count" data-single="{{ i18n "eventsCountOne" }}" data-plural="{{ i18n "eventsCountOther" }}"></span>
+      <button type="button" class="events-clear" data-search-clear hidden>{{ partial "events-clear-icon.html" }}{{ i18n "eventsClearFilters" }}</button>
+    </div>
+    <p class="sr-only" data-search-announce aria-live="polite"></p>
 
     <div class="hp-cards" data-upcoming-cards>
       {{ range $events }}{{ partial "happening-card.html" . }}{{ end }}
@@ -170,6 +186,12 @@
 
     <div class="hp-empty" data-upcoming-empty hidden>
       <p>{{ i18n "happeningUpcomingEmpty" }}</p>
+    </div>
+
+    <div class="events-empty" data-search-empty hidden>
+      <p class="events-empty-title">{{ i18n "eventsNoResults" }}</p>
+      <p>{{ i18n "eventsNoResultsHint" }}</p>
+      <button type="button" class="events-clear" data-search-clear>{{ partial "events-clear-icon.html" }}{{ i18n "eventsClearFilters" }}</button>
     </div>
   </div>
 

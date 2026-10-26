@@ -178,6 +178,19 @@
   var rowList = root.querySelector('[data-upcoming-list]');
   var upcomingEmpty = root.querySelector('[data-upcoming-empty]');
   var view = 'cards';
+  var upcomingEvents = [];
+  var shownUpcoming = 0;
+
+  // Search over the upcoming events, like the Events page: every word typed must appear somewhere in the event.
+  // Case, accents and full-width letters don't matter. Kept in the address (?q=…) so a search can be shared.
+  var searchInput = root.querySelector('[data-search]');
+  var searchStatus = root.querySelector('[data-search-status]');
+  var searchCount = searchStatus.querySelector('.events-count');
+  var searchEmpty = root.querySelector('[data-search-empty]');
+  var searchAnnounce = root.querySelector('[data-search-announce]');
+  function fold(text) { return text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
+  events.forEach(function (e) { e.searchText = fold(e.search || ''); });
+  function searchTerms() { return fold(searchInput.value).split(/\s+/).filter(Boolean); }
 
   function sortEvents(now) {
     var today = dayKey(now);
@@ -187,15 +200,14 @@
       e.status = statusOf(e, now, today);
       var here = isNow(e.status);
       if (e.card) {
-        (here ? nowList : cardList).appendChild(e.card); // appended in date order, so each list stays sorted
-        e.card.hidden = e.status === 'past';
+        // Events only ever move Upcoming → Now in date order, so each list stays sorted. Cards that stay put
+        // aren't re-inserted, which would restart their fade-in.
+        var list = here ? nowList : cardList;
+        if (e.card.parentNode !== list) list.appendChild(e.card);
         e.card.classList.remove('hp-card--feature');
         setBadge(e.card, e.status);
       }
-      if (e.row) {
-        e.row.hidden = e.status === 'past' || here;
-        setBadge(e.row, e.status);
-      }
+      if (e.row) setBadge(e.row, e.status);
       if (here) happening.push(e);
       else if (e.status !== 'past') upcoming.push(e);
     });
@@ -217,19 +229,60 @@
       nowEmpty.querySelector('[data-next-when]').textContent = '· ' + when(next);
     }
 
-    upcomingEmpty.hidden = upcoming.length > 0;
-    cardList.hidden = view !== 'cards' || !upcoming.length;
-    rowList.hidden = view !== 'list' || !upcoming.length;
+    upcomingEvents = upcoming;
+    applySearch();
   }
+
+  // Which cards and rows show: past events never; Happening Now always; upcoming ones when they match the search
+  function applySearch() {
+    var terms = searchTerms();
+    shownUpcoming = 0;
+    events.forEach(function (e) {
+      var past = e.status === 'past';
+      var here = isNow(e.status);
+      var match = terms.every(function (t) { return e.searchText.indexOf(t) !== -1; });
+      if (!past && !here && match) shownUpcoming++;
+      if (e.card) e.card.hidden = past || (!here && !match);
+      if (e.row) e.row.hidden = past || here || !match;
+    });
+
+    var any = upcomingEvents.length > 0;
+    var message = (shownUpcoming === 1 ? searchCount.dataset.single : searchCount.dataset.plural).replace('{n}', shownUpcoming);
+    upcomingEmpty.hidden = any;
+    searchEmpty.hidden = !any || shownUpcoming > 0;
+    searchStatus.hidden = !any || shownUpcoming === 0;
+    searchCount.textContent = message;
+    searchStatus.querySelector('[data-search-clear]').hidden = !terms.length;
+    searchAnnounce.textContent = terms.length ? message : '';
+    cardList.hidden = view !== 'cards' || !shownUpcoming;
+    rowList.hidden = view !== 'list' || !shownUpcoming;
+
+    var params = new URLSearchParams(location.search);
+    if (searchInput.value.trim()) params.set('q', searchInput.value.trim()); else params.delete('q');
+    var query = params.toString();
+    history.replaceState(null, '', location.pathname + (query ? '?' + query : '') + location.hash);
+  }
+
+  searchInput.addEventListener('input', function () {
+    root.classList.add('hp-typing');
+    applySearch();
+  });
+  root.querySelectorAll('[data-search-clear]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      transition(function () { searchInput.value = ''; applySearch(); });
+      searchInput.focus();
+    });
+  });
+  var startQuery = new URLSearchParams(location.search).get('q');
+  if (startQuery) searchInput.value = startQuery;
 
   // Cards / List switch, remembered on this device
   var viewButtons = root.querySelectorAll('[data-view]');
   function setView(value) {
     view = value;
     viewButtons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.view === view ? 'true' : 'false'); });
-    var any = upcomingEmpty.hidden;
-    cardList.hidden = view !== 'cards' || !any;
-    rowList.hidden = view !== 'list' || !any;
+    cardList.hidden = view !== 'cards' || !shownUpcoming;
+    rowList.hidden = view !== 'list' || !shownUpcoming;
     try { localStorage.setItem('happening-view', view); } catch (err) { /* private mode */ }
   }
   viewButtons.forEach(function (b) {
