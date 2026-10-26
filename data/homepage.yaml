@@ -15,19 +15,6 @@ steps:
     image: images/home/step-4-campus-plaza.jpg
     anchor: step-4
     ctaPath: events/
-  - id: 5
-    image: images/home/step-5-linkedin-post.jpg
-    anchor: step-5
-    ctaPath: journey/
-  - id: 6
-    image: images/home/step-6-volunteering.jpg
-    anchor: step-6
-    ctaPath: volunteering/
-  - id: 7
-    image: images/home/step-7-good-news.jpg
-    anchor: step-7
-    ctaPath: stories/
-    final: true
 
 # Graduate stories now come from data/stories.yaml (issue #36).
 
