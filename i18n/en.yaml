@@ -1,13 +1,16 @@
 # Navigation
 home: "Home"
 journey: "Journey"
+community: "Community"
 stories: "Stories"
 events: "Events"
+industryEvents: "Industry Events"
 volunteering: "Volunteering"
 sports: "Sports"
 happening: "Happening"
 menuOpen: "Open menu"
 menuClose: "Close menu"
+afterClass: "After Class"
 forStaff: "For Staff"
 
 # Header
@@ -345,55 +348,43 @@ journeyStep2NextText: "Once you feel more confident speaking, it's time to meet 
 journeyStep2NextCta: "Go to Step 3 →"
 
 # Homepage — hero
-homeHeroTitle: "From Step 1 to the person"
-homeHeroTitleHighlight: "you want to become."
-homeHeroSubtitle: "Learn, grow and connect in Tasmania. A step-by-step journey for international ICT students. Your career will follow."
+homeHeroTitle: "Your new chapter in"
+homeHeroTitleHighlight: "Tasmania starts here."
+homeHeroSubtitle: "You don't have to figure it out alone. Follow these steps to settle in, find your community, and build a life you love."
 homeHeroNote: "Built by and for international ICT students in Tasmania."
-homeHeroCtaStart: "Start Step 1"
-homeHeroCtaJourney: "See full journey"
+homeHeroCtaStart: "Start Your Journey"
 homeHeroImageAlt: "UTAS students, staff and industry partners with their awards at the 2026 TasICT Awards"
 
 # Homepage — trust strip
 homeTrustStrip: "<strong>Finding a professional job needs Experience + References.</strong> Start building both from your first semester, not after graduation."
 
 # Homepage — journey
-homeJourneyTitle: "Your journey, step by step"
-homeJourneyLead: "Seven practical stages from arrival to your first ICT role in Tasmania. Take them in order — but revisit any step whenever you need."
+homeJourneyTitle: "Take it one step at a time"
+homeJourneyLead: "Your essential roadmap for the first few months."
+homeStepLabel: "STEP %d"
 
-homeStep1Title: "Start your life here"
-homeStep1Text: "Find accommodation (share house, homestay, or UTAS housing), set up your phone and bank account, learn Hobart transport, and stock groceries. <strong>Check your visa conditions</strong> (work hours, course attendance, OSHC) on VEVO and keep enrolment documents handy. Feeling overwhelmed is normal — settle in first, then build momentum."
+homeStep1Title: "Settle in"
+homeStep1Text: "Find a place to live, set up your basic needs, and secure survival income so you can focus on study."
 homeStep1Cta: "Arrival checklist"
 homeStep1ImageAlt: "Students walking among tree ferns inside The Forest building at UTAS"
 
-homeStep2Title: "Build your voice"
-homeStep2Text: "If you still need to pass your English test, make this your main focus. Join fixed local volunteering near UTAS to practise English in a safe, structured setting."
-homeStep2Cta: "Language centre + volunteering"
+homeStep2Title: "Find your voice"
+homeStep2Text: "Build English confidence through low-pressure local conversation groups and community activities."
+homeStep2Cta: "Community groups"
 homeStep2ImageAlt: "Students watching the sunrise from the kunanyi / Mount Wellington lookout"
 
-homeStep3Title: "Join community"
-homeStep3Text: "Missed Open Day? Discover UTAS clubs, library services, and real student projects. Check your UTAS email and MyLO — important events and deadlines are posted there."
-homeStep3Cta: "Explore clubs & library"
+homeStep3Title: "Join the community"
+homeStep3Text: "Missed Open Day? Discover UTAS tech clubs, projects, and peers who share your interests."
+homeStep3Cta: "Explore clubs"
 homeStep3ImageAlt: "Students at an outdoor campus festival with club stalls"
 
-homeStep4Title: "Attend ICT events"
-homeStep4Text: "See what happened before and what is coming next — GDG Hobart, TasICT Festival, industry visits, CyberSecurity Melbourne, and more."
+homeStep4Title: "Experience Tasmania"
+homeStep4Text: "Attend industry events, make connections, and explore what is happening in Tasmania's ICT scene."
 homeStep4Cta: "ICT events list"
 homeStep4ImageAlt: "Busy UTAS campus plaza with student club tents"
 
-homeStep5Title: "Open doors"
-homeStep5Text: "Open your first door into the industry you want to work in. Connect with tutors, alumni, event speakers, and local ICT people on LinkedIn."
-homeStep5Cta: "LinkedIn starter guide"
-homeStep5ImageAlt: "LinkedIn profile of the Head of the UTAS School of ICT"
 
-homeStep6Title: "Build trust"
-homeStep6Text: "In Australia, references are often required before you can get a job. Build experience through UTAS Motorsport, Food Hub, Source Garden, Red Cross, and similar roles."
-homeStep6Cta: "Experience & references guide"
-homeStep6ImageAlt: "Student volunteers in high-visibility vests after a volunteering shift"
 
-homeStep7Title: "Grow into your future"
-homeStep7Text: "Apply, interview, and start your career in Tasmania. Then share your story so the next student believes it is possible."
-homeStep7Cta: "Job ready + Stories"
-homeStep7ImageAlt: "UTAS \"Good news\" graphic"
 
 # Homepage — habits
 homeHabitsTitle: "Build good habits, early"
@@ -472,10 +463,11 @@ journeyStep3MotorsportPhoto2Alt: "Student team members at a Formula SAE competit
 journeyStep3MotorsportPhoto3Alt: "UTAS Formula SAE team at the competition pits"
 journeyStep3MotorsportPhoto4Alt: "Student working at the AV lab whiteboard"
 journeyStep3CyberTitle: "UTAS Cybersecurity Club"
-journeyStep3CyberText: "Connect with security enthusiasts. Participate in CTF (Capture The Flag) competitions, workshops, and industry talks."
-journeyStep3CyberWhen: "Fortnightly meetups (check Discord)"
-journeyStep3CyberWhere: "UTAS Sandy Bay Campus"
-journeyStep3CyberWho: "All students (no prior experience needed)"
+journeyStep3CyberText: "A new student-led club building a cybersecurity community at UTAS. Follow club updates for awareness sessions, student opportunities, and ways to learn and collaborate with peers — no prior security experience needed."
+journeyStep3CyberWhen: "Meetup schedule announced on LinkedIn (club formed after its inaugural AGM)"
+journeyStep3CyberWhere: "University of Tasmania (Hobart)"
+journeyStep3CyberWho: "All UTAS students welcome"
+journeyStep3CyberLink: "LinkedIn — club update"
 journeyStep3CyberPhoto1Alt: "Members of the Tasmanian University Cybersecurity Club at its inaugural general meeting"
 journeyStep3CyberPhoto2Alt: "The club's inaugural general meeting on the big screen"
 journeyStep3CyberPhoto3Alt: "Committee nominations at the inaugural general meeting"

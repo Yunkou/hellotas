@@ -2,11 +2,14 @@
   <nav class="nav">
     <a href="{{ .Site.Home.RelPermalink }}" class="logo"><img src="{{ "images/brand/logo.svg" | relURL }}" alt="{{ i18n "siteName" }}" width="330" height="84"></a>
     {{- /* Menu links, defined once: shown inline on wide screens and in the menu panel on narrower ones */ -}}
+    {{- /* Site structure from issue #33, plus Happening (issue #7). Each item: label key and page path. */ -}}
     {{- $links := slice (dict "key" "home" "url" .Site.Home.RelPermalink "current" .IsHome) -}}
-    {{- range slice "journey" "stories" "events" "volunteering" "sports" "happening" -}}
-      {{- $url := relURL (printf "%s/" .) -}}
-      {{- with site.GetPage (printf "/%s" .) }}{{ $url = .RelPermalink }}{{ end -}}
-      {{- $links = $links | append (dict "key" . "url" $url "current" (eq $.Section .)) -}}
+    {{- range slice (slice "community" "/journey/step-2") (slice "volunteering" "/journey/step-3") (slice "industryEvents" "/events") (slice "stories" "/stories") (slice "afterClass" "/after_class") (slice "happening" "/happening") -}}
+      {{- $key := index . 0 -}}{{- $path := index . 1 -}}
+      {{- $url := relURL (printf "%s/" (strings.TrimPrefix "/" $path)) -}}
+      {{- with site.GetPage $path }}{{ $url = .RelPermalink }}{{ end -}}
+      {{- /* Current when this page is that page or below it (an event's own page highlights Industry Events) */ -}}
+      {{- $links = $links | append (dict "key" $key "url" $url "current" (strings.HasPrefix $.RelPermalink $url)) -}}
     {{- end }}
     {{- define "partials/nav-link-items" -}}
       {{- range . -}}
