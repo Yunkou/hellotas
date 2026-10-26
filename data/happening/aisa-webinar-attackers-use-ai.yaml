@@ -1,0 +1,20 @@
+title:
+  en: "AISA Webinar: When Attackers Use AI — How Defenders Can Respond"
+  zh: "AISA网络研讨会：当攻击者使用AI——防御者如何应对"
+  ne: "AISA वेबिनार: आक्रमणकारीले AI प्रयोग गर्दा — रक्षकहरूले कसरी जवाफ दिने"
+start: "2026-11-25T12:00:00+11:00"
+end: "2026-11-25T13:00:00+11:00"
+type: "webinar"
+format: "online"
+topics: [cyber, ai]
+host: "AISA Online Branch"
+cost:
+  en: "Free for AISA members"
+  zh: "AISA会员免费"
+  ne: "AISA सदस्यहरूका लागि निःशुल्क"
+summary:
+  en: "SentinelOne's Brett Williams maps how criminal groups use AI across the attack lifecycle, and practical ways to govern AI use without slowing innovation."
+  zh: "SentinelOne的Brett Williams剖析犯罪团伙如何在攻击全过程中利用AI，并介绍在不拖慢创新的前提下管控AI使用的实用方法。"
+  ne: "SentinelOne का Brett Williams ले आपराधिक समूहहरूले आक्रमणका हरेक चरणमा AI कसरी प्रयोग गर्छन् र नवप्रवर्तन नरोकी AI प्रयोग नियन्त्रण गर्ने व्यावहारिक उपायहरू बताउनुहुन्छ।"
+image: "/images/happening/aisa-webinar-attackers-use-ai/aisa-webinar-attackers-use-ai-1.jpg"
+url: "https://www.aisa.org.au/Event.aspx?EventKey=OB281026"

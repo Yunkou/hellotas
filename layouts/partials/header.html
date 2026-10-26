@@ -1,14 +1,64 @@
 <header class="site-header">
   <nav class="nav">
-    <a href="{{ .Site.Home.RelPermalink }}" class="logo">{{ i18n "siteName" }}</a>
-    <div class="nav-links">
-      <a href="{{ .Site.Home.RelPermalink }}">{{ i18n "home" }}</a>
-      <a href="{{ with .Site.GetPage "/journey/step-2" }}{{ .RelPermalink }}{{ else }}{{ relURL "journey/step-2/" }}{{ end }}">{{ i18n "community" }}</a>
-      <a href="{{ with .Site.GetPage "/journey/step-3" }}{{ .RelPermalink }}{{ else }}{{ relURL "journey/step-3/" }}{{ end }}">{{ i18n "volunteering" }}</a>
-      <a href="{{ with .Site.GetPage "/events" }}{{ .RelPermalink }}{{ else }}{{ relURL "events/" }}{{ end }}">{{ i18n "industryEvents" }}</a>
-      <a href="{{ with .Site.GetPage "/stories" }}{{ .RelPermalink }}{{ else }}{{ relURL "stories/" }}{{ end }}">{{ i18n "stories" }}</a>
-      <a href="{{ with .Site.GetPage "/after_class" }}{{ .RelPermalink }}{{ else }}{{ relURL "after_class/" }}{{ end }}">{{ i18n "afterClass" }}</a>
-    </div>
+    <a href="{{ .Site.Home.RelPermalink }}" class="logo"><img src="{{ "images/brand/logo.svg" | relURL }}" alt="{{ i18n "siteName" }}" width="330" height="84"></a>
+    {{- /* Menu links, defined once: shown inline on wide screens and in the menu panel on narrower ones */ -}}
+    {{- /* Site structure from issue #33, plus Happening (issue #7). Each item: label key and page path. */ -}}
+    {{- $links := slice (dict "key" "home" "url" .Site.Home.RelPermalink "current" .IsHome) -}}
+    {{- range slice (slice "community" "/journey/step-2") (slice "volunteering" "/journey/step-3") (slice "industryEvents" "/events") (slice "stories" "/stories") (slice "afterClass" "/after_class") (slice "happening" "/happening") -}}
+      {{- $key := index . 0 -}}{{- $path := index . 1 -}}
+      {{- $url := relURL (printf "%s/" (strings.TrimPrefix "/" $path)) -}}
+      {{- with site.GetPage $path }}{{ $url = .RelPermalink }}{{ end -}}
+      {{- /* Current when this page is that page or below it (an event's own page highlights Industry Events) */ -}}
+      {{- $links = $links | append (dict "key" $key "url" $url "current" (strings.HasPrefix $.RelPermalink $url)) -}}
+    {{- end }}
+    {{- define "partials/nav-link-items" -}}
+      {{- range . -}}
+      <a href="{{ .url }}"{{ if eq .key "happening" }} class="nav-live"{{ end }}{{ if .current }} aria-current="page"{{ end }}>
+        {{- if eq .key "happening" }}<svg class="live-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle class="live-ring live-ring--outer" cx="10" cy="10" r="8.25"/><circle class="live-ring live-ring--inner" cx="10" cy="10" r="5.25"/><circle class="live-dot" cx="10" cy="10" r="2.5"/></svg>{{ end -}}
+        {{ i18n .key }}</a>
+      {{- end -}}
+    {{- end }}
+    <div class="nav-links"><span class="nav-pill" aria-hidden="true"></span>{{ partial "nav-link-items" $links }}</div>
+    <script>
+      // The red pill behind the current menu item, placed before the first paint. Arriving from another page,
+      // it starts where it was on that page and slides over, like the year selector's pill (.nav-pill in custom.css).
+      (function () {
+        var nav = document.currentScript.previousElementSibling;
+        var pill = nav.firstElementChild;
+        var on = nav.querySelector('a[aria-current="page"]');
+        function spot() { return { x: on.offsetLeft, y: on.offsetTop, w: on.offsetWidth, h: on.offsetHeight }; }
+        function put(r) {
+          pill.style.width = r.w + 'px';
+          pill.style.height = r.h + 'px';
+          pill.style.transform = 'translate(' + r.x + 'px, ' + r.y + 'px)';
+        }
+        function place() {
+          pill.hidden = !on || !on.offsetWidth; // no current item, or the menu is folded into ☰
+          if (!pill.hidden) put(spot());
+        }
+        var from = null;
+        try { from = JSON.parse(sessionStorage.getItem('navPill')); sessionStorage.removeItem('navPill'); } catch (e) {}
+        place();
+        if (!pill.hidden && from && from.x !== on.offsetLeft && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          put(from);
+          void pill.offsetWidth;
+          requestAnimationFrame(function () {
+            nav.classList.add('nav-pill-animate');
+            pill.classList.add('is-moving');
+            put(spot());
+          });
+        } else {
+          requestAnimationFrame(function () { nav.classList.add('nav-pill-animate'); });
+        }
+        nav.classList.add('nav-pill-ready');
+        addEventListener('resize', place);
+        if (document.fonts) document.fonts.ready.then(place);
+        addEventListener('pagehide', function () {
+          if (pill.hidden) return;
+          try { sessionStorage.setItem('navPill', JSON.stringify(spot())); } catch (e) {}
+        });
+      })();
+    </script>
     <div class="nav-right">
       {{ $page := . }}
       <details class="lang-picker">
@@ -37,8 +87,16 @@
         </div>
       </details>
       <a href="#" class="btn-primary"><span class="label-full">{{ i18n "shareYourStory" }}</span><span class="label-short" aria-hidden="true">{{ i18n "shareShort" }}</span></a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="{{ i18n "menuOpen" }}" data-label-open="{{ i18n "menuOpen" }}" data-label-close="{{ i18n "menuClose" }}">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    {{- partial "nav-link-items" $links -}}
+    {{- /* On the smallest phones the header's Share button moves in here */ -}}
+    <a href="#" class="btn-primary mobile-menu-cta">{{ i18n "shareYourStory" }}</a>
+  </div>
   <script>
     document.addEventListener('click', function (e) {
       document.querySelectorAll('details.lang-picker').forEach(function (d) {

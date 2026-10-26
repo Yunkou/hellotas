@@ -6,30 +6,39 @@
   </div>
 </section>
 
-<section class="container">
-  <div class="share-bar">
-    <div class="share-left">
-      <div class="share-label">{{ i18n "eventsShareLabel" }}</div>
-          <div class="share-url">
-             <span>{{ .Permalink }}</span>
-               <button type="button" onclick="navigator.clipboard.writeText('{{ .Permalink }}'); this.textContent='{{ i18n "eventsLinkCopied" }}'">{{ i18n "eventsCopyLink" }}</button>
-          </div>    
+{{ partial "passon-bar.html" (dict "page" . "message" (i18n "eventsShareLabel")) }}
+
+
+<section class="container" data-event-filter>
+  {{- /* Years come from the events themselves, newest first */ -}}
+  {{ $years := slice }}
+  {{ range .Pages }}{{ with .Params.year }}{{ if not (in $years .) }}{{ $years = $years | append . }}{{ end }}{{ end }}{{ end }}
+  {{ $years = sort $years "value" "desc" }}
+
+  <div class="events-controls">
+    <div class="events-toolbar">
+      <div class="year-tabs" data-segmented role="group" aria-label="{{ i18n "eventsYearFilterLabel" }}">
+        <button type="button" class="year-tab active" data-year="all" aria-pressed="true">{{ i18n "eventsFilterAll" }}</button>
+        {{ range $years }}
+        <button type="button" class="year-tab" data-year="{{ . }}" aria-pressed="false">{{ . }}</button>
+        {{ end }}
       </div>
-    <button class="btn-primary share-btn" onclick="navigator.clipboard.writeText('{{ .Permalink }}')">{{ i18n "eventsCopyLink" }}</button>
-  </div>
-</section>
-
-
-<section class="container">
-  {{ $years := slice 2026 2025 }}
-  <div class="year-tabs">
-    {{ range $years }}
-    <a class="year-tab{{ if eq . 2026 }} active{{ end }}" href="#year-{{ . }}">{{ . }}</a>
-    {{ end }}
+      <div class="events-search">
+        <svg class="events-search-icon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75"/><path d="m13 13 4.25 4.25"/></svg>
+        <input type="search" class="events-search-input" placeholder="{{ i18n "eventsSearchPlaceholder" }}" aria-label="{{ i18n "eventsSearchPlaceholder" }}" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    {{- $total := len (where .Pages "Params.year" "!=" nil) }}
+    <div class="events-status">
+      <span class="events-count" data-single="{{ i18n "eventsCountOne" }}" data-plural="{{ i18n "eventsCountOther" }}">{{ replace (i18n (cond (eq $total 1) "eventsCountOne" "eventsCountOther")) "{n}" (string $total) }}</span>
+      <button type="button" class="events-clear" hidden>{{ partial "events-clear-icon.html" }}{{ i18n "eventsClearFilters" }}</button>
+    </div>
+    <p class="sr-only events-announce" aria-live="polite"></p>
   </div>
 
   {{ range $years }}
   {{ $year := . }}
+  <div class="events-year" data-year="{{ $year }}">
   <h2 class="year-heading" id="year-{{ $year }}">{{ $year }}</h2>
   <div class="year-divider"></div>
 
@@ -37,13 +46,19 @@
     {{ range $.Pages.ByWeight }}
     {{ if eq .Params.year $year }}
     {{ $event := . }}
-    <article class="event-card">
-<div class="event-thumb">
-  {{ $photos := slice }}
-  {{ with .Params.image }}{{ $photos = $photos | append . }}{{ end }}
-  {{ with .Params.gallery }}{{ $photos = $photos | append . }}{{ end }}
+    {{- /* Everything a visitor might search for: name, type, tags, place, date, cost, write-up and LinkedIn posts */ -}}
+    {{ $search := slice .Title .Params.event_type .Params.location .Params.event_time .Params.cost .Params.eligibility .Params.summary .Params.outcome .Params.student_voice .Params.student_role .Plain }}
+    {{ with .Params.tags }}{{ $search = $search | append . }}{{ end }}
+    {{ with .Params.about }}{{ $search = $search | append . }}{{ end }}
+    {{ range .Params.linkedin_posts }}{{ $search = $search | append (slice .name .role .content .summary) }}{{ end }}
+    {{ if not .Date.IsZero }}{{ $search = $search | append (slice (.Date.Format "2 January 2006") (time.Format ":date_long" .Date)) }}{{ end }}
+    <article class="event-card" data-search="{{ delimit $search " " | plainify | lower }}">
+{{ $photos := slice }}
+{{ with .Params.image }}{{ $photos = $photos | append . }}{{ end }}
+{{ with .Params.gallery }}{{ $photos = $photos | append . }}{{ end }}
+<div class="event-thumb{{ if $photos }} event-thumb--photos{{ end }}">
   {{ if $photos }}
-  {{ partial "carousel.html" (dict "images" $photos "alt" .Title "lazy" true) }}
+  {{ partial "carousel.html" (dict "images" $photos "alt" .Title "class" "carousel--fit" "lazy" true "backdrop" true "lightbox" true) }}
   {{ else }}
     <div class="thumb-placeholder">{{ i18n "eventPhoto" }}<br><span class="thumb-sub">{{ .Title }}</span></div>
   {{ end }}
@@ -95,7 +110,14 @@
     {{ end }}
     {{ end }}
   </div>
+  </div>
   {{ end }}
+
+  <div class="events-empty" hidden>
+    <p class="events-empty-title">{{ i18n "eventsNoResults" }}</p>
+    <p>{{ i18n "eventsNoResultsHint" }}</p>
+    <button type="button" class="events-clear">{{ partial "events-clear-icon.html" }}{{ i18n "eventsClearFilters" }}</button>
+  </div>
 </section>
 
 <section class="container">

@@ -1,0 +1,20 @@
+{{- /* Sections still being built (Stories, Volunteering, Sports): set layout: "placeholder" in the section's _index files */ -}}
+{{ define "main" }}
+<section class="hero-section">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="hero-sub">{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+<section class="container">
+  <div class="soon-card">
+    <span class="soon-badge">{{ i18n "comingSoon" }}</span>
+    <p>{{ i18n "comingSoonText" }}</p>
+    <div class="soon-actions">
+      {{ with site.GetPage "/happening" }}<a class="btn-primary" href="{{ .RelPermalink }}">{{ i18n "comingSoonHappening" }}</a>{{ end }}
+      {{ with site.GetPage "/events" }}<a class="hp-btn-outline" href="{{ .RelPermalink }}">{{ i18n "comingSoonEvents" }}</a>{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

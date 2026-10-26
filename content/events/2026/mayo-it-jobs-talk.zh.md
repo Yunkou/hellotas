@@ -1,5 +1,5 @@
 ---
-title: "Mayo讲座: IT工作2026"
+title: "Mayo讲座：IT工作2026"
 weight: 13
 year: 2026
 event_type: "讲座"

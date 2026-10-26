@@ -1,7 +1,58 @@
-// Image carousels (layouts/partials/carousel.html), the LinkedIn reader view, the event sub-bar and the photo viewer.
+// Site scripts: mobile menu, image carousels, LinkedIn reader view, events filter and search, event sub-bar, copy-link buttons,
+// the photo viewer, sliding toggle pills and animated in-page changes.
 // Sliding is plain CSS scroll-snap, so swiping and scrolling still work if this file fails to load.
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // An animated change inside a page (View Transitions): the browser cross-fades the page and glides each element
+  // in `named` from where it was to where it ends up. The names are only set for this change and cleared after, so
+  // they never clash with the page-to-page transition. Browsers without the API, and reduced motion, just update.
+  // Also used by happening.js.
+  function transition(update, named) {
+    if (reduceMotion || !document.startViewTransition) { update(); return null; }
+    named = named || [];
+    named.forEach(function (el, i) { el.style.viewTransitionName = el.dataset.vt || 'vt-' + i; });
+    var t = document.startViewTransition(update);
+    var done = function () { named.forEach(function (el) { el.style.viewTransitionName = ''; }); };
+    // A newer change skips this animation (the update itself still happens); that isn't an error
+    t.ready.catch(function () {});
+    t.finished.then(done, done);
+    return t;
+  }
+  window.siteTransition = transition;
+
+  // Toggle groups ([data-segmented]): one pill sits behind the pressed button and slides when another is pressed.
+  // It follows aria-pressed, so the scripts that own the buttons don't need to know about it.
+  function initSegmented(group) {
+    var pill = document.createElement('span');
+    pill.className = 'seg-pill';
+    pill.setAttribute('aria-hidden', 'true');
+    group.insertBefore(pill, group.firstChild);
+
+    var at = null;
+    function place() {
+      var on = group.querySelector('[aria-pressed="true"]');
+      pill.hidden = !on;
+      if (!on) return;
+      var to = on.offsetLeft + ',' + on.offsetTop;
+      // Moving to another button: replay the stretch (seg-flow in custom.css); a resize just re-measures
+      if (at !== null && to !== at && group.classList.contains('seg-animate')) {
+        pill.classList.remove('seg-moving');
+        void pill.offsetWidth;
+        pill.classList.add('seg-moving');
+      }
+      at = to;
+      pill.style.width = on.offsetWidth + 'px';
+      pill.style.height = on.offsetHeight + 'px';
+      pill.style.transform = 'translate(' + on.offsetLeft + 'px, ' + on.offsetTop + 'px)';
+    }
+
+    place();
+    group.classList.add('seg-ready');
+    requestAnimationFrame(function () { group.classList.add('seg-animate'); }); // no slide-in on first paint
+    new MutationObserver(place).observe(group, { subtree: true, attributes: true, attributeFilter: ['aria-pressed'] });
+    if (window.ResizeObserver) new ResizeObserver(place).observe(group);
+  }
 
   // Advance a carousel on its own every `delay` ms.
   //   root      the .carousel element (pause button: root.querySelector('.carousel-pause'))
@@ -201,8 +252,166 @@
     update();
   }
 
+  // "Copy link" buttons: copy data-copy to the clipboard and show data-copied for a moment.
+  function initCopy(button) {
+    var label = button.textContent;
+    var timer;
+    button.addEventListener('click', function () {
+      var text = button.dataset.copy;
+      var done = function () {
+        button.textContent = button.dataset.copied;
+        button.classList.add('is-copied');
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          button.textContent = label;
+          button.classList.remove('is-copied');
+        }, 2000);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, function () { window.prompt('', text); });
+      } else {
+        window.prompt('', text); // older browsers / plain http: let the visitor copy it by hand
+      }
+    });
+  }
+
+  // Events list: year buttons (All / 2026 / 2025 …), a text search over each card's data-search, and the event count.
+  // Every word typed must appear somewhere in the event. The choice is kept in the address (?year=…&q=…)
+  // so a filtered view can be bookmarked or shared. Without this script every event stays visible.
+  function initEventFilter(root) {
+    var tabs = root.querySelectorAll('.year-tab');
+    var input = root.querySelector('.events-search-input');
+    var status = root.querySelector('.events-status');
+    var count = root.querySelector('.events-count');
+    var clearLink = status.querySelector('.events-clear');
+    var announce = root.querySelector('.events-announce');
+    var empty = root.querySelector('.events-empty');
+    var groups = root.querySelectorAll('.events-year');
+    var year = 'all';
+
+    // Case, accents and full-width letters don't matter: "Pax", "PAX" and "ＰＡＸ" all match.
+    function fold(text) {
+      return text.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    }
+
+    var cards = Array.prototype.map.call(root.querySelectorAll('.event-card'), function (card) {
+      return { el: card, text: fold(card.dataset.search || '') };
+    });
+
+    function apply() {
+      var terms = fold(input.value).split(/\s+/).filter(Boolean);
+      var shown = 0;
+
+      groups.forEach(function (group) {
+        var inYear = year === 'all' || group.dataset.year === year;
+        var visible = 0;
+        cards.forEach(function (card) {
+          if (!group.contains(card.el)) return;
+          var match = inYear && terms.every(function (t) { return card.text.indexOf(t) !== -1; });
+          card.el.hidden = !match;
+          if (match) visible++;
+        });
+        group.hidden = visible === 0;
+        shown += visible;
+      });
+
+      tabs.forEach(function (tab) {
+        var on = tab.dataset.year === year;
+        tab.classList.toggle('active', on);
+        tab.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+
+      var filtering = year !== 'all' || terms.length > 0;
+      var message = (shown === 1 ? count.dataset.single : count.dataset.plural).replace('{n}', shown);
+      status.hidden = shown === 0; // the empty-state box says it instead
+      clearLink.hidden = !filtering;
+      empty.hidden = shown > 0;
+      count.textContent = message;
+      announce.textContent = message;
+
+      var params = new URLSearchParams(location.search);
+      if (year === 'all') params.delete('year'); else params.set('year', year);
+      if (input.value.trim()) params.set('q', input.value.trim()); else params.delete('q');
+      var query = params.toString();
+      history.replaceState(null, '', location.pathname + (query ? '?' + query : '') + location.hash);
+    }
+
+    // Year and clear-filter changes animate: cards fade out or in and the rest glide to their new places.
+    // Typing stays instant; cards that come back fade in (.events-typing in custom.css).
+    var controls = root.querySelector('.events-controls');
+    controls.dataset.vt = 'ev-controls';
+    function animated(update) {
+      var moving = [controls].concat(
+        Array.prototype.slice.call(root.querySelectorAll('.year-heading, .year-divider, .event-card, .events-empty')),
+        Array.prototype.slice.call(document.querySelectorAll('.bottom-note, .site-footer'))
+      );
+      transition(update, moving);
+    }
+
+    function clear() {
+      animated(function () {
+        year = 'all';
+        input.value = '';
+        apply();
+      });
+      input.focus();
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        if (tab.dataset.year === year) return;
+        animated(function () { year = tab.dataset.year; apply(); });
+      });
+    });
+    input.addEventListener('input', function () {
+      root.classList.add('events-typing');
+      apply();
+    });
+    root.querySelectorAll('.events-clear').forEach(function (button) {
+      button.addEventListener('click', clear);
+    });
+
+    // Restore a filtered view from the address, e.g. events/?year=2025&q=melbourne
+    var params = new URLSearchParams(location.search);
+    if (params.get('year') && root.querySelector('.year-tab[data-year="' + params.get('year') + '"]')) year = params.get('year');
+    if (params.get('q')) input.value = params.get('q');
+    apply();
+  }
+
+  // Narrow screens: the ☰ button opens the menu panel under the header.
+  // Closes on a link click, a click outside, Esc, or when the window widens back to desktop.
+  function initMobileMenu(button) {
+    var menu = document.getElementById(button.getAttribute('aria-controls'));
+    if (!menu) return;
+
+    function setOpen(open) {
+      button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      button.setAttribute('aria-label', open ? button.dataset.labelClose : button.dataset.labelOpen);
+      menu.hidden = !open;
+    }
+
+    button.addEventListener('click', function () { setOpen(menu.hidden); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('click', function (e) {
+      if (!menu.hidden && !menu.contains(e.target) && !button.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.hidden) { setOpen(false); button.focus(); }
+    });
+    window.addEventListener('resize', function () {
+      if (getComputedStyle(button).display === 'none') setOpen(false);
+    });
+  }
+
+  document.querySelectorAll('.nav-toggle').forEach(initMobileMenu);
   document.querySelectorAll('[data-carousel]').forEach(initCarousel);
+  document.querySelectorAll('[data-copy]').forEach(initCopy);
+  document.querySelectorAll('[data-event-filter]').forEach(initEventFilter);
   document.querySelectorAll('[data-subbar]').forEach(initSubbar);
   document.querySelectorAll('[data-reader]').forEach(initReader);
   initLightbox();
+  // After the deferred page scripts (happening.js builds its calendar toggle) have run
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-segmented]').forEach(initSegmented);
+  });
 })();

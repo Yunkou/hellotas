@@ -1,5 +1,5 @@
 ---
 title: "After Class"
+description: "Sports, clubs and things to do after class in Tasmania."
+layout: "placeholder"
 ---
-
-After-class activities and student life guides are coming soon.

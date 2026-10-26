@@ -1,0 +1,221 @@
+{{ define "main" }}
+<section class="hero-section">
+  <div class="container">
+    <h1>{{ i18n "happeningTitle" }}</h1>
+    <p class="hero-sub">{{ i18n "happeningSubtitle" }}</p>
+  </div>
+</section>
+
+{{ partial "passon-bar.html" (dict "page" . "message" (i18n "happeningLead")) }}
+
+{{- /*
+  Events come from data/happening/*.yaml, one file per event:
+    title, location, cost, summary   text with en / zh / ne inside
+    start, end                       "2026-11-19T17:15:00+11:00" (Hobart time with its offset)
+    date_tbc                         true when only the month is known; start then holds the 1st of that month
+    type                             webinar, workshop, forum, talk, meetup, conference, hackathon, networking
+    format                           online, in_person or hybrid
+    topics                           any of: cyber, ai, careers, data, development, community, ux
+    host                             who runs it (not translated)
+    url                              the official event or registration page
+    image, gallery                   cover picture (usually the banner from the official page) and any more pictures;
+                                     files go in static/images/happening/<file name>/. Two or more make a carousel;
+                                     clicking a picture opens the photo viewer
+    previous                         optional archive page of the last edition, e.g. events/2025/gdg-hobart-devfest;
+                                     the card links to it ("How it went last time")
+    previous_photos                  how many of that page's photos to add, captioned "Photo from last time"
+                                     (when the event has no pictures of its own, its first photo is used anyway)
+  The page only lists them. Whether an event is happening now, upcoming or over is worked out in the
+  visitor's browser from these dates (assets/js/happening.js), so nothing needs rebuilding as days pass.
+*/ -}}
+{{- $lang := site.Language.Lang -}}
+{{- $formatKeys := dict "online" "happeningFormatOnline" "in_person" "happeningFormatInPerson" "hybrid" "happeningFormatHybrid" -}}
+{{- $events := slice -}}
+{{- range $id, $e := hugo.Data.happening -}}
+  {{- $start := time $e.start -}}
+  {{- $end := time ($e.end | default $e.start) -}}
+  {{- $topics := slice -}}
+  {{- range $e.topics }}{{ $topics = $topics | append (i18n (printf "happeningTopic%s" (strings.FirstUpper .))) }}{{ end -}}
+  {{- $photos := slice -}}{{- $captions := slice -}}{{- $prevURL := "" -}}
+  {{- with $e.image }}{{ $photos = $photos | append . }}{{ $captions = $captions | append "" }}{{ end -}}
+  {{- range $e.gallery }}{{ $photos = $photos | append . }}{{ $captions = $captions | append "" }}{{ end -}}
+  {{- with $e.previous -}}
+    {{- with site.GetPage (printf "/%s" .) -}}
+      {{- $prevURL = .RelPermalink -}}
+      {{- $borrow := $e.previous_photos | default (cond (eq (len $photos) 0) 1 0) -}}
+      {{- $theirs := slice -}}
+      {{- with .Params.image }}{{ $theirs = $theirs | append . }}{{ end -}}
+      {{- with .Params.gallery }}{{ $theirs = $theirs | append . }}{{ end -}}
+      {{- range first $borrow $theirs }}{{ $photos = $photos | append . }}{{ $captions = $captions | append (i18n "happeningPhotoFromLast") }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- /* Everything a visitor might search for; dates in English and in the page's language */ -}}
+  {{- $search := slice (partial "happening-text.html" (dict "v" $e.title "lang" $lang)) (partial "happening-text.html" (dict "v" $e.title "lang" "en")) ($e.host | default "") (partial "happening-text.html" (dict "v" $e.location "lang" $lang)) (partial "happening-text.html" (dict "v" $e.cost "lang" $lang)) (partial "happening-text.html" (dict "v" $e.summary "lang" $lang)) (i18n (printf "happeningType%s" (strings.FirstUpper ($e.type | default "event")))) (i18n (index $formatKeys ($e.format | default "in_person"))) ($start.Format "Monday 2 January 2006") (time.Format ":date_long" $start) -}}
+  {{- $search = $search | append $topics -}}
+  {{- $search = $search | append (index (split (i18n "happeningMonthsLong") ",") (sub (int $start.Month) 1)) -}}
+  {{- $events = $events | append (dict
+      "id" $id
+      "search" (delimit $search " " | plainify | lower)
+      "ts" $start.Unix
+      "start" ($start.Format "2006-01-02T15:04:05Z07:00")
+      "end" ($end.Format "2006-01-02T15:04:05Z07:00")
+      "dateTbc" ($e.date_tbc | default false)
+      "fallbackDate" ($start.Format "Mon 2 Jan 2006 · 3:04 pm")
+      "title" (partial "happening-text.html" (dict "v" $e.title "lang" $lang))
+      "type" (i18n (printf "happeningType%s" (strings.FirstUpper ($e.type | default "event"))))
+      "format" ($e.format | default "in_person")
+      "formatLabel" (i18n (index $formatKeys ($e.format | default "in_person")))
+      "topics" $topics
+      "host" ($e.host | default "")
+      "location" (partial "happening-text.html" (dict "v" $e.location "lang" $lang))
+      "cost" (partial "happening-text.html" (dict "v" $e.cost "lang" $lang))
+      "summary" (partial "happening-text.html" (dict "v" $e.summary "lang" $lang))
+      "url" ($e.url | default "")
+      "photos" $photos
+      "captions" $captions
+      "previous" $prevURL
+  ) -}}
+{{- end -}}
+{{- $events = sort $events "ts" -}}
+
+{{- /* Past events from the archive, shown in the calendar only */ -}}
+{{- $archive := slice -}}
+{{- range where site.RegularPages "Section" "events" -}}
+  {{- if not .Date.IsZero }}{{ $archive = $archive | append (dict "title" .Title "date" (.Date.Format "2006-01-02") "url" .RelPermalink) }}{{ end -}}
+{{- end -}}
+
+{{- $strings := dict
+    "liveNow" (i18n "happeningLiveNow")
+    "today" (i18n "happeningToday")
+    "tomorrow" (i18n "happeningTomorrow")
+    "thisWeek" (i18n "happeningThisWeek")
+    "dateTbc" (i18n "happeningDateTBC")
+    "month" (i18n "happeningCalMonth")
+    "week" (i18n "happeningCalWeek")
+    "year" (i18n "happeningCalYear")
+    "prevMonth" (i18n "happeningCalPrevMonth")
+    "nextMonth" (i18n "happeningCalNextMonth")
+    "prevWeek" (i18n "happeningCalPrevWeek")
+    "nextWeek" (i18n "happeningCalNextWeek")
+    "noEvents" (i18n "happeningCalNoEvents")
+    "more" (i18n "happeningCalMore")
+    "oneEvent" (i18n "happeningCalOneEvent")
+    "events" (i18n "happeningCalEvents")
+    "past" (i18n "happeningCalPast")
+    "upcoming" (i18n "happeningCalUpcoming")
+    "archived" (i18n "happeningCalArchived")
+    "tbcThisMonth" (i18n "happeningCalTBCMonth")
+    "official" (i18n "happeningOfficialPage")
+    "addToCalendar" (i18n "happeningAddToCalendar")
+    "seeHowItWent" (i18n "happeningSeeHowItWent")
+    "online" (i18n "happeningFormatOnline")
+    "newTab" (i18n "happeningNewTab")
+    "monthsShort" (i18n "happeningMonthsShort")
+    "monthsLong" (i18n "happeningMonthsLong")
+    "weekdaysShort" (i18n "happeningWeekdaysShort")
+    "weekdaysLong" (i18n "happeningWeekdaysLong")
+-}}
+{{- $locale := index (dict "en" "en-AU" "zh" "zh-CN" "ne" "ne-NP-u-nu-latn") $lang | default "en-AU" -}}
+
+<section class="container happening" data-happening data-locale="{{ $locale }}">
+  <script type="application/json" class="happening-data">{{ dict "events" $events "archive" $archive "strings" $strings | jsonify | safeJS }}</script>
+
+  <div class="hp-section hp-now-section" id="now">
+    <div class="hp-head">
+      <h2><svg class="live-icon" viewBox="0 0 20 20" width="22" height="22" aria-hidden="true" focusable="false"><circle class="live-ring live-ring--outer" cx="10" cy="10" r="8.25"/><circle class="live-ring live-ring--inner" cx="10" cy="10" r="5.25"/><circle class="live-dot" cx="10" cy="10" r="2.5"/></svg>{{ i18n "happeningNowTitle" }}</h2>
+      <p>{{ i18n "happeningNowSub" }}</p>
+    </div>
+    <div class="hp-now" data-now-list></div>
+    <div class="hp-now-empty" data-now-empty hidden>
+      <p class="hp-now-empty-title">{{ i18n "happeningNowEmptyTitle" }}</p>
+      <p class="hp-now-empty-next" data-next-up hidden>{{ i18n "happeningNowEmptyNext" }} <a href="#" data-next-link></a> <span data-next-when></span></p>
+      <p class="hp-now-empty-none" data-next-none hidden>{{ i18n "happeningNowEmptyNone" }}</p>
+      <a class="hp-btn-outline" href="#upcoming">{{ i18n "happeningSeeUpcoming" }} ↓</a>
+    </div>
+  </div>
+
+  <div class="hp-section" id="upcoming">
+    <div class="hp-head hp-head--row">
+      <div>
+        <h2>{{ i18n "happeningUpcomingTitle" }}</h2>
+        <p>{{ i18n "happeningUpcomingSub" }}</p>
+      </div>
+      <div class="hp-tools">
+      <div class="events-search hp-search">
+        <svg class="events-search-icon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75"/><path d="m13 13 4.25 4.25"/></svg>
+        <input type="search" class="events-search-input" data-search placeholder="{{ i18n "eventsSearchPlaceholder" }}" aria-label="{{ i18n "eventsSearchPlaceholder" }}" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="hp-view-toggle" data-segmented role="group" aria-label="{{ i18n "happeningViewLabel" }}">
+        <button type="button" class="hp-view-btn" data-view="cards" aria-pressed="true">
+          <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.2"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.2"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.2"/><rect x="9" y="9" width="5.5" height="5.5" rx="1.2"/></svg>{{ i18n "happeningViewCards" }}
+        </button>
+        <button type="button" class="hp-view-btn" data-view="list" aria-pressed="false">
+          <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M5 3.5h9.5M5 8h9.5M5 12.5h9.5"/><circle cx="2" cy="3.5" r="1"/><circle cx="2" cy="8" r="1"/><circle cx="2" cy="12.5" r="1"/></svg>{{ i18n "happeningViewList" }}
+        </button>
+      </div>
+      </div>
+    </div>
+    <p class="hp-tz-note">{{ i18n "happeningTimezone" }}</p>
+    <div class="events-status hp-search-status" data-search-status hidden>
+      <span class="events-count" data-single="{{ i18n "eventsCountOne" }}" data-plural="{{ i18n "eventsCountOther" }}"></span>
+      <button type="button" class="events-clear" data-search-clear hidden>{{ partial "events-clear-icon.html" }}{{ i18n "eventsClearFilters" }}</button>
+    </div>
+    <p class="sr-only" data-search-announce aria-live="polite"></p>
+
+    <div class="hp-cards" data-upcoming-cards>
+      {{ range $events }}{{ partial "happening-card.html" . }}{{ end }}
+    </div>
+
+    <ol class="hp-list" data-upcoming-list hidden>
+      {{ range $events }}
+      <li class="hp-row" data-event="{{ .id }}" data-start="{{ .start }}" data-end="{{ .end }}"{{ if .dateTbc }} data-tbc{{ end }}>
+        <span class="hp-row-date">
+          <span class="hp-row-month" data-month>{{ (time .start).Format "Jan" }}</span>
+          <span class="hp-row-day" data-day>{{ (time .start).Format "2" }}</span>
+        </span>
+        <span class="hp-row-main">
+          <span class="hp-row-title">{{ .title }}</span>
+          <span class="hp-row-host">{{ .type }} · {{ .host }}</span>
+        </span>
+        <span class="hp-row-place">{{ if eq .format "online" }}{{ .formatLabel }}{{ else }}{{ .location }}{{ end }}</span>
+        <span class="hp-row-when"><time datetime="{{ .start }}" data-when data-time-only>{{ .fallbackDate }}</time><span class="hp-status" data-status hidden></span></span>
+        {{ with .url }}<a class="hp-row-link" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "happeningOfficialPage" }} <span aria-hidden="true">↗</span><span class="sr-only"> ({{ i18n "happeningNewTab" }})</span></a>{{ end }}
+      </li>
+      {{ end }}
+    </ol>
+
+    <div class="hp-empty" data-upcoming-empty hidden>
+      <p>{{ i18n "happeningUpcomingEmpty" }}</p>
+    </div>
+
+    <div class="events-empty" data-search-empty hidden>
+      <p class="events-empty-title">{{ i18n "eventsNoResults" }}</p>
+      <p>{{ i18n "eventsNoResultsHint" }}</p>
+      <button type="button" class="events-clear" data-search-clear>{{ partial "events-clear-icon.html" }}{{ i18n "eventsClearFilters" }}</button>
+    </div>
+  </div>
+
+  <div class="hp-section" id="calendar">
+    <div class="hp-head">
+      <h2>{{ i18n "happeningCalendarTitle" }}</h2>
+      <p>{{ i18n "happeningCalendarSub" }}</p>
+    </div>
+    <div class="cal" data-calendar>
+      <noscript><p class="hp-empty">{{ i18n "happeningCalNoScript" }}</p></noscript>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "scripts" }}
+{{ with resources.Get "js/happening.js" }}{{ with . | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" defer></script>
+{{ end }}{{ end }}
+{{ end }}
+
+{{- /* One text field in the page's language: a plain string, or a map with en / zh / ne (falls back to en) */ -}}
+{{- define "partials/happening-text.html" -}}
+  {{- $v := .v -}}
+  {{- if reflect.IsMap $v -}}{{- $v = or (index $v .lang) (index $v "en") "" -}}{{- end -}}
+  {{- return ($v | default "") -}}
+{{- end -}}
