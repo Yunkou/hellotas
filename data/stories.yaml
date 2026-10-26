@@ -1,0 +1,136 @@
+# Stories page (issue #36) and the homepage "Graduate stories" section.
+# Order is display order: newest year first; the homepage shows the first three.
+# Quotes are copied word for word from the linked source (UTAS News or the person's LinkedIn post).
+# localName is optional: a name to show instead of `name` on that language's pages.
+items:
+  - year: 2026
+    name: Luoyan Wei
+    localName: { zh: "魏罗燕" }
+    title: { en: "Master of IT and Systems graduate · Valedictorian", zh: "信息技术与系统硕士毕业生 · 毕业生代表" }
+    tagKey: storyTagGraduate
+    quote: "When I arrived, I could barely follow conversations. Yet Tasmania offered the environment and community that shaped me into who I am today."
+    image: images/stories/luoyan-wei.jpg
+    imagePosition: "50% 25%"
+    source: utas
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2026/luoyans-path-to-a-masters-degree-started-with-a-fitness-competition-and-a-desire-to-learn-english
+
+  - year: 2026
+    name: Rakhitha Dassanayake
+    title: { en: "ICT graduate from Sri Lanka · Valedictorian", zh: "来自斯里兰卡的 ICT 毕业生 · 毕业生代表" }
+    tagKey: storyTagAiResearch
+    quote: "We didn't just learn how technologies worked, we were constantly challenged to actually use them to build solutions."
+    image: images/stories/rakhitha-dassanayake.jpg
+    source: utas
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2026/maybe-now-its-my-turn-rakhitha-rediscovers-her-academic-ambitions-in-tasmania
+
+  - year: 2026
+    name: Bronson Billing
+    title: { en: "Bachelor of ICT student · PASS leader", zh: "ICT 本科生 · PASS 学习辅导组长" }
+    tagKey: storyTagCyber
+    quote: "…my experience has shown me that trying different things isn’t wasted time."
+    image: images/stories/bronson-billing.jpg
+    source: utas
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2026/scenic-route-leads-bronson-to-the-right-destination
+
+  - year: 2026
+    name: Abir Hossain Khondoker
+    title: { en: "ICT student · TasICT Rising Star 2026", zh: "ICT 学生 · 2026 TasICT 新星奖得主" }
+    tagKey: storyTagAward
+    quote: "I am incredibly honoured."
+    image: images/stories/abir-hossain-khondoker.jpg
+    imagePosition: "50% 22%"
+    source: utas
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2026/rising-star-win-caps-standout-night-at-tasict-awards
+
+  - year: 2026
+    name: MD Ashik Mahmud
+    title: { en: "Master of IT student at UTAS", zh: "UTAS 信息技术硕士生" }
+    tagKey: storyTagCyber
+    quote: "Our project was CyberQuiz Pro, an adaptive practice platform for the ISC2 certification pathway (CC, SSCP and CISSP)."
+    image: images/stories/md-ashik-mahmud.jpg
+    imagePosition: "50% 60%"
+    source: linkedin
+    url: https://www.linkedin.com/posts/ashnrb_utas-universityoftasmania-schoolofict-ugcPost-7514208499711614976-d0bM/
+
+  - year: 2026
+    name: Hosna Ara Begum
+    title: { en: "Power BI & Data Analytics Consultant · Master of IT, UTAS", zh: "Power BI 与数据分析顾问 · UTAS 信息技术硕士" }
+    tagKey: storyTagData
+    quote: "Long tiring hardworking of 6 persons for 12 weeks finally paid off with winning."
+    image: images/stories/hosna-ara-begum.jpg
+    source: linkedin
+    url: https://www.linkedin.com/posts/habegum_long-tiring-hardworking-of-6-persons-for-ugcPost-7513684086582878209-dObr/
+
+  - year: 2026
+    name: MD Rifat Bin Yusuf
+    title: { en: "Master of IT student at UTAS", zh: "UTAS 信息技术硕士生" }
+    tagKey: storyTagSoftware
+    quote: "Over the past few months, our team developed a custom WordPress plugin for Tasmanian Leaders…"
+    image: images/stories/md-rifat-bin-yusuf.jpg
+    imagePosition: "50% 30%"
+    source: linkedin
+    url: https://www.linkedin.com/posts/rifatyusuf_utas-ictexpo-tasmanianleaders-ugcPost-7514123551268974592-4axb/
+
+  - year: 2026
+    name: Pial Hossain
+    title: { en: "Student at University of Tasmania", zh: "塔斯马尼亚大学学生" }
+    tagKey: storyTagAiDev
+    quote: "Olinda is an AI-powered course advisory chatbot we developed for Hobart College."
+    image: images/stories/pial-hossain.jpg
+    source: linkedin
+    url: https://www.linkedin.com/posts/pial-hossain-5a05162b8_olindaai-utas-ictshowcase-ugcPost-7513241527721246720-XTt4/
+
+  - year: 2026
+    name: John Streat
+    title: { en: "Final-year Bachelor of ICT (Data Science and AI) student", zh: "ICT 本科（数据科学与人工智能）毕业年级学生" }
+    tagKey: storyTagDataAi
+    quote: "Proud to share that our Island Intelligence Platform team won the Commercial Acumen Award at the University of Tasmania ICT Showcase Expo."
+    image: images/stories/john-streat.jpg
+    source: linkedin
+    url: https://www.linkedin.com/posts/john-streat-7b35a12b8_universityoftasmania-sportstech-dataarchitecture-ugcPost-7514242664318373888-ft_L/
+
+  - year: 2026
+    name: Chris Jackson
+    title: { en: "State Sales Manager at Data#3", zh: "Data#3 州销售经理" }
+    tagKey: storyTagIndustry
+    quote: "What an inspiring day at the University of Tasmania ICT Showcase Expo!"
+    image: images/stories/chris-jackson.jpg
+    source: linkedin
+    url: https://www.linkedin.com/posts/chrisjackson3_what-an-inspiring-day-at-the-university-of-ugcPost-7513188432953745408-1Wf-/
+
+  - year: 2025
+    name: Zoe Zhao
+    title: { en: "Bachelor of IT graduate (Business Analysis)", zh: "信息技术本科毕业生（商业分析方向）" }
+    tagKey: storyTagBusiness
+    quote: "It was the first time I really saw how our classroom knowledge could turn into a working solution."
+    image: images/stories/zoe-zhao.jpg
+    source: utas
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2025/zoes-journey-from-curiosity-to-opportunity-through-studying-ict
+
+  - year: 2025
+    name: Josh Cooper
+    title: { en: "AI Engineer at ReadyTech, Launceston", zh: "ReadyTech AI 工程师（朗塞斯顿）" }
+    tagKey: storyTagAiDev
+    quote: "I’m proof that you don’t have to leave Tasmania to work on frontier technology or have a national impact…"
+    image: images/stories/josh-cooper.jpg
+    source: utas
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2025/from-facial-recognition-to-gen-ai-my-journey-in-building-tech-that-matters
+
+  - year: 2025
+    name: Yu Wang
+    title: { en: "Master of IT and Systems student · now ICT Graduate at TasWater", zh: "信息技术与系统硕士生 · 现任 TasWater ICT 毕业生岗位" }
+    tagKey: storyTagMobile
+    quote: "When I started, I knew very little about programming."
+    image: images/stories/yu-wang.jpg
+    imagePosition: "50% 30%"
+    source: linkedin
+    url: https://www.linkedin.com/posts/yu-wang-solana_ictprojectexpo-utas-universityoftasmania-ugcPost-7333462253070884864-Ew3c/
+
+  - year: 2025
+    name: Tristan Richards
+    title: { en: "Digital Workforce Capability Development Manager, Department of Premier and Cabinet", zh: "州长与内阁部 数字人才能力发展经理" }
+    tagKey: storyTagGovTech
+    quote: "I commenced my information and communication technology (ICT) journey in 1997 as a mature-aged student."
+    image: images/stories/tristan-richards.jpg
+    source: utas
+    url: https://www.utas.edu.au/about/news-and-stories/articles/2025/bridging-science-and-technology-the-ict-journey-of-tristan-richards

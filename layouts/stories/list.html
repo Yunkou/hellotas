@@ -1,0 +1,78 @@
+{{ define "main" }}
+{{ $lang := site.Language.Lang }}
+{{ $years := slice 2026 2025 }}
+<section class="hero-section stories-hero">
+  <div class="container">
+    <h1>{{ i18n "storiesTitle" }}</h1>
+    <p class="hero-sub">{{ i18n "storiesSubtitle" }}</p>
+    <p class="stories-motto">“{{ i18n "storiesMotto" }}”</p>
+  </div>
+</section>
+
+<section class="container stories-section">
+  <div class="year-tabs stories-filter" data-showing="{{ i18n "storiesShowing" }}">
+    {{ range $i, $year := $years }}
+    <button type="button" class="year-tab{{ if eq $i 0 }} active{{ end }}" data-year="{{ $year }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ $year }}</button>
+    {{ end }}
+    <span class="year-stats" data-stories-count aria-live="polite"></span>
+  </div>
+
+  <div class="stories-grid">
+    {{ range site.Data.stories.items }}
+    {{ $name := .name }}
+    {{ with .localName }}{{ with index . $lang }}{{ $name = . }}{{ end }}{{ end }}
+    <article class="story-card" data-year="{{ .year }}">
+      <div class="story-image">
+        <img src="{{ .image | relURL }}" alt="{{ $name }}" loading="lazy" width="400" height="275"{{ with .imagePosition }} style="object-position: {{ . | safeCSS }}"{{ end }}>
+      </div>
+      <div class="story-body">
+        <div class="story-tags">
+          <span class="tag tag-normal">{{ .year }}</span>
+          <span class="tag tag-free">{{ i18n .tagKey }}</span>
+        </div>
+        <h2>{{ $name }}</h2>
+        <p class="story-role">{{ index .title $lang | default .title.en }}</p>
+        <blockquote class="story-quote">“{{ .quote }}”</blockquote>
+        <div class="story-foot">
+          <a class="story-link" href="{{ .url }}" target="_blank" rel="noopener">{{ i18n "storiesReadFull" }}</a>
+          <span class="story-source">{{ if eq .source "linkedin" }}LinkedIn{{ else }}{{ i18n "storiesSourceUtas" }}{{ end }}</span>
+        </div>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+
+  <p class="stories-credit">{{ i18n "storiesCredit" }}</p>
+</section>
+
+<script>
+  // Year filter: shows one year's stories at a time. Without JS every story stays visible.
+  (function () {
+    var bar = document.querySelector('.stories-filter');
+    if (!bar) return;
+    var cards = document.querySelectorAll('.story-card');
+    var tabs = bar.querySelectorAll('.year-tab');
+    var count = bar.querySelector('[data-stories-count]');
+
+    function show(year) {
+      var n = 0;
+      cards.forEach(function (card) {
+        var on = card.dataset.year === year;
+        card.hidden = !on;
+        if (on) n++;
+      });
+      tabs.forEach(function (tab) {
+        var on = tab.dataset.year === year;
+        tab.classList.toggle('active', on);
+        tab.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      count.textContent = bar.dataset.showing.replace('{n}', n).replace('{year}', year);
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () { show(tab.dataset.year); });
+    });
+    show(tabs[0].dataset.year);
+  })();
+</script>
+{{ end }}
