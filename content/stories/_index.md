@@ -1,7 +1,4 @@
 ---
 title: "Stories"
-description: "Real stories from ICT students who've walked this path in Tasmania."
-layout: "placeholder"
+description: "Stories from international ICT students in Tasmania: first jobs, networks and settling into life here."
 ---
-
-Graduate and student stories are coming soon. In the meantime, browse the homepage highlights or share your own story.

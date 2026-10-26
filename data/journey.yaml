@@ -209,9 +209,9 @@ step3:
             - { key: tagNetworking, class: tag-free }
           textKey: journeyStep3CyberText
           photos:
-            - { src: images/journey/step-3/step-3-cyber-club-1.jpg, altKey: journeyStep3CyberPhoto1Alt }
-            - { src: images/journey/step-3/step-3-cyber-club-2.jpg, altKey: journeyStep3CyberPhoto2Alt }
-            - { src: images/journey/step-3/step-3-cyber-club-3.jpg, altKey: journeyStep3CyberPhoto3Alt }
+            - { src: images/journey/step-3/step-3-cyber-1.jpg, altKey: journeyStep3CyberPhoto1Alt }
+            - { src: images/journey/step-3/step-3-cyber-2.jpg, altKey: journeyStep3CyberPhoto2Alt }
+            - { src: images/journey/step-3/step-3-cyber-3.jpg, altKey: journeyStep3CyberPhoto3Alt }
           map: { query: "University of Tasmania Sandy Bay Campus, Churchill Avenue, Sandy Bay TAS 7005" }
           details:
             - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3CyberWhen }
@@ -287,7 +287,7 @@ step3:
   gallery:
     - { src: images/journey/step-3/step-3-fsae-2.jpg, captionKey: journeyStep3Gallery1 }
     - { src: images/journey/step-3/step-3-av-lab.jpg, captionKey: journeyStep3Gallery2 }
-    - { src: images/journey/utas/utas-sdg-workshop.jpg, captionKey: journeyStep3Gallery3 }
+    - { src: images/journey/step-3/step-3-cyber-3.jpg, captionKey: journeyStep3Gallery3 }
     - { src: images/journey/step-3/step-3-food-hub.jpg, captionKey: journeyStep3Gallery4 }
     - { src: images/journey/utas/utas-students-hobart.jpg, captionKey: journeyStep3Gallery5 }
     - { src: images/journey/step-3/step-3-fsae-1.jpg, captionKey: journeyStep3Gallery6 }
