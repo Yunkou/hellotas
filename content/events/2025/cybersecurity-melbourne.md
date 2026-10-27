@@ -23,15 +23,6 @@ aliases: ["/events/cybersecurity-2025-melbourne/"]
 draft: false
 ---
 
-
-AISA CyberCon Melbourne 2025, organised by the Australian Information Security Association (AISA), was held from 15 to 17 October 2025 at the Melbourne Convention & Exhibition Centre (MCEC).
-
-Under the theme **Transform to Evolve**, the three-day conference brought together cybersecurity professionals, industry leaders, researchers, and students to explore emerging cybersecurity threats, technological developments, digital resilience, and industry challenges.
-
-The conference featured keynote presentations, technical discussions, interactive activities, and professional networking opportunities. Specialised areas included the **Careers Village**, **Knowledge Hub**, **Locksport Village**, and **Incident Response Competition Village**, offering attendees opportunities to explore cybersecurity technologies, practical skills, and career pathways.
-
-For University of Tasmania students, the conference provided valuable opportunities to connect academic learning with real-world cybersecurity practices. Through technical sessions, interactive activities, and networking with industry professionals, students could broaden their understanding of emerging cybersecurity challenges, develop practical insights, and explore potential career pathways beyond Tasmania.
-
 ### References
 
 - [AISA CyberCon Melbourne 2025 – Official Website](https://melbourne2025.cyberconference.com.au/)
