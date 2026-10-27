@@ -13,8 +13,11 @@ image: "/images/events/2025/gdg-hobart-flutter/gdg-hobart-flutter-2025-1.jpg"
 summary: "A GDG Hobart community workshop at UTAS where attendees built their first cross-platform Flutter app in the cloud."
 outcome: "35+ attendees · first Flutter app built in the cloud"
 about:
-  - "GDG Hobart (Google Developer Group) hosted Flutter in 2025: Learn What Matters, Build What Works at the University of Tasmania, which provided the venue. Dr Lindsay Wells, Lecturer in ICT at UTAS, led a hands-on session where attendees set up and ran their first Flutter project using GitHub Codespaces, with no prior deployment experience needed."
-  - "Luke Moody also led a session, and the evening was co-hosted by Roshani Ghimire and Yu Wang. More than 35 developers, students and community members attended."
+  - "GDG Hobart hosted Flutter in 2025: Learn What Matters, Build What Works on Wednesday 17 September 2025, from 5:15 PM to 7:15 PM, in Room 134 of the Centenary Building at the University of Tasmania's Sandy Bay Campus. The workshop welcomed developers, ICT students, beginners, and members of Hobart's technology community interested in mobile application development."
+  - "The event attracted more than 35 attendees and featured technical sessions led by Dr Lindsay Wells, a Lecturer in ICT at UTAS, and Luke Moody. The sessions introduced Flutter development and explored important concepts and practical approaches for beginners learning to build cross-platform applications."
+  - "A key highlight was the hands-on workshop led by Dr Lindsay Wells, during which attendees set up and ran their first Flutter project using GitHub Codespaces. This cloud-based development environment allowed participants to gain practical experience with Flutter without needing to configure a complete local development setup."
+  - "The evening was co-hosted by Roshani Ghimire and Yu Wang, bringing together students, developers, and technology enthusiasts for collaborative learning and community engagement. The workshop provided opportunities for participants to explore new development tools, exchange experiences, and connect with other members of Hobart's developer community."
+  - "For UTAS ICT students, the workshop offered an opportunity to develop practical skills in cross-platform application development, gain experience using cloud-based development tools, and learn directly from experienced speakers. It also highlighted the value of engaging with local technology communities to strengthen technical knowledge, build professional connections, and explore potential career pathways in software and mobile application development."
 linkedin_posts:
   - name: "GDG Hobart"
     role: "Google Developer Group, Hobart"
@@ -53,3 +56,10 @@ draft: false
 ---
 
 A GDG Hobart community workshop at UTAS where attendees built their first cross-platform Flutter app.
+
+
+### References
+
+- [LinkedIn – GDG Hobart, Flutter Workshop Event Recap](https://www.linkedin.com/feed/update/urn:li:activity:7374445144713895937/)
+- [LinkedIn – Roshani Ghimire, Flutter Workshop Reflection](https://www.linkedin.com/feed/update/urn:li:activity:7374057334790213632/)
+
