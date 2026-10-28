@@ -13,8 +13,11 @@ image: "/images/events/2026/ict-careers-info-session/ict-careers-info-session-20
 summary: "A full-day School of ICT session with recruiters, ACS, alumni and industry speakers on moving from university into an ICT career."
 outcome: "Recruiter advice · alumni stories · networking"
 about:
-  - "Hosted by the School of ICT, this full-day session was offered to students with strong academic standing. The morning focused on hiring and job search strategy: Rachel Chong (UTAS Student Careers and Employability) on adding value to employers, Victor Le (Hays) on applying strategically, Georgi Brown (Red Apple IT) on what makes a candidate stand out, Geoff Matt (Echoview) on software engineering pathways, and Stuart Brinsmead and Alannah Grech from ACS on support for the move from student to professional."
-  - "In the afternoon, professionals from the Federal Government, Kindred Consulting, TasWater, the Australian Antarctic Division, Eighty Options and KPMG shared their career journeys, with plenty of time for networking. UTAS alumna Yu Wang was among the speakers."
+  - "The University of Tasmania (UTAS) School of ICT hosted the ICT Careers Information Session 2026 on 18 September 2026 at its Sandy Bay Campus in Hobart. The event brought together ICT students, recruitment professionals, alumni, and industry representatives to explore career opportunities and pathways within the technology sector."
+  - "The session focused on helping students prepare for the transition from university to employment. Industry professionals shared insights into employer expectations, recruitment processes, essential workplace skills, and different career pathways available to ICT graduates."
+  - "Representatives from the Australian Computer Society (ACS) and other industry organisations contributed perspectives on professional development, industry connections, and career progression. The session also highlighted the importance of building professional networks and developing both technical and communication skills."
+  - "Through discussions with recruiters, alumni, and industry speakers, students had opportunities to learn about the realities of working in the ICT industry, understand the skills employers value, and gain practical advice on preparing for their future careers."
+  - "For UTAS students, the event provided a valuable opportunity to connect with industry professionals, explore potential career directions, and gain a clearer understanding of how to transition successfully from university into the ICT industry."
 linkedin_posts:
   - name: "Rashmika Siriwardhana"
     role: "Master of IT and Systems student at UTAS"
