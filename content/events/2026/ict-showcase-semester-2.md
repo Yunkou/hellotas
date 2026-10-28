@@ -12,12 +12,13 @@ eligibility: "Open to all ICT students"
 image: "/images/events/2026/ict-showcase-semester-2/2026showcase.jpeg"
 summary: "The School of ICT's fourth and largest showcase, with 17 graduating project teams, research lightning talks and industry awards."
 outcome: "17 project teams · 300+ registrations · InVent and Data#3 awards"
-
 about:
-  - "ICT Showcase v4.0 was the School of ICT's fourth and largest showcase. Seventeen graduating project teams (12 Bachelor and 5 Master's) presented the work they had delivered for clients over 12 weeks, with live demos of AI platforms, interactive dashboards, mobile tools, chatbots and an ICT escape room."
-  - "Registrations, including students, passed 300. Research lightning talks from staff, PhD candidates and recent PhD graduates ran in the Stanley Burbury Theatre, with a research showcase in the lobby. IT Services set up more than 30 monitors for the project booths."
-  - "Rose Flynn from UTAS InVent awarded the Prizes for Business Acumen to the Island Intelligence Platform (Bachelor) and CyberQuiz Pro (Master's) teams. Data#3 sponsored the event, and its Best Capstone Project award will be presented at the ICT Awards Night on Monday 9 November 2026."
-
+  - "The University of Tasmania (UTAS) School of ICT hosted its Semester 2 Showcase Expo, also known as ICT Showcase v4.0, on 6 October 2026 at the University Centre, Sandy Bay Campus, Hobart, from 11:00 AM to 2:00 PM. As the School's fourth and largest showcase, the event attracted more than 300 registrations and brought together students, academic staff, industry representatives, and members of Tasmania's technology community."
+  - "The showcase featured 17 graduating ICT project teams, including 12 Bachelor's teams and five Master's teams, who presented projects developed over 12 weeks in collaboration with industry and external clients. Their work addressed real-world challenges across artificial intelligence, data analytics, cybersecurity, application development, and other emerging technologies, demonstrating how students applied their academic knowledge and technical skills to practical problems."
+  - "Featured projects included Island Intelligence Platform, a data and AI solution developed for SportsTech Tasmania that brings together information from sport, health, and environmental sources; Olinda AI, an AI-powered course advisory chatbot designed to help Hobart College students and families access course and enrolment information; and CyberQuiz Pro, an adaptive learning platform supporting preparation for ISC2 cybersecurity certifications. Other student demonstrations included interactive dashboards, mobile applications, intelligent chatbots, and an ICT escape room."
+  - "Alongside the student project displays, the event featured research lightning talks presented by ICT academic staff, PhD candidates, and recent PhD graduates at the Stanley Burbury Theatre, with additional research displays in the lobby. These activities provided visitors with opportunities to explore current ICT research, discover emerging technologies, and engage with the University's research community."
+  - "The showcase also celebrated student achievements through industry-supported awards. Rose Flynn from UTAS InVent presented the Prizes for Business Acumen to the Island Intelligence Platform team in the Bachelor's category and the CyberQuiz Pro team in the Master's category. Data#3 supported the event as an industry sponsor, with its Best Capstone Project Award scheduled to be presented at the ICT Awards Night on 9 November 2026."
+  - "For UTAS students, the showcase provided opportunities to demonstrate their technical achievements, present solutions to real-world problems, and receive feedback from industry professionals. Through project demonstrations, presentations, and networking, students could strengthen their teamwork, communication, and pitching skills while building connections with potential employers and collaborators. The event highlighted the value of industry-aligned capstone projects in developing professional portfolios and preparing students for future careers in Tasmania's ICT industry."
 stats:
   - number: "17"
     label: "Student project teams"
@@ -145,3 +146,10 @@ draft: false
 ---
 
 The ICT Showcase is where students prove what they can build, and where industry sees the next generation of Tasmanian tech talent.
+
+
+## References
+
+- [UTAS School of ICT Expo – Event Listing (Eventbrite)](https://www.eventbrite.com.au/e/school-of-ict-expo-tickets-1999335996787)
+- [UTAS – Industry-Aligned Projects and Showcase Information](https://www.utas.edu.au/about/academic-structure/information-and-communication-technology/industry-aligned-projects)
+
