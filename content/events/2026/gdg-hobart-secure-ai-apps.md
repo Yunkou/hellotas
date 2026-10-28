@@ -1,5 +1,5 @@
 ---
-title: "GDG Hobart: Build It, Guard It, Ship It"
+title: "GDG Hobart: Build It, Guard It, Ship It – Building Secure AI Apps"
 date: 2026-07-30
 weight: 5
 year: 2026
@@ -13,8 +13,11 @@ image: "/images/events/2026/gdg-hobart-secure-ai-apps/gdg-hobart-secure-ai-apps-
 summary: "A GDG Hobart double session at UTAS on putting AI into production and securing AI apps against prompt injection."
 outcome: "Live prompt injection demos · career tips from a UTAS alumnus"
 about:
-  - "Brodie Farrell-Oates, Web Developer at the Australian Antarctic Division and UTAS alumnus, showed how the Australian Antarctic Program uses AI to caption more than 15 years of video archives and to check web content against the Australian Government Style Manual. He also shared advice on moving from student life into a web development role."
-  - "Yuba Raj Panta, Senior DevOps/SRE Engineer at PageUp and Google Developer Expert (Cloud), demonstrated live prompt injection and system prompt hijacking attacks, then showed how to defend against them with Google Cloud Model Armor and deploy securely to Cloud Run."
+  - "GDG Hobart hosted Build It, Guard It, Ship It: Building Secure AI Apps on 30 July 2026 at Room 132, Centenary Building, University of Tasmania (UTAS) Sandy Bay Campus, from 5:15 PM to 6:45 PM."
+  - "The event featured two sessions exploring real-world AI applications, secure software development, and the deployment of AI-powered systems."
+  - "In the first session, Brodie Farrell-Oates, a Web Developer at the Australian Antarctic Division and UTAS alumnus, shared how the Australian Antarctic Program uses AI to automate video captioning across more than 15 years of archived content and improve compliance with the Australian Government Style Manual. He also shared career insights and practical advice for students transitioning into the technology industry."
+  - "The second session was presented by Yuba Raj Panta, a Senior DevOps/SRE Engineer at PageUp and Google Developer Expert in Cloud technologies. The session demonstrated how to build an AI chat application using Gemini, identify security vulnerabilities such as prompt injection and system prompt hijacking, and protect applications using Google Cloud Model Armor. It also covered containerisation and deployment using Cloud Run."
+  - "For UTAS students, the event provided practical insights into AI development, cloud technologies, application security, and professional career pathways. It also offered opportunities to learn from experienced industry professionals and connect with Hobart's technology community."
 linkedin_posts:
   - name: "GDG Hobart"
     role: "Google Developer Group, Hobart"
@@ -37,3 +40,10 @@ draft: false
 ---
 
 A GDG Hobart evening at UTAS on deploying AI in production and keeping AI apps secure.
+
+
+## References
+
+- [GDG Hobart – Official Event Listing](https://gdg.community.dev/events/details/google-gdg-hobart-presents-build-it-guard-it-ship-it-building-secure-ai-apps/)
+- [Brodie Farrell-Oates – Event Announcement and Session Details (LinkedIn)](https://www.linkedin.com/posts/brodiefarrell_ill-be-speaking-at-the-next-gdg-hobart-event-activity-7483720781730852866-HZAF)
+
