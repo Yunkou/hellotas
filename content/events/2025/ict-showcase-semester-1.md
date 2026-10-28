@@ -13,9 +13,13 @@ image: "/images/events/2025/ict-showcase-semester-1/ict-project-showcase-2025.jp
 summary: "The first of the School's twice-yearly showcases, reviving Demo Day so KIT300 capstone teams could demonstrate apps, websites and games to industry and alumni."
 outcome: "Live demos for staff, alumni and industry"
 about:
-  - "Organised by Dr Lindsay Wells, this expo brought back the School of ICT Demo Day, which had last run over a decade earlier. Staff, students, alumni and industry members were invited to see live demos of mobile apps, websites and games built by the KIT300 Capstone Project teams."
-  - "Alongside the capstone projects, the program featured selected work from KIT109 Games Fundamentals, KIT207 Games Design and Production, KIT305/KIT721 Mobile Application Development, KIT208 Virtual and Mixed Reality and KIT307 Computer Graphics and Animation. A digital program let visitors view the project posters, play the games and watch the project videos."
-  - "Many alumni came back to support the students, and the School announced a second showcase for October 2025 with twice as many projects."
+  - "The ICT Capstone Project Expo 2025 (Semester 1) was held on Wednesday 28 May 2025, from 10:00 AM to 12:00 PM, at the Studio Theatre, University Centre, University of Tasmania's Sandy Bay Campus in Hobart. Organised by Dr Lindsay Wells, the event marked the return of the School of ICT's Demo Day after more than a decade, providing an opportunity for students to showcase their work to university staff, alumni, and industry professionals."
+  - "The expo featured live demonstrations from KIT300 Capstone Project teams, including student-developed mobile applications, websites, and games. Additional projects from KIT109 Games Fundamentals, KIT207 Games Design and Production, KIT305/KIT721 Mobile Application Development, KIT208 Virtual and Mixed Reality, and KIT307 Computer Graphics and Animation were also presented, highlighting the range of practical and creative work undertaken by ICT students."
+  - "The exhibition showcased a variety of student projects, including SeaTalk, smart recycling systems, price-comparison websites, and creative games, as highlighted in a LinkedIn reflection by UTAS student Yu Wang. Yu Wang also shared a personal experience of presenting an application developed for the Mobile Application Development unit, reflecting progress in programming and practical application development."
+  - "Visitors had opportunities to explore live demonstrations, interact with student developers, and learn about the ideas and technologies behind their projects. A digital event program also provided access to project posters, demonstration videos, and playable games, allowing attendees to engage with the students' work in different formats."
+  - "The expo encouraged connections between current students, university staff, graduates, and industry representatives. The participation of returning alumni demonstrated the ongoing relationship between the School of ICT and its graduate community, while providing students with opportunities to present their achievements and develop professional communication skills."
+  - "Following the successful event, the School of ICT announced plans for a second showcase in October 2025, with approximately twice as many projects expected to be featured."
+  - "For UTAS ICT students, the ICT Capstone Project Expo 2025 provided a valuable opportunity to demonstrate practical skills, gain experience presenting technical projects, and engage with the local ICT community. It also highlighted the importance of teamwork, creativity, and applying classroom knowledge to practical software development challenges."
 projects:
   - name: "Student projects"
     description: "KIT300 capstone teams and students from games, mobile app, mixed reality and graphics units demonstrated their projects to industry guests and alumni."
@@ -56,3 +60,11 @@ draft: false
 ---
 
 KIT300 capstone teams and students from games and mobile app units demonstrated their work to industry guests and alumni.
+
+
+### References
+
+- [LinkedIn – Dr Lindsay Wells, ICT Project Expo Announcement](https://www.linkedin.com/posts/lindsay-wells-24658b76_ive-been-working-hard-to-bring-back-the-share-7327841456260292623-FuAS/)
+- [LinkedIn – Dr Lindsay Wells, ICT Project Expo Reflection](https://www.linkedin.com/posts/lindsay-wells-24658b76_great-success-thanks-to-everyone-who-attended-share-7333363715813113856-_T4-/)
+- [LinkedIn – Yu Wang, ICT Project Expo Experience](https://www.linkedin.com/posts/yu-wang-solana_ictprojectexpo-utas-universityoftasmania-ugcPost-7333462253070884864-Ew3c/)
+

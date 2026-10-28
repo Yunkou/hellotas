@@ -6,15 +6,19 @@ year: 2026
 event_type: "Meetup"
 tags: ["Networking", "Web Development"]
 location: "Room 134, Centenary Building, UTAS Sandy Bay"
-event_time: "Thursday 21 May 2026 · 5:15 PM – 6:45 PM"
+event_time: "Thursday 21 May 2026 · 5:15 PM – 6:00 PM"
 cost: "Free"
 eligibility: "Open to everyone, including IT students and beginners"
 image: "/images/events/2026/gdg-hobart-web-skills/gdg-hobart-web-skills-2026-1.jpg"
 summary: "A GDG Hobart session at UTAS on Progressive Web Apps and the shift from desktop software to the web."
 outcome: "35+ attendees · PWA deep dive and Q&A"
 about:
-  - "Lake Hopkins, Web Developer at the UTAS School of Pharmacy, presented PWA: Is software dead?, exploring why software is moving from desktop to the web and the strengths and limits of Progressive Web Apps. Her session included an interactive demo with instant printing."
-  - "More than 35 developers, students and tech enthusiasts attended at the UTAS Centenary Building. The program changed at the last minute, and the evening centred on Lake's session and an interactive Q&A."
+  - "GDG Hobart hosted Build with AI and Level Up Your Web Skills on Thursday 21 May 2026, from 5:15 PM to 6:00 PM, in Room 134 of the Centenary Building at the University of Tasmania's Sandy Bay Campus. The free meetup welcomed developers, ICT students, beginners, and technology enthusiasts interested in modern web development and emerging software technologies."
+  - "The event attracted more than 35 attendees from different technical and educational backgrounds. Although the original program changed shortly before the event, the evening focused on a presentation by Lake Hopkins, a Web Developer at the UTAS School of Pharmacy, titled PWA: Is Software Dead?"
+  - "The presentation explored the growing shift from traditional desktop software towards web-based applications and examined the capabilities and limitations of Progressive Web Apps (PWAs). PWAs combine web technologies with features commonly associated with installed applications, offering developers alternative approaches to delivering software across different devices and platforms."
+  - "Lake Hopkins also delivered an interactive demonstration involving instant printing, providing attendees with a practical example of how web technologies can interact with real-world functionality. The presentation was followed by an interactive question-and-answer session, allowing participants to discuss technical concepts, ask questions, and share their perspectives on the future of web development."
+  - "Beyond the technical presentation, the meetup provided opportunities for networking and community engagement. According to event organiser Yu Wang, many attendees remained after the session to continue discussing technology, exchanging experiences, and building connections with other members of Hobart's developer community."
+  - "For UTAS ICT students, the event offered an opportunity to learn about current web development approaches, explore the practical applications of PWAs, and develop a broader understanding of software development trends. It also demonstrated the value of participating in local technology communities, where students can connect with experienced developers, exchange ideas, and build professional relationships that may support their future careers in ICT."
 linkedin_posts:
   - name: "GDG Hobart"
     role: "Google Developer Group, Hobart"
@@ -48,3 +52,11 @@ draft: false
 ---
 
 A GDG Hobart evening at UTAS on Progressive Web Apps and modern web development.
+
+
+## References
+
+- [GDG Hobart – Event Recap (LinkedIn)](https://www.linkedin.com/posts/gdghobart-googledevelopergroups-webdevelopment-ugcPost-7463174610851680256-bEvJ/)
+- [GDG Hobart – Official Event Update (LinkedIn)](https://www.linkedin.com/posts/gdg-hobart_gdghobart-eventupdate-webdevelopment-activity-7462721335593492480-zJfQ/)
+- [Yu Wang – Event Organisation and Reflections (LinkedIn)](https://www.linkedin.com/posts/yu-wang-solana_gdghobart-googledevelopergroups-tasmaniatech-ugcPost-7464254528582758400-ibiB/)
+

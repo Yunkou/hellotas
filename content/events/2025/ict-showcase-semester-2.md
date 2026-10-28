@@ -13,9 +13,13 @@ image: "/images/events/2025/ict-showcase-semester-2/ict-connect-collaborate-expo
 summary: "The School's second showcase, with twice as many projects as the first: 20 student teams, strategic panels, a research poster session and evening lightning talks."
 outcome: "20 project teams · industry panels · research speed dating"
 about:
-  - "Following the first expo in Semester 1, the School of ICT hosted its Semester 2 showcase in the Studio Theatre and Stanley Burbury Theatre. Twenty Bachelor and Master's student teams demonstrated the final-semester projects they had built with industry clients to an audience of industry, students, staff and alumni. Student games, graphics and mixed reality projects were also on show."
-  - "The program included strategic panels on how ICT is addressing education, climate and productivity, a speed-date-an-ICT-researcher poster session, and an evening session of lightning talks on AI, cyber security and gaming that was open to the public."
-  - "Organiser Dr Lindsay Wells reported an incredible turnout of industry members, alumni and current and future students. He was also recognised with a School award for Outstanding Contribution to the School's Reputation for leading the expo."
+  - "The University of Tasmania (UTAS) School of ICT hosted its Semester 2 Connect & Collaborate Expo on Tuesday 28 October 2025 at the Studio Theatre and Stanley Burbury Theatre, University Centre, Sandy Bay Campus, Hobart. The event featured a daytime program from 11:00 AM to 2:00 PM and an evening session from 5:30 PM to 7:30 PM."
+  - "Building on the success of the Semester 1 showcase, the expo brought together 20 Bachelor's and Master's student project teams, industry representatives, researchers, university staff, alumni, and current and prospective students. The event showcased student achievements, industry collaboration, and opportunities for research and professional engagement."
+  - "Students presented final-semester projects developed in collaboration with industry clients, demonstrating how ICT knowledge and technical skills could be applied to practical challenges. Featured projects included Student Information ChatBot (UTAS ICT CourseMate), an IBM watsonx-powered chatbot designed to assist students with course and enrolment information; Paramedic Insights, a React and .NET visual analytics dashboard for identifying trends in controlled drug records; TechMate TAS, a Flutter and Firebase mobile application connecting students and technology professionals through events, job opportunities, and community information; and Brainy Hacks, a collection of adaptive brain-training games developed for children with learning difficulties."
+  - "Alongside the student project demonstrations, the expo featured games, graphics, and mixed reality projects. Strategic panel discussions explored the role of ICT in addressing challenges related to education, climate, and productivity. A research poster session, presented through a speed-dating format, provided opportunities for attendees to engage with ICT researchers and explore potential research collaborations."
+  - "The evening program included lightning talks covering artificial intelligence, cybersecurity, and gaming. Open to the public, these sessions encouraged knowledge sharing and discussion among students, researchers, industry professionals, and members of Tasmania's wider technology community."
+  - "Event organiser Dr Lindsay Wells highlighted the strong participation of industry representatives, alumni, and current and prospective students. His contribution to organising and leading the expo was also recognised through the School's Outstanding Contribution to the School's Reputation award."
+  - "For UTAS ICT students, the expo provided opportunities to present their technical achievements, demonstrate teamwork and problem-solving skills, communicate with industry professionals, and explore future career pathways. It also highlighted the importance of industry-connected projects, research engagement, and professional networking in preparing students for careers in the ICT sector."
 stats:
   - number: "20"
     label: "Student project teams"
@@ -85,5 +89,14 @@ student_role: "Yu Wang · Master of IT and Systems student"
 aliases: ["/events/ict-connect-collaborate-expo-2025/"]
 draft: false
 ---
+
+
+### References
+
+- [LinkedIn – Dr Lindsay Wells, School of ICT Connect & Collaborate Expo 2025](https://www.linkedin.com/posts/lindsay-wells-24658b76_school-of-ict-connect-collaborate-expo-share-7371777627071823872-gDrB/)
+- [LinkedIn – Dr Lindsay Wells, Expo Preparation](https://www.linkedin.com/posts/lindsay-wells-24658b76_set-up-for-tomorrows-school-of-ict-connect-ugcPost-7388460892029587456-W_5T/)
+- [LinkedIn – Dr Lindsay Wells, Expo Reflection](https://www.linkedin.com/posts/lindsay-wells-24658b76_a-bit-of-an-overdue-post-because-ive-been-ugcPost-7397093381115588608-d02w/)
+- [LinkedIn – Yu Wang, UTAS ICT CourseMate Project Experience](https://www.linkedin.com/posts/yu-wang-solana_universityoftasmania-utas-schoolofict-ugcPost-7389063534384455680-E0nF/)
+
 
 Twenty student teams showcased their final-semester projects, alongside industry panels, research posters and evening lightning talks.

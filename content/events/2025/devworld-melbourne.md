@@ -13,9 +13,12 @@ image: "/images/events/2025/devworld-melbourne/devworld-2025.jpg"
 summary: "Students represented UTAS at /dev/world 2025 in Melbourne, presenting an AFL app built across Android, iOS, and Flutter."
 outcome: "First time presenting in full English to experienced developers"
 about:
-  - "University of Tasmania students represented UTAS at /dev/world 2025 in Melbourne and presented an AFL app developed across Android, iOS, and Flutter."
-  - "They attended sessions on system and data model realities, cryptography, Live Activities on iOS, and other topics, and had the opportunity to network with classmates and industry professionals."
-  - "Students were selected to represent UTAS based on academic performance, with support from Dr Lindsay Wells and the School of ICT."
+  - "/dev/world 2025 was held on 4–5 September 2025 at the SEEK campus in Melbourne. The two-day developer conference brought together software developers, technology professionals, and students to share technical knowledge, explore technologies, and connect with the wider developer community."
+  - "University of Tasmania (UTAS) students attended the conference as university representatives, having been selected based on academic performance, with support from Dr Lindsay Wells and the School of ICT. During the event, UTAS student Yu Wang presented an Australian Football League (AFL) application developed across three platforms: Android, iOS, and Flutter. The presentation highlighted different approaches to mobile application development and provided an opportunity to share practical software development experience with experienced developers."
+  - "A significant personal achievement for Yu Wang was delivering a first full technical presentation in English to an audience of experienced software developers. This experience highlighted the importance of technical communication, confidence, and presentation skills when sharing software projects within a professional environment."
+  - "Students also attended technical sessions covering system and data modelling, cryptography, iOS Live Activities, and other software development topics. These sessions provided opportunities to explore industry practices, learn about different technologies, and gain insights into approaches and challenges in software engineering."
+  - "Beyond the technical presentations, the conference provided opportunities for students to interact with industry professionals and fellow developers, exchange ideas, and develop professional connections outside the university environment."
+  - "For UTAS ICT students, participating in /dev/world 2025 demonstrated the value of applying academic knowledge to practical software development projects and presenting technical work to a professional audience. The experience also highlighted opportunities to strengthen communication skills, broaden technical knowledge, and explore future career pathways in software and mobile application development."
 projects:
   - name: "AFL app"
     description: "A student-built AFL app presented at the conference, with versions developed for Android, iOS, and Flutter."
@@ -48,3 +51,8 @@ They shared their experience building an AFL app across three platforms: Android
 They also attended sessions on system and data model realities, cryptography, Live Activities on iOS, and more. The event gave them a chance to network with talented classmates and industry professionals.
 
 **Note:** This event requires a high GPA to attend, as students are selected to represent UTAS.
+
+### References
+
+- [LinkedIn – Yu Wang, /dev/world 2025 Melbourne Experience](https://www.linkedin.com/posts/yu-wang-solana_devworld2005-devworld-ios-ugcPost-7370414703635857408-_t4g/)
+

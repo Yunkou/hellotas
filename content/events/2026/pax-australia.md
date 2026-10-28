@@ -13,8 +13,12 @@ image: "/images/events/2026/pax-australia/pax-australia-2026-1.jpg"
 summary: "UTAS Games students showcased their own games to thousands of PAX visitors on the Tasmanian booth in Melbourne."
 outcome: "Student games played by thousands of visitors"
 about:
-  - "UTAS Games and Creative Technologies students Callie Kirkcaldie, Harry Beumer and Nicholas Gammler showcased their games at PAX Australia in Melbourne, on the Tasmanian booth beside the University of Tasmania's Study Gamedev Online display. Games on show included Brainless, Fantasy Lab Escape and Scrap'd, with more student titles available in the UTAS GOAT collection on itch.io."
-  - "Dr Lindsay Wells attended to promote the Games and Creative Technologies Major. Professor Nicole Herbert thanked the students for representing the School of ICT so well."
+  - "PAX Australia 2026 was held from 9 to 11 October 2026 at the Melbourne Convention and Exhibition Centre (MCEC). As one of Australia's major gaming and interactive entertainment events, the three-day expo brought together game developers, publishers, industry professionals, and gaming enthusiasts to celebrate video games, tabletop gaming, and gaming culture."
+  - "The event featured game exhibitions, hands-on demonstrations, industry panels, independent game showcases, and networking opportunities, allowing visitors to discover new games, interact with developers, and explore the wider gaming industry."
+  - "University of Tasmania (UTAS) Games and Creative Technologies students Callie Kirkcaldie, Harry Beumer, and Nicholas Gammler showcased their student-developed games at the Tasmanian booth, alongside the university's Study Gamedev Online display. Featured projects included Brainless by Callie Kirkcaldie, Scrap'd by Nicholas Gammler, and Fantasy Lab Escape, developed by a team including Harry Beumer. Additional student games were available through the UTAS GOAT collection on itch.io."
+  - "The showcase provided an opportunity for students to present their creative and technical achievements to a large public audience. By demonstrating their games and interacting with visitors, students gained experience communicating their design ideas, presenting gameplay, and engaging with the gaming community."
+  - "Dr Lindsay Wells attended the event to promote UTAS's Games and Creative Technologies Major, while Professor Nicole Herbert acknowledged the students' contributions in representing the School of ICT."
+  - "For current and prospective UTAS students, PAX Australia highlighted the value of applying game development knowledge beyond the classroom. Participating in a major gaming expo offered opportunities to develop professional presentation skills, showcase portfolios, connect with the Australian games industry, and explore potential career pathways in game development and creative technologies."
 linkedin_posts:
   - name: "Nicholas Gammler"
     role: "Developer of Scrap'd"
@@ -45,3 +49,11 @@ draft: false
 ---
 
 UTAS Games students showcased their own games to thousands of visitors at PAX Australia in Melbourne.
+
+
+## References
+
+- [PAX Australia – Official Website](https://aus.paxsite.com/)
+- [PAX Australia 2026 – Event Information (MCEC)](https://www.mcec.com.au/whats-on/2026/07/pax-penny-arcade-expo-australia-2026-confirmed-multi-year)
+- [Callie Kirkcaldie – UTAS Student Projects and PAX Experience (LinkedIn)](https://au.linkedin.com/in/callie-kirkcaldie-83178b2a5)
+

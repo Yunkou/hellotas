@@ -12,8 +12,9 @@ image: "/images/events/2026/mayo-it-jobs-talk/2026ictcaree.jpg"
 summary: "A Mayo talk about IT jobs and career opportunities."
 outcome: "To be confirmed"
 about:
-  - "This planned talk by Mayo will focus on IT jobs and career opportunities."
-  - "The date, location, schedule, cost, and eligibility have not yet been confirmed."
+  - "Mayo Talk: IT Jobs 2026 was a career-focused session exploring IT jobs and career opportunities for students interested in the technology industry."
+  - "The session focused on IT employment opportunities and was relevant to students considering future career pathways in the ICT industry."
+  - "Further information about the speaker's professional background, specific discussion topics, and session outcomes is currently unavailable."
 aliases: ["/events/mayo-it-jobs-talk-2026/"]
 draft: false
 ---
