@@ -5,16 +5,20 @@ weight: 6
 year: 2026
 event_type: "Meetup"
 tags: ["Networking", "AI"]
-location: "Room 2038, The Forest Building, UTAS Sandy Bay"
-event_time: "Thursday 18 June 2026 · 5:00 PM – 7:30 PM"
+location: "Room 2038, Level 2, The Forest Building, University of Tasmania, 83 Melville Street, Hobart TAS 7000"
+event_time: "Thursday 18 June 2026 · 5:15 PM – 6:45 PM"
 cost: "Free"
 eligibility: "Open to everyone"
 image: "/images/events/2026/gdg-hobart-ai-agents/gdg-hobart-ai-agents-2026-1.jpg"
 summary: "GDG Hobart's first event at UTAS's Forest Building, on AI agents, responsible data use and the future of work."
 outcome: "Two industry talks · hands-on Vertex AI session"
 about:
-  - "Build with AI x The Future of Work with AI Agents was GDG Hobart's first event at its new venue, The Forest Building at the University of Tasmania. Graham Walker explained why successful AI projects depend on everything around the model, including data quality, privacy, compliance, security and operating costs."
-  - "Anupam Phoghat followed with practical examples of AI agents supporting everyday work with Google Vertex AI, and stressed that people still need to stay involved in decision making. Attendees came from IT, business, education, accounting and other fields."
+  - "GDG Hobart hosted Build with AI x The Future of Work with AI Agents on 18 June 2026 at Room 2038, Level 2, The Forest Building, University of Tasmania, Hobart. It was GDG Hobart's first event at its new venue."
+  - "The event featured two industry sessions exploring practical applications of artificial intelligence, responsible AI adoption, and the growing role of AI agents in the workplace."
+  - "In the first session, It's Not the Model – It's Everything Around It, Graham Walker discussed the factors that determine whether AI projects succeed in real-world environments. Drawing on experience in regulated Australian industries, he explored data quality, privacy, security, compliance, accountability, and operational costs."
+  - "The second session, Burnout to Boardroom: Architecting Your AI C-Suite with Vertex AI, was delivered by Anupam Phoghat, Founding Director of Core-X. This interactive workshop introduced participants to Google Vertex AI and Agent Builder, demonstrating how AI agents can collaborate to automate workflows, support business operations, and improve productivity."
+  - "The event also provided networking opportunities for students, developers, and technology professionals from IT, business, education, accounting, and other fields in Hobart."
+  - "For UTAS students, the event offered practical insights into AI agents, cloud-based development tools, responsible AI implementation, and emerging technology skills relevant to future ICT careers."
 linkedin_posts:
   - name: "GDG Hobart"
     role: "Google Developer Group, Hobart"
@@ -51,3 +55,10 @@ draft: false
 ---
 
 A GDG Hobart evening at UTAS on AI agents and what they mean for the future of work.
+
+
+## References
+
+- [GDG Hobart – Official Event Listing](https://gdg.community.dev/events/details/google-gdg-hobart-presents-build-with-ai-x-the-future-of-work-with-ai-agents/)
+- [Yu Wang – Event Announcement and Session Details](https://www.linkedin.com/posts/yu-wang-solana_one-of-the-most-valuable-ai-events-in-activity-7470375651292864513-dnJ-/)
+
