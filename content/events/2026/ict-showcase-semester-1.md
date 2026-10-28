@@ -13,10 +13,12 @@ image: "/images/events/2026/ict-showcase-semester-1/ict-showcase-2026-semester-1
 summary: "The School's third showcase, with 16 graduating project teams, curriculum Major hubs and activities for visiting school students."
 outcome: "16 project teams · 250+ attendees · People's Choice and InVent prizes"
 about:
-  - "The School of ICT's Semester 1 showcase celebrated 16 graduating Bachelor and Master's project teams who had spent 12 weeks working with clients from across the ICT industry and beyond. Despite a fire alarm the night before, the expo ran in full swing at the University Centre."
-  - "Beyond the project booths, Major hubs showcased Application and Web Development, Artificial Intelligence, Cyber Security, Games and Creative Technologies, and the Internet of Things. Tasmanian school students in Years 9 to 12 joined dedicated information sessions, campus tours and hands-on workshops."
-  - "TasICT CEO Russell Kelly reported more than 250 attendees. Intuit Technologies sponsored the People's Choice Award and UTAS InVent sponsored prizes for commercial acumen."
-  - "In June 2026, the ICT Showcase was up for a TasICT Excellence Award for developing employment opportunities."
+  - "The University of Tasmania (UTAS) School of ICT hosted its Semester 1 Showcase Expo on 28 May 2026 at the Studio Theatre, University Centre, Sandy Bay Campus, Hobart, from 10:00 AM to 2:00 PM."
+  - "The event brought together 16 graduating Bachelor's and Master's ICT project teams, university staff, industry representatives, and visiting school students. More than 250 people attended the showcase, which highlighted student achievements, innovative technologies, and pathways into ICT education and careers."
+  - "Graduating students presented capstone projects developed over 12 weeks in collaboration with industry and other external clients, demonstrating how academic knowledge and technical skills can be applied to real-world challenges. Featured projects included PharmaGene App, a pharmacogenetic decision-support tool designed to help healthcare professionals access prescribing recommendations; Gamifying Business Law for Postgraduates, an interactive learning experience developed with the UTAS Law School; and Cybersecurity Honeypot Network for Tasmanian SMEs, a system that captures and visualises cyberattack activity to help local businesses understand cybersecurity threats."
+  - "Alongside the student project displays, five curriculum Major hubs introduced visitors to Application and Web Development, Artificial Intelligence, Cyber Security, Games and Creative Technologies, and the Internet of Things (IoT). Visiting Tasmanian school students in Years 9 to 12 also participated in dedicated information sessions, campus tours, and hands-on workshops, providing opportunities to explore ICT study options and experience university learning environments."
+  - "The showcase celebrated outstanding student achievements through industry-supported awards. Intuit Technologies sponsored the People's Choice Award, won by the team behind the pharmacogenetic decision-support project. The UTAS InVent Prizes for Commercial Acumen recognised the pharmacogenetic project and the business law gamification project."
+  - "For UTAS students, the showcase provided opportunities to present their technical achievements to a wider audience, demonstrate practical problem-solving skills, strengthen teamwork and professional communication, and engage with Tasmania's ICT community. The event also highlighted how industry-aligned capstone projects can contribute to students' professional portfolios and future career development."
 stats:
   - number: "16"
     label: "Student project teams"
@@ -80,3 +82,8 @@ draft: false
 ---
 
 Sixteen graduating teams presented their client projects, with Major hubs and school activities alongside the expo.
+
+
+## References
+
+- [Russell Kelly – School of ICT Showcase Expo Recap (LinkedIn)](https://www.linkedin.com/posts/russell-kelly-370b5b8_the-school-of-ict-showcase-expo-event-was-activity-7467115549630545921-GRTF)
