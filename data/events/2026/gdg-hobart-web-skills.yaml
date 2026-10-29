@@ -1,0 +1,107 @@
+title:
+  en: "GDG Hobart: Build with AI and Level Up Your Web Skills"
+  zh: "GDG Hobart：用AI构建，提升你的网页技能"
+  ne: "GDG Hobart: AI सँग निर्माण र आफ्नो वेब सीप बढाउनुहोस्"
+start: "2026-05-21T17:15:00+10:00"
+end: "2026-05-21T18:00:00+10:00"
+type: "meetup"
+topics: [networking, webDev]
+location: "Room 134, Centenary Building, UTAS Sandy Bay"
+cost:
+  en: "Free"
+  zh: "免费"
+  ne: "निःशुल्क"
+badge: "free"
+eligibility:
+  en: "Open to everyone, including IT students and beginners"
+  zh: "对所有人开放，包括 IT 学生和初学者"
+  ne: "IT विद्यार्थी र नयाँ सिक्नेहरूसहित सबैका लागि खुला"
+summary:
+  en: "A GDG Hobart session at UTAS on Progressive Web Apps and the shift from desktop software to the web."
+  zh: "GDG Hobart在UTAS举办的活动，主题是渐进式网页应用（PWA）以及软件从桌面转向网页的趋势。"
+  ne: "UTAS मा प्रोग्रेसिभ वेब एप र डेस्कटप सफ्टवेयरबाट वेबतर्फको परिवर्तनबारे GDG Hobart को सत्र।"
+image: "/images/events/2026/gdg-hobart-web-skills/gdg-hobart-web-skills-2026-1.jpg"
+gallery:
+  - "/images/events/2026/gdg-hobart-web-skills/gdg-hobart-web-skills-2026-2.jpg"
+outcome:
+  en: "35+ attendees · PWA deep dive and Q&A"
+  zh: "35+名参与者 · PWA深度分享与问答"
+  ne: "35+ सहभागी · PWA गहिरो प्रस्तुति र प्रश्नोत्तर"
+about:
+  en:
+    - "GDG Hobart hosted Build with AI and Level Up Your Web Skills on Thursday 21 May 2026, from 5:15 PM to 6:00 PM, in Room 134 of the Centenary Building at the University of Tasmania's Sandy Bay Campus. The free meetup welcomed developers, ICT students, beginners, and technology enthusiasts interested in modern web development and emerging software technologies."
+    - "The event attracted more than 35 attendees from different technical and educational backgrounds. Although the original program changed shortly before the event, the evening focused on a presentation by Lake Hopkins, a Web Developer at the UTAS School of Pharmacy, titled PWA: Is Software Dead?"
+    - "The presentation explored the growing shift from traditional desktop software towards web-based applications and examined the capabilities and limitations of Progressive Web Apps (PWAs). PWAs combine web technologies with features commonly associated with installed applications, offering developers alternative approaches to delivering software across different devices and platforms."
+    - "Lake Hopkins also delivered an interactive demonstration involving instant printing, providing attendees with a practical example of how web technologies can interact with real-world functionality. The presentation was followed by an interactive question-and-answer session, allowing participants to discuss technical concepts, ask questions, and share their perspectives on the future of web development."
+    - "Beyond the technical presentation, the meetup provided opportunities for networking and community engagement. According to event organiser Yu Wang, many attendees remained after the session to continue discussing technology, exchanging experiences, and building connections with other members of Hobart's developer community."
+    - "For UTAS ICT students, the event offered an opportunity to learn about current web development approaches, explore the practical applications of PWAs, and develop a broader understanding of software development trends. It also demonstrated the value of participating in local technology communities, where students can connect with experienced developers, exchange ideas, and build professional relationships that may support their future careers in ICT."
+  zh:
+    - "GDG Hobart 于 2026 年 5 月 21 日（星期四）下午 5:15 至 6:00 在 University of Tasmania Sandy Bay 校区 Centenary Building 134 室举办了 Build with AI and Level Up Your Web Skills。这场免费聚会欢迎对现代网页开发和新兴软件技术感兴趣的开发者、ICT 学生、初学者和技术爱好者参加。"
+    - "活动吸引了 35 位以上来自不同技术和教育背景的参与者。虽然原定议程在活动前不久有所调整，当晚的重点是 UTAS 药学院网页开发者 Lake Hopkins 的演讲：PWA: Is Software Dead?（PWA：软件已死？）。"
+    - "演讲探讨了从传统桌面软件转向网页应用的趋势，并分析了渐进式网页应用（PWA）的能力和局限。PWA 把网页技术与通常属于安装式应用的功能结合起来，为开发者在不同设备和平台上交付软件提供了另一种思路。"
+    - "Lake Hopkins 还做了一个即时打印的互动演示，让与会者直观看到网页技术如何与现实世界的功能互动。演讲后是互动问答环节，参与者可以讨论技术概念、提出问题，并分享自己对网页开发未来的看法。"
+    - "除了技术演讲，聚会也带来了交流和社区互动的机会。据活动组织者 Yu Wang 介绍，许多与会者在分享结束后留下来，继续讨论技术、交流经验，并结识霍巴特开发者社区的其他成员。"
+    - "对 UTAS ICT 学生来说，这次活动让他们了解当下的网页开发方法，探索 PWA 的实际应用，并更全面地认识软件开发趋势。活动也说明，参与本地科技社区可以结识资深开发者、交流想法，并建立有助于未来 ICT 职业发展的人脉。"
+  ne:
+    - "GDG Hobart ले बिहिबार 21 मे 2026 मा साँझ 5:15 देखि 6:00 सम्म University of Tasmania को Sandy Bay क्याम्पसस्थित Centenary Building को कोठा 134 मा Build with AI and Level Up Your Web Skills आयोजना गर्‍यो। यो निःशुल्क भेटघाटले आधुनिक वेब विकास र नयाँ सफ्टवेयर प्रविधिमा रुचि राख्ने डेभलपर, ICT विद्यार्थी, नयाँ सिक्नेहरू र प्रविधिप्रेमीहरूलाई स्वागत गर्‍यो।"
+    - "कार्यक्रममा फरक-फरक प्राविधिक र शैक्षिक पृष्ठभूमिका 35 भन्दा बढी सहभागी थिए। कार्यक्रमभन्दा केही अघि मूल तालिका परिवर्तन भए पनि साँझको मुख्य भाग UTAS School of Pharmacy का Web Developer Lake Hopkins को PWA: Is Software Dead? शीर्षकको प्रस्तुति थियो।"
+    - "प्रस्तुतिले परम्परागत डेस्कटप सफ्टवेयरबाट वेबमा आधारित एपतर्फको बढ्दो परिवर्तनबारे चर्चा गर्‍यो र Progressive Web Apps (PWA) का क्षमता र सीमाहरू केलायो। PWA ले वेब प्रविधिलाई इन्स्टल गरिने एपका सुविधाहरूसँग जोड्छ, जसले डेभलपरहरूलाई फरक उपकरण र प्लेटफर्ममा सफ्टवेयर पुर्‍याउने वैकल्पिक तरिका दिन्छ।"
+    - "Lake Hopkins ले तत्काल प्रिन्टिङको अन्तरक्रियात्मक प्रदर्शन पनि गरे, जसले वेब प्रविधि वास्तविक संसारका कार्यहरूसँग कसरी जोडिन सक्छ भन्ने व्यावहारिक उदाहरण दियो। प्रस्तुतिपछि अन्तरक्रियात्मक प्रश्नोत्तर सत्र भयो, जहाँ सहभागीहरूले प्राविधिक अवधारणाबारे छलफल गरे, प्रश्न सोधे र वेब विकासको भविष्यबारे आफ्ना विचार बाँडे।"
+    - "प्राविधिक प्रस्तुतिबाहेक भेटघाटले नेटवर्किङ र सामुदायिक संलग्नताको अवसर पनि दियो। कार्यक्रम आयोजक Yu Wang का अनुसार धेरै सहभागी सत्रपछि पनि बसेर प्रविधिबारे छलफल गर्दै, अनुभव साटासाट गर्दै होबार्टको डेभलपर समुदायका अरू सदस्यहरूसँग सम्बन्ध बनाउँदै थिए।"
+    - "UTAS ICT विद्यार्थीहरूका लागि कार्यक्रमले हालका वेब विकासका तरिका सिक्ने, PWA को व्यावहारिक प्रयोग बुझ्ने र सफ्टवेयर विकासका प्रवृत्तिबारे फराकिलो बुझाइ बनाउने अवसर दियो। अनुभवी डेभलपरहरूसँग जोडिन, विचार साटासाट गर्न र ICT मा भविष्यको करियरमा सहयोग पुर्‍याउने पेसागत सम्बन्ध बनाउन स्थानीय प्रविधि समुदायमा सहभागी हुनुको महत्त्व पनि यसले देखायो।"
+student_voice:
+  en: "Every event becomes a space where people from different backgrounds, cultures, and experiences can connect, share ideas, and learn from each other."
+  zh: "每一场活动都成为一个空间，让来自不同背景、文化和经历的人们彼此连接、分享想法、相互学习。"
+  ne: "हरेक कार्यक्रम फरक पृष्ठभूमि, संस्कृति र अनुभवका मानिसहरू जोडिने, विचार बाँड्ने र एकअर्काबाट सिक्ने ठाउँ बन्छ।"
+student_role:
+  en: "Yu Wang · UTAS alumna, GDG Hobart organiser"
+  zh: "Yu Wang · UTAS校友，GDG Hobart组织者"
+  ne: "Yu Wang · UTAS पूर्वविद्यार्थी, GDG Hobart आयोजक"
+references:
+  - title: "GDG Hobart – Event Recap (LinkedIn)"
+    url: "https://www.linkedin.com/posts/gdghobart-googledevelopergroups-webdevelopment-ugcPost-7463174610851680256-bEvJ/"
+  - title: "GDG Hobart – Official Event Update (LinkedIn)"
+    url: "https://www.linkedin.com/posts/gdg-hobart_gdghobart-eventupdate-webdevelopment-activity-7462721335593492480-zJfQ/"
+  - title: "Yu Wang – Event Organisation and Reflections (LinkedIn)"
+    url: "https://www.linkedin.com/posts/yu-wang-solana_gdghobart-googledevelopergroups-tasmaniatech-ugcPost-7464254528582758400-ibiB/"
+linkedin_posts:
+  - name: "GDG Hobart"
+    role: "Google Developer Group, Hobart"
+    avatar: "/images/events/2026/gdg-hobart-web-skills/linkedin-gdg-hobart-avatar.jpg"
+    images:
+      - "/images/events/2026/gdg-hobart-web-skills/linkedin-gdg-hobart-1.jpg"
+      - "/images/events/2026/gdg-hobart-web-skills/linkedin-gdg-hobart-2.jpg"
+      - "/images/events/2026/gdg-hobart-web-skills/linkedin-gdg-hobart-3.jpg"
+      - "/images/events/2026/gdg-hobart-web-skills/linkedin-gdg-hobart-4.jpg"
+      - "/images/events/2026/gdg-hobart-web-skills/linkedin-gdg-hobart-5.jpg"
+    content:
+      en: "A massive thank you to the 35+ attendees from diverse background including developers, students, and tech enthusiasts, who joined us at the UTAS Centenary Building to learn, connect, and grow together."
+      zh: "衷心感谢来自不同背景的35名以上参与者，包括开发者、学生和技术爱好者，来到UTAS Centenary Building与我们一起学习、交流和成长。"
+      ne: "सिक्न, जोडिन र सँगै अघि बढ्न UTAS Centenary Building मा हामीसँग सामेल हुनुहुने डेभलपर, विद्यार्थी र प्रविधिप्रेमी लगायत विविध पृष्ठभूमिका 35+ सहभागीहरूलाई हार्दिक धन्यवाद।"
+    summary:
+      en: "GDG Hobart's wrap-up of Build with AI and Level Up Your Web Skills, attended by more than 35 developers, students and tech enthusiasts at the UTAS Centenary Building despite a last-minute schedule change. UTAS web developer Lake Hopkins asked whether software is dead and explored the strengths and limits of Progressive Web Apps, followed by a lively Q&A."
+      zh: "GDG Hobart对“Build with AI and Level Up Your Web Skills”的总结：尽管日程临时调整，仍有超过35名开发者、学生和技术爱好者来到UTAS Centenary Building。UTAS网页开发人员Lake Hopkins抛出“软件已死?”的问题，探讨了渐进式网页应用的优势与局限，随后是热烈的问答。"
+      ne: "अन्तिम समयमा तालिका बदलिए पनि UTAS Centenary Building मा 35 भन्दा बढी डेभलपर, विद्यार्थी र प्रविधिप्रेमी सहभागी भएको “Build with AI and Level Up Your Web Skills” को GDG Hobart को सारांश। UTAS का वेब डेभलपर Lake Hopkins ले सफ्टवेयर मरिसक्यो कि भन्ने प्रश्न उठाउँदै प्रोग्रेसिभ वेब एपका बलियो पक्ष र सीमाबारे चर्चा गरे, त्यसपछि जीवन्त प्रश्नोत्तर भयो।"
+    url: "https://www.linkedin.com/posts/gdghobart-googledevelopergroups-webdevelopment-ugcPost-7463174610851680256-bEvJ/"
+  - name: "Yu Wang"
+    role:
+      en: "ICT Graduate at TasWater · UTAS alumna · GDG Hobart organiser"
+      zh: "TasWater ICT毕业生 · UTAS校友 · GDG Hobart组织者"
+      ne: "TasWater मा ICT ग्राजुएट · UTAS पूर्वविद्यार्थी · GDG Hobart आयोजक"
+    avatar: "/images/events/2026/gdg-hobart-web-skills/linkedin-yu-wang-avatar.jpg"
+    images:
+      - "/images/events/2026/gdg-hobart-web-skills/linkedin-yu-wang-1.jpg"
+      - "/images/events/2026/gdg-hobart-web-skills/linkedin-yu-wang-2.jpg"
+      - "/images/events/2026/gdg-hobart-web-skills/linkedin-yu-wang-3.jpg"
+      - "/images/events/2026/gdg-hobart-web-skills/linkedin-yu-wang-4.jpg"
+    content:
+      en: "One of the most meaningful moments was seeing people stay after the session to continue discussing technology, asking questions, and sharing experiences."
+      zh: "最有意义的时刻之一，是看到大家在活动结束后留下来继续讨论技术、提问和分享经验。"
+      ne: "सबैभन्दा अर्थपूर्ण क्षणमध्ये एक, सत्रपछि पनि मानिसहरू प्रविधिबारे छलफल गर्न, प्रश्न सोध्न र अनुभव बाँड्न बसिरहेको देख्नु थियो।"
+    summary:
+      en: "Yu Wang reflects on organising the web skills night, from planning and promotional design to hosting on the day. Lake Hopkins spoke on PWAs and the future of web technology with an interactive instant-printing demo, and many attendees stayed afterwards to keep talking."
+      zh: "Yu Wang回顾了组织这场网页技能之夜的经历，从策划、宣传设计到当天主持。Lake Hopkins分享了PWA和网页技术的未来，并带来即时打印的互动演示，许多参与者在活动结束后留下继续交流。"
+      ne: "Yu Wang ले योजना र प्रचार डिजाइनदेखि कार्यक्रमको दिन सञ्चालनसम्म वेब सीप साँझ आयोजना गरेको अनुभव सम्झन्छन्। Lake Hopkins ले तत्काल प्रिन्टिङको अन्तरक्रियात्मक प्रदर्शनसहित PWA र वेब प्रविधिको भविष्यबारे बोले, र धेरै सहभागी पछि पनि कुराकानी गर्न बसे।"
+    url: "https://www.linkedin.com/posts/yu-wang-solana_gdghobart-googledevelopergroups-tasmaniatech-ugcPost-7464254528582758400-ibiB/"
+weight: 9
+aliases: ["/events/gdg-hobart-web-skills-2026/"]

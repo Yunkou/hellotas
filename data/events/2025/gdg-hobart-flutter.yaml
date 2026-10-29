@@ -1,0 +1,100 @@
+title:
+  en: "GDG Hobart: Flutter in 2025 Workshop"
+  zh: "GDG Hobart：Flutter 2025工作坊"
+  ne: "GDG Hobart: Flutter in 2025 कार्यशाला"
+start: "2025-09-17T17:15:00+10:00"
+end: "2025-09-17T19:15:00+10:00"
+type: "workshop"
+topics: [networking, mobileApps]
+location: "Room 134, Centenary Building, UTAS Sandy Bay"
+cost:
+  en: "RSVP via GDG Hobart"
+  zh: "通过 GDG Hobart 报名"
+  ne: "GDG Hobart मार्फत RSVP"
+eligibility:
+  en: "Open to everyone, beginners welcome"
+  zh: "对所有人开放，欢迎初学者"
+  ne: "सबैका लागि खुला, नयाँ सिक्नेहरूलाई स्वागत छ"
+summary:
+  en: "A GDG Hobart community workshop at UTAS where attendees built their first cross-platform Flutter app in the cloud."
+  zh: "GDG Hobart在UTAS举办的社区工作坊，参与者在云端搭建了自己的第一个跨平台Flutter应用。"
+  ne: "UTAS मा GDG Hobart को सामुदायिक कार्यशाला, जहाँ सहभागीहरूले क्लाउडमा आफ्नो पहिलो क्रस-प्लेटफर्म Flutter एप बनाए।"
+image: "/images/events/2025/gdg-hobart-flutter/gdg-hobart-flutter-2025-1.jpg"
+gallery:
+  - "/images/events/2025/gdg-hobart-flutter/gdg-hobart-flutter-2025-2.jpg"
+  - "/images/events/2025/gdg-hobart-flutter/gdg-hobart-flutter-2025-3.jpg"
+outcome:
+  en: "35+ attendees · first Flutter app built in the cloud"
+  zh: "35+名参与者 · 在云端完成第一个Flutter应用"
+  ne: "35+ सहभागी · क्लाउडमा पहिलो Flutter एप"
+about:
+  en:
+    - "GDG Hobart hosted Flutter in 2025: Learn What Matters, Build What Works on Wednesday 17 September 2025, from 5:15 PM to 7:15 PM, in Room 134 of the Centenary Building at the University of Tasmania's Sandy Bay Campus. The workshop welcomed developers, ICT students, beginners, and members of Hobart's technology community interested in mobile application development."
+    - "The event attracted more than 35 attendees and featured technical sessions led by Dr Lindsay Wells, a Lecturer in ICT at UTAS, and Luke Moody. The sessions introduced Flutter development and explored important concepts and practical approaches for beginners learning to build cross-platform applications."
+    - "A key highlight was the hands-on workshop led by Dr Lindsay Wells, during which attendees set up and ran their first Flutter project using GitHub Codespaces. This cloud-based development environment allowed participants to gain practical experience with Flutter without needing to configure a complete local development setup."
+    - "The evening was co-hosted by Roshani Ghimire and Yu Wang, bringing together students, developers, and technology enthusiasts for collaborative learning and community engagement. The workshop provided opportunities for participants to explore new development tools, exchange experiences, and connect with other members of Hobart's developer community."
+    - "For UTAS ICT students, the workshop offered an opportunity to develop practical skills in cross-platform application development, gain experience using cloud-based development tools, and learn directly from experienced speakers. It also highlighted the value of engaging with local technology communities to strengthen technical knowledge, build professional connections, and explore potential career pathways in software and mobile application development."
+  zh:
+    - "GDG Hobart 于 2025 年 9 月 17 日（星期三）下午 5:15 至 7:15 在 University of Tasmania Sandy Bay 校区 Centenary Building 134 室举办了 Flutter in 2025：Learn What Matters, Build What Works 工作坊，欢迎对移动应用开发感兴趣的开发者、ICT 学生、初学者和霍巴特科技社区成员参加。"
+    - "活动吸引了 35 位以上的参与者，技术分享由 UTAS ICT 讲师 Lindsay Wells 博士和 Luke Moody 主讲，介绍了 Flutter 开发，并讲解初学者构建跨平台应用时需要掌握的重要概念和实用方法。"
+    - "一大亮点是 Lindsay Wells 博士带领的动手环节：与会者使用 GitHub Codespaces 创建并运行了自己的第一个 Flutter 项目。借助这个云端开发环境，大家无需配置完整的本地开发环境，就能亲手体验 Flutter。"
+    - "当晚由 Roshani Ghimire 和 Yu Wang 共同主持，学生、开发者和技术爱好者一起学习、交流。工作坊让参与者尝试新的开发工具、分享经验，并结识霍巴特开发者社区的其他成员。"
+    - "对 UTAS ICT 学生来说，这次工作坊帮助他们掌握跨平台应用开发的实用技能，熟悉云端开发工具，并直接向经验丰富的讲者学习。活动也说明，参与本地科技社区有助于加深技术知识、建立职业人脉，并探索软件和移动应用开发方面的职业道路。"
+  ne:
+    - "GDG Hobart ले बुधबार 17 सेप्टेम्बर 2025 मा साँझ 5:15 देखि 7:15 सम्म University of Tasmania को Sandy Bay क्याम्पसस्थित Centenary Building को कोठा 134 मा Flutter in 2025: Learn What Matters, Build What Works कार्यशाला आयोजना गर्‍यो। मोबाइल एप विकासमा रुचि राख्ने डेभलपर, ICT विद्यार्थी, नयाँ सिक्नेहरू र होबार्टको प्रविधि समुदायका सदस्यहरूलाई कार्यशालामा स्वागत गरियो।"
+    - "कार्यक्रममा 35 भन्दा बढी सहभागी थिए र UTAS का ICT लेक्चरर Dr Lindsay Wells तथा Luke Moody ले प्राविधिक सत्र चलाए। सत्रहरूले Flutter विकासको परिचय दिए र क्रस-प्लेटफर्म एप बनाउन सिक्दै गरेकाहरूका लागि महत्त्वपूर्ण अवधारणा र व्यावहारिक तरिकाहरू बताए।"
+    - "मुख्य आकर्षण Dr Lindsay Wells ले चलाएको व्यावहारिक कार्यशाला थियो, जहाँ सहभागीहरूले GitHub Codespaces प्रयोग गरेर आफ्नो पहिलो Flutter परियोजना सेटअप गरी चलाए। यो क्लाउडमा आधारित विकास वातावरणले पूरा स्थानीय सेटअप नगरीकनै Flutter को व्यावहारिक अनुभव लिन सम्भव बनायो।"
+    - "साँझको कार्यक्रम Roshani Ghimire र Yu Wang ले सह-सञ्चालन गरे, जसले विद्यार्थी, डेभलपर र प्रविधिप्रेमीहरूलाई सँगै सिक्न र समुदायमा घुलमिल हुन एकै ठाउँमा ल्यायो। कार्यशालाले नयाँ विकास उपकरण चलाउने, अनुभव साटासाट गर्ने र होबार्टको डेभलपर समुदायका अरू सदस्यहरूसँग जोडिने अवसर दियो।"
+    - "UTAS ICT विद्यार्थीहरूका लागि कार्यशालाले क्रस-प्लेटफर्म एप विकासमा व्यावहारिक सीप बढाउने, क्लाउडमा आधारित विकास उपकरण चलाउने अनुभव लिने र अनुभवी वक्ताहरूबाट सिधै सिक्ने अवसर दियो। प्राविधिक ज्ञान बलियो बनाउन, पेसागत सम्बन्ध बनाउन र सफ्टवेयर तथा मोबाइल एप विकासमा करियर मार्ग खोज्न स्थानीय प्रविधि समुदायसँग जोडिनुको महत्त्व पनि यसले देखायो।"
+references:
+  - title: "LinkedIn – GDG Hobart, Flutter Workshop Event Recap"
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7374445144713895937/"
+  - title: "LinkedIn – Roshani Ghimire, Flutter Workshop Reflection"
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7374057334790213632/"
+linkedin_posts:
+  - name: "GDG Hobart"
+    role: "Google Developer Group, Hobart"
+    avatar: "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-avatar.jpg"
+    images:
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-1.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-2.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-3.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-4.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-5.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-6.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-7.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-8.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-9.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-10.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-gdg-hobart-11.jpg"
+    content:
+      en: "We had 35+ attendees join us at University of Tasmania to dive into Flutter, explore what really matters for beginners, and even build their very first cross-platform app right in the cloud."
+      zh: "有35名以上的参与者来到塔斯马尼亚大学，一起深入了解Flutter，探讨初学者真正需要关注的内容，还直接在云端搭建了自己的第一个跨平台应用。"
+      ne: "35+ सहभागीहरू तस्मानिया विश्वविद्यालयमा हामीसँग Flutter सिक्न, सुरुआत गर्नेहरूका लागि के कुरा साँच्चै महत्त्वपूर्ण छ भनी बुझ्न र क्लाउडमै आफ्नो पहिलो क्रस-प्लेटफर्म एप बनाउन सामेल भए।"
+    summary:
+      en: "GDG Hobart's recap of Flutter in 2025: Learn What Matters, Build What Works, held at UTAS with more than 35 attendees. Lindsay Wells and Luke Moody led sessions on what beginners should focus on, and attendees built their first cross-platform app in the cloud."
+      zh: "GDG Hobart对在UTAS举办的“Flutter in 2025: Learn What Matters, Build What Works”的回顾，共有超过35人参加。Lindsay Wells和Luke Moody带领了关于初学者应关注什么的环节，参与者在云端搭建了第一个跨平台应用。"
+      ne: "UTAS मा 35 भन्दा बढी सहभागीसहित भएको “Flutter in 2025: Learn What Matters, Build What Works” को GDG Hobart को समीक्षा। Lindsay Wells र Luke Moody ले सुरुआत गर्नेहरूले केमा ध्यान दिनुपर्छ भन्ने सत्र सञ्चालन गरे, र सहभागीहरूले क्लाउडमा पहिलो क्रस-प्लेटफर्म एप बनाए।"
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7374445144713895937/"
+  - name: "Roshani Ghimire"
+    role:
+      en: "Event Coordinator at C3 Convention Centre"
+      zh: "C3 Convention Centre活动协调员"
+      ne: "C3 Convention Centre मा कार्यक्रम संयोजक"
+    avatar: "/images/events/2025/gdg-hobart-flutter/linkedin-roshani-ghimire-avatar.jpg"
+    images:
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-roshani-ghimire-1.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-roshani-ghimire-2.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-roshani-ghimire-3.jpg"
+      - "/images/events/2025/gdg-hobart-flutter/linkedin-roshani-ghimire-4.jpg"
+    content:
+      en: "It was a real pleasure co-hosting this session with Yu Wang and seeing our community come together to dive into Flutter, explore what really matters for beginners, and even build their first cross-platform app right in the cloud."
+      zh: "很高兴和Yu Wang共同主持这场活动，看到社区成员聚在一起深入了解Flutter，探讨初学者真正需要关注的内容，还在云端搭建了第一个跨平台应用。"
+      ne: "Yu Wang सँग यो सत्र संयुक्त रूपमा सञ्चालन गर्दा र हाम्रो समुदाय Flutter सिक्न, सुरुआत गर्नेहरूका लागि के महत्त्वपूर्ण छ बुझ्न र क्लाउडमै पहिलो क्रस-प्लेटफर्म एप बनाउन एकजुट भएको देख्दा साँच्चै खुसी लाग्यो।"
+    summary:
+      en: "Roshani Ghimire co-hosted the Flutter evening with Yu Wang and looks back on it: more than 35 attendees at UTAS, sessions led by Lindsay Wells and Luke Moody, and newcomers building their first cross-platform app in the cloud."
+      zh: "Roshani Ghimire与Yu Wang共同主持了这场Flutter之夜并作回顾：超过35人来到UTAS参加，Lindsay Wells和Luke Moody带领分享，新手们在云端搭建了第一个跨平台应用。"
+      ne: "Roshani Ghimire ले Yu Wang सँग Flutter साँझ संयुक्त रूपमा सञ्चालन गरे र त्यसलाई सम्झन्छन्: UTAS मा 35 भन्दा बढी सहभागी, Lindsay Wells र Luke Moody का सत्र, र नयाँ सहभागीहरूले क्लाउडमा बनाएको पहिलो क्रस-प्लेटफर्म एप।"
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7374057334790213632/"
+weight: 6
+aliases: ["/events/gdg-hobart-flutter-2025/"]

@@ -1,0 +1,75 @@
+title:
+  en: "GDG Hobart: Build It, Guard It, Ship It – Building Secure AI Apps"
+  zh: "GDG Hobart：Build It, Guard It, Ship It——构建安全的 AI 应用"
+  ne: "GDG Hobart: Build It, Guard It, Ship It – सुरक्षित AI एप बनाउने"
+start: "2026-07-30T17:15:00+10:00"
+end: "2026-07-30T18:45:00+10:00"
+type: "meetup"
+topics: [networking, ai]
+location: "Room 132, Centenary Building, UTAS Sandy Bay"
+cost:
+  en: "RSVP via GDG Hobart"
+  zh: "通过 GDG Hobart 报名"
+  ne: "GDG Hobart मार्फत RSVP"
+eligibility:
+  en: "Open to students, developers and tech enthusiasts"
+  zh: "面向学生、开发者和技术爱好者"
+  ne: "विद्यार्थी, डेभलपर र प्रविधिप्रेमीहरूका लागि खुला"
+summary:
+  en: "A GDG Hobart double session at UTAS on putting AI into production and securing AI apps against prompt injection."
+  zh: "GDG Hobart在UTAS举办的双场活动，主题是将AI投入生产，以及保护AI应用免受提示词注入攻击。"
+  ne: "UTAS मा GDG Hobart को दोहोरो सत्र, AI लाई उत्पादनमा ल्याउने र AI एपलाई प्रम्प्ट इन्जेक्सनबाट सुरक्षित राख्ने विषयमा।"
+image: "/images/events/2026/gdg-hobart-secure-ai-apps/gdg-hobart-secure-ai-apps-2026-1.jpg"
+gallery:
+  - "/images/events/2026/gdg-hobart-secure-ai-apps/gdg-hobart-secure-ai-apps-2026-2.jpg"
+  - "/images/events/2026/gdg-hobart-secure-ai-apps/gdg-hobart-secure-ai-apps-2026-3.jpg"
+outcome:
+  en: "Live prompt injection demos · career tips from a UTAS alumnus"
+  zh: "现场提示词注入演示 · UTAS校友的职业建议"
+  ne: "प्रत्यक्ष प्रम्प्ट इन्जेक्सन प्रदर्शन · UTAS पूर्वविद्यार्थीका करियर सुझाव"
+about:
+  en:
+    - "GDG Hobart hosted Build It, Guard It, Ship It: Building Secure AI Apps on 30 July 2026 at Room 132, Centenary Building, University of Tasmania (UTAS) Sandy Bay Campus, from 5:15 PM to 6:45 PM."
+    - "The event featured two sessions exploring real-world AI applications, secure software development, and the deployment of AI-powered systems."
+    - "In the first session, Brodie Farrell-Oates, a Web Developer at the Australian Antarctic Division and UTAS alumnus, shared how the Australian Antarctic Program uses AI to automate video captioning across more than 15 years of archived content and improve compliance with the Australian Government Style Manual. He also shared career insights and practical advice for students transitioning into the technology industry."
+    - "The second session was presented by Yuba Raj Panta, a Senior DevOps/SRE Engineer at PageUp and Google Developer Expert in Cloud technologies. The session demonstrated how to build an AI chat application using Gemini, identify security vulnerabilities such as prompt injection and system prompt hijacking, and protect applications using Google Cloud Model Armor. It also covered containerisation and deployment using Cloud Run."
+    - "For UTAS students, the event provided practical insights into AI development, cloud technologies, application security, and professional career pathways. It also offered opportunities to learn from experienced industry professionals and connect with Hobart's technology community."
+  zh:
+    - "GDG Hobart 于 2026 年 7 月 30 日下午 5:15 至 6:45 在 University of Tasmania（UTAS）Sandy Bay 校区 Centenary Building 132 室举办了 Build It, Guard It, Ship It: Building Secure AI Apps。"
+    - "活动包括两场分享，探讨真实场景中的 AI 应用、安全的软件开发，以及 AI 系统的部署。"
+    - "第一场由澳大利亚南极局（Australian Antarctic Division）网页开发者、UTAS 校友 Brodie Farrell-Oates 主讲，介绍澳大利亚南极计划如何用 AI 为 15 年以上的存档视频自动生成字幕，并更好地符合《澳大利亚政府写作风格手册》。他还分享了职业心得，为学生进入科技行业提供实用建议。"
+    - "第二场由 PageUp 高级 DevOps/SRE 工程师、Google 云技术开发者专家（GDE）Yuba Raj Panta 主讲，演示如何用 Gemini 构建 AI 聊天应用，识别提示词注入、系统提示词劫持等安全漏洞，并用 Google Cloud Model Armor 保护应用，还讲解了如何用 Cloud Run 进行容器化和部署。"
+    - "对 UTAS 学生来说，这次活动让他们实际了解 AI 开发、云技术、应用安全和职业道路，也有机会向经验丰富的业界人士学习，并结识霍巴特的科技社区。"
+  ne:
+    - "GDG Hobart ले 30 जुलाई 2026 मा साँझ 5:15 देखि 6:45 सम्म University of Tasmania (UTAS) को Sandy Bay क्याम्पसस्थित Centenary Building को कोठा 132 मा Build It, Guard It, Ship It: Building Secure AI Apps आयोजना गर्‍यो।"
+    - "कार्यक्रममा वास्तविक AI प्रयोग, सुरक्षित सफ्टवेयर विकास र AI-आधारित प्रणालीहरू डिप्लोय गर्नेबारे दुई सत्र थिए।"
+    - "पहिलो सत्रमा Australian Antarctic Division का Web Developer तथा UTAS का पूर्व विद्यार्थी Brodie Farrell-Oates ले Australian Antarctic Program ले 15 वर्षभन्दा बढीका संग्रहित भिडियोमा क्याप्सन स्वचालित रूपमा राख्न र Australian Government Style Manual को पालना सुधार गर्न AI कसरी प्रयोग गर्छ भन्ने सुनाए। उनले प्रविधि उद्योगमा प्रवेश गर्दै गरेका विद्यार्थीहरूका लागि करियरसम्बन्धी अनुभव र व्यावहारिक सल्लाह पनि दिए।"
+    - "दोस्रो सत्र PageUp का Senior DevOps/SRE Engineer तथा Cloud प्रविधिमा Google Developer Expert, Yuba Raj Panta ले प्रस्तुत गरे। सत्रले Gemini प्रयोग गरेर AI च्याट एप बनाउने, prompt injection र system prompt hijacking जस्ता सुरक्षा कमजोरी पहिचान गर्ने र Google Cloud Model Armor ले एप सुरक्षित गर्ने तरिका देखायो। Cloud Run प्रयोग गरेर कन्टेनराइजेसन र डिप्लोयमेन्ट पनि समेटियो।"
+    - "UTAS विद्यार्थीहरूका लागि कार्यक्रमले AI विकास, क्लाउड प्रविधि, एप सुरक्षा र पेसागत करियर मार्गबारे व्यावहारिक जानकारी दियो। अनुभवी उद्योग पेसाकर्मीहरूबाट सिक्ने र होबार्टको प्रविधि समुदायसँग जोडिने अवसर पनि दियो।"
+references:
+  - title: "GDG Hobart – Official Event Listing"
+    url: "https://gdg.community.dev/events/details/google-gdg-hobart-presents-build-it-guard-it-ship-it-building-secure-ai-apps/"
+  - title: "Brodie Farrell-Oates – Event Announcement and Session Details (LinkedIn)"
+    url: "https://www.linkedin.com/posts/brodiefarrell_ill-be-speaking-at-the-next-gdg-hobart-event-activity-7483720781730852866-HZAF"
+linkedin_posts:
+  - name: "GDG Hobart"
+    role: "Google Developer Group, Hobart"
+    avatar: "/images/events/2026/gdg-hobart-secure-ai-apps/linkedin-gdg-hobart-avatar.jpg"
+    images:
+      - "/images/events/2026/gdg-hobart-secure-ai-apps/linkedin-gdg-hobart-1.jpg"
+      - "/images/events/2026/gdg-hobart-secure-ai-apps/linkedin-gdg-hobart-2.jpg"
+      - "/images/events/2026/gdg-hobart-secure-ai-apps/linkedin-gdg-hobart-3.jpg"
+      - "/images/events/2026/gdg-hobart-secure-ai-apps/linkedin-gdg-hobart-4.jpg"
+      - "/images/events/2026/gdg-hobart-secure-ai-apps/linkedin-gdg-hobart-5.jpg"
+      - "/images/events/2026/gdg-hobart-secure-ai-apps/linkedin-gdg-hobart-6.jpg"
+    content:
+      en: "A massive thank you to everyone who joined us at the UTAS Centenary Building to dive deep into the realities of AI deployment, security, and production."
+      zh: "衷心感谢所有来到UTAS Centenary Building、与我们一起深入探讨AI部署、安全和生产实践的朋友。"
+      ne: "AI डिप्लोयमेन्ट, सुरक्षा र उत्पादनका यथार्थमा गहिरिन UTAS Centenary Building मा हामीसँग सामेल हुनुहुने सबैलाई हार्दिक धन्यवाद।"
+    summary:
+      en: "GDG Hobart's recap of Build It, Guard It, Ship It: Building Secure AI Apps at the UTAS Centenary Building. Brodie Farrell-Oates showed how the Australian Antarctic Program uses AI in production, from captioning more than 15 years of video to checking style-guide compliance with AI agents, and Yuba Raj Panta demonstrated live prompt-injection attacks and how to defend against them on Google Cloud."
+      zh: "GDG Hobart对在UTAS Centenary Building举办的“Build It, Guard It, Ship It: Building Secure AI Apps”的回顾。Brodie Farrell-Oates展示了澳大利亚南极计划如何在生产中使用AI，从为15年以上的视频生成字幕到用AI代理检查写作规范；Yuba Raj Panta现场演示了提示词注入攻击以及如何在Google Cloud上防御。"
+      ne: "UTAS Centenary Building मा भएको “Build It, Guard It, Ship It: Building Secure AI Apps” को GDG Hobart को समीक्षा। Brodie Farrell-Oates ले Australian Antarctic Program ले उत्पादनमा AI कसरी प्रयोग गर्छ भनी देखाए, 15 वर्षभन्दा बढीका भिडियोमा क्याप्सन राख्नेदेखि AI एजेन्टले लेखन-शैली जाँच्नेसम्म, र Yuba Raj Panta ले प्रत्यक्ष प्रम्प्ट इन्जेक्सन आक्रमण र Google Cloud मा तिनबाट बच्ने तरिका देखाए।"
+    url: "https://www.linkedin.com/posts/gdghobart-googledevelopergroups-buildwithai-ugcPost-7488757896177164289-WWDy/"
+weight: 5
+aliases: ["/events/gdg-hobart-secure-ai-apps-2026/"]

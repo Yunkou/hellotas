@@ -9,7 +9,7 @@
 <article class="lp{{ if .flip }} lp--flip{{ end }}{{ if not $post.images }} lp--text-only{{ end }}">
   {{- with $post.images }}
   <div class="lp-media">
-    {{ partial "carousel.html" (dict "images" . "alt" (printf "%s · %s · LinkedIn" $post.name $.page.Title) "class" "lp-carousel" "lazy" true "backdrop" true "lightbox" true) }}
+    {{ partial "carousel.html" (dict "images" . "source" $post.url "alt" (printf "%s · %s · LinkedIn" $post.name $.page.Title) "caption" (replace (i18n "lightboxFromLinkedIn") "{name}" $post.name) "class" "lp-carousel" "lazy" true "backdrop" true "lightbox" true) }}
   </div>
   {{- end }}
   <div class="lp-body">

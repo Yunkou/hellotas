@@ -13,7 +13,9 @@
     title, location, cost, summary   text with en / zh / ne inside
     start, end                       "2026-11-19T17:15:00+11:00" (Hobart time with its offset)
     date_tbc                         true when only the month is known; start then holds the 1st of that month
-    type                             webinar, workshop, forum, talk, meetup, conference, hackathon, networking
+    all_day                          true when the days are known but not the times (e.g. a weeks-long hackathon);
+                                     start and end then hold the first and last day, and no times are shown
+    type                             webinar, workshop, forum, talk, meetup, conference, hackathon, networking, awards
     format                           online, in_person or hybrid
     topics                           any of: cyber, ai, careers, data, development, community, ux
     host                             who runs it (not translated)
@@ -27,6 +29,8 @@
                                      (when the event has no pictures of its own, its first photo is used anyway)
   The page only lists them. Whether an event is happening now, upcoming or over is worked out in the
   visitor's browser from these dates (assets/js/happening.js), so nothing needs rebuilding as days pass.
+  Once an event is over, move its file to data/events/<year>/ to give it a Past Events page
+  (extra fields in layouts/partials/events-adapter.html).
 */ -}}
 {{- $lang := site.Language.Lang -}}
 {{- $formatKeys := dict "online" "happeningFormatOnline" "in_person" "happeningFormatInPerson" "hybrid" "happeningFormatHybrid" -}}
@@ -36,9 +40,9 @@
   {{- $end := time ($e.end | default $e.start) -}}
   {{- $topics := slice -}}
   {{- range $e.topics }}{{ $topics = $topics | append (i18n (printf "happeningTopic%s" (strings.FirstUpper .))) }}{{ end -}}
-  {{- $photos := slice -}}{{- $captions := slice -}}{{- $prevURL := "" -}}
-  {{- with $e.image }}{{ $photos = $photos | append . }}{{ $captions = $captions | append "" }}{{ end -}}
-  {{- range $e.gallery }}{{ $photos = $photos | append . }}{{ $captions = $captions | append "" }}{{ end -}}
+  {{- $photos := slice -}}{{- $captions := slice -}}{{- $sources := slice -}}{{- $prevURL := "" -}}
+  {{- with $e.image }}{{ $photos = $photos | append . }}{{ $captions = $captions | append "" }}{{ $sources = $sources | append ($e.url | default "") }}{{ end -}}
+  {{- range $e.gallery }}{{ $photos = $photos | append . }}{{ $captions = $captions | append "" }}{{ $sources = $sources | append ($e.url | default "") }}{{ end -}}
   {{- with $e.previous -}}
     {{- with site.GetPage (printf "/%s" .) -}}
       {{- $prevURL = .RelPermalink -}}
@@ -46,7 +50,7 @@
       {{- $theirs := slice -}}
       {{- with .Params.image }}{{ $theirs = $theirs | append . }}{{ end -}}
       {{- with .Params.gallery }}{{ $theirs = $theirs | append . }}{{ end -}}
-      {{- range first $borrow $theirs }}{{ $photos = $photos | append . }}{{ $captions = $captions | append (i18n "happeningPhotoFromLast") }}{{ end -}}
+      {{- range first $borrow $theirs }}{{ $photos = $photos | append . }}{{ $captions = $captions | append (i18n "happeningPhotoFromLast") }}{{ $sources = $sources | append $prevURL }}{{ end -}}
     {{- end -}}
   {{- end -}}
   {{- /* Everything a visitor might search for; dates in English and in the page's language */ -}}
@@ -60,7 +64,8 @@
       "start" ($start.Format "2006-01-02T15:04:05Z07:00")
       "end" ($end.Format "2006-01-02T15:04:05Z07:00")
       "dateTbc" ($e.date_tbc | default false)
-      "fallbackDate" ($start.Format "Mon 2 Jan 2006 · 3:04 pm")
+      "allDay" ($e.all_day | default false)
+      "fallbackDate" ($start.Format (cond ($e.all_day | default false) "Mon 2 Jan 2006" "Mon 2 Jan 2006 · 3:04 pm"))
       "title" (partial "happening-text.html" (dict "v" $e.title "lang" $lang))
       "type" (i18n (printf "happeningType%s" (strings.FirstUpper ($e.type | default "event"))))
       "format" ($e.format | default "in_person")
@@ -73,6 +78,7 @@
       "url" ($e.url | default "")
       "photos" $photos
       "captions" $captions
+      "sources" $sources
       "previous" $prevURL
   ) -}}
 {{- end -}}

@@ -1,0 +1,96 @@
+title:
+  en: "TasNetworks x UTAS x AWS Hackathon 2026"
+  zh: "TasNetworks x UTAS x AWS 黑客松2026"
+  ne: "TasNetworks x UTAS x AWS ह्याकाथन 2026"
+start: "2026-05-25T00:00:00+10:00"
+end: "2026-05-27T23:59:00+10:00"
+all_day: true
+type: "hackathon"
+topics: [industry, careers]
+location: "The Forest, UTAS inner-city hub"
+eligibility:
+  en: "UTAS students"
+  zh: "UTAS 学生"
+  ne: "UTAS विद्यार्थी"
+summary:
+  en: "A three-day hackathon where UTAS students built prototypes for real energy challenges set by TasNetworks."
+  zh: "为期三天的黑客松，UTAS学生针对TasNetworks提出的真实能源难题开发原型方案。"
+  ne: "तीन दिने ह्याकाथन, जहाँ UTAS का विद्यार्थीहरूले TasNetworks ले दिएका वास्तविक ऊर्जा समस्याहरूका लागि प्रोटोटाइप बनाए।"
+url: "https://www.utas.edu.au/about/news-and-stories/articles/2026/hackathon-launched-to-tackle-real-world-energy-challenges"
+image: "/images/events/2026/tasnetworks-hackathon/tasnetworks-hackathon-2026-cover.jpg"
+gallery:
+  - "/images/events/2026/tasnetworks-hackathon/tasnetworks-hackathon-2026-1.jpg"
+  - "/images/events/2026/tasnetworks-hackathon/tasnetworks-hackathon-2026-2.jpg"
+outcome:
+  en: "Winning team offered paid internships with TasNetworks"
+  zh: "获胜团队获得TasNetworks带薪实习机会"
+  ne: "विजेता टोलीलाई TasNetworks मा सशुल्क इन्टर्नसिपको अवसर"
+about:
+  en:
+    - "The TasNetworks x UTAS x AWS Hackathon 2026 was a three-day industry collaboration held from 25 May 2026 at The Forest, the University of Tasmania's inner-city hub in Hobart. Organised by TasNetworks, the University of Tasmania (UTAS) School of ICT, and Amazon Web Services (AWS), the event challenged students to develop innovative technology solutions to real-world problems facing Tasmania's electricity network."
+    - "The hackathon was officially launched on 25 May, with Madeleine Ogilvie, Tasmania's Minister for Innovation, Science and the Digital Economy, attending alongside representatives from the three partner organisations."
+    - "Fifty UTAS students worked in teams to address seven industry challenges identified by TasNetworks employees through the organisation's internal Think Tank program. These challenges covered areas such as network data modelling, customer design processes, asset identification, and protecting threatened bird species. Students explored how cloud computing, artificial intelligence, and emerging technologies could be applied to these practical challenges."
+    - "Over three days, participating teams collaborated to design, develop, and present prototype solutions. One example was GridMind AI, developed by a five-member student team to address the management of more than 800 technical documents used by TasNetworks field workers. The prototype used AWS serverless technologies to identify document quality issues, support expert review, and make approved technical information easier to search and access."
+    - "A judging panel representing TasNetworks, UTAS, and AWS evaluated the teams based on their understanding of the challenges, critical thinking, teamwork, system architecture, technical ambition, feasibility, and presentation skills."
+    - "The announced prizes included paid internship opportunities with TasNetworks for the winning team, Amazon vouchers provided by AWS, and an opportunity for the second-placed team to have lunch with TasNetworks executives. Several challenge statements were also expected to be developed further through School of ICT final-year projects in Semester 2 2026 and Semester 1 2027."
+    - "For UTAS students, the hackathon demonstrated the value of applying academic knowledge to real industry problems within a limited timeframe. It provided practical experience in cloud-based solution development, collaborative problem-solving, technical communication, and presenting ideas to industry professionals. The event also highlighted opportunities to build professional networks, gain industry exposure, and explore potential career pathways in Tasmania's technology and energy sectors."
+  zh:
+    - "TasNetworks x UTAS x AWS Hackathon 2026 是一场为期三天的产学合作活动，自 2026 年 5 月 25 日起在霍巴特 University of Tasmania 的市中心校区 The Forest 举行。活动由 TasNetworks、University of Tasmania（UTAS）School of ICT 和 Amazon Web Services（AWS）联合主办，挑战学生为塔斯马尼亚电网面临的实际问题开发创新技术方案。"
+    - "黑客松于 5 月 25 日正式启动，塔斯马尼亚创新、科学与数字经济部长 Madeleine Ogilvie 与三家合作机构的代表一同出席。"
+    - "50 名 UTAS 学生分组应对七项行业挑战，这些挑战由 TasNetworks 员工通过公司内部的 Think Tank 计划提出，涵盖电网数据建模、客户设计流程、资产识别和保护受威胁鸟类等领域。学生们探讨了如何把云计算、人工智能和新兴技术用于这些实际问题。"
+    - "三天里，各团队协作设计、开发并展示原型方案。例如，一支五人学生团队开发了 GridMind AI，用来管理 TasNetworks 一线员工使用的 800 多份技术文档。这个原型利用 AWS 无服务器技术识别文档质量问题、支持专家审核，并让经过审批的技术信息更容易搜索和查阅。"
+    - "由 TasNetworks、UTAS 和 AWS 代表组成的评审团，根据对挑战的理解、批判性思维、团队合作、系统架构、技术雄心、可行性和展示能力对各团队进行评审。"
+    - "公布的奖励包括：冠军团队获得 TasNetworks 带薪实习机会，AWS 提供亚马逊购物券，亚军团队获得与 TasNetworks 高管共进午餐的机会。部分挑战题目还预计会在 2026 年第二学期和 2027 年第一学期通过 School of ICT 的毕业设计项目继续推进。"
+    - "对 UTAS 学生来说，这次黑客松说明了在有限时间内把课堂知识用于解决真实行业问题的价值。学生积累了云端方案开发、协作解决问题、技术沟通和向业界人士展示想法的实践经验。活动也让他们有机会建立职业人脉、接触行业，并探索塔斯马尼亚科技和能源领域的职业道路。"
+  ne:
+    - "TasNetworks x UTAS x AWS Hackathon 2026, 25 मे 2026 देखि होबार्टमा University of Tasmania को सहरभित्रको केन्द्र The Forest मा भएको तीन दिने उद्योग सहकार्य थियो। TasNetworks, University of Tasmania (UTAS) को School of ICT र Amazon Web Services (AWS) ले आयोजना गरेको कार्यक्रमले विद्यार्थीहरूलाई तस्मानियाको बिजुली सञ्जालले सामना गरिरहेका वास्तविक समस्याका लागि नवीन प्राविधिक समाधान बनाउने चुनौती दियो।"
+    - "ह्याकाथन 25 मे मा औपचारिक रूपमा सुरु भयो, जसमा तस्मानियाकी नवप्रवर्तन, विज्ञान तथा डिजिटल अर्थतन्त्र मन्त्री Madeleine Ogilvie तीनै साझेदार संस्थाका प्रतिनिधिहरूसँग उपस्थित थिइन्।"
+    - "पचास जना UTAS विद्यार्थीले टोली बनाएर TasNetworks का कर्मचारीहरूले संस्थाको आन्तरिक Think Tank कार्यक्रममार्फत पहिचान गरेका सात उद्योग चुनौतीमा काम गरे। यी चुनौतीहरूले सञ्जाल डेटा मोडलिङ, ग्राहक डिजाइन प्रक्रिया, सम्पत्ति पहिचान र लोपोन्मुख चराका प्रजाति संरक्षणजस्ता क्षेत्र समेटे। विद्यार्थीहरूले क्लाउड कम्प्युटिङ, कृत्रिम बुद्धिमत्ता र नयाँ प्रविधि यी व्यावहारिक चुनौतीमा कसरी प्रयोग गर्न सकिन्छ भनेर खोजे।"
+    - "तीन दिनसम्म सहभागी टोलीहरूले मिलेर प्रोटोटाइप समाधान डिजाइन, विकास र प्रस्तुत गरे। एउटा उदाहरण GridMind AI थियो, जुन पाँच सदस्यीय विद्यार्थी टोलीले TasNetworks का फिल्ड कर्मचारीले प्रयोग गर्ने 800 भन्दा बढी प्राविधिक कागजात व्यवस्थापन गर्न बनाएको थियो। प्रोटोटाइपले AWS serverless प्रविधि प्रयोग गरेर कागजातका गुणस्तर समस्या पहिचान गर्‍यो, विज्ञको समीक्षामा सहयोग गर्‍यो र स्वीकृत प्राविधिक जानकारी खोज्न तथा पाउन सजिलो बनायो।"
+    - "TasNetworks, UTAS र AWS को प्रतिनिधित्व गर्ने निर्णायक मण्डलले टोलीहरूलाई चुनौतीको बुझाइ, आलोचनात्मक सोच, टिमवर्क, प्रणाली संरचना, प्राविधिक महत्त्वाकांक्षा, सम्भाव्यता र प्रस्तुति सीपका आधारमा मूल्याङ्कन गर्‍यो।"
+    - "घोषित पुरस्कारमा विजेता टोलीलाई TasNetworks मा पारिश्रमिकसहितको इन्टर्नसिपको अवसर, AWS ले दिएका Amazon भाउचर र दोस्रो हुने टोलीलाई TasNetworks का कार्यकारीहरूसँग खाना खाने अवसर थिए। केही चुनौतीहरूलाई सेमेस्टर 2 2026 र सेमेस्टर 1 2027 मा School of ICT का अन्तिम वर्षका परियोजनामार्फत अझ अघि बढाउने अपेक्षा पनि गरिएको थियो।"
+    - "UTAS विद्यार्थीहरूका लागि ह्याकाथनले सीमित समयभित्र शैक्षिक ज्ञानलाई उद्योगका वास्तविक समस्यामा प्रयोग गर्नुको महत्त्व देखायो। यसले क्लाउडमा आधारित समाधान विकास, मिलेर समस्या समाधान, प्राविधिक सञ्चार र उद्योगका पेसाकर्मीहरूसामु विचार प्रस्तुत गर्ने व्यावहारिक अनुभव दियो। पेसागत नेटवर्क बनाउने, उद्योगको अनुभव लिने र तस्मानियाको प्रविधि तथा ऊर्जा क्षेत्रमा सम्भावित करियर मार्ग खोज्ने अवसर पनि कार्यक्रमले देखायो।"
+references:
+  - title: "University of Tasmania – Hackathon Launched to Tackle Real-World Energy Challenges"
+    url: "https://www.utas.edu.au/about/news-and-stories/articles/2026/hackathon-launched-to-tackle-real-world-energy-challenges"
+  - title: "Chavin Wickramatunge – TasNetworks Hackathon Experience (LinkedIn)"
+    url: "https://www.linkedin.com/posts/chavin-wickramatunge_tasmania-tasnetworks-utas-ugcPost-7499292794872791040-CxMw"
+linkedin_posts:
+  - name: "Chavin W."
+    role:
+      en: "Full Stack Developer · Hackathon participant"
+      zh: "全栈开发者 · 黑客松参赛者"
+      ne: "फुल स्ट्याक डेभलपर · ह्याकाथन सहभागी"
+    avatar: "/images/events/2026/tasnetworks-hackathon/linkedin-chavin-w-avatar.jpg"
+    images:
+      - "/images/events/2026/tasnetworks-hackathon/linkedin-chavin-w-1.jpg"
+      - "/images/events/2026/tasnetworks-hackathon/linkedin-chavin-w-2.jpg"
+      - "/images/events/2026/tasnetworks-hackathon/linkedin-chavin-w-3.jpg"
+      - "/images/events/2026/tasnetworks-hackathon/linkedin-chavin-w-4.jpg"
+    content:
+      en: "…part of the TasNetworks Open Innovation Hackathon, organised by the University of Tasmania."
+      zh: "……参加了由塔斯马尼亚大学主办的TasNetworks开放创新黑客松。"
+      ne: "…तस्मानिया विश्वविद्यालयद्वारा आयोजित TasNetworks Open Innovation Hackathon मा सहभागी भएँ।"
+    summary:
+      en: "Chavin's team of five took on a real TasNetworks problem: more than 800 technical documents that field workers rely on for safety and compliance, with a backlog estimated at seven years to fix by hand. In 72 hours they built GridMind AI, a prototype that checks document quality, routes changes to experts for review and makes approved knowledge searchable in plain language, running on AWS serverless services."
+      zh: "Chavin所在的五人团队挑战了TasNetworks的一个真实难题：一线工作人员在安全与合规上依赖的800多份技术文档亟需修订，人工处理预计需要七年。团队在72小时内开发出原型GridMind AI，能够检查文档质量、将修改交由专家审核，并让审核通过的知识支持自然语言检索，整个系统运行在AWS无服务器服务上。"
+      ne: "Chavin को पाँच जनाको टोलीले TasNetworks को एउटा वास्तविक समस्या समाधान गर्ने प्रयास गर्‍यो: फिल्डमा काम गर्ने कर्मचारीहरूले सुरक्षा र अनुपालनका लागि भर पर्ने 800 भन्दा बढी प्राविधिक कागजातहरू, जसलाई हातैले सुधार्न करिब सात वर्ष लाग्ने अनुमान थियो। 72 घण्टामा उनीहरूले GridMind AI नामको प्रोटोटाइप बनाए, जसले कागजातको गुणस्तर जाँच्छ, परिवर्तनहरू विशेषज्ञको समीक्षामा पठाउँछ र स्वीकृत ज्ञानलाई सामान्य भाषामा खोज्न मिल्ने बनाउँछ। यो AWS का सर्भरलेस सेवाहरूमा चल्छ।"
+    url: "https://www.linkedin.com/posts/chavin-wickramatunge_tasmania-tasnetworks-utas-ugcPost-7499292794872791040-CxMw/"
+stats:
+  - number: "50"
+    label:
+      en: "Students"
+      zh: "名学生"
+      ne: "विद्यार्थीहरू"
+  - number: "7"
+    label:
+      en: "Industry problem statements"
+      zh: "个行业问题陈述"
+      ne: "उद्योगका समस्या-कथनहरू"
+  - number: "3"
+    label:
+      en: "Days"
+      zh: "天"
+      ne: "दिन"
+weight: 8
+aliases: ["/events/tasnetworks-hackathon-2026/"]

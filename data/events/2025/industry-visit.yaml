@@ -1,0 +1,54 @@
+title:
+  en: "Industry Visit 2025"
+  zh: "2025行业参观"
+  ne: "उद्योग भ्रमण 2025"
+start: "2025-11-12T10:00:00+11:00"
+end: "2025-11-12T15:00:00+11:00"
+event_time:
+  en: "10:00 AM – 3:00 PM"
+  zh: "上午10:00 – 下午3:00"
+  ne: "बिहान 10:00 – दिउँसो 3:00"
+type: "industryVisit"
+topics: [networking, annual]
+location: "Tasmania"
+cost:
+  en: "Free"
+  zh: "免费"
+  ne: "निःशुल्क"
+badge: "free"
+eligibility:
+  en: "Open to all ICT students"
+  zh: "面向所有 ICT 学生"
+  ne: "सबै ICT विद्यार्थीका लागि खुला"
+summary:
+  en: "Students visited local ICT companies in person."
+  zh: "学生们实地参观了本地ICT公司。"
+  ne: "विद्यार्थीहरूले स्थानीय ICT कम्पनीहरूको प्रत्यक्ष भ्रमण गरे।"
+image: "/images/events/2025/industry-visit/industryvisit2025.jpg"
+outcome:
+  en: "First industry connection for many students"
+  zh: "许多学生的第一次行业联系"
+  ne: "धेरै विद्यार्थीहरूको पहिलो उद्योग सम्पर्क"
+about:
+  en:
+    - "Industry Visit 2025 provided ICT students with an opportunity to visit local technology companies in Tasmania and gain firsthand exposure to professional working environments. During the visit, students met and spoke with people working in the ICT industry, gaining insights into local workplaces and the different career opportunities available within Tasmania's technology sector."
+    - "The event also encouraged students to connect their academic learning with real-world industry practices. By engaging with ICT professionals, students had opportunities to ask questions, learn about workplace expectations, and develop a better understanding of potential career pathways."
+    - "For students preparing to enter the workforce, Industry Visit 2025 offered an opportunity to build professional connections, increase their awareness of Tasmania's ICT industry, and gain confidence in exploring future employment opportunities."
+  zh:
+    - "Industry Visit 2025 让 ICT 学生有机会参观塔斯马尼亚本地科技公司，亲身了解专业工作环境。参观期间，学生与 ICT 行业从业者见面交流，了解本地职场，以及塔斯马尼亚科技行业中的各种职业机会。"
+    - "活动也鼓励学生把课堂所学与真实的行业实践联系起来。通过与 ICT 从业者交流，学生可以提出问题，了解职场期望，更清楚地认识可能的职业道路。"
+    - "对即将进入职场的学生来说，Industry Visit 2025 让他们建立职业人脉，加深对塔斯马尼亚 ICT 行业的了解，并更有信心地探索未来的就业机会。"
+  ne:
+    - "Industry Visit 2025 ले ICT विद्यार्थीहरूलाई तस्मानियाका स्थानीय प्रविधि कम्पनीहरू घुम्ने र पेसागत कार्य वातावरण आफैं हेर्ने अवसर दियो। भ्रमणका क्रममा विद्यार्थीहरूले ICT उद्योगमा काम गर्ने मानिसहरूलाई भेटेर कुरा गरे, स्थानीय कार्यस्थल र तस्मानियाको प्रविधि क्षेत्रमा उपलब्ध फरक करियर अवसरहरूबारे जानकारी पाए।"
+    - "कार्यक्रमले विद्यार्थीहरूलाई कक्षाको ज्ञानलाई उद्योगका वास्तविक अभ्याससँग जोड्न पनि प्रोत्साहित गर्‍यो। ICT पेसाकर्मीहरूसँगको कुराकानीबाट विद्यार्थीहरूले प्रश्न सोध्ने, कार्यस्थलका अपेक्षा बुझ्ने र सम्भावित करियर मार्ग राम्ररी बुझ्ने अवसर पाए।"
+    - "कार्यक्षेत्रमा प्रवेश गर्ने तयारीमा रहेका विद्यार्थीहरूका लागि Industry Visit 2025 ले पेसागत सम्बन्ध बनाउने, तस्मानियाको ICT उद्योगबारे जानकारी बढाउने र भविष्यका रोजगारीका अवसर खोज्न आत्मविश्वास बढाउने अवसर दियो।"
+student_voice:
+  en: "The Industry Visit opened my eyes to what working in Tasmania actually looks like. I made my first real connection there."
+  zh: "行业参观让我看到了在塔斯马尼亚工作的真实样子。我在那里建立了第一个真正的职业联系。"
+  ne: "उद्योग भ्रमणले तस्मानियामा काम गर्नु वास्तवमा कस्तो हुन्छ भनेर मेरो आँखा खोलिदियो। मैले त्यहीँ मेरो पहिलो वास्तविक सम्पर्क बनाएँ।"
+student_role:
+  en: "ICT Graduate · 1st year out"
+  zh: "ICT毕业生 · 毕业第一年"
+  ne: "ICT ग्राजुएट · स्नातक भएको पहिलो वर्ष"
+weight: 1
+aliases: ["/events/industry-visit-2025/"]

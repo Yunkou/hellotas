@@ -7,7 +7,7 @@
 <article class="hp-card" id="event-{{ .id }}" data-event="{{ .id }}" data-start="{{ .start }}" data-end="{{ .end }}"{{ if .dateTbc }} data-tbc{{ end }}>
   <div class="hp-card-media{{ if .photos }} hp-card-media--photos{{ else }} hp-card-media--{{ .format }}{{ end }}">
     {{ with .photos }}
-    {{ partial "carousel.html" (dict "images" . "captions" $.captions "alt" $.title "class" "carousel--fit" "lazy" true "backdrop" true "lightbox" true) }}
+    {{ partial "carousel.html" (dict "images" . "captions" $.captions "sources" $.sources "alt" $.title "class" "carousel--fit" "lazy" true "backdrop" true "lightbox" true) }}
     {{ else }}
     <svg class="hp-card-glyph" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true" focusable="false">
       {{- if eq $.format "online" -}}

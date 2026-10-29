@@ -1,0 +1,19 @@
+{{- /* What a Past Events card and page show about an event (page params from layouts/partials/events-adapter.html) */ -}}
+{{- $p := .Params -}}
+{{- $type := "" -}}
+{{- with $p.type }}{{ $type = i18n (printf "happeningType%s" (strings.FirstUpper .)) }}{{ end -}}
+{{- $topics := slice -}}
+{{- range $p.topics }}{{ $topics = $topics | append (i18n (printf "happeningTopic%s" (strings.FirstUpper .))) }}{{ end -}}
+{{- $when := $p.event_time | default "" -}}
+{{- if and (not $when) $p.start }}{{ $when = partial "event-when.html" (dict "start" $p.start "end" $p.end "allDay" $p.all_day) }}{{ end -}}
+{{- $location := cond (eq $p.location "tbc") "" ($p.location | default "") -}}
+{{- $eligibilityTbc := eq $p.eligibility "tbc" -}}
+{{- return (dict
+    "type" $type
+    "topics" $topics
+    "when" $when
+    "location" $location
+    "tbc" (and (eq $p.location "tbc") (not $when))
+    "eligibility" (cond $eligibilityTbc "" ($p.eligibility | default ""))
+    "eligibilityTbc" $eligibilityTbc
+) -}}

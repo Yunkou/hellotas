@@ -17,6 +17,6 @@ Low-pressure ways to practise English and meet locals — campus conversation gr
 Missed Open Day? Step into the UTAS ecosystem. Join ICT clubs, build real projects, and find your professional circle.
 
 - **Tech & Industry Clubs:** [UTAS Cybersecurity Club]({{< relref "step-3" >}}#utas-cybersecurity-club), [UTAS Programming Club]({{< relref "step-3" >}}#utas-programming-club), [UTAS Motorsport]({{< relref "step-3" >}}#utas-motorsport)
-- **Volunteer & Give Back:** [Rotary Club of Hobart]({{< relref "step-3" >}}#rotary-hobart), [Glenorchy Community Care]({{< relref "step-3" >}}#glenorchy-community-care)
+- **Volunteer & Give Back:** [Rotary Clubs of Tasmania]({{< relref "step-3" >}}#rotary-tasmania), [TUSA Food Hub]({{< relref "step-3" >}}#tusa-food-hub), [Glenorchy Community Care]({{< relref "step-3" >}}#glenorchy-community-care)
 
 [Open the Step 3 guide →]({{< relref "step-3" >}})

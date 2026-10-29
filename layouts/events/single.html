@@ -20,27 +20,31 @@
   <div class="container event-hero">
     <h1 data-subbar-anchor>{{ .Title }}</h1>
     {{ with .Params.summary }}<p class="event-summary">{{ . }}</p>{{ end }}
-    {{ if and (eq .Params.location "To be confirmed") (eq .Params.event_time "To be confirmed") }}
+    {{ $facts := partial "event-facts.html" . }}
+    {{ if $facts.tbc }}
     <p class="event-detail-meta">{{ i18n "eventDetailsTBC" }}</p>
     {{ else }}
-    {{ with .Params.location }}<p class="event-detail-meta">{{ . }}</p>{{ end }}
-    {{ with .Params.event_time }}<p class="event-detail-meta">{{ . }}</p>{{ end }}
+    {{ with $facts.location }}<p class="event-detail-meta">{{ . }}</p>{{ end }}
+    {{ with $facts.when }}<p class="event-detail-meta">{{ . }}</p>{{ end }}
     {{ end }}
 
     <div class="event-tags">
-      {{ with .Params.event_type }}<span class="tag tag-type">{{ . }}</span>{{ end }}
-      {{ range .Params.tags }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
-      {{ if eq .Params.cost "Free" }}<span class="tag tag-free">{{ i18n "tagFree" }}</span>{{ end }}
-      {{ if eq .Params.cost "GPA requirement" }}<span class="tag tag-gpa">{{ i18n "tagGPARequired" }}</span>{{ end }}
-      {{ if eq .Params.cost "To be confirmed" }}<span class="tag tag-normal">{{ i18n "tagCostTBC" }}</span>{{ end }}
-      {{ with .Params.eligibility }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
+      {{ with $facts.type }}<span class="tag tag-type">{{ . }}</span>{{ end }}
+      {{ range $facts.topics }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
+      {{ if eq .Params.badge "free" }}<span class="tag tag-free">{{ i18n "tagFree" }}</span>{{ end }}
+      {{ if eq .Params.badge "gpa" }}<span class="tag tag-gpa">{{ i18n "tagGPARequired" }}</span>{{ end }}
+      {{ if eq .Params.badge "tbc" }}<span class="tag tag-normal">{{ i18n "tagCostTBC" }}</span>{{ end }}
+      {{ if $facts.eligibilityTbc }}<span class="tag tag-normal">{{ i18n "tagEligibilityTBC" }}</span>{{ end }}
+      {{ with $facts.eligibility }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
     </div>
 
     {{ $photos := slice }}
     {{ with .Params.image }}{{ $photos = $photos | append . }}{{ end }}
     {{ with .Params.gallery }}{{ $photos = $photos | append . }}{{ end }}
     {{ if $photos }}
-    {{ partial "carousel.html" (dict "images" $photos "alt" .Title "class" "event-hero-image" "autoplay" true "lightbox" true) }}
+    {{ $from := partial "photo-sources.html" . }}
+    {{ $sources := slice }}{{ range $photos }}{{ $sources = $sources | append (index $from . | default ($.Params.url | default "")) }}{{ end }}
+    {{ partial "carousel.html" (dict "images" $photos "sources" $sources "alt" .Title "class" "event-hero-image" "autoplay" true "lightbox" true) }}
     {{ else }}
     <div class="event-hero-image placeholder">{{ i18n "heroImage" }}</div>
     {{ end }}
@@ -72,10 +76,21 @@
   </div>
   {{ end }}
 
-  {{ with .Params.source }}
+  {{ with .Params.references }}
+  <div class="container">
+    <div class="event-references">
+      <h3>{{ i18n "referencesLabel" }}</h3>
+      <ol>
+        {{ range . }}<li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a> <span class="event-references-host">{{ (urls.Parse .url).Host }}</span></li>{{ end }}
+      </ol>
+    </div>
+  </div>
+  {{ else }}
+  {{ with .Params.url }}
   <div class="container">
     <p class="event-source">{{ i18n "sourceLabel" }} <a href="{{ . }}" target="_blank" rel="noopener">{{ (urls.Parse .).Host }}</a></p>
   </div>
+  {{ end }}
   {{ end }}
 
   {{ if .Params.stats }}
@@ -99,7 +114,7 @@
       {{ range $i, $project := .Params.projects }}
       <article class="project-card">
         {{ if .image }}
-        <div class="project-image"><img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .name }}"></div>
+        <div class="project-image"><img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .name }}" data-caption="{{ .name }}{{ with .award }} · {{ . }}{{ end }}"></div>
         {{ else }}
         <div class="project-image project-cover project-cover--{{ mod $i 4 }}" aria-hidden="true">
           <span class="project-monogram">{{ partial "initials.html" .name }}</span>
@@ -177,6 +192,7 @@
   {{ range .Params.projects }}{{ with .image }}{{ $booth = $booth | append . }}{{ end }}{{ end }}
   {{ range .Params.linkedin_posts }}{{ with .images }}{{ $booth = $booth | append . }}{{ end }}{{ end }}
   {{ $hide := hugo.Data.photo_booth_hide | default slice }}
+  {{ $from := partial "photo-sources.html" . }}
   {{ $shown := slice }}
   {{ range uniq $booth }}{{ if not (in $hide .) }}{{ $shown = $shown | append . }}{{ end }}{{ end }}
   {{ with $shown }}
@@ -186,7 +202,7 @@
     <div data-lightbox class="booth-wall{{ if le (len .) 2 }} booth-wall--{{ len . }}{{ end }}">
       {{ range . }}
       <a class="booth-frame" href="{{ strings.TrimPrefix "/" . | relURL }}" target="_blank" rel="noopener">
-        <img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="{{ i18n "photoBooth" }} · {{ $.Title }}" loading="lazy">
+        <img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="{{ i18n "photoBooth" }} · {{ $.Title }}" data-caption="{{ $.Title }}"{{ with index $from . | default ($.Params.url | default "") }} data-source="{{ . }}"{{ end }} loading="lazy">
       </a>
       {{ end }}
     </div>

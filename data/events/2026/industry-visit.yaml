@@ -1,0 +1,39 @@
+title:
+  en: "Industry Visit 2026"
+  zh: "2026行业参观"
+  ne: "उद्योग भ्रमण 2026"
+type: "industryVisit"
+topics: [networking, industry]
+location: "tbc"
+badge: "tbc"
+eligibility: "tbc"
+summary:
+  en: "A 2026 visit connecting students with industry."
+  zh: "2026年连接学生与行业的参观活动。"
+  ne: "विद्यार्थीहरूलाई उद्योगसँग जोड्ने 2026 को भ्रमण।"
+image: "/images/events/2026/industry-visit/2026-industry-visit.JPG"
+outcome:
+  en: "To be confirmed"
+  zh: "待定"
+  ne: "निश्चित हुन बाँकी"
+about:
+  en:
+    - "Industry Visit 2026 featured a visit to Huon Aquaculture, a Tasmanian salmon farming company, providing University of Tasmania (UTAS) students with an opportunity to connect with industry and gain insights into a major local business."
+    - "Huon Aquaculture operates in Tasmania's aquaculture sector, where digital technologies, automation, data management, and monitoring systems play important roles in supporting modern operations."
+    - "The visit provided an opportunity for students to gain exposure to an industry environment beyond the classroom and consider how ICT knowledge and technical skills can be applied across different sectors, including aquaculture."
+    - "For UTAS ICT students, industry visits of this kind can help broaden their understanding of local employment sectors, encourage connections between academic learning and industry practice, and support exploration of potential career pathways in technology-related roles."
+    - "Further information about the visit, including the date, location, schedule, cost, and eligibility, is currently unavailable."
+  zh:
+    - "Industry Visit 2026 参观了塔斯马尼亚三文鱼养殖企业 Huon Aquaculture，让 University of Tasmania（UTAS）学生有机会与行业建立联系，并深入了解这家本地大型企业。"
+    - "Huon Aquaculture 属于塔斯马尼亚的水产养殖行业，数字技术、自动化、数据管理和监测系统在支持其现代化运营方面发挥着重要作用。"
+    - "这次参观让学生走出课堂，接触真实的行业环境，思考 ICT 知识和技术能力如何应用于包括水产养殖在内的不同行业。"
+    - "对 UTAS ICT 学生来说，这类行业参观有助于拓宽对本地就业领域的认识，把课堂学习与行业实践联系起来，并探索技术相关岗位的职业道路。"
+    - "关于这次参观的更多信息，包括日期、地点、日程、费用和参加资格，目前尚未公布。"
+  ne:
+    - "Industry Visit 2026 मा तस्मानियाको सामन माछा पालन कम्पनी Huon Aquaculture को भ्रमण गरियो, जसले University of Tasmania (UTAS) का विद्यार्थीहरूलाई उद्योगसँग जोडिने र एउटा ठूलो स्थानीय व्यवसायबारे जानकारी पाउने अवसर दियो।"
+    - "Huon Aquaculture तस्मानियाको जलकृषि (aquaculture) क्षेत्रमा काम गर्छ, जहाँ डिजिटल प्रविधि, स्वचालन, डेटा व्यवस्थापन र निगरानी प्रणालीले आधुनिक सञ्चालनमा महत्त्वपूर्ण भूमिका खेल्छन्।"
+    - "भ्रमणले विद्यार्थीहरूलाई कक्षाबाहिरको उद्योग वातावरण हेर्ने र ICT ज्ञान तथा प्राविधिक सीप जलकृषिसहित फरक क्षेत्रमा कसरी प्रयोग गर्न सकिन्छ भनेर सोच्ने अवसर दियो।"
+    - "UTAS ICT विद्यार्थीहरूका लागि यस्ता उद्योग भ्रमणले स्थानीय रोजगारीका क्षेत्रबारेको बुझाइ फराकिलो पार्न, कक्षाको सिकाइलाई उद्योगको अभ्याससँग जोड्न र प्रविधिसम्बन्धी भूमिकामा सम्भावित करियर मार्ग खोज्न मद्दत गर्न सक्छन्।"
+    - "मिति, स्थान, तालिका, शुल्क र योग्यतासहित भ्रमणबारे थप जानकारी हाल उपलब्ध छैन।"
+weight: 12
+aliases: ["/events/industry-visit-2026/"]

@@ -1,0 +1,61 @@
+title:
+  en: "AISA CyberCon 2025 Melbourne"
+  zh: "AISA CyberCon 2025 墨尔本"
+  ne: "AISA CyberCon 2025 मेलबर्न"
+start: "2025-10-15T00:00:00+11:00"
+end: "2025-10-17T23:59:00+11:00"
+all_day: true
+type: "conference"
+topics: [careers, oneOff]
+location: "Melbourne Convention and Exhibition Centre (MCEC), Melbourne"
+cost:
+  en: "GPA requirement"
+  zh: "有 GPA 要求"
+  ne: "GPA आवश्यकता"
+badge: "gpa"
+eligibility:
+  en: "High GPA students only"
+  zh: "仅限高 GPA 学生"
+  ne: "उच्च GPA भएका विद्यार्थीका लागि मात्र"
+summary:
+  en: "Three-day national cybersecurity conference bringing together industry professionals, researchers and students."
+  zh: "为期三天的全国性网络安全会议，汇聚业界人士、研究人员和学生。"
+  ne: "उद्योगका पेसाकर्मी, अनुसन्धानकर्ता र विद्यार्थीहरूलाई एकै ठाउँमा ल्याउने तीन दिने राष्ट्रिय साइबर सुरक्षा सम्मेलन।"
+image: "/images/events/2025/cybersecurity-melbourne/cybersecurity-melbourne-2025.jpg"
+outcome:
+  en: "Real industry exposure outside Tasmania"
+  zh: "在塔斯马尼亚以外接触真实行业"
+  ne: "तस्मानियाबाहिर वास्तविक उद्योगको अनुभव"
+about:
+  en:
+    - "AISA CyberCon Melbourne 2025, organised by the Australian Information Security Association (AISA), was held from 15 to 17 October 2025 at the Melbourne Convention & Exhibition Centre (MCEC)."
+    - "Under the theme Transform to Evolve, the three-day conference brought together cybersecurity professionals, industry leaders, researchers, and students to explore emerging cybersecurity threats, technological developments, digital resilience, and industry challenges."
+    - "The conference featured keynote presentations, technical discussions, interactive activities, and professional networking opportunities. Specialised areas included the Careers Village, Knowledge Hub, Locksport Village, and Incident Response Competition Village."
+    - "For University of Tasmania students, the conference provided opportunities to connect academic learning with real-world cybersecurity practices, develop practical insights, and explore career pathways beyond Tasmania."
+  zh:
+    - "AISA CyberCon Melbourne 2025 由澳大利亚信息安全协会（AISA）主办，于 2025 年 10 月 15 日至 17 日在墨尔本会展中心（MCEC）举行。"
+    - "这场为期三天的会议以 Transform to Evolve（转型以进化）为主题，汇聚网络安全从业者、行业领袖、研究人员和学生，共同探讨新出现的网络安全威胁、技术发展、数字韧性和行业挑战。"
+    - "会议包括主题演讲、技术讨论、互动活动和职业社交机会，还设有 Careers Village（职业村）、Knowledge Hub（知识中心）、Locksport Village（开锁技术村）和 Incident Response Competition Village（事件响应竞赛村）等专区。"
+    - "对 UTAS 学生来说，这次会议让他们把课堂所学与真实的网络安全实践联系起来，获得实用见解，并探索塔斯马尼亚以外的职业道路。"
+  ne:
+    - "Australian Information Security Association (AISA) ले आयोजना गरेको AISA CyberCon Melbourne 2025, 15 देखि 17 अक्टोबर 2025 सम्म Melbourne Convention & Exhibition Centre (MCEC) मा सम्पन्न भयो।"
+    - "Transform to Evolve भन्ने मूल विषयमा भएको यो तीन दिने सम्मेलनले साइबर सुरक्षाका पेसाकर्मी, उद्योगका अगुवा, अनुसन्धानकर्ता र विद्यार्थीहरूलाई नयाँ साइबर खतरा, प्रविधिको विकास, डिजिटल सहनशीलता र उद्योगका चुनौतीहरूबारे छलफल गर्न एकै ठाउँमा ल्यायो।"
+    - "सम्मेलनमा मुख्य प्रस्तुति, प्राविधिक छलफल, अन्तरक्रियात्मक गतिविधि र पेसागत नेटवर्किङका अवसरहरू थिए। Careers Village, Knowledge Hub, Locksport Village र Incident Response Competition Village जस्ता विशेष क्षेत्रहरू पनि थिए।"
+    - "University of Tasmania का विद्यार्थीहरूका लागि यो सम्मेलनले कक्षाको ज्ञानलाई वास्तविक साइबर सुरक्षा अभ्याससँग जोड्ने, व्यावहारिक बुझाइ बढाउने र तस्मानियाभन्दा बाहिरका करियर मार्गहरू खोज्ने अवसर दियो।"
+student_voice:
+  en: "I never thought I'd be in the same room as leading security professionals. That trip changed what I believed was possible for my career."
+  zh: "我从没想过能和顶尖的安全专家同处一室。那次旅程改变了我对自己职业可能性的看法。"
+  ne: "अग्रणी सुरक्षा विशेषज्ञहरूसँग एउटै कोठामा हुन्छु भनेर मैले कहिल्यै सोचेको थिइनँ। त्यो यात्राले मेरो करियरमा के सम्भव छ भन्ने मेरो धारणा नै बदलिदियो।"
+student_role:
+  en: "Cyber Security student"
+  zh: "网络安全专业学生"
+  ne: "साइबर सुरक्षा विद्यार्थी"
+references:
+  - title: "AISA CyberCon Melbourne 2025 – Official Website"
+    url: "https://melbourne2025.cyberconference.com.au/"
+  - title: "Official Programme"
+    url: "https://melbourne2025.cyberconference.com.au/program-at-a-glance"
+  - title: "AISA Event Information"
+    url: "https://aisa.org.au/public/Public/Events/Event_Display.aspx?EventKey=CF25OC2510"
+weight: 5
+aliases: ["/events/cybersecurity-2025-melbourne/"]

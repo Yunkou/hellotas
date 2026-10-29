@@ -26,10 +26,10 @@
       <section class="journey-life">
         <h2 class="journey-basics-title">{{ i18n "journeyStep3GalleryTitle" }}</h2>
         <p class="journey-checklist-lead">{{ i18n "journeyStep3GalleryLead" }}</p>
-        <div class="life-gallery">
+        <div class="life-gallery" data-lightbox>
           {{ range site.Data.journey.step3.gallery }}
           <figure>
-            <button type="button" class="place-photo" data-full="{{ .src | relURL }}" data-alt="{{ i18n .captionKey }}" aria-label="{{ i18n "placePhotoEnlarge" }}: {{ i18n .captionKey }}">
+            <button type="button" class="place-photo" data-caption="{{ i18n .captionKey }}" aria-label="{{ i18n "placePhotoEnlarge" }}: {{ i18n .captionKey }}">
               <img src="{{ .src | relURL }}" alt="{{ i18n .captionKey }}" loading="lazy" width="480" height="360">
             </button>
             <figcaption>{{ i18n .captionKey }}</figcaption>
@@ -48,5 +48,10 @@
     </div>
   </div>
 </div>
-{{ partial "place-lightbox.html" . }}
+{{ end }}
+
+{{ define "scripts" }}
+{{ with resources.Get "js/pin-map.js" }}{{ with . | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" defer></script>
+{{ end }}{{ end }}
 {{ end }}

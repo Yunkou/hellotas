@@ -1,0 +1,55 @@
+title:
+  en: "Tas Tech Fest 2026"
+  zh: "塔斯马尼亚科技节2026"
+  ne: "तस्मानिया टेक फेस्ट 2026"
+start: "2026-03-18T09:00:00+11:00"
+end: "2026-03-18T18:00:00+11:00"
+type: "festival"
+topics: [networking, tasict]
+location: "Wrest Point Conference Centre, 410 Sandy Bay Road, Hobart TAS 7005"
+cost:
+  en: "AUD $55 (including GST)"
+  zh: "55 澳元（含 GST）"
+  ne: "AUD $55 (GST सहित)"
+eligibility: "tbc"
+summary:
+  en: "TasICT's flagship technology and innovation day at Wrest Point."
+  zh: "TasICT在Wrest Point举办的旗舰技术与创新日。"
+  ne: "Wrest Point मा TasICT को फ्ल्यागसिप प्रविधि तथा नवप्रवर्तन दिवस।"
+image: "/images/events/2026/tasict-festival/2026Tasictfestval.PNG"
+outcome:
+  en: "Industry speakers · exhibitions · networking"
+  zh: "行业演讲者 · 展览 · 社交"
+  ne: "उद्योगका वक्ताहरू · प्रदर्शनीहरू · नेटवर्किङ"
+about:
+  en:
+    - "Tas Tech Fest 2026, organised by TasICT, was held on Wednesday 18 March 2026 at Wrest Point Conference Centre, 410 Sandy Bay Road, Hobart. The main conference program ran from 9:00 AM to 6:00 PM, bringing together technology professionals, industry leaders, government representatives, innovators, and organisations from across Tasmania's ICT sector."
+    - "The event focused on The Future of Technology in Tasmania, exploring emerging technologies, digital innovation, cybersecurity, artificial intelligence, and opportunities for industry collaboration. Its program included two concurrent presentation streams, keynote sessions, panel discussions, technology exhibitions, and networking activities."
+    - "A major highlight was the keynote presentation From Tasmania to the World: Inside Incat's Electric Ferry Revolution, delivered by Stephen Casey, CEO of International Catamarans (Incat). The program also featured discussions on innovation in Tasmania, the risks and benefits of artificial intelligence, technology decision-making, cloud-based physical security, and the future of AI in Tasmania."
+    - "The Tasmanian Government's ICT Industry Summit provided an opportunity to learn about government technology priorities and future directions, with Tasmanian Government Chief Information Officer Justin Thurley among the featured speakers. Other sessions explored practical technology applications, digital infrastructure, cybersecurity, and the role of innovation in Tasmanian businesses."
+    - "The Tech Expo featured organisations from across the technology industry, including Arctic Wolf, Intuit Technologies, Ionata, TasmaNet, Telstra, NBN Co, and several cybersecurity and digital services providers. The University of Tasmania participated as a presenting sponsor and exhibitor, highlighting its connection with Tasmania's wider technology community."
+    - "Networking opportunities were available throughout the day, including morning tea, lunch, and an evening networking session. These activities provided opportunities for attendees to meet technology professionals, engage with exhibitors, exchange ideas, and learn about developments across the ICT sector."
+    - "For UTAS ICT students, Tas Tech Fest offered a valuable opportunity to explore Tasmania's technology industry beyond the classroom. The event highlighted potential career pathways in software development, artificial intelligence, cybersecurity, cloud technologies, and digital transformation, while demonstrating the importance of industry engagement and professional networking."
+  zh:
+    - "Tas Tech Fest 2026 由 TasICT 主办，于 2026 年 3 月 18 日（星期三）在霍巴特 Wrest Point Conference Centre（410 Sandy Bay Road）举行。主会议议程从上午 9:00 持续到下午 6:00，汇聚来自塔斯马尼亚 ICT 行业的技术从业者、行业领袖、政府代表、创新者和机构。"
+    - "活动以 The Future of Technology in Tasmania（塔斯马尼亚科技的未来）为主题，探讨新兴技术、数字创新、网络安全、人工智能和行业合作机会。议程包括两个并行的演讲分会场、主题演讲、座谈讨论、科技展览和社交活动。"
+    - "一大亮点是 International Catamarans（Incat）首席执行官 Stephen Casey 的主题演讲 From Tasmania to the World: Inside Incat's Electric Ferry Revolution（从塔斯马尼亚走向世界：Incat 电动渡轮革命）。议程还讨论了塔斯马尼亚的创新、人工智能的风险与益处、技术决策、云端物理安防，以及 AI 在塔斯马尼亚的未来。"
+    - "塔斯马尼亚州政府 ICT 产业峰会介绍了政府的技术重点和未来方向，塔州政府首席信息官 Justin Thurley 也是演讲嘉宾之一。其他分享涉及技术的实际应用、数字基础设施、网络安全，以及创新在塔斯马尼亚企业中的作用。"
+    - "Tech Expo 汇集了来自科技行业的各类机构，包括 Arctic Wolf、Intuit Technologies、Ionata、TasmaNet、Telstra、NBN Co，以及多家网络安全和数字服务提供商。University of Tasmania 作为主要赞助商和参展方参加，体现了学校与塔斯马尼亚科技社区的联系。"
+    - "全天都有社交机会，包括早茶、午餐和晚间交流会。与会者可以结识技术从业者、与参展商交流、交换想法，并了解 ICT 行业的最新发展。"
+    - "对 UTAS ICT 学生来说，Tas Tech Fest 是走出课堂、了解塔斯马尼亚科技行业的宝贵机会。活动展示了软件开发、人工智能、网络安全、云技术和数字化转型等方面的职业道路，也说明了参与行业活动和职业社交的重要性。"
+  ne:
+    - "TasICT ले आयोजना गरेको Tas Tech Fest 2026 बुधबार 18 मार्च 2026 मा होबार्टको Wrest Point Conference Centre, 410 Sandy Bay Road मा सम्पन्न भयो। मुख्य सम्मेलन बिहान 9:00 देखि साँझ 6:00 सम्म चल्यो, जसले तस्मानियाको ICT क्षेत्रभरिका प्रविधि पेसाकर्मी, उद्योगका अगुवा, सरकारी प्रतिनिधि, नवप्रवर्तक र संस्थाहरूलाई एकै ठाउँमा ल्यायो।"
+    - "The Future of Technology in Tasmania भन्ने विषयमा केन्द्रित कार्यक्रमले नयाँ प्रविधि, डिजिटल नवप्रवर्तन, साइबर सुरक्षा, कृत्रिम बुद्धिमत्ता र उद्योग सहकार्यका अवसरहरूबारे छलफल गर्‍यो। कार्यक्रममा एकैसाथ चल्ने दुई प्रस्तुति सत्र, मुख्य प्रस्तुति, प्यानल छलफल, प्रविधि प्रदर्शनी र नेटवर्किङ गतिविधिहरू थिए।"
+    - "मुख्य आकर्षण International Catamarans (Incat) का CEO Stephen Casey ले दिएको From Tasmania to the World: Inside Incat's Electric Ferry Revolution शीर्षकको मुख्य प्रस्तुति थियो। कार्यक्रममा तस्मानियामा नवप्रवर्तन, कृत्रिम बुद्धिमत्ताका जोखिम र फाइदा, प्रविधिसम्बन्धी निर्णय, क्लाउडमा आधारित भौतिक सुरक्षा र तस्मानियामा AI को भविष्यबारे छलफल पनि थिए।"
+    - "तस्मानिया सरकारको ICT Industry Summit ले सरकारको प्रविधि प्राथमिकता र भावी दिशाबारे जान्ने अवसर दियो, र तस्मानिया सरकारका Chief Information Officer Justin Thurley वक्तामध्ये एक थिए। अन्य सत्रहरूले प्रविधिको व्यावहारिक प्रयोग, डिजिटल पूर्वाधार, साइबर सुरक्षा र तस्मानियाका व्यवसायमा नवप्रवर्तनको भूमिकाबारे चर्चा गरे।"
+    - "Tech Expo मा Arctic Wolf, Intuit Technologies, Ionata, TasmaNet, Telstra, NBN Co र विभिन्न साइबर सुरक्षा तथा डिजिटल सेवा प्रदायकसहित प्रविधि उद्योगका संस्थाहरू थिए। University of Tasmania प्रस्तुतकर्ता प्रायोजक र प्रदर्शकका रूपमा सहभागी भयो, जसले तस्मानियाको फराकिलो प्रविधि समुदायसँग यसको सम्बन्ध देखायो।"
+    - "दिनभरि बिहानको चिया, खाना र साँझको नेटवर्किङ सत्रसहित नेटवर्किङका अवसरहरू थिए। यी गतिविधिले सहभागीहरूलाई प्रविधि पेसाकर्मीहरूलाई भेट्ने, प्रदर्शकहरूसँग कुरा गर्ने, विचार साटासाट गर्ने र ICT क्षेत्रका विकासबारे जान्ने अवसर दिए।"
+    - "UTAS ICT विद्यार्थीहरूका लागि Tas Tech Fest कक्षाबाहिर तस्मानियाको प्रविधि उद्योग बुझ्ने महत्त्वपूर्ण अवसर थियो। कार्यक्रमले सफ्टवेयर विकास, कृत्रिम बुद्धिमत्ता, साइबर सुरक्षा, क्लाउड प्रविधि र डिजिटल रूपान्तरणमा सम्भावित करियर मार्गहरू देखायो, र उद्योगसँगको संलग्नता तथा पेसागत नेटवर्किङको महत्त्व पनि देखायो।"
+references:
+  - title: "TasICT – Tas Tech Fest 2026 Official Event Information"
+    url: "https://www.tasict.com.au/event/tas-tech-fest-2026/"
+  - title: "Tas Tech Fest 2026 – Official Conference Website, Agenda and Ticket Information"
+    url: "https://web.cvent.com/event/e75ca83f-5ab4-42f6-99bf-e0fb0572c906/summary?environment=P2"
+weight: 10
+aliases: ["/events/tasict-festival-2026/"]
