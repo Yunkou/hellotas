@@ -12,20 +12,20 @@ defaultContentLanguageInSubdir = false
   Content = "From Step 1 to the person you want to become."
 
 [languages.en]
-  languageCode = "en-us"
-  languageName = "English"
+  locale = "en-us"
+  label = "English"
   title = "Tasmania Welcome"
   weight = 1
 
 [languages.zh]
-  languageCode = "zh-cn"
-  languageName = "简体中文"
+  locale = "zh-cn"
+  label = "简体中文"
   title = "塔斯马尼亚欢迎"
   weight = 2
 
 [languages.ne]
-  languageCode = "ne-np"
-  languageName = "नेपाली"
+  locale = "ne-np"
+  label = "नेपाली"
   title = "तस्मानियामा स्वागत"
   weight = 3
 

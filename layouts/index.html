@@ -28,7 +28,7 @@
       <p class="home-section-lead">{{ i18n "homeJourneyLead" }}</p>
 
       <ol class="home-timeline">
-        {{ range site.Data.homepage.steps }}
+        {{ range hugo.Data.homepage.steps }}
         <li class="home-step" id="{{ .anchor }}">
           <div class="home-step-body">
             <div class="home-step-image">
@@ -79,7 +79,7 @@
       </div>
       <div class="home-stories-grid">
         {{ $lang := site.Language.Lang }}
-        {{ range first 3 site.Data.stories.items }}
+        {{ range first 3 hugo.Data.stories.items }}
         {{ $name := .name }}
         {{ with .localName }}{{ with index . $lang }}{{ $name = . }}{{ end }}{{ end }}
         <article class="home-story-card">
@@ -106,7 +106,7 @@
       <p class="home-sources-text">{{ i18n "homeSourcesIctLead" }} <a href="https://www.utas.edu.au/ict" target="_blank" rel="noopener">https://www.utas.edu.au/ict</a></p>
       <h3 class="home-sources-subtitle">{{ i18n "homeSourcesPhotosTitle" }}</h3>
       <ul class="home-sources-list">
-        {{ range site.Data.homepage.sources }}
+        {{ range hugo.Data.homepage.sources }}
         <li>
           <span class="home-sources-label">{{ i18n .labelKey }}</span>
           <span class="home-sources-publisher">{{ .publisher }}</span>

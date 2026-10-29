@@ -11,7 +11,7 @@
 
   <div class="container">
     <div class="journey-main">
-      {{ range site.Data.journey.step3.sections }}
+      {{ range hugo.Data.journey.step3.sections }}
       <section class="journey-voice-section">
         <h2 class="journey-basics-title">{{ i18n .titleKey }}</h2>
         <div class="section-divider"></div>
@@ -27,7 +27,7 @@
         <h2 class="journey-basics-title">{{ i18n "journeyStep3GalleryTitle" }}</h2>
         <p class="journey-checklist-lead">{{ i18n "journeyStep3GalleryLead" }}</p>
         <div class="life-gallery" data-lightbox>
-          {{ range site.Data.journey.step3.gallery }}
+          {{ range hugo.Data.journey.step3.gallery }}
           <figure>
             <button type="button" class="place-photo" data-caption="{{ i18n .captionKey }}" aria-label="{{ i18n "placePhotoEnlarge" }}: {{ i18n .captionKey }}">
               <img src="{{ .src | relURL }}" alt="{{ i18n .captionKey }}" loading="lazy" width="480" height="360">

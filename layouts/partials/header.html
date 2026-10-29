@@ -63,16 +63,16 @@
       {{ $page := . }}
       <details class="lang-picker">
         <summary class="lang-current" aria-haspopup="menu" title="Language">
-          {{ range .Site.Languages }}
-            {{ if eq .Lang $page.Language.Lang }}<span class="lang-name">{{ .LanguageName }}</span>{{ end }}
+          {{ range hugo.Sites }}
+            {{ if eq .Language.Lang $page.Language.Lang }}<span class="lang-name">{{ .Language.Label }}</span>{{ end }}
           {{ end }}
           <span class="lang-caret" aria-hidden="true">▾</span>
         </summary>
         <div class="lang-menu" role="menu">
-          {{ range .Site.Languages }}
-            {{ $lang := . }}
+          {{ range hugo.Sites }}
+            {{ $lang := .Language }}
             {{ if eq $lang.Lang $page.Language.Lang }}
-              <span class="lang-menu-item lang-menu-current" role="menuitem" aria-current="true">{{ $lang.LanguageName }}</span>
+              <span class="lang-menu-item lang-menu-current" role="menuitem" aria-current="true">{{ $lang.Label }}</span>
             {{ else }}
               {{ $url := "" }}
               {{ range $page.Translations }}
@@ -81,7 +81,7 @@
               {{ if not $url }}
                 {{ if eq $lang.Lang "en" }}{{ $url = relURL "/" }}{{ else }}{{ $url = relURL (printf "%s/" $lang.Lang) }}{{ end }}
               {{ end }}
-              <a class="lang-menu-item" role="menuitem" href="{{ $url }}">{{ $lang.LanguageName }}</a>
+              <a class="lang-menu-item" role="menuitem" href="{{ $url }}">{{ $lang.Label }}</a>
             {{ end }}
           {{ end }}
         </div>

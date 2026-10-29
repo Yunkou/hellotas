@@ -15,7 +15,7 @@
         <h2 class="journey-basics-title">{{ i18n "journeyStep1FirstTitle" }}</h2>
         <div class="section-divider"></div>
         <ol class="journey-first-grid">
-          {{ range $i, $s := site.Data.journey.step1.firstSteps }}
+          {{ range $i, $s := hugo.Data.journey.step1.firstSteps }}
           <li class="journey-first-card">
             <span class="journey-first-icon" aria-hidden="true">
               {{ $s.icon }}
@@ -39,7 +39,7 @@
       </section>
 
       <section class="journey-priorities">
-        {{ range site.Data.journey.step1.priorities }}
+        {{ range hugo.Data.journey.step1.priorities }}
         <article class="journey-priority-card{{ with .tips }} journey-priority-card--detailed{{ end }}"{{ with .id }} id="{{ . }}"{{ end }}>
           <div class="journey-priority-media">
             <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" width="140" height="140"{{ with .imagePosition }} style="object-position: {{ . | safeCSS }}"{{ end }}>
@@ -84,7 +84,7 @@
         <h2 class="journey-basics-title">{{ i18n "journeyStep1BasicsTitle" }}</h2>
         <div class="section-divider"></div>
         <div class="journey-basics-grid">
-          {{ range site.Data.journey.step1.basics }}
+          {{ range hugo.Data.journey.step1.basics }}
           <article class="journey-basic-card">
             <div class="journey-basic-head">
               <div class="journey-basic-icon">
@@ -105,7 +105,7 @@
       <section class="journey-checklist">
         <h2>{{ i18n "journeyStep1ChecklistTitle" }}</h2>
         <p class="journey-checklist-lead">{{ i18n "journeyStep1ChecklistLead" }}</p>
-        {{ range site.Data.journey.step1.checklist }}
+        {{ range hugo.Data.journey.step1.checklist }}
         <label class="journey-check-item">
           <input type="checkbox">
           <span>{{ i18n . }}</span>
