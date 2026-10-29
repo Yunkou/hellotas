@@ -1,0 +1,100 @@
+title:
+  en: "/dev/world 2025 Melbourne"
+  zh: "/dev/world 2025 墨尔本"
+  ne: "/dev/world 2025 मेलबर्न"
+start: "2025-09-04T00:00:00+10:00"
+end: "2025-09-05T23:59:00+10:00"
+all_day: true
+type: "conference"
+topics: [careers, oneOff, travel]
+location: "SEEK campus, Melbourne"
+cost:
+  en: "GPA requirement"
+  zh: "有 GPA 要求"
+  ne: "GPA आवश्यकता"
+badge: "gpa"
+eligibility:
+  en: "High GPA students only"
+  zh: "仅限高 GPA 学生"
+  ne: "उच्च GPA भएका विद्यार्थीका लागि मात्र"
+summary:
+  en: "Students represented UTAS at /dev/world 2025 in Melbourne, presenting an AFL app built across Android, iOS, and Flutter."
+  zh: "学生代表UTAS参加在墨尔本举办的/dev/world 2025，展示了一款分别用Android、iOS和Flutter开发的AFL应用。"
+  ne: "विद्यार्थीहरूले मेलबर्नमा /dev/world 2025 मा UTAS को प्रतिनिधित्व गर्दै Android, iOS र Flutter मा बनाइएको AFL एप प्रस्तुत गरे।"
+image: "/images/events/2025/devworld-melbourne/devworld-2025.jpg"
+gallery:
+  - "/images/events/2025/devworld-melbourne/devworld-2025-2.jpg"
+outcome:
+  en: "First time presenting in full English to experienced developers"
+  zh: "第一次用全英文向资深开发者做演讲"
+  ne: "अनुभवी डेभलपरहरूसामु पहिलो पटक पूर्ण अंग्रेजीमा प्रस्तुति"
+about:
+  en:
+    - "/dev/world 2025 was held on 4–5 September 2025 at the SEEK campus in Melbourne. The two-day developer conference brought together software developers, technology professionals, and students to share technical knowledge, explore technologies, and connect with the wider developer community."
+    - "University of Tasmania (UTAS) students attended the conference as university representatives, having been selected based on academic performance, with support from Dr Lindsay Wells and the School of ICT. During the event, UTAS student Yu Wang presented an Australian Football League (AFL) application developed across three platforms: Android, iOS, and Flutter. The presentation highlighted different approaches to mobile application development and provided an opportunity to share practical software development experience with experienced developers."
+    - "A significant personal achievement for Yu Wang was delivering a first full technical presentation in English to an audience of experienced software developers. This experience highlighted the importance of technical communication, confidence, and presentation skills when sharing software projects within a professional environment."
+    - "Students also attended technical sessions covering system and data modelling, cryptography, iOS Live Activities, and other software development topics. These sessions provided opportunities to explore industry practices, learn about different technologies, and gain insights into approaches and challenges in software engineering."
+    - "Beyond the technical presentations, the conference provided opportunities for students to interact with industry professionals and fellow developers, exchange ideas, and develop professional connections outside the university environment."
+    - "For UTAS ICT students, participating in /dev/world 2025 demonstrated the value of applying academic knowledge to practical software development projects and presenting technical work to a professional audience. The experience also highlighted opportunities to strengthen communication skills, broaden technical knowledge, and explore future career pathways in software and mobile application development."
+  zh:
+    - "/dev/world 2025 于 2025 年 9 月 4–5 日在墨尔本 SEEK 园区举行。这场为期两天的开发者大会汇聚软件开发者、技术从业者和学生，分享技术知识、探索新技术，并与更广泛的开发者社区建立联系。"
+    - "University of Tasmania（UTAS）的学生凭借学业成绩入选，在 Lindsay Wells 博士和 School of ICT 的支持下代表学校参会。会上，UTAS 学生 Yu Wang 展示了一款澳式橄榄球联盟（AFL）应用，分别用 Android、iOS 和 Flutter 三个平台开发。演讲比较了移动应用开发的不同做法，也让他有机会与资深开发者分享实际的软件开发经验。"
+    - "对 Yu Wang 个人而言，一大成就是第一次用英语面向资深软件开发者完成完整的技术演讲。这段经历说明，在专业环境中分享软件项目时，技术沟通、自信和演讲能力都非常重要。"
+    - "学生们还参加了多场技术分享，主题包括系统与数据建模、密码学、iOS Live Activities 以及其他软件开发话题，借此了解行业实践、认识不同技术，并深入理解软件工程中的方法与挑战。"
+    - "除了技术演讲，大会也让学生有机会与业界人士和其他开发者交流想法，在校园之外建立职业人脉。"
+    - "对 UTAS ICT 学生来说，参加 /dev/world 2025 展示了把课堂知识用于实际软件开发项目、并向专业听众展示技术成果的价值。这次经历也让他们看到提升沟通能力、拓宽技术知识，以及探索软件和移动应用开发职业道路的机会。"
+  ne:
+    - "/dev/world 2025, 4–5 सेप्टेम्बर 2025 मा मेलबर्नको SEEK क्याम्पसमा सम्पन्न भयो। दुई दिने यो डेभलपर सम्मेलनले सफ्टवेयर डेभलपर, प्रविधि पेसाकर्मी र विद्यार्थीहरूलाई प्राविधिक ज्ञान साटासाट गर्न, नयाँ प्रविधि बुझ्न र फराकिलो डेभलपर समुदायसँग जोडिन एकै ठाउँमा ल्यायो।"
+    - "University of Tasmania (UTAS) का विद्यार्थीहरू शैक्षिक नतिजाका आधारमा छनोट भई Dr Lindsay Wells र School of ICT को सहयोगमा विश्वविद्यालयको प्रतिनिधित्व गर्न सहभागी भए। कार्यक्रममा UTAS विद्यार्थी Yu Wang ले Android, iOS र Flutter गरी तीन प्लेटफर्ममा बनाइएको Australian Football League (AFL) एप प्रस्तुत गरे। प्रस्तुतिले मोबाइल एप विकासका फरक तरिकाहरू देखायो र अनुभवी डेभलपरहरूसँग व्यावहारिक सफ्टवेयर विकासको अनुभव बाँड्ने अवसर दियो।"
+    - "Yu Wang का लागि ठूलो व्यक्तिगत उपलब्धि भनेको अनुभवी सफ्टवेयर डेभलपरहरूको अगाडि पहिलो पटक अंग्रेजीमा पूरा प्राविधिक प्रस्तुति दिनु थियो। यो अनुभवले पेसागत वातावरणमा सफ्टवेयर परियोजना प्रस्तुत गर्दा प्राविधिक सञ्चार, आत्मविश्वास र प्रस्तुति सीप कति महत्त्वपूर्ण हुन्छन् भन्ने देखायो।"
+    - "विद्यार्थीहरूले प्रणाली तथा डेटा मोडलिङ, क्रिप्टोग्राफी, iOS Live Activities र अन्य सफ्टवेयर विकासका विषयमा भएका प्राविधिक सत्रहरूमा पनि भाग लिए। यी सत्रहरूले उद्योगका अभ्यास बुझ्ने, विभिन्न प्रविधि सिक्ने र सफ्टवेयर इन्जिनियरिङका तरिका तथा चुनौतीबारे जानकारी पाउने अवसर दिए।"
+    - "प्राविधिक प्रस्तुतिबाहेक, सम्मेलनले विद्यार्थीहरूलाई उद्योगका पेसाकर्मी र अरू डेभलपरहरूसँग कुराकानी गर्ने, विचार साटासाट गर्ने र विश्वविद्यालयबाहिर पेसागत सम्बन्ध बनाउने अवसर दियो।"
+    - "UTAS ICT विद्यार्थीहरूका लागि /dev/world 2025 मा सहभागिताले कक्षाको ज्ञानलाई व्यावहारिक सफ्टवेयर परियोजनामा प्रयोग गर्ने र प्राविधिक काम पेसागत दर्शकसामु प्रस्तुत गर्ने महत्त्व देखायो। यसले सञ्चार सीप बलियो बनाउने, प्राविधिक ज्ञान फराकिलो पार्ने र सफ्टवेयर तथा मोबाइल एप विकासमा भविष्यका करियर मार्ग खोज्ने अवसरहरू पनि देखायो।"
+student_voice:
+  en: "What an amazing journey! I had the opportunity to represent the University of Tasmania at /dev/world 2025 in Melbourne. It was my first time presenting in full English to so many experienced developers, and it was truly unforgettable."
+  zh: "这是一段美妙的旅程!我有幸代表塔斯马尼亚大学参加在墨尔本举办的/dev/world 2025。这是我第一次用全英文向这么多资深开发者演讲，真的令人难忘。"
+  ne: "कस्तो अद्भुत यात्रा! मलाई मेलबर्नमा /dev/world 2025 मा तस्मानिया विश्वविद्यालयको प्रतिनिधित्व गर्ने अवसर मिल्यो। यति धेरै अनुभवी डेभलपरहरूसामु पूर्ण अंग्रेजीमा प्रस्तुति दिएको यो मेरो पहिलो पटक थियो, र यो साँच्चै अविस्मरणीय रह्यो।"
+student_role:
+  en: "Yu Wang · Master of IT and Systems student"
+  zh: "Yu Wang · 信息技术与系统硕士学生"
+  ne: "Yu Wang · सूचना प्रविधि तथा प्रणाली स्नातकोत्तर विद्यार्थी"
+references:
+  - title: "LinkedIn – Yu Wang, /dev/world 2025 Melbourne Experience"
+    url: "https://www.linkedin.com/posts/yu-wang-solana_devworld2005-devworld-ios-ugcPost-7370414703635857408-_t4g/"
+linkedin_posts:
+  - name: "Yu Wang"
+    role:
+      en: "Master of IT and Systems student at UTAS (now ICT Graduate at TasWater)"
+      zh: "UTAS信息技术与系统硕士学生（现为TasWater ICT毕业生）"
+      ne: "UTAS मा सूचना प्रविधि तथा प्रणालीका स्नातकोत्तर विद्यार्थी (अहिले TasWater मा ICT ग्राजुएट)"
+    avatar: "/images/events/2025/devworld-melbourne/linkedin-yu-wang-avatar.jpg"
+    images:
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-1.jpg"
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-2.jpg"
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-3.jpg"
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-4.jpg"
+      - "/images/events/2025/devworld-melbourne/linkedin-yu-wang-5.jpg"
+    content:
+      en: "I had the opportunity to represent the University of Tasmania at /dev/world 2025 in Melbourne, where I shared my experience building an AFL app across three different platforms: Android, iOS, and Flutter."
+      zh: "我有幸代表塔斯马尼亚大学参加在墨尔本举办的/dev/world 2025，分享了我在Android、iOS和Flutter三个平台上开发AFL应用的经验。"
+      ne: "मलाई मेलबर्नमा /dev/world 2025 मा तस्मानिया विश्वविद्यालयको प्रतिनिधित्व गर्ने अवसर मिल्यो, जहाँ मैले Android, iOS र Flutter गरी तीन फरक प्लेटफर्ममा AFL एप बनाएको अनुभव साझा गरेँ।"
+    summary:
+      en: "Yu Wang represented UTAS at /dev/world 2025 in Melbourne, presenting an AFL app built three ways: Android, iOS and Flutter. It was Yu's first full talk in English to a room of experienced developers, and the post also mentions sessions on data models, cryptography and iOS Live Activities."
+      zh: "Yu Wang代表UTAS参加了在墨尔本举办的/dev/world 2025，展示了一款用Android、iOS和Flutter三种方式开发的AFL应用。这是Yu第一次用全英文向满场资深开发者演讲，帖子还提到了关于数据模型、密码学和iOS Live Activities的分享。"
+      ne: "Yu Wang ले मेलबर्नमा /dev/world 2025 मा UTAS को प्रतिनिधित्व गर्दै Android, iOS र Flutter गरी तीन तरिकाले बनाइएको AFL एप प्रस्तुत गरे। अनुभवी डेभलपरहरूले भरिएको कोठामा पूर्ण अंग्रेजीमा Yu को यो पहिलो प्रस्तुति थियो, र पोस्टमा डाटा मोडल, क्रिप्टोग्राफी र iOS Live Activities बारेका सत्रहरूको पनि उल्लेख छ।"
+    url: "https://www.linkedin.com/posts/yu-wang-solana_devworld2005-devworld-ios-ugcPost-7370414703635857408-_t4g/"
+projects:
+  - name:
+      en: "AFL app"
+      zh: "AFL应用"
+      ne: "AFL एप"
+    description:
+      en: "A student-built AFL app presented at the conference, with versions developed for Android, iOS, and Flutter."
+      zh: "学生开发并在会上展示的AFL应用，分别有Android、iOS和Flutter版本。"
+      ne: "सम्मेलनमा प्रस्तुत गरिएको विद्यार्थीनिर्मित AFL एप, जसका Android, iOS र Flutter संस्करण छन्।"
+    team:
+      en: "University of Tasmania student representatives"
+      zh: "塔斯马尼亚大学学生代表"
+      ne: "तस्मानिया विश्वविद्यालयका विद्यार्थी प्रतिनिधिहरू"
+weight: 8
+aliases: ["/events/devworld-2025-melbourne/"]

@@ -1,0 +1,79 @@
+title:
+  en: "GDG Hobart: Build with AI & Break Into Security"
+  zh: "GDG Hobart：用AI构建 & 进入安全行业"
+  ne: "GDG Hobart: AI सँग निर्माण र सुरक्षा क्षेत्रमा प्रवेश"
+start: "2026-03-05T17:15:00+11:00"
+end: "2026-03-05T18:45:00+11:00"
+type: "meetup"
+topics: [careers, networking]
+location: "Room 132, Centenary Building, UTAS Sandy Bay"
+cost:
+  en: "Free"
+  zh: "免费"
+  ne: "निःशुल्क"
+badge: "free"
+eligibility:
+  en: "Open to students, early-career professionals and anyone curious about cyber security"
+  zh: "面向学生、职场新人以及所有对网络安全感兴趣的人"
+  ne: "विद्यार्थी, करियर सुरु गर्दै गरेका पेशेवर र साइबर सुरक्षामा रुचि राख्ने सबैका लागि खुला"
+summary:
+  en: "A two-part GDG Hobart evening at UTAS on building analyst agents with BigQuery and breaking into a cyber security career."
+  zh: "GDG Hobart在UTAS举办的两段式晚间活动，主题是用BigQuery构建分析代理，以及如何进入网络安全行业。"
+  ne: "UTAS मा GDG Hobart को दुई भागको साँझ, BigQuery सँग एनालिस्ट एजेन्ट बनाउने र साइबर सुरक्षा करियरमा प्रवेश गर्ने विषयमा।"
+image: "/images/events/2026/gdg-hobart-ai-security/gdg-hobart-ai-security-2026-1.jpg"
+gallery:
+  - "/images/events/2026/gdg-hobart-ai-security/gdg-hobart-ai-security-2026-2.jpg"
+  - "/images/events/2026/gdg-hobart-ai-security/gdg-hobart-ai-security-2026-3.jpg"
+outcome:
+  en: "45+ attendees · Google security engineer Q&A"
+  zh: "45+名参与者 · 与谷歌安全工程师问答"
+  ne: "45+ सहभागी · Google सुरक्षा इन्जिनियरसँग प्रश्नोत्तर"
+about:
+  en:
+    - "GDG Hobart hosted Build with AI & Break Into Security on Thursday 5 March 2026, from 5:15 PM to 6:45 PM, in Room 132 of the Centenary Building at the University of Tasmania's Sandy Bay Campus. The free event marked the beginning of GDG Hobart's 2026 program and welcomed students, early-career professionals, developers, and technology enthusiasts interested in artificial intelligence and cybersecurity."
+    - "The event attracted more than 45 attendees and featured two sessions combining technical learning with professional career guidance. Speakers included Thiébaud W., a Senior Security Engineer at Google, and Yash Mehta, who shared their knowledge and experience with the local developer community."
+    - "The Build with AI session introduced the development of analyst agents using BigQuery, highlighting how AI technologies can support data analysis and information processing. The session provided attendees with an opportunity to explore the potential applications of AI-powered tools and their relevance to modern software development and data-driven workflows."
+    - "The cybersecurity career session, Break Into Security, was presented by Thiébaud W., who discussed different areas of cybersecurity, skills valued by employers, and potential entry points into the profession. Drawing on his industry experience, he offered insights into how students and early-career professionals could approach building their knowledge and preparing for cybersecurity-related roles."
+    - "The event encouraged active participation and discussion, including a live question-and-answer session following the cybersecurity career presentation. Attendees also had opportunities to connect with other members of Hobart's technology community. Professor Nicole Herbert, Head of the UTAS School of ICT, acknowledged the strong turnout, while GDG Hobart thanked the university for providing the venue and supporting the event."
+    - "For UTAS ICT students, the meetup offered an opportunity to explore emerging AI technologies, gain insights into cybersecurity career pathways, and learn directly from experienced industry professionals. It also demonstrated the value of engaging with local developer communities to develop technical awareness, build professional connections, and explore future opportunities in Tasmania's ICT sector."
+  zh:
+    - "GDG Hobart 于 2026 年 3 月 5 日（星期四）下午 5:15 至 6:45 在 University of Tasmania Sandy Bay 校区 Centenary Building 132 室举办了 Build with AI & Break Into Security。这场免费活动拉开了 GDG Hobart 2026 年活动的序幕，欢迎对人工智能和网络安全感兴趣的学生、职场新人、开发者和技术爱好者参加。"
+    - "活动吸引了 45 位以上的参与者，两场分享结合了技术学习和职业指导。嘉宾包括 Google 高级安全工程师 Thiébaud W. 和 Yash Mehta，他们与本地开发者社区分享了自己的知识和经验。"
+    - "Build with AI 环节介绍了如何用 BigQuery 开发分析智能体，展示 AI 技术如何支持数据分析和信息处理，让与会者了解 AI 工具的潜在用途，以及它们与现代软件开发和数据驱动工作流程的关系。"
+    - "网络安全职业分享 Break Into Security 由 Thiébaud W. 主讲，介绍了网络安全的不同方向、雇主看重的技能，以及进入这一行业的途径。他结合自己的行业经验，建议学生和职场新人如何积累知识、为网络安全相关岗位做准备。"
+    - "活动鼓励积极参与和讨论，网络安全职业分享后还有现场问答。与会者也有机会结识霍巴特科技社区的其他成员。UTAS School of ICT 院长 Nicole Herbert 教授对踊跃的参与表示肯定，GDG Hobart 也感谢学校提供场地并支持活动。"
+    - "对 UTAS ICT 学生来说，这次聚会让他们了解新兴 AI 技术，认识网络安全职业道路，并直接向经验丰富的业界人士学习。活动也说明，参与本地开发者社区有助于提升技术视野、建立职业人脉，并探索塔斯马尼亚 ICT 行业的未来机会。"
+  ne:
+    - "GDG Hobart ले बिहिबार 5 मार्च 2026 मा साँझ 5:15 देखि 6:45 सम्म University of Tasmania को Sandy Bay क्याम्पसस्थित Centenary Building को कोठा 132 मा Build with AI & Break Into Security आयोजना गर्‍यो। यो निःशुल्क कार्यक्रमले GDG Hobart को 2026 को कार्यक्रम सुरु गर्‍यो र कृत्रिम बुद्धिमत्ता तथा साइबर सुरक्षामा रुचि राख्ने विद्यार्थी, करियर सुरु गर्दै गरेका पेसाकर्मी, डेभलपर र प्रविधिप्रेमीहरूलाई स्वागत गर्‍यो।"
+    - "कार्यक्रममा 45 भन्दा बढी सहभागी थिए र प्राविधिक सिकाइ तथा पेसागत करियर सल्लाह मिलाइएका दुई सत्र थिए। वक्ताहरूमा Google का Senior Security Engineer Thiébaud W. र Yash Mehta थिए, जसले स्थानीय डेभलपर समुदायसँग आफ्नो ज्ञान र अनुभव बाँडे।"
+    - "Build with AI सत्रले BigQuery प्रयोग गरेर एनालिस्ट एजेन्ट बनाउने तरिकाको परिचय दियो र AI प्रविधिले डेटा विश्लेषण तथा सूचना प्रशोधनमा कसरी सहयोग गर्न सक्छ भन्ने देखायो। सत्रले AI-आधारित उपकरणहरूको सम्भावित प्रयोग र आधुनिक सफ्टवेयर विकास तथा डेटामा आधारित कार्यप्रवाहसँग तिनको सम्बन्ध बुझ्ने अवसर दियो।"
+    - "साइबर सुरक्षा करियर सत्र Break Into Security, Thiébaud W. ले प्रस्तुत गरे, जसमा उनले साइबर सुरक्षाका फरक क्षेत्र, रोजगारदाताले महत्त्व दिने सीप र यो पेसामा प्रवेश गर्ने सम्भावित बाटाहरूबारे कुरा गरे। आफ्नो उद्योग अनुभवका आधारमा उनले विद्यार्थी र करियर सुरु गर्दै गरेका पेसाकर्मीहरूले ज्ञान कसरी बढाउने र साइबर सुरक्षासम्बन्धी भूमिकाका लागि कसरी तयारी गर्ने भन्नेबारे सुझाव दिए।"
+    - "कार्यक्रमले सक्रिय सहभागिता र छलफललाई प्रोत्साहन गर्‍यो, जसमा साइबर सुरक्षा करियर प्रस्तुतिपछि प्रत्यक्ष प्रश्नोत्तर सत्र पनि थियो। सहभागीहरूले होबार्टको प्रविधि समुदायका अरू सदस्यहरूसँग जोडिने अवसर पनि पाए। UTAS School of ICT की प्रमुख Professor Nicole Herbert ले उत्साहजनक उपस्थितिको प्रशंसा गरिन्, र GDG Hobart ले स्थान उपलब्ध गराई कार्यक्रममा सहयोग गरेकोमा विश्वविद्यालयलाई धन्यवाद दियो।"
+    - "UTAS ICT विद्यार्थीहरूका लागि यो भेटघाटले नयाँ AI प्रविधि बुझ्ने, साइबर सुरक्षाका करियर मार्गबारे जानकारी पाउने र अनुभवी उद्योग पेसाकर्मीहरूबाट सिधै सिक्ने अवसर दियो। प्राविधिक बुझाइ बढाउन, पेसागत सम्बन्ध बनाउन र तस्मानियाको ICT क्षेत्रमा भविष्यका अवसर खोज्न स्थानीय डेभलपर समुदायसँग जोडिनुको महत्त्व पनि यसले देखायो।"
+references:
+  - title: "GDG Hobart – AI and Cybersecurity Event Recap (LinkedIn)"
+    url: "https://www.linkedin.com/posts/gdghobart-buildwithai-cybersecurity-ugcPost-7435274525812060160-Bmap/"
+linkedin_posts:
+  - name: "GDG Hobart"
+    role: "Google Developer Group, Hobart"
+    avatar: "/images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-avatar.jpg"
+    images:
+      - "/images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-1.jpg"
+      - "/images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-2.jpg"
+      - "/images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-3.jpg"
+      - "/images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-4.jpg"
+      - "/images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-5.jpg"
+      - "/images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-6.jpg"
+      - "/images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-7.jpg"
+      - "/images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-8.jpg"
+    content:
+      en: "It was fantastic to see the room at the Centenary Building almost entirely filled with over 45 eager learners joining us for this deep dive into AI and Cybersecurity."
+      zh: "看到Centenary Building的房间几乎被45名以上渴望学习的参与者坐满，一起深入探讨AI和网络安全，真是太棒了。"
+      ne: "AI र साइबर सुरक्षाको गहिरो अध्ययनका लागि 45 भन्दा बढी उत्सुक सिकारुहरूले Centenary Building को कोठा लगभग भरिएको देख्दा निकै राम्रो लाग्यो।"
+    summary:
+      en: "GDG Hobart's recap of an AI and cybersecurity night that almost filled a room in UTAS's Centenary Building, with more than 45 attendees. Speakers Thiébaud W. and Yash Mehta sparked plenty of questions and discussion, and the post thanks UTAS for the venue and the volunteer team."
+      zh: "GDG Hobart对一场AI与网络安全之夜的回顾：超过45人参加，几乎坐满了UTAS Centenary Building的房间。讲者Thiébaud W.和Yash Mehta引发了大量提问和讨论，帖子也感谢了UTAS提供场地以及志愿者团队。"
+      ne: "UTAS को Centenary Building को कोठा लगभग भर्ने, 45 भन्दा बढी सहभागीसहितको AI र साइबर सुरक्षा साँझको GDG Hobart को समीक्षा। वक्ता Thiébaud W. र Yash Mehta ले धेरै प्रश्न र छलफल जन्माए, र पोस्टले स्थलका लागि UTAS र स्वयंसेवक टोलीलाई धन्यवाद दिन्छ।"
+    url: "https://www.linkedin.com/posts/gdghobart-buildwithai-cybersecurity-ugcPost-7435274525812060160-Bmap/"
+weight: 11
+aliases: ["/events/gdg-hobart-ai-security-2026/"]

@@ -19,10 +19,10 @@
       </div>
       <div class="footer-col">
         {{ $page := . }}
-        {{ range .Site.Languages }}
-          {{ $lang := . }}
+        {{ range hugo.Sites }}
+          {{ $lang := .Language }}
           {{ if eq $lang.Lang $page.Language.Lang }}
-            <a href="#">{{ $lang.LanguageName }}</a>
+            <a href="#">{{ $lang.Label }}</a>
           {{ else }}
             {{ $url := "" }}
             {{ range $page.Translations }}
@@ -31,7 +31,7 @@
             {{ if not $url }}
               {{ if eq $lang.Lang "en" }}{{ $url = relURL "/" }}{{ else }}{{ $url = relURL (printf "%s/" $lang.Lang) }}{{ end }}
             {{ end }}
-            <a href="{{ $url }}">{{ $lang.LanguageName }}</a>
+            <a href="{{ $url }}">{{ $lang.Label }}</a>
           {{ end }}
         {{ end }}
       </div>

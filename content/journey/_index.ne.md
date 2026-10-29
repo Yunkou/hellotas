@@ -17,6 +17,6 @@ title: "यात्रा"
 Open Day छुटेको? UTAS पारिस्थितिकी तंत्रमा पस्नुहोस्। ICT क्लबमा जोडिनुहोस्, वास्तविक परियोजना बनाउनुहोस्, र आफ्नो व्यावसायिक घेरा खोज्नुहोस्।
 
 - **प्रविधि र उद्योग क्लबहरू:** [UTAS Cybersecurity Club]({{< relref "step-3" >}}#utas-cybersecurity-club), [UTAS Programming Club]({{< relref "step-3" >}}#utas-programming-club), [UTAS Motorsport]({{< relref "step-3" >}}#utas-motorsport)
-- **स्वयंसेवा र फिर्ता दिनुहोस्:** [Rotary Club of Hobart]({{< relref "step-3" >}}#rotary-hobart), [Glenorchy Community Care]({{< relref "step-3" >}}#glenorchy-community-care)
+- **स्वयंसेवा र फिर्ता दिनुहोस्:** [Rotary Clubs of Tasmania]({{< relref "step-3" >}}#rotary-tasmania), [TUSA Food Hub]({{< relref "step-3" >}}#tusa-food-hub), [Glenorchy Community Care]({{< relref "step-3" >}}#glenorchy-community-care)
 
 [चरण ३ गाइड खोल्नुहोस् →]({{< relref "step-3" >}})

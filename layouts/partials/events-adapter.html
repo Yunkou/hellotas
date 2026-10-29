@@ -1,0 +1,27 @@
+{{- /*
+  Builds one Past Events page per file in data/events/<year>/<slug>.yaml, at /events/<year>/<slug>/.
+  Hugo runs it once per language from content/events/_content.gotmpl, _content.zh.gotmpl and _content.ne.gotmpl.
+  The fields are the same as Happening's (layouts/happening/list.html), so an event moves here from
+  data/happening/ once it is over. Text is plain or has en / zh / ne inside; extra fields for a past event:
+    event_time                       optional text that replaces the date line built from start / end
+                                     (e.g. two sessions in one day); leave start / end out when the date isn't known
+    location, eligibility            "tbc" when not known yet
+    badge                            free, gpa or tbc: the price tag on the card
+    outcome, about                   one-line takeaway; About paragraphs (a list in each language)
+    student_voice, student_role      quote on the card and its author
+    linkedin_posts                   name, role, avatar, images, content, summary, url
+    references                       sources listed under About (title, url); without them the page shows url as "Source:"
+    projects, stats                  showcase projects (name, image, award, description, team) and numbers (number, label)
+    weight                           order within the year
+    aliases                          old addresses that redirect here
+*/ -}}
+{{- $lang := site.Language.Lang -}}
+{{- range $year, $events := hugo.Data.events -}}
+  {{- range $slug, $raw := $events -}}
+    {{- $e := partial "event-localize.html" (dict "v" $raw "lang" $lang) -}}
+    {{- $page := dict "path" (printf "%s/%s" $year $slug) "title" $e.title "weight" ($e.weight | default 0) "params" (merge $e (dict "year" $year)) -}}
+    {{- with $e.aliases }}{{ $page = merge $page (dict "aliases" .) }}{{ end -}}
+    {{- with $e.start }}{{ $page = merge $page (dict "dates" (dict "date" (time .))) }}{{ end -}}
+    {{- $.AddPage $page -}}
+  {{- end -}}
+{{- end -}}

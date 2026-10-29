@@ -18,7 +18,7 @@
   </div>
 
   <div class="stories-grid">
-    {{ range site.Data.stories.items }}
+    {{ range hugo.Data.stories.items }}
     {{ $name := .name }}
     {{ with .localName }}{{ with index . $lang }}{{ $name = . }}{{ end }}{{ end }}
     <article class="story-card" data-year="{{ .year }}">

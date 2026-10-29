@@ -1,0 +1,26 @@
+title:
+  en: "Telstra IoT Fest 2026 Hackathon"
+  zh: "Telstra IoT Fest 2026 黑客松"
+  ne: "Telstra IoT Fest 2026 ह्याकाथन"
+# Build phase 9–30 November, finale 3 December; Telstra gives no times
+start: "2026-11-09T00:00:00+11:00"
+end: "2026-12-03T23:59:00+11:00"
+all_day: true
+type: "hackathon"
+format: "hybrid"
+topics: [development, data, ai]
+host: "Telstra & Cisco"
+location:
+  en: "Build online · finale at Telstra, 242 Exhibition Street, Melbourne"
+  zh: "线上开发 · 决赛在墨尔本 Telstra（242 Exhibition Street）"
+  ne: "अनलाइन निर्माण · फाइनल मेलबर्नमा Telstra, 242 Exhibition Street"
+cost:
+  en: "Free to enter"
+  zh: "免费参赛"
+  ne: "सहभागिता निःशुल्क"
+summary:
+  en: "A Telstra and Cisco IoT hackathon: teams of up to five turn network signals into real-world solutions, and finalists pitch in Melbourne for a $6,000 prize pool with UTAS involved."
+  zh: "Telstra 与 Cisco 联合举办的物联网黑客松：最多五人一队，把网络信号变成解决实际问题的方案，入围队伍在墨尔本路演，角逐 6,000 澳元奖金池。UTAS 也将派队参赛。"
+  ne: "Telstra र Cisco को IoT ह्याकाथन: बढीमा पाँच जनाका टोलीले नेटवर्क संकेतलाई वास्तविक समाधानमा बदल्छन्, र छनोट भएका टोलीले $6,000 पुरस्कार कोषका लागि मेलबर्नमा प्रस्तुति दिन्छन्। UTAS ले पनि टोली पठाउँदैछ।"
+image: "/images/happening/telstra-iot-fest-2026/telstra-iot-fest-2026-1.jpg"
+url: "https://telstra.brightidea.com/TIF2026"

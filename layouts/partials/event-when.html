@@ -1,0 +1,48 @@
+{{- /*
+  Date line of a past event in the page's language, e.g. "Thursday 10 April 2025 · 8:15 AM – 6:00 PM",
+  "4–5 September 2025 · Two days". Patterns and words come from the events* keys in i18n/.
+*/ -}}
+{{- $s := time .start -}}
+{{- $e := time (.end | default .start) -}}
+{{- $months := split (i18n "happeningMonthsLong") "," -}}
+{{- $weekdays := split (i18n "happeningWeekdaysLong") "," -}}
+{{- $date := dict -}}
+{{- range $k, $t := dict "s" $s "e" $e -}}
+  {{- $date = merge $date (dict $k (dict
+      "{weekday}" (index $weekdays (mod (add (int $t.Weekday) 6) 7))
+      "{day}" (string $t.Day)
+      "{month}" (index $months (sub (int $t.Month) 1))
+      "{m}" (string (int $t.Month))
+      "{year}" (string $t.Year))) -}}
+{{- end -}}
+{{- $fill := dict -}}
+{{- range $k, $v := $date.s }}{{ $fill = merge $fill (dict $k $v) }}{{ end -}}
+{{- range $k, $v := $date.e }}{{ $fill = merge $fill (dict (replace $k "}" "2}") $v) }}{{ end -}}
+{{- $sameDay := eq ($s.Format "2006-01-02") ($e.Format "2006-01-02") -}}
+{{- $pattern := "" -}}
+{{- if $sameDay }}{{ $pattern = i18n "eventsDateFormat" -}}
+{{- else if ne $s.Year $e.Year }}{{ $pattern = printf "%s – %s" (i18n "eventsDateShort") (replace (replace (replace (replace (i18n "eventsDateShort") "{day}" "{day2}") "{month}" "{month2}") "{m}" "{m2}") "{year}" "{year2}") -}}
+{{- else if ne $s.Month $e.Month }}{{ $pattern = i18n "eventsDateRangeMonths" -}}
+{{- else }}{{ $pattern = i18n "eventsDateRangeDays" }}{{ end -}}
+{{- range $k, $v := $fill }}{{ $pattern = replace $pattern $k $v }}{{ end -}}
+{{- $line := $pattern -}}
+{{- if .allDay -}}
+  {{- if $sameDay -}}
+    {{- $line = printf "%s · %s" $line (i18n "eventsFullDay") -}}
+  {{- else -}}
+    {{- $n := add (div (sub (time ($e.Format "2006-01-02")).Unix (time ($s.Format "2006-01-02")).Unix) 86400) 1 -}}
+    {{- $counts := split (i18n "eventsDayCounts") "," -}}
+    {{- $line = printf "%s · %s" $line (cond (le $n (len $counts)) (index $counts (sub $n 1)) (replace (i18n "eventsDaysMany") "{n}" (string $n))) -}}
+  {{- end -}}
+{{- else -}}
+  {{- /* eventsHourPeriods: 24 words, one per hour (zh / ne); empty means 12-hour AM / PM */ -}}
+  {{- $periods := split (i18n "eventsHourPeriods") "," -}}
+  {{- $t1 := $s.Format "3:04 PM" }}{{ $t2 := $e.Format "3:04 PM" -}}
+  {{- if eq (len $periods) 24 -}}
+    {{- $p1 := index $periods $s.Hour }}{{ $p2 := index $periods $e.Hour -}}
+    {{- $t1 = replace (replace (i18n "eventsTimeFormat") "{period}" $p1) "{time}" ($s.Format "3:04") -}}
+    {{- $t2 = cond (eq $p1 $p2) ($e.Format "3:04") (replace (replace (i18n "eventsTimeFormat") "{period}" $p2) "{time}" ($e.Format "3:04")) -}}
+  {{- end -}}
+  {{- $line = printf "%s · %s – %s" $line $t1 $t2 -}}
+{{- end -}}
+{{- return $line -}}

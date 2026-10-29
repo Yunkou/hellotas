@@ -101,10 +101,12 @@
   }
   function count(n) { return n === 1 ? S.oneEvent : S.events.replace('{n}', n); }
 
-  // "Thu 19 Nov · 5:15 – 6:45 pm"; "Wed 9 – Thu 10 Dec · 10:00 am – 7:00 pm"; "November 2026 · Date to be confirmed"
+  // "Thu 19 Nov · 5:15 – 6:45 pm"; "Wed 9 – Thu 10 Dec · 10:00 am – 7:00 pm"; "Mon 9 Nov – Thu 3 Dec" (all day);
+  // "November 2026 · Date to be confirmed"
   function when(e, timeOnly) {
     if (e.dateTbc) return fmtMonthYear.format(e.startDate) + ' · ' + S.dateTbc;
     var multi = e.startKey !== e.endKey;
+    if (e.allDay) return multi ? range(fmtDate, e.startDate, e.endDate) : fmtDate.format(e.startDate);
     var times = multi ? fmtTime.format(e.startDate) + ' – ' + fmtTime.format(e.endDate) : range(fmtTime, e.startDate, e.endDate);
     var day = timeOnly && !multi ? fmtWeekday.format(e.startDate) : multi ? range(fmtDate, e.startDate, e.endDate) : fmtDate.format(e.startDate);
     return day + ' · ' + times;
@@ -318,8 +320,9 @@
       'BEGIN:VEVENT',
       'UID:' + e.id + '@tasmania-welcome',
       'DTSTAMP:' + icsStamp(new Date()),
-      'DTSTART:' + icsStamp(e.startDate),
-      'DTEND:' + icsStamp(e.endDate),
+      // All-day events use calendar dates; the end date is the day after the last one
+      e.allDay ? 'DTSTART;VALUE=DATE:' + e.startKey.replace(/-/g, '') : 'DTSTART:' + icsStamp(e.startDate),
+      e.allDay ? 'DTEND;VALUE=DATE:' + addDays(e.endKey, 1).replace(/-/g, '') : 'DTEND:' + icsStamp(e.endDate),
       'SUMMARY:' + icsText(e.title),
       'DESCRIPTION:' + icsText(e.summary + (e.url ? '\n\n' + e.url : '')),
       'LOCATION:' + icsText(e.format === 'online' ? S.online : e.location)
@@ -350,13 +353,19 @@
 
   var cal = root.querySelector('[data-calendar]');
 
-  // Everything that falls on a day: upcoming events on every day they run, archive events on their date
+  // Everything that falls on a day: upcoming events on every day they run (events longer than a week, like a
+  // month-long hackathon, only on their first and last day so they don't fill the month), archive events on their date
   var dayItems = {};
   var tbcByMonth = {};
   function addItem(key, item) { (dayItems[key] = dayItems[key] || []).push(item); }
   events.forEach(function (e) {
     if (e.dateTbc) {
       (tbcByMonth[e.startKey.slice(0, 7)] = tbcByMonth[e.startKey.slice(0, 7)] || []).push(e);
+      return;
+    }
+    if (e.endKey > addDays(e.startKey, 6)) {
+      addItem(e.startKey, { event: e });
+      addItem(e.endKey, { event: e });
       return;
     }
     for (var k = e.startKey; k <= e.endKey; k = addDays(k, 1)) addItem(k, { event: e });
@@ -448,7 +457,7 @@
   function chip(item, withTime) {
     var status = itemStatus(item);
     var text = item.archive ? item.archive.title : item.event.title;
-    var time = withTime && item.event && item.event.startKey === item.event.endKey ? fmtTime.format(item.event.startDate) + ' ' : '';
+    var time = withTime && item.event && !item.event.allDay && item.event.startKey === item.event.endKey ? fmtTime.format(item.event.startDate) + ' ' : '';
     return h('span', { class: 'cal-chip cal-chip--' + status + (item.archive ? ' cal-chip--archive' : '') }, [
       time ? h('span', { class: 'cal-chip-time', text: time }) : null,
       h('span', { class: 'cal-chip-title', text: text })

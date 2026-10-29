@@ -12,11 +12,11 @@
   <div class="container">
     <div class="journey-main">
       <aside class="journey-why">
-        <h2>{{ i18n site.Data.journey.step2.why.titleKey }}</h2>
-        <p>{{ i18n site.Data.journey.step2.why.textKey }}</p>
+        <h2>{{ i18n hugo.Data.journey.step2.why.titleKey }}</h2>
+        <p>{{ i18n hugo.Data.journey.step2.why.textKey }}</p>
       </aside>
 
-      {{ range site.Data.journey.step2.sections }}
+      {{ range hugo.Data.journey.step2.sections }}
       <section class="journey-voice-section">
         <h2 class="journey-basics-title">{{ i18n .titleKey }}</h2>
         <div class="section-divider"></div>
@@ -32,7 +32,7 @@
         <h2 class="journey-basics-title">{{ i18n "journeyStep2Section3Title" }}</h2>
         <div class="section-divider"></div>
         <div class="journey-basics-grid">
-          {{ range site.Data.journey.step2.people }}
+          {{ range hugo.Data.journey.step2.people }}
           <article class="journey-basic-card">
             <div class="journey-basic-head">
               <div class="journey-basic-icon">
@@ -54,7 +54,7 @@
         <h2 class="journey-basics-title">{{ i18n "journeyStep2TipsTitle" }}</h2>
         <p class="journey-checklist-lead">{{ i18n "journeyStep2TipsLead" }}</p>
         <div class="journey-tips-grid">
-          {{ range site.Data.journey.step2.tips }}
+          {{ range hugo.Data.journey.step2.tips }}
           <article class="journey-tip-card">
             <h3>{{ i18n .titleKey }}</h3>
             <p>{{ i18n .textKey }}</p>
@@ -65,13 +65,12 @@
 
       <section class="journey-next">
         <div class="journey-next-copy">
-          <h3>{{ i18n site.Data.journey.step2.next.titleKey }}</h3>
-          <p>{{ i18n site.Data.journey.step2.next.textKey }}</p>
+          <h3>{{ i18n hugo.Data.journey.step2.next.titleKey }}</h3>
+          <p>{{ i18n hugo.Data.journey.step2.next.textKey }}</p>
         </div>
-        <a href="{{ "journey/step-3/" | relLangURL }}" class="btn-primary journey-next-btn">{{ i18n site.Data.journey.step2.next.ctaKey }}</a>
+        <a href="{{ "journey/step-3/" | relLangURL }}" class="btn-primary journey-next-btn">{{ i18n hugo.Data.journey.step2.next.ctaKey }}</a>
       </section>
     </div>
   </div>
 </div>
-{{ partial "place-lightbox.html" . }}
 {{ end }}

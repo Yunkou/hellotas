@@ -1,7 +1,9 @@
 {{/* Reusable "place / club" card (Journey Step 2 & 3).
      Context: one item from data/journey.yaml with
      titleKey, tags[{key,class}], textKey, photos[{src,altKey}],
-     map{query,labelKey}, details[{labelKey,valueKey,href}] */}}
+     map{query,labelKey,zoom,pins}, details[{labelKey,valueKey,href}],
+     groups{labelKey, list[{titleKey, items[{name,href,venue,at}]}]} (optional fold-out list, e.g. every club in a network).
+     map.pins: true swaps the Google map for one with a pin per group item that has at: [lat, lng] (assets/js/pin-map.js) */}}
 {{ $p := . }}
 <article class="place-card" id="{{ $p.id }}">
   <div class="place-card-head">
@@ -13,10 +15,10 @@
   <p class="place-card-text">{{ i18n $p.textKey }}</p>
 
   {{ with $p.photos }}
-  <ul class="place-gallery" aria-label="{{ i18n "placePhotosLabel" }}">
+  <ul class="place-gallery" aria-label="{{ i18n "placePhotosLabel" }}" data-lightbox>
     {{ range $i, $ph := . }}
     <li>
-      <button type="button" class="place-photo" data-full="{{ $ph.src | relURL }}" data-alt="{{ i18n $ph.altKey }}" aria-label="{{ i18n "placePhotoEnlarge" }}: {{ i18n $ph.altKey }}">
+      <button type="button" class="place-photo" data-caption="{{ i18n $ph.altKey }}" aria-label="{{ i18n "placePhotoEnlarge" }}: {{ i18n $ph.altKey }}">
         <img src="{{ $ph.src | relURL }}" alt="{{ i18n $ph.altKey }}" loading="lazy" width="260" height="200">
         <span class="place-photo-zoom" aria-hidden="true">🔍</span>
       </button>
@@ -28,7 +30,15 @@
   <div class="place-card-meta">
     {{ with $p.map }}
     <div class="place-map">
-      <iframe title="{{ i18n "placeMapTitle" }}: {{ i18n $p.titleKey }}" src="https://maps.google.com/maps?q={{ .query | urlquery }}&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      {{ $iframe := printf `<iframe title="%s: %s" src="https://maps.google.com/maps?q=%s&z=%d&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>` (i18n "placeMapTitle") (i18n $p.titleKey) (.query | urlquery) (.zoom | default 15) }}
+      {{ if and .pins $p.groups }}
+      {{ $pins := slice }}
+      {{ range $p.groups.list }}{{ range .items }}{{ $it := . }}{{ with .at }}{{ $pins = $pins | append (dict "name" $it.name "href" $it.href "venue" ($it.venue | default "") "lat" (index . 0) "lng" (index . 1)) }}{{ end }}{{ end }}{{ end }}
+      <div class="place-pin-map" role="region" aria-label="{{ i18n "placeMapTitle" }}: {{ i18n $p.titleKey }}" data-pins="{{ $pins | jsonify }}" data-fallback="{{ $iframe }}" data-club-page="{{ i18n "placeMapClubPage" }}" data-contact="{{ i18n "placeMapContact" }}"><noscript>{{ $iframe | safeHTML }}</noscript></div>
+      <p class="place-map-hint">{{ replace (i18n "placeMapPinsHint") "{n}" (string (len $pins)) }}</p>
+      {{ else }}
+      {{ $iframe | safeHTML }}
+      {{ end }}
       <a class="place-map-link" href="https://www.google.com/maps/search/?api=1&query={{ .query | urlquery }}" target="_blank" rel="noopener">{{ i18n "placeOpenInMaps" }} ↗</a>
     </div>
     {{ end }}
@@ -41,4 +51,20 @@
       {{ end }}
     </dl>
   </div>
+
+  {{ with $p.groups }}
+  <details class="place-groups">
+    <summary>{{ i18n .labelKey }}</summary>
+    <div class="place-groups-grid">
+      {{ range .list }}
+      <div class="place-group">
+        <h4>{{ i18n .titleKey }}</h4>
+        <ul>
+          {{ range .items }}<li><a href="{{ .href | safeURL }}" target="_blank" rel="noopener">{{ .name }}</a></li>{{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+  </details>
+  {{ end }}
 </article>

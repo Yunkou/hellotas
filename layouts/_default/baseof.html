@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html{{- if eq .Language.Lang "zh" }} lang="zh-CN"{{ else }} lang="{{ .Language.LanguageCode }}"{{ end }}>
+<html{{- if eq .Language.Lang "zh" }} lang="zh-CN"{{ else }} lang="{{ .Language.Locale }}"{{ end }}>
 <head>
   {{ $style := resources.Get "css/custom.css" | fingerprint }}
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
   <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 </head>
-<body data-lb-close="{{ i18n "lightboxClose" }}" data-lb-prev="{{ i18n "carouselPrev" }}" data-lb-next="{{ i18n "carouselNext" }}">
+<body data-lb-close="{{ i18n "lightboxClose" }}" data-lb-prev="{{ i18n "carouselPrev" }}" data-lb-next="{{ i18n "carouselNext" }}" data-lb-zoom-in="{{ i18n "lightboxZoomIn" }}" data-lb-zoom-out="{{ i18n "lightboxZoomOut" }}" data-lb-zoom-level="{{ i18n "lightboxZoomLevel" }}" data-lb-download="{{ i18n "lightboxDownload" }}" data-lb-post="{{ i18n "lightboxOriginalPost" }}" data-lb-source="{{ i18n "lightboxSourcePage" }}">
   {{ partial "header.html" . }}
   <main>
     {{ block "main" . }}{{ end }}

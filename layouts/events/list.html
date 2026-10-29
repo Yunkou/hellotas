@@ -47,8 +47,9 @@
     {{ if eq .Params.year $year }}
     {{ $event := . }}
     {{- /* Everything a visitor might search for: name, type, tags, place, date, cost, write-up and LinkedIn posts */ -}}
-    {{ $search := slice .Title .Params.event_type .Params.location .Params.event_time .Params.cost .Params.eligibility .Params.summary .Params.outcome .Params.student_voice .Params.student_role .Plain }}
-    {{ with .Params.tags }}{{ $search = $search | append . }}{{ end }}
+    {{ $facts := partial "event-facts.html" . }}
+    {{ $search := slice .Title $facts.type $facts.location $facts.when .Params.cost $facts.eligibility .Params.summary .Params.outcome .Params.student_voice .Params.student_role }}
+    {{ $search = $search | append $facts.topics }}
     {{ with .Params.about }}{{ $search = $search | append . }}{{ end }}
     {{ range .Params.linkedin_posts }}{{ $search = $search | append (slice .name .role .content .summary) }}{{ end }}
     {{ if not .Date.IsZero }}{{ $search = $search | append (slice (.Date.Format "2 January 2006") (time.Format ":date_long" .Date)) }}{{ end }}
@@ -58,7 +59,9 @@
 {{ with .Params.gallery }}{{ $photos = $photos | append . }}{{ end }}
 <div class="event-thumb{{ if $photos }} event-thumb--photos{{ end }}">
   {{ if $photos }}
-  {{ partial "carousel.html" (dict "images" $photos "alt" .Title "class" "carousel--fit" "lazy" true "backdrop" true "lightbox" true) }}
+  {{ $from := partial "photo-sources.html" . }}
+  {{ $sources := slice }}{{ range $photos }}{{ $sources = $sources | append (index $from . | default ($event.Params.url | default "")) }}{{ end }}
+  {{ partial "carousel.html" (dict "images" $photos "sources" $sources "alt" .Title "class" "carousel--fit" "lazy" true "backdrop" true "lightbox" true) }}
   {{ else }}
     <div class="thumb-placeholder">{{ i18n "eventPhoto" }}<br><span class="thumb-sub">{{ .Title }}</span></div>
   {{ end }}
@@ -66,18 +69,18 @@
 
 <div class="event-body">
         <div class="event-tags">
-          <span class="tag tag-type">{{ .Params.event_type }}</span>
-          {{ range .Params.tags }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
-          {{ if eq .Params.cost "Free" }}<span class="tag tag-free">{{ i18n "tagFree" }}</span>{{ end }}
-          {{ if eq .Params.cost "GPA requirement" }}<span class="tag tag-gpa">{{ i18n "tagGPARequired" }}</span>{{ end }}
-          {{ if eq .Params.cost "To be confirmed" }}<span class="tag tag-normal">{{ i18n "tagCostTBC" }}</span>{{ end }}
-          {{ if eq .Params.eligibility "To be confirmed" }}<span class="tag tag-normal">{{ i18n "tagEligibilityTBC" }}</span>{{ end }}
+          {{ with $facts.type }}<span class="tag tag-type">{{ . }}</span>{{ end }}
+          {{ range $facts.topics }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
+          {{ if eq .Params.badge "free" }}<span class="tag tag-free">{{ i18n "tagFree" }}</span>{{ end }}
+          {{ if eq .Params.badge "gpa" }}<span class="tag tag-gpa">{{ i18n "tagGPARequired" }}</span>{{ end }}
+          {{ if eq .Params.badge "tbc" }}<span class="tag tag-normal">{{ i18n "tagCostTBC" }}</span>{{ end }}
+          {{ if $facts.eligibilityTbc }}<span class="tag tag-normal">{{ i18n "tagEligibilityTBC" }}</span>{{ end }}
         </div>
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ if and (eq .Params.location "To be confirmed") (eq .Params.event_time "To be confirmed") }}
+        {{ if $facts.tbc }}
         <p class="event-meta">{{ i18n "eventDetailsTBC" }}</p>
-        {{ else if or .Params.location .Params.event_time }}
-        <p class="event-meta">{{ with .Params.location }}{{ . }}{{ end }}{{ if and .Params.location .Params.event_time }} · {{ end }}{{ with .Params.event_time }}{{ . }}{{ end }}</p>
+        {{ else if or $facts.location $facts.when }}
+        <p class="event-meta">{{ $facts.location }}{{ if and $facts.location $facts.when }} · {{ end }}{{ $facts.when }}</p>
         {{ end }}
         {{ with .Params.summary }}<p class="event-summary">{{ . }}</p>{{ end }}
         {{ with .Params.outcome }}<p class="event-outcome">{{ . }}</p>{{ end }}

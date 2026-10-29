@@ -1,0 +1,5 @@
+{{- /* Where an event page's photos came from, for the photo viewer's "Original post" link:
+       a map of image path → the LinkedIn post that image is from. Context: the event page. */ -}}
+{{- $s := newScratch -}}
+{{- range .Params.linkedin_posts }}{{ $u := .url }}{{ range .images }}{{ $s.SetInMap "from" . $u }}{{ end }}{{ end -}}
+{{- return ($s.Get "from" | default dict) -}}

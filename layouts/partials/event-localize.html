@@ -1,0 +1,18 @@
+{{- /* One language of an event record: every { en, zh, ne } map becomes that language's value (or en's); the rest is kept */ -}}
+{{- $v := .v -}}
+{{- $lang := .lang -}}
+{{- $out := $v -}}
+{{- if reflect.IsMap $v -}}
+  {{- $text := isset $v "en" -}}
+  {{- range $k, $_ := $v }}{{ if not (in (slice "en" "zh" "ne") $k) }}{{ $text = false }}{{ end }}{{ end -}}
+  {{- if $text -}}
+    {{- $out = index $v $lang | default (index $v "en") -}}
+  {{- else -}}
+    {{- $out = dict -}}
+    {{- range $k, $x := $v }}{{ $out = merge $out (dict $k (partial "event-localize.html" (dict "v" $x "lang" $lang))) }}{{ end -}}
+  {{- end -}}
+{{- else if reflect.IsSlice $v -}}
+  {{- $out = slice -}}
+  {{- range $v }}{{ $out = $out | append (partial "event-localize.html" (dict "v" . "lang" $lang)) }}{{ end -}}
+{{- end -}}
+{{- return $out -}}

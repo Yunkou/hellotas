@@ -1,0 +1,57 @@
+title:
+  en: "ICT Careers Night 2025"
+  zh: "ICT职业之夜2025"
+  ne: "ICT करियर नाइट 2025"
+start: "2025-10-25T17:30:00+11:00"
+end: "2025-10-25T20:00:00+11:00"
+event_time:
+  en: "5:30 PM – 8:00 PM"
+  zh: "下午5:30 – 晚上8:00"
+  ne: "साँझ 5:30 – 8:00"
+type: "careersNight"
+topics: [careers, networking]
+location: "Hobart"
+cost:
+  en: "Free"
+  zh: "免费"
+  ne: "निःशुल्क"
+badge: "free"
+eligibility:
+  en: "Open to all ICT students"
+  zh: "面向所有 ICT 学生"
+  ne: "सबै ICT विद्यार्थीका लागि खुला"
+summary:
+  en: "Alumni and industry guests shared career paths."
+  zh: "校友和行业嘉宾分享职业道路。"
+  ne: "पूर्वविद्यार्थीहरू र उद्योगका अतिथिहरूले करियर मार्गहरू साझा गर्नुभयो।"
+image: "/images/events/2025/ict-careers-night/2025ictcaree.jpg"
+outcome:
+  en: "Students asked real questions, got real answers"
+  zh: "学生提出真实问题，获得真实答案"
+  ne: "विद्यार्थीहरूले वास्तविक प्रश्नहरू सोधे, वास्तविक उत्तरहरू पाए"
+about:
+  en:
+    - "ICT Careers Night 2025 brought together ICT students, university alumni, and industry guests in Hobart for an evening focused on career development and employment opportunities in the technology sector."
+    - "During the event, alumni and industry professionals shared their experiences of finding their first jobs after graduation and discussed their career journeys. Their personal perspectives provided students with insights into the transition from university study to professional employment and the different pathways available within the ICT industry."
+    - "The event also provided an opportunity for students to ask practical questions and engage directly with people who had experience working in the technology sector. These discussions helped students gain a better understanding of the challenges and opportunities associated with beginning a career in ICT."
+    - "For students preparing to enter the workforce, ICT Careers Night 2025 offered an opportunity to learn from alumni experiences, explore potential career pathways, and build confidence in planning their professional futures. The event also highlighted the value of connecting with university graduates and industry professionals when preparing for employment."
+  zh:
+    - "ICT Careers Night 2025 在霍巴特举行，ICT 学生、校友和行业嘉宾共聚一晚，围绕科技行业的职业发展和就业机会展开交流。"
+    - "活动中，校友和业界人士分享了毕业后找到第一份工作的经历，并讲述了各自的职业历程。这些亲身经验让学生了解从大学学习到正式工作的过渡，以及 ICT 行业里的各种发展方向。"
+    - "活动也让学生有机会提出实际问题，与在科技行业工作过的人直接交流，从而更清楚地了解开启 ICT 职业生涯会遇到的挑战和机会。"
+    - "对即将进入职场的学生来说，ICT Careers Night 2025 让他们从校友的经历中学习，探索可能的职业道路，并对规划未来更有信心。活动也说明，在准备求职时，与毕业生和业界人士建立联系很有价值。"
+  ne:
+    - "ICT Careers Night 2025 ले होबार्टमा ICT विद्यार्थी, विश्वविद्यालयका पूर्व विद्यार्थी र उद्योगका अतिथिहरूलाई प्रविधि क्षेत्रमा करियर विकास र रोजगारीका अवसरमा केन्द्रित साँझका लागि एकै ठाउँमा ल्यायो।"
+    - "कार्यक्रममा पूर्व विद्यार्थी र उद्योगका पेसाकर्मीहरूले स्नातकपछि पहिलो जागिर पाएका अनुभव र आफ्नो करियर यात्राबारे सुनाए। उनीहरूका व्यक्तिगत अनुभवले विश्वविद्यालयको पढाइबाट पेसागत रोजगारीमा जाने संक्रमण र ICT उद्योगभित्रका फरक मार्गहरू बुझ्न विद्यार्थीहरूलाई मद्दत गर्‍यो।"
+    - "कार्यक्रमले विद्यार्थीहरूलाई व्यावहारिक प्रश्न सोध्ने र प्रविधि क्षेत्रमा काम गरेका मानिसहरूसँग सिधै कुरा गर्ने अवसर पनि दियो। यी छलफलले ICT मा करियर सुरु गर्दा आउने चुनौती र अवसरहरू राम्ररी बुझ्न मद्दत गरे।"
+    - "कार्यक्षेत्रमा प्रवेश गर्ने तयारीमा रहेका विद्यार्थीहरूका लागि ICT Careers Night 2025 ले पूर्व विद्यार्थीहरूको अनुभवबाट सिक्ने, सम्भावित करियर मार्ग खोज्ने र भविष्यको योजना बनाउन आत्मविश्वास बढाउने अवसर दियो। रोजगारीको तयारी गर्दा स्नातक र उद्योगका पेसाकर्मीहरूसँग जोडिनुको महत्त्व पनि यसले देखायो।"
+student_voice:
+  en: "Hearing how alumni found their first job made me feel like my own path was possible. I stopped panicking and started planning."
+  zh: "听到校友如何找到第一份工作，让我觉得自己的道路也是可能的。我不再恐慌，开始规划了。"
+  ne: "पूर्वविद्यार्थीहरूले पहिलो काम कसरी पाउनुभयो सुन्दा मेरो बाटो पनि सम्भव जस्तो लाग्यो। म आत्तिन छोडें र योजना बनाउन थालें।"
+student_role:
+  en: "ICT Student · 1st year"
+  zh: "ICT学生 · 一年级"
+  ne: "ICT विद्यार्थी · पहिलो वर्ष"
+weight: 4
+aliases: ["/events/ict-careers-night-2025/"]

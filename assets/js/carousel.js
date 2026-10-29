@@ -163,6 +163,15 @@
 
   // Photo viewer: clicking a photo inside any [data-lightbox] group shows it large.
   // Closes with the × button, a click outside the photo, or Esc; arrows and ←/→ step through the group.
+  // A data-caption on the photo or a wrapper inside the group (Journey place cards) shows under it, and a
+  // data-source (the LinkedIn post or official page it came from) adds an "Original post" link to the toolbar.
+  // Clicking the photo zooms to 200% around that spot and clicking again goes back; while zoomed it can be
+  // dragged around. The toolbar has − / level / + (the level opens a list), Download and Original post;
+  // the keys +, − and 0 zoom too. 100% is the photo fitted to the screen.
+  var ZOOM_LEVELS = [0.5, 0.75, 0.9, 1, 1.1, 1.25, 1.5, 2, 3, 4];
+  var ICON_DOWNLOAD = '<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg>';
+  var ICON_OPEN = '<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M11 4h5v5m0-5-7 7M8 5H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3"/></svg>';
+
   function initLightbox() {
     if (!document.querySelector('[data-lightbox]')) return;
     var labels = document.body.dataset;
@@ -170,54 +179,210 @@
     dialog.className = 'lightbox';
     dialog.innerHTML =
       '<button type="button" class="lightbox-close">×</button>' +
+      '<div class="lightbox-toolbar" role="toolbar">' +
+        '<button type="button" class="lightbox-tool lightbox-zoom-out">−</button>' +
+        '<div class="lightbox-zoom">' +
+          '<button type="button" class="lightbox-tool lightbox-zoom-level" aria-haspopup="true" aria-expanded="false">100%</button>' +
+          '<ul class="lightbox-zoom-menu" hidden>' + ZOOM_LEVELS.map(function (z) {
+            return '<li><button type="button" data-zoom="' + z + '">' + Math.round(z * 100) + '%</button></li>';
+          }).join('') + '</ul>' +
+        '</div>' +
+        '<button type="button" class="lightbox-tool lightbox-zoom-in">+</button>' +
+        '<a class="lightbox-tool lightbox-download" download>' + ICON_DOWNLOAD + '<span></span></a>' +
+        '<a class="lightbox-tool lightbox-original" target="_blank" rel="noopener">' + ICON_OPEN + '<span></span></a>' +
+      '</div>' +
       '<button type="button" class="lightbox-prev">‹</button>' +
-      '<figure class="lightbox-figure"><img alt=""><figcaption class="lightbox-count"></figcaption></figure>' +
+      '<figure class="lightbox-figure"><div class="lightbox-stage"><img alt=""></div>' +
+        '<figcaption><span class="lightbox-caption"></span><span class="lightbox-count"></span></figcaption></figure>' +
       '<button type="button" class="lightbox-next">›</button>';
     document.body.appendChild(dialog);
 
-    var img = dialog.querySelector('img');
+    var stage = dialog.querySelector('.lightbox-stage');
+    var img = stage.querySelector('img');
+    var caption = dialog.querySelector('.lightbox-caption');
     var count = dialog.querySelector('.lightbox-count');
     var closeBtn = dialog.querySelector('.lightbox-close');
     var prevBtn = dialog.querySelector('.lightbox-prev');
     var nextBtn = dialog.querySelector('.lightbox-next');
+    var zoomOutBtn = dialog.querySelector('.lightbox-zoom-out');
+    var zoomInBtn = dialog.querySelector('.lightbox-zoom-in');
+    var levelBtn = dialog.querySelector('.lightbox-zoom-level');
+    var menu = dialog.querySelector('.lightbox-zoom-menu');
+    var download = dialog.querySelector('.lightbox-download');
+    var original = dialog.querySelector('.lightbox-original');
     closeBtn.setAttribute('aria-label', labels.lbClose);
     prevBtn.setAttribute('aria-label', labels.lbPrev);
     nextBtn.setAttribute('aria-label', labels.lbNext);
+    zoomOutBtn.setAttribute('aria-label', labels.lbZoomOut);
+    zoomInBtn.setAttribute('aria-label', labels.lbZoomIn);
+    levelBtn.setAttribute('aria-label', labels.lbZoomLevel);
+    download.querySelector('span').textContent = labels.lbDownload;
+    download.setAttribute('aria-label', labels.lbDownload);
 
     var photos = [];
     var index = 0;
+    var zoom = 1;
+    var base = null; // the photo's fitted size, measured when it is first zoomed
+
+    function setZoom(z, point) {
+      z = Math.min(Math.max(z, ZOOM_LEVELS[0]), ZOOM_LEVELS[ZOOM_LEVELS.length - 1]);
+      if (zoom === 1) {
+        var fitted = img.getBoundingClientRect();
+        base = { w: fitted.width, h: fitted.height };
+      }
+      var before = img.getBoundingClientRect();
+      // The spot that should stay under the pointer (or the middle of the view)
+      var fx = point ? (point.x - before.left) / before.width : 0.5;
+      var fy = point ? (point.y - before.top) / before.height : 0.5;
+      zoom = z;
+      levelBtn.textContent = Math.round(z * 100) + '%';
+      if (z === 1) {
+        stage.classList.remove('is-zoomed');
+        img.style.width = img.style.height = '';
+        return;
+      }
+      stage.classList.add('is-zoomed');
+      img.style.width = base.w * z + 'px';
+      img.style.height = base.h * z + 'px';
+      var view = stage.getBoundingClientRect();
+      var px = point ? point.x - view.left : view.width / 2;
+      var py = point ? point.y - view.top : view.height / 2;
+      stage.scrollLeft = fx * base.w * z - px;
+      stage.scrollTop = fy * base.h * z - py;
+    }
+
+    function step(direction) {
+      var next = direction > 0
+        ? ZOOM_LEVELS.filter(function (z) { return z > zoom + 0.001; })[0]
+        : ZOOM_LEVELS.filter(function (z) { return z < zoom - 0.001; }).pop();
+      if (next) setZoom(next);
+    }
+
+    function toggleMenu(open) {
+      menu.hidden = !open;
+      levelBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        menu.querySelectorAll('button').forEach(function (b) {
+          b.classList.toggle('is-current', Math.abs(Number(b.dataset.zoom) - zoom) < 0.001);
+        });
+      }
+    }
 
     function show(i) {
       index = (i + photos.length) % photos.length;
-      img.src = photos[index].src;
-      img.alt = photos[index].alt;
+      var photo = photos[index];
+      if (zoom !== 1) setZoom(1);
+      toggleMenu(false);
+      img.src = photo.src;
+      img.alt = photo.alt;
+      caption.textContent = photo.caption;
       count.textContent = photos.length > 1 ? (index + 1) + ' / ' + photos.length : '';
       prevBtn.hidden = nextBtn.hidden = photos.length < 2;
+      download.href = photo.src;
+      download.setAttribute('download', decodeURIComponent(photo.src.split('/').pop().split('?')[0]));
+      original.hidden = !photo.source;
+      if (photo.source) {
+        var label = /linkedin\.com/.test(photo.source) ? labels.lbPost : labels.lbSource;
+        original.href = photo.source;
+        original.querySelector('span').textContent = label;
+        original.setAttribute('aria-label', label);
+      }
     }
 
     document.addEventListener('click', function (e) {
       var group = e.target.closest('[data-lightbox]');
-      var photo = e.target.closest('img:not(.carousel-backdrop)');
-      if (!group || !photo || !group.contains(photo)) return;
+      // A click on a photo, or on the button around one (its zoom badge, or Enter on the keyboard)
+      var hit = e.target.closest('img:not(.carousel-backdrop), button');
+      var photo = hit && (hit.tagName === 'IMG' ? hit : hit.querySelector('img:not(.carousel-backdrop)'));
+      if (!group || !photo || !group.contains(photo) || dialog.contains(photo)) return;
       e.preventDefault(); // Photo Booth photos are links to the full-size file
       var nodes = Array.prototype.slice.call(group.querySelectorAll('img:not(.carousel-backdrop)'));
-      photos = nodes.map(function (n) { return { src: n.src, alt: n.alt }; });
+      photos = nodes.map(function (n) {
+        var labelled = n.closest('[data-caption]');
+        var sourced = n.closest('[data-source]');
+        return {
+          src: n.src,
+          alt: n.alt,
+          caption: labelled && group.contains(labelled) ? labelled.dataset.caption : '',
+          source: sourced && group.contains(sourced) ? sourced.dataset.source : ''
+        };
+      });
       dialog.showModal();
       show(nodes.indexOf(photo));
+    });
+
+    // Drag a zoomed photo around (touch screens scroll it natively)
+    var drag = null;
+    var dragged = false;
+    stage.addEventListener('pointerdown', function (e) {
+      if (zoom === 1 || e.pointerType === 'touch' || e.button !== 0) return;
+      drag = { x: e.clientX, y: e.clientY, left: stage.scrollLeft, top: stage.scrollTop };
+      dragged = false;
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x;
+      var dy = e.clientY - drag.y;
+      if (!dragged && Math.abs(dx) + Math.abs(dy) > 4) {
+        dragged = true;
+        stage.classList.add('is-dragging');
+      }
+      if (dragged) {
+        stage.scrollLeft = drag.left - dx;
+        stage.scrollTop = drag.top - dy;
+      }
+    });
+    window.addEventListener('pointerup', function () {
+      drag = null;
+      stage.classList.remove('is-dragging');
+    });
+    img.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+    img.addEventListener('click', function (e) {
+      if (dragged) { dragged = false; return; }
+      if (zoom === 1) setZoom(2, { x: e.clientX, y: e.clientY });
+      else setZoom(1);
+    });
+
+    zoomInBtn.addEventListener('click', function () { step(1); });
+    zoomOutBtn.addEventListener('click', function () { step(-1); });
+    levelBtn.addEventListener('click', function () { toggleMenu(menu.hidden); });
+    menu.addEventListener('click', function (e) {
+      var option = e.target.closest('[data-zoom]');
+      if (!option) return;
+      setZoom(Number(option.dataset.zoom));
+      toggleMenu(false);
+      levelBtn.focus();
     });
 
     closeBtn.addEventListener('click', function () { dialog.close(); });
     prevBtn.addEventListener('click', function () { show(index - 1); });
     nextBtn.addEventListener('click', function () { show(index + 1); });
-    // Anything that isn't the photo or a button closes it: the dark backdrop and the space around the photo.
+    // Anything that isn't the photo or a control closes it: the dark backdrop and the space around the photo.
+    // An open zoom list closes first.
     dialog.addEventListener('click', function (e) {
-      if (e.target === dialog || e.target.classList.contains('lightbox-figure')) dialog.close();
+      if (!menu.hidden && !e.target.closest('.lightbox-zoom')) { toggleMenu(false); return; }
+      var outside = e.target === dialog || e.target.classList.contains('lightbox-figure') ||
+        (e.target === stage && zoom === 1);
+      if (outside) dialog.close();
+    });
+    dialog.addEventListener('cancel', function (e) {
+      if (!menu.hidden) { e.preventDefault(); toggleMenu(false); levelBtn.focus(); }
     });
     dialog.addEventListener('keydown', function (e) {
+      if (e.target.closest('.lightbox-zoom-menu')) return;
       if (e.key === 'ArrowLeft') show(index - 1);
       if (e.key === 'ArrowRight') show(index + 1);
+      if (e.key === '+' || e.key === '=') step(1);
+      if (e.key === '-' || e.key === '_') step(-1);
+      if (e.key === '0') setZoom(1);
     });
-    dialog.addEventListener('close', function () { img.removeAttribute('src'); });
+    window.addEventListener('resize', function () { if (dialog.open && zoom !== 1) setZoom(1); });
+    dialog.addEventListener('close', function () {
+      setZoom(1);
+      toggleMenu(false);
+      img.removeAttribute('src');
+    });
   }
 
   // Event detail page: a slim bar with the back link and title slides in under the sticky header

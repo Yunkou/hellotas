@@ -8,7 +8,10 @@
     lazy     true to lazy-load the first slide too
     backdrop true to fill letterbox space with a blurred copy of each photo
     lightbox true to open photos in the photo viewer when clicked
-    captions optional slice, one short caption per slide ("" for none)
+    captions optional slice, one short caption per slide ("" for none), shown on the slide
+    caption  text under each photo in the photo viewer (defaults to alt; a slide's own caption is added after it)
+    source   page the photos came from (a LinkedIn post, the official event page), for the viewer's "Original post" link
+    sources  optional slice, one source per slide ("" for none); overrides source
   With one image it renders a plain image, no controls.
 */ -}}
 {{- $images := .images -}}
@@ -21,7 +24,9 @@
       {{- if $.backdrop }}
       <img class="carousel-backdrop" src="{{ strings.TrimPrefix "/" $src | relURL }}" alt="" aria-hidden="true" loading="lazy">
       {{- end }}
-      <img src="{{ strings.TrimPrefix "/" $src | relURL }}" alt="{{ $.alt }}"{{ if or $.lazy (gt $i 0) }} loading="lazy"{{ end }}>
+      {{- $caption := $.caption | default $.alt }}{{ with $.captions }}{{ with index . $i }}{{ $caption = printf "%s · %s" $caption . }}{{ end }}{{ end }}
+      {{- $source := $.source | default "" }}{{ with $.sources }}{{ with index . $i }}{{ $source = . }}{{ end }}{{ end }}
+      <img src="{{ strings.TrimPrefix "/" $src | relURL }}" alt="{{ $.alt }}"{{ if $.lightbox }} data-caption="{{ $caption }}"{{ with $source }} data-source="{{ . }}"{{ end }}{{ end }}{{ if or $.lazy (gt $i 0) }} loading="lazy"{{ end }}>
       {{- with $.captions }}{{ with index . $i }}<span class="carousel-caption">{{ . }}</span>{{ end }}{{ end }}
     </div>
     {{- end }}

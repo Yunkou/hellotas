@@ -1,0 +1,61 @@
+title: "Tas Tech Fest 2025"
+start: "2025-03-26T08:00:00+11:00"
+end: "2025-03-26T18:30:00+11:00"
+type: "festival"
+topics: [networking, annual]
+location: "Wrest Point Function Centre, Hobart"
+cost:
+  en: "Free"
+  zh: "免费"
+  ne: "निःशुल्क"
+badge: "free"
+eligibility:
+  en: "Open to all ICT students"
+  zh: "面向所有 ICT 学生"
+  ne: "सबै ICT विद्यार्थीका लागि खुला"
+summary:
+  en: "A full-day TasICT technology conference featuring keynote speakers, industry discussions, a Tech Expo and networking opportunities."
+  zh: "TasICT 主办的全天科技大会，包括主题演讲、行业讨论、Tech Expo 科技展和社交机会。"
+  ne: "मुख्य वक्ता, उद्योग छलफल, Tech Expo र नेटवर्किङका अवसर समेटिएको TasICT को पूरा दिनको प्रविधि सम्मेलन।"
+image: "/images/events/2025/tasict-festival/2025tasict.png"
+outcome:
+  en: "Industry leaders · talks · networking"
+  zh: "行业领袖 · 演讲 · 社交"
+  ne: "उद्योगका अगुवा · प्रस्तुतिहरू · नेटवर्किङ"
+about:
+  en:
+    - "Tas Tech Fest 2025, organised by TasICT, was held on Wednesday 26 March 2025 at Wrest Point Function Centre in Hobart, from 8:00 AM to 6:30 PM. The full-day conference brought together technology professionals, industry leaders, government representatives, innovators, and members of Tasmania's ICT community to explore emerging technologies and industry developments."
+    - "Under the theme Celebrating Tassie Tech, the event highlighted technological innovation, industry development, workforce opportunities, and the role of emerging technologies in Tasmania's future. The program included keynote presentations, two concurrent speaking streams, a technology exhibition, and networking activities."
+    - "A major highlight was the opening keynote featuring Cameron Adams, co-founder of Canva, and Lisa Miller, founder of the environmental technology startup Wedgetail. Their participation highlighted the connections between Australian technology businesses, environmental innovation, and Tasmania's growing technology sector."
+    - "The conference also included the Tasmanian Government ICT Industry Summit, providing insights into government technology priorities and future directions. Other presentations covered technology industry development, workforce development, artificial intelligence, cybersecurity, and emerging technology trends."
+    - "Throughout the day, the Tech Expo provided opportunities for attendees to engage with technology companies, explore innovative products and services, and exchange ideas with industry representatives. Networking activities, including morning tea, lunch, and an end-of-day gathering, encouraged professional connections across Tasmania's ICT community."
+    - "For UTAS ICT students, Tas Tech Fest 2025 offered an opportunity to learn about developments in Tasmania's technology industry, engage with industry professionals, and explore potential career pathways. The event also highlighted the importance of professional networking, industry engagement, and understanding how emerging technologies are applied in real-world business and government environments."
+  zh:
+    - "Tas Tech Fest 2025 由 TasICT 主办，于 2025 年 3 月 26 日（星期三）上午 8:00 至下午 6:30 在霍巴特 Wrest Point Function Centre 举行。这场全天会议汇聚技术从业者、行业领袖、政府代表、创新者和塔斯马尼亚 ICT 社区成员，共同探讨新兴技术和行业发展。"
+    - "大会以 Celebrating Tassie Tech（致敬塔州科技）为主题，聚焦技术创新、产业发展、人才机会，以及新兴技术在塔斯马尼亚未来中的作用。议程包括主题演讲、两个并行的演讲分会场、科技展览和社交活动。"
+    - "一大亮点是开幕主题演讲，嘉宾为 Canva 联合创始人 Cameron Adams，以及环保科技初创公司 Wedgetail 的创始人 Lisa Miller。他们的参与体现了澳大利亚科技企业、环保创新与塔斯马尼亚日益壮大的科技行业之间的联系。"
+    - "大会还包括塔斯马尼亚州政府 ICT 产业峰会，介绍政府在技术方面的重点和未来方向。其他演讲涉及科技产业发展、人才培养、人工智能、网络安全和新兴技术趋势。"
+    - "全天的 Tech Expo 让与会者可以与科技公司交流，了解创新产品和服务，并与行业代表交换想法。早茶、午餐和闭幕交流会等社交环节，也促进了塔斯马尼亚 ICT 社区内的职业联系。"
+    - "对 UTAS ICT 学生来说，Tas Tech Fest 2025 让他们了解塔斯马尼亚科技行业的发展，与业界人士交流，并探索可能的职业道路。活动也说明了职业社交、行业参与，以及理解新兴技术如何应用于真实商业和政府环境的重要性。"
+  ne:
+    - "TasICT ले आयोजना गरेको Tas Tech Fest 2025 बुधबार 26 मार्च 2025 मा बिहान 8:00 देखि साँझ 6:30 सम्म होबार्टको Wrest Point Function Centre मा सम्पन्न भयो। पूरा दिनको यो सम्मेलनले प्रविधि पेसाकर्मी, उद्योगका अगुवा, सरकारी प्रतिनिधि, नवप्रवर्तक र तस्मानियाको ICT समुदायका सदस्यहरूलाई नयाँ प्रविधि र उद्योगको विकासबारे छलफल गर्न एकै ठाउँमा ल्यायो।"
+    - "Celebrating Tassie Tech भन्ने मूल विषयमा भएको कार्यक्रमले प्राविधिक नवप्रवर्तन, उद्योग विकास, कार्यबलका अवसर र तस्मानियाको भविष्यमा नयाँ प्रविधिको भूमिकामा जोड दियो। कार्यक्रममा मुख्य प्रस्तुति, एकैसाथ चल्ने दुई वक्ता सत्र, प्रविधि प्रदर्शनी र नेटवर्किङ गतिविधिहरू थिए।"
+    - "मुख्य आकर्षण उद्घाटन प्रस्तुति थियो, जसमा Canva का सह-संस्थापक Cameron Adams र वातावरणीय प्रविधि स्टार्टअप Wedgetail की संस्थापक Lisa Miller सहभागी थिए। उनीहरूको सहभागिताले अस्ट्रेलियाली प्रविधि व्यवसाय, वातावरणीय नवप्रवर्तन र तस्मानियाको बढ्दो प्रविधि क्षेत्रबीचको सम्बन्ध देखायो।"
+    - "सम्मेलनमा तस्मानिया सरकारको ICT Industry Summit पनि थियो, जसले सरकारको प्रविधि प्राथमिकता र भावी दिशाबारे जानकारी दियो। अन्य प्रस्तुतिहरूले प्रविधि उद्योग विकास, कार्यबल विकास, कृत्रिम बुद्धिमत्ता, साइबर सुरक्षा र नयाँ प्रविधिका प्रवृत्तिहरू समेटे।"
+    - "दिनभरि Tech Expo ले सहभागीहरूलाई प्रविधि कम्पनीहरूसँग कुरा गर्ने, नयाँ उत्पादन र सेवा हेर्ने र उद्योगका प्रतिनिधिहरूसँग विचार साटासाट गर्ने अवसर दियो। बिहानको चिया, खाना र दिनको अन्त्यमा भएको भेटघाटजस्ता नेटवर्किङ गतिविधिले तस्मानियाको ICT समुदायभरि पेसागत सम्बन्ध बढाए।"
+    - "UTAS ICT विद्यार्थीहरूका लागि Tas Tech Fest 2025 ले तस्मानियाको प्रविधि उद्योगको विकासबारे सिक्ने, उद्योगका पेसाकर्मीहरूसँग कुरा गर्ने र सम्भावित करियर मार्ग खोज्ने अवसर दियो। पेसागत नेटवर्किङ, उद्योगसँगको संलग्नता र नयाँ प्रविधि वास्तविक व्यवसाय तथा सरकारी वातावरणमा कसरी प्रयोग हुन्छ भन्ने बुझाइको महत्त्व पनि यसले देखायो।"
+student_voice:
+  en: "TasICT Festival was the moment I realised ICT in Tasmania is a real, growing community — and I could be part of it."
+  zh: "在TasICT科技节上，我意识到塔斯马尼亚的ICT是一个真实且不断壮大的社区，而我也可以成为其中一员。"
+  ne: "TasICT महोत्सवमा मैले बुझेँ कि तस्मानियामा ICT एउटा वास्तविक, बढ्दो समुदाय हो — र म पनि यसको हिस्सा बन्न सक्छु।"
+student_role:
+  en: "ICT Graduate · 1st year out"
+  zh: "ICT毕业生 · 毕业第一年"
+  ne: "ICT ग्राजुएट · स्नातक भएको पहिलो वर्ष"
+references:
+  - title: "TasICT – Tas Tech Fest 2025 Official Event Information"
+    url: "https://www.tasict.com.au/event/tastechfest2025/"
+  - title: "TasICT – Global Tech Giants Canva to Headline Tas Tech Fest 2025"
+    url: "https://www.tasict.com.au/2025/03/global-tech-giants-canva-to-headline-tas-tech-fest-2025/"
+weight: 7
+aliases: ["/events/tasict-festival-2025/"]
