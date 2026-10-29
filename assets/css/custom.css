@@ -76,8 +76,8 @@ img { max-width: 100%; display: block; }
 
 .nav-links {
   display: flex;
-  gap: 16px;
-  font-size: 14px;
+  gap: 22px;
+  font-size: 15px;
   color: var(--text-dark);
   flex: 1;
   min-width: 0;
@@ -127,7 +127,7 @@ img { max-width: 100%; display: block; }
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
   flex-shrink: 0;
 }
 
