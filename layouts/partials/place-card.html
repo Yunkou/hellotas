@@ -42,14 +42,32 @@
       <a class="place-map-link" href="https://www.google.com/maps/search/?api=1&query={{ .query | urlquery }}" target="_blank" rel="noopener">{{ i18n "placeOpenInMaps" }} ↗</a>
     </div>
     {{ end }}
-    <dl class="place-details">
-      {{ range $p.details }}
-      <div>
-        <dt>{{ i18n .labelKey }}</dt>
-        <dd>{{ if .href }}<a href="{{ .href | safeURL }}"{{ if strings.HasPrefix .href "http" }} target="_blank" rel="noopener"{{ end }}>{{ i18n .valueKey }}</a>{{ else }}{{ i18n .valueKey }}{{ end }}</dd>
+    <div class="place-side">
+      {{ with $p.services }}
+      <div class="place-services">
+        <h4 class="place-services-title">{{ i18n .titleKey }}</h4>
+        <ul class="place-services-list">
+          {{ range .items }}
+          <li class="place-service">
+            <h5 class="place-service-title">{{ i18n .titleKey }}</h5>
+            <p class="place-service-when"><span class="place-service-when-label">{{ i18n "journeyStep2WhenLabel" }}</span> {{ i18n .whenKey }}</p>
+            <p class="place-service-text">{{ i18n .textKey | safeHTML }}</p>
+          </li>
+          {{ end }}
+        </ul>
       </div>
       {{ end }}
-    </dl>
+      {{ with $p.details }}
+      <dl class="place-details">
+        {{ range . }}
+        <div>
+          <dt>{{ i18n .labelKey }}</dt>
+          <dd>{{ if .href }}<a href="{{ .href | safeURL }}"{{ if strings.HasPrefix .href "http" }} target="_blank" rel="noopener"{{ end }}>{{ i18n .valueKey }}</a>{{ else }}{{ i18n .valueKey }}{{ end }}</dd>
+        </div>
+        {{ end }}
+      </dl>
+      {{ end }}
+    </div>
   </div>
 
   {{ with $p.groups }}
