@@ -418,16 +418,21 @@ homeStep4ImageAlt: "人头攒动的UTAS校园广场与学生社团帐篷"
 
 
 
-# Homepage — habits
-homeHabitsTitle: "尽早养成好习惯"
-homeHabitSportsTitle: "让运动成为习惯"
-homeHabitSportsText: "每周免费Parkrun、壁球俱乐部、越野跑——塔斯马尼亚拥有世界级的户外运动与室内运动，助你保持健康并在课外结识朋友。"
-homeHabitSportsCta: "查看免费运动活动"
-homeHabitGrowthTitle: "尽早成为你想成为的人"
-homeHabitGrowthText: "把大目标拆成每周小习惯。参加项目、志愿服务、认识新朋友——持续积累比毕业前突击更重要。"
-homeHabitGrowthCta: "查看免费成长机会"
+# Homepage — career path (issue #55; replaces habits + homepage graduate stories)
+homeCareerTitle: "通往理想职业之路"
+homeCareerLead: "这不只是通过考试，而是一步步打下正确的基础。"
+homeCareerCard1Title: "打好英语基础"
+homeCareerCard1Text: "英语是根基。不必等完美再开始。通过真实对话和本地活动，每天积累。"
+homeCareerCard2Title: "融入本地社区"
+homeCareerCard2Text: "走出舒适区。了解本地文化，找到共同话题，与当地人建立真诚连接。"
+homeCareerCard3Title: "加入社团与 ICT 活动"
+homeCareerCard3Text: "把技能用到真实问题解决上。拓展人脉，了解课堂之外行业如何运转。"
+homeCareerCard4Title: "积累可靠推荐人"
+homeCareerCard4Text: "在澳大利亚，工作机会往往取决于推荐人。你在社团和活动中认识的人，正是会为你背书的人。"
+homeCareerCard5Title: "实现你的梦想"
+homeCareerCard5Text: "把扎实的英语、本地文化理解、真实经验和可靠推荐结合起来。在塔斯马尼亚取得成功不是运气——而是迈出这些步伐的自然结果。"
 
-# Homepage — graduate stories
+# Homepage — graduate stories (section removed from homepage; Stories page remains)
 homeStoriesTitle: "毕业生故事"
 homeStoriesViewAll: "查看全部故事 →"
 # Stories page (issue #36)

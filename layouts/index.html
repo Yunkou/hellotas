@@ -47,54 +47,35 @@
     </div>
   </section>
 
-  <section class="home-habits">
+  <section class="home-career-path" aria-labelledby="home-career-title">
     <div class="container">
-      <h2 class="home-section-title">{{ i18n "homeHabitsTitle" }}</h2>
-      <div class="home-habits-grid">
-        <article class="home-habit-card">
-          <div class="home-habit-accent" aria-hidden="true"></div>
-          <div class="home-habit-inner">
-            <h3>{{ i18n "homeHabitSportsTitle" }}</h3>
-            <p>{{ i18n "homeHabitSportsText" }}</p>
-            <a href="{{ "sports/" | relLangURL }}" class="btn-outline btn-sm">{{ i18n "homeHabitSportsCta" }}</a>
-          </div>
-        </article>
-        <article class="home-habit-card">
-          <div class="home-habit-accent" aria-hidden="true"></div>
-          <div class="home-habit-inner">
-            <h3>{{ i18n "homeHabitGrowthTitle" }}</h3>
-            <p>{{ i18n "homeHabitGrowthText" }}</p>
-            <a href="{{ "volunteering/" | relLangURL }}" class="btn-outline btn-sm">{{ i18n "homeHabitGrowthCta" }}</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+      <h2 class="home-section-title" id="home-career-title">{{ i18n "homeCareerTitle" }}</h2>
+      <p class="home-section-lead">{{ i18n "homeCareerLead" }}</p>
 
-  <section class="home-stories">
-    <div class="container">
-      <div class="home-stories-header">
-        <h2 class="home-section-title text-brand">{{ i18n "homeStoriesTitle" }}</h2>
-        <a href="{{ "stories/" | relLangURL }}" class="home-stories-link">{{ i18n "homeStoriesViewAll" }}</a>
-      </div>
-      <div class="home-stories-grid">
-        {{ $lang := site.Language.Lang }}
-        {{ range first 3 hugo.Data.stories.items }}
-        {{ $name := .name }}
-        {{ with .localName }}{{ with index . $lang }}{{ $name = . }}{{ end }}{{ end }}
-        <article class="home-story-card">
-          <div class="home-story-image">
-            <img src="{{ .image | relURL }}" alt="{{ $name }}" loading="lazy" width="360" height="220"{{ with .imagePosition }} style="object-position: {{ . | safeCSS }}"{{ end }}>
-            <span class="home-story-year">{{ .year }}</span>
-          </div>
-          <div class="home-story-body">
-            <h3>{{ $name }}</h3>
-            <p class="home-story-role">{{ index .title $lang | default .title.en }}</p>
-            <blockquote>“{{ .quote }}”</blockquote>
-            <a class="home-story-more" href="{{ .url }}" target="_blank" rel="noopener">{{ i18n "storiesReadFull" }}</a>
+      <div class="home-career-grid">
+        <article class="home-career-card">
+          <h3>{{ i18n "homeCareerCard1Title" }}</h3>
+          <p>{{ i18n "homeCareerCard1Text" }}</p>
+        </article>
+        <article class="home-career-card">
+          <h3>{{ i18n "homeCareerCard2Title" }}</h3>
+          <p>{{ i18n "homeCareerCard2Text" }}</p>
+        </article>
+        <article class="home-career-card">
+          <h3>{{ i18n "homeCareerCard3Title" }}</h3>
+          <p>{{ i18n "homeCareerCard3Text" }}</p>
+        </article>
+        <article class="home-career-card">
+          <h3>{{ i18n "homeCareerCard4Title" }}</h3>
+          <p>{{ i18n "homeCareerCard4Text" }}</p>
+        </article>
+        <article class="home-career-card home-career-card--spotlight">
+          <div class="home-career-accent" aria-hidden="true"></div>
+          <div class="home-career-spotlight-inner">
+            <h3>{{ i18n "homeCareerCard5Title" }}</h3>
+            <p>{{ i18n "homeCareerCard5Text" }}</p>
           </div>
         </article>
-        {{ end }}
       </div>
     </div>
   </section>
