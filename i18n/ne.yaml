@@ -422,16 +422,21 @@ homeStep4ImageAlt: "विद्यार्थी क्लब टेन्ट�
 
 
 
-# Homepage — habits
-homeHabitsTitle: "चाँडै राम्रा बानी बसाल्नुहोस्"
-homeHabitSportsTitle: "खेललाई बानी बनाउनुहोस्"
-homeHabitSportsText: "निःशुल्क साप्ताहिक Parkrun, स्क्वास क्लब, ट्रेल रन—तस्मानियामा विश्वस्तरीय बाह्य र भित्री खेलकुद छन् जसले स्वस्थ राख्छन् र कक्षाबाहिर मानिससँग चिनाउँछन्।"
-homeHabitSportsCta: "निःशुल्क खेल गतिविधि हेर्नुहोस्"
-homeHabitGrowthTitle: "चाँडै बन्न चाहेको व्यक्ति बन्नुहोस्"
-homeHabitGrowthText: "ठूला लक्ष्यलाई साना साप्ताहिक बानीमा तोड्नुहोस्। परियोजनामा जोडिनुहोस्, स्वयंसेवा गर्नुहोस्, मानिस भेट्नुहोस्—स्नातकअघिको हतारभन्दा निरन्तरता बलियो हुन्छ।"
-homeHabitGrowthCta: "निःशुल्क वृद्धि अवसर हेर्नुहोस्"
+# Homepage — career path (issue #55; replaces habits + homepage graduate stories)
+homeCareerTitle: "तपाईंको सपनाको करियरको बाटो"
+homeCareerLead: "यो केवल परीक्षा पास गर्ने कुरा होइन। यो सही आधार क्रमशः निर्माण गर्ने कुरा हो।"
+homeCareerCard1Title: "आफ्नो अङ्ग्रेजी मजबुत बनाउनुहोस्"
+homeCareerCard1Text: "अङ्ग्रेजी नै जग हो। पूर्ण नभएसम्म कुर्नु पर्दैन। वास्तविक कुराकानी र स्थानीय गतिविधिमार्फत दैनिक बनाउनुहोस्।"
+homeCareerCard2Title: "समुदायमा डुब्नुहोस्"
+homeCareerCard2Text: "आफ्नो सहज क्षेत्रबाट बाहिर निस्कनुहोस्। स्थानीय संस्कृति सिक्नुहोस्, साझा विषय खोज्नुहोस्, र स्थानीयसँग साँचो सम्बन्ध बनाउनुहोस्।"
+homeCareerCard3Title: "क्लब र ICT कार्यक्रममा जोडिनुहोस्"
+homeCareerCard3Text: "सीपलाई वास्तविक समस्या समाधानमा लगाउनुहोस्। सञ्जाल बनाउनुहोस् र कक्षाबाहिर उद्योग कसरी चल्छ सिक्नुहोस्।"
+homeCareerCard4Title: "विश्वसनीय सिफारिस सुरक्षित गर्नुहोस्"
+homeCareerCard4Text: "अस्ट्रेलियामा जागिर प्रायः सिफारिसमा भर पर्छ। क्लब र कार्यक्रममा भेटिएका मानिसहरू नै तपाईंको पक्षमा बोल्ने हुन्।"
+homeCareerCard5Title: "आफ्नो सपना पूरा गर्नुहोस्"
+homeCareerCard5Text: "मजबुत अङ्ग्रेजी, स्थानीय सांस्कृतिक बुझाइ, वास्तविक अनुभव र बलियो सिफारिस मिलाउनुहोस्। तस्मानियामा सफलता भाग्य होइन — यी कदम चाल्दा आउने स्वाभाविक परिणाम हो।"
 
-# Homepage — graduate stories
+# Homepage — graduate stories (section removed from homepage; Stories page remains)
 homeStoriesTitle: "स्नातक कथाहरू"
 homeStoriesViewAll: "सबै कथाहरू हेर्नुहोस् →"
 # Stories page (issue #36)

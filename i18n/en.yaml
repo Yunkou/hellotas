@@ -422,16 +422,21 @@ homeStep4ImageAlt: "Busy UTAS campus plaza with student club tents"
 
 
 
-# Homepage — habits
-homeHabitsTitle: "Build good habits, early"
-homeHabitSportsTitle: "Make sport a habit"
-homeHabitSportsText: "Free weekly Parkrun, squash clubs, trail runs — Tasmania has world-class outdoor and indoor sports that help you stay healthy and meet people outside class."
-homeHabitSportsCta: "See free sports activities"
-homeHabitGrowthTitle: "Become who you want to be, early"
-homeHabitGrowthText: "Break big goals into small weekly habits. Join a project, volunteer, meet people — consistency beats cramming before graduation."
-homeHabitGrowthCta: "See free growth opportunities"
+# Homepage — career path (issue #55; replaces habits + homepage graduate stories)
+homeCareerTitle: "The path to your dream career"
+homeCareerLead: "It's not just about passing exams. It's about building the right foundation step by step."
+homeCareerCard1Title: "Master Your English"
+homeCareerCard1Text: "Your English is the foundation. Don't wait until it's perfect to start. Build it daily through real conversations and local activities."
+homeCareerCard2Title: "Immerse in the Community"
+homeCareerCard2Text: "Step out of your comfort zone. Learn the local culture, find shared topics, and build genuine connections with locals."
+homeCareerCard3Title: "Join Clubs & ICT Events"
+homeCareerCard3Text: "Apply your skills to real-world problem-solving. Build your network and learn how the industry actually works outside the classroom."
+homeCareerCard4Title: "Secure Your References"
+homeCareerCard4Text: "In Australia, job offers often hinge on references. The people you meet through clubs and events are the ones who will vouch for you."
+homeCareerCard5Title: "Achieve Your Dream"
+homeCareerCard5Text: "Combine strong English, local cultural understanding, real-world experience, and solid references. Success in Tasmania isn't a stroke of luck — it's the natural result of taking these steps."
 
-# Homepage — graduate stories
+# Homepage — graduate stories (section removed from homepage; Stories page remains)
 homeStoriesTitle: "Graduate stories"
 homeStoriesViewAll: "View all stories →"
 # Stories page (issue #36)
