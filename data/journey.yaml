@@ -1,32 +1,32 @@
 step1:
   firstSteps:
-    - icon: "📱"
+    - icon: "smartphone"
       titleKey: journeyStep1First1Title
       textKey: journeyStep1First1Text
       links:
         - { labelKey: journeyStep1LinkMovingGuide, href: "https://www.utas.edu.au/uni-life/moving" }
-    - icon: "🏠"
+    - icon: "house"
       titleKey: journeyStep1First2Title
       textKey: journeyStep1First2Text
       links:
         - { labelKey: journeyStep1LinkFindRoom, href: "#accommodation" }
-    - icon: "🏦"
+    - icon: "landmark"
       titleKey: journeyStep1First3Title
       textKey: journeyStep1First3Text
       links:
         - { label: CommBank, href: "https://www.commbank.com.au/moving-to-australia/study-in-australia.html" }
         - { labelKey: journeyStep1LinkHobartBranch, href: "https://www.commbank.com.au/personal/locate-us/tas/hobart/067000.html" }
-    - icon: "🧾"
+    - icon: "file-text"
       titleKey: journeyStep1First4Title
       textKey: journeyStep1First4Text
       links:
         - { labelKey: journeyStep1LinkAto, href: "https://www.ato.gov.au/individuals-and-families/tax-file-number/apply-for-a-tfn/foreign-passport-holders-permanent-migrants-and-temporary-visitors-tfn-application" }
-    - icon: "🚌"
+    - icon: "bus"
       titleKey: journeyStep1First5Title
       textKey: journeyStep1First5Text
       links:
         - { labelKey: journeyStep1LinkMetro, href: "https://www.metrotas.com.au/communication/blog/2026/free-bus-travel-2026/" }
-    - icon: "💼"
+    - icon: "briefcase-business"
       titleKey: journeyStep1First6Title
       textKey: journeyStep1First6Text
       links:
@@ -42,9 +42,9 @@ step1:
       tagClass: tag-free
       textKey: journeyStep1Priority1Text
       tips:
-        - { icon: "📄", titleKey: journeyStep1IncomeResumeTitle, textKey: journeyStep1IncomeResumeText }
-        - { icon: "🚪", titleKey: journeyStep1IncomeApplyTitle, textKey: journeyStep1IncomeApplyText }
-        - { icon: "🛵", titleKey: journeyStep1IncomeDeliveryTitle, textKey: journeyStep1IncomeDeliveryText }
+        - { icon: "file-user", titleKey: journeyStep1IncomeResumeTitle, textKey: journeyStep1IncomeResumeText }
+        - { icon: "survival-income", titleKey: journeyStep1IncomeApplyTitle, textKey: journeyStep1IncomeApplyText }
+        - { icon: "delivery-work", titleKey: journeyStep1IncomeDeliveryTitle, textKey: journeyStep1IncomeDeliveryText }
       linksLabelKey: journeyStep1IncomeLinksLabel
       links:
         - { label: Seek, href: "https://www.seek.com.au/" }
@@ -63,9 +63,9 @@ step1:
       tagClass: tag-normal
       textKey: journeyStep1Priority2Text
       tips:
-        - { icon: "🔍", titleKey: journeyStep1HomeSearchTitle, textKey: journeyStep1HomeSearchText }
-        - { icon: "👥", titleKey: journeyStep1HomeGroupsTitle, textKey: journeyStep1HomeGroupsText }
-        - { icon: "🎓", titleKey: journeyStep1HomeAskTitle, textKey: journeyStep1HomeAskText }
+        - { icon: "search", titleKey: journeyStep1HomeSearchTitle, textKey: journeyStep1HomeSearchText }
+        - { icon: "users", titleKey: journeyStep1HomeGroupsTitle, textKey: journeyStep1HomeGroupsText }
+        - { icon: "graduation-cap", titleKey: journeyStep1HomeAskTitle, textKey: journeyStep1HomeAskText }
       linksLabelKey: journeyStep1HomeLinksLabel
       links:
         - { label: Flatmates, href: "https://flatmates.com.au/" }
