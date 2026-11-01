@@ -18,9 +18,13 @@
           {{ range $i, $s := hugo.Data.journey.step1.firstSteps }}
           <li class="journey-first-card">
             <span class="journey-first-icon" aria-hidden="true">
-              {{ $s.icon }}
+              <img src="{{ printf "icons/journey/%s.svg" $s.icon | relURL }}"
+                   alt=""
+                   width="24"
+                   height="24">
               <span class="journey-first-num">{{ add $i 1 }}</span>
             </span>
+
             <div>
               <h3>{{ i18n $s.titleKey }}</h3>
               <p>{{ i18n $s.textKey }}</p>
@@ -56,7 +60,13 @@
               {{ range . }}
               <li class="journey-tip">
                 <div class="journey-tip-head">
-                  <span class="journey-tip-icon" aria-hidden="true">{{ .icon }}</span>
+                  <span class="journey-tip-icon" aria-hidden="true">
+                    <img src="{{ printf "icons/journey/%s.svg" .icon | relURL }}"
+                         alt=""
+                         width="24"
+                         height="24">
+                  </span>
+
                   <h3>{{ i18n .titleKey }}</h3>
                 </div>
                 <p>{{ i18n .textKey | safeHTML }}</p>
