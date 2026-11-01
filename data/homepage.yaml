@@ -16,7 +16,7 @@ steps:
     anchor: step-4
     ctaPath: events/
 
-# Graduate stories now come from data/stories.yaml (issue #36).
+# Homepage graduate-stories section removed (issue #55); Stories page still uses data/stories.yaml.
 
 # Photo credits shown in the "Sources & Acknowledgements" block (issue #20).
 # url is optional; items without a url render as plain text.

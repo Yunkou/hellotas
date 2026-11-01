@@ -117,35 +117,6 @@ step2:
   sections:
     - titleKey: journeyStep2Section1Title
       places:
-        - id: language-lounge
-          titleKey: journeyStep2LingoTitle
-          tags:
-            - { key: tagFree, class: tag-free }
-            - { key: tagOnCampus, class: tag-normal }
-          textKey: journeyStep2LingoText
-          photos:
-            - { src: images/journey/step-2/step-2-lingo.jpg, altKey: journeyStep2LingoImageAlt }
-            - { src: images/journey/utas/utas-students-hobart.jpg, altKey: journeyStep2LingoPhoto2Alt }
-            - { src: images/journey/utas/utas-sdg-workshop.jpg, altKey: journeyStep2LingoPhoto3Alt }
-          map: { query: "Morris Miller Library, University of Tasmania, Sandy Bay TAS 7005" }
-          details:
-            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep2LingoWhen }
-            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep2LingoWhere }
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep2LingoLink, href: "https://www.utas.edu.au/students/international" }
-        - id: mathers-house
-          titleKey: journeyStep2MathersTitle
-          tags:
-            - { key: tagVolunteer, class: tag-type }
-            - { key: tagLowCostLunch, class: tag-normal }
-          textKey: journeyStep2MathersText
-          photos:
-            - { src: images/journey/step-2/step-2-mathers.jpg, altKey: journeyStep2MathersImageAlt }
-          map: { query: "Mathers House, 108 Bathurst Street, Hobart TAS 7000" }
-          details:
-            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep2MathersWhen }
-            - { labelKey: journeyStep2AddressLabel, valueKey: journeyStep2MathersAddress }
-            - { labelKey: journeyStep2PhoneLabel, valueKey: journeyStep2MathersPhone, href: "tel:+61362341441" }
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep2MathersLink, href: "https://www.hobartcity.com.au/Things-To-Do/Mathers-House" }
         - id: source-eco-hub
           titleKey: journeyStep2EcoHubTitle
           tags:
@@ -159,11 +130,42 @@ step2:
             - { src: images/journey/step-2/step-2-ecohub-5.jpg, altKey: journeyStep2EcoHubPhoto5Alt }
             - { src: images/journey/step-2/step-2-ecohub-6.jpg, altKey: journeyStep2EcoHubPhoto6Alt }
           map: { query: "Source Eco Hub, 12 French Street, Sandy Bay TAS 7005" }
+          services:
+            titleKey: journeyStep2EcoHubServicesTitle
+            items:
+              - titleKey: journeyStep2EcoHubService1Title
+                whenKey: journeyStep2EcoHubService1When
+                textKey: journeyStep2EcoHubService1Text
+              - titleKey: journeyStep2EcoHubService2Title
+                whenKey: journeyStep2EcoHubService2When
+                textKey: journeyStep2EcoHubService2Text
+              - titleKey: journeyStep2EcoHubService3Title
+                whenKey: journeyStep2EcoHubService3When
+                textKey: journeyStep2EcoHubService3Text
           details:
-            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep2EcoHubWhen }
-            - { labelKey: journeyStep2AddressLabel, valueKey: journeyStep2EcoHubAddress }
             - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep2EcoHubLink, href: "https://ecohubsource.org.au/" }
+        - id: language-centre
+          titleKey: journeyStep2LingoTitle
+          tags:
+            - { key: tagOnCampus, class: tag-normal }
+          textKey: journeyStep2LingoText
+          photos:
+            - { src: images/journey/step-2/step-2-lang-centre-1.jpg, altKey: journeyStep2LingoImageAlt }
+            - { src: images/journey/step-2/step-2-lang-centre-2.jpg, altKey: journeyStep2LingoPhoto2Alt }
+            - { src: images/journey/step-2/step-2-lang-centre-3.jpg, altKey: journeyStep2LingoPhoto3Alt }
+          map: { query: "Phillip Smith Centre, University of Tasmania, Hobart TAS 7000" }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep2LingoWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: journeyStep2LingoWhere }
+            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep2LingoLink, href: "https://www.utas.edu.au/study/pathways-to-university/english-language-courses" }
   people:
+    - image: images/journey/step-2/step-2-people-rubric.jpg
+      altKey: journeyStep2PeopleRubricImageAlt
+      titleKey: journeyStep2PeopleRubricTitle
+      itemKeys:
+        - journeyStep2PeopleRubric1
+        - journeyStep2PeopleRubric2
+        - journeyStep2PeopleRubric3
     - image: images/journey/step-2/step-2-people-tusa.jpg
       altKey: journeyStep2PeopleTusaImageAlt
       titleKey: journeyStep2PeopleTusaTitle
