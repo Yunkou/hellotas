@@ -34,6 +34,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* English UI: Montserrat (UTAS brand feel) */
+html[lang^="en"] body {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; }
 
@@ -85,6 +90,12 @@ img { max-width: 100%; display: block; }
   font-size: 15px;
   color: var(--text-dark);
   flex: 1;
+  min-width: 0;
+}
+
+/* Keep English (and other) nav labels on one line under Montserrat */
+.nav-links a {
+  white-space: nowrap;
 }
 
 /* "Happening" menu item: a small live/broadcast icon before the word */
@@ -125,65 +136,100 @@ img { max-width: 100%; display: block; }
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
+  flex-shrink: 0;
 }
 
-/* ===== Language picker (dropdown) ===== */
+/* ===== Language picker (compact: flag + short code) ===== */
 .lang-picker {
   position: relative;
+  flex-shrink: 0;
 }
 
 .lang-picker summary {
   list-style: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 14px;
+  gap: 4px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--brand);
-  background: #FFFFFF;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 8px 14px;
+  letter-spacing: 0.02em;
+  color: var(--text-dark);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 6px;
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
+  line-height: 1.2;
 }
 
 .lang-picker summary::-webkit-details-marker { display: none; }
 
-.lang-picker summary:hover { border-color: var(--brand); }
+.lang-picker summary:hover {
+  color: var(--brand);
+  background: var(--brand-light);
+}
+
+.lang-picker summary:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.lang-flag {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.lang-code {
+  font-variant: all-small-caps;
+  font-feature-settings: "smcp";
+  letter-spacing: 0.04em;
+}
 
 .lang-caret {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--text-mid);
   transition: transform 0.2s;
+  margin-left: 1px;
 }
 
 .lang-picker[open] .lang-caret { transform: rotate(180deg); }
 
-.lang-picker[open] summary { border-color: var(--brand); }
+.lang-picker[open] summary {
+  color: var(--brand);
+  background: var(--brand-light);
+}
 
 .lang-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 6px);
   right: 0;
-  min-width: 150px;
+  min-width: 148px;
   background: #FFFFFF;
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 10px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  padding: 6px;
+  padding: 4px;
   z-index: 200;
 }
 
 .lang-menu-item {
-  display: block;
-  padding: 9px 14px;
-  border-radius: 10px;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 13px;
   color: var(--text-dark);
   white-space: nowrap;
+}
+
+.lang-menu-item .lang-full {
+  color: var(--text-mid);
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .lang-menu a.lang-menu-item:hover {
@@ -191,15 +237,20 @@ img { max-width: 100%; display: block; }
   color: var(--brand);
 }
 
+.lang-menu a.lang-menu-item:hover .lang-full { color: var(--brand); }
+
 .lang-menu-current {
   color: var(--brand);
   font-weight: 700;
   cursor: default;
+  background: var(--brand-light);
 }
 
+.lang-menu-current .lang-full { color: var(--brand); }
+
 @media (max-width: 768px) {
-  .nav-right { gap: 12px; }
-  .lang-picker summary { padding: 7px 12px; font-size: 13px; }
+  .nav-right { gap: 10px; }
+  .lang-picker summary { padding: 4px 5px; font-size: 12px; }
   .btn-primary { padding: 8px 16px; font-size: 13px; }
 }
 
@@ -713,11 +764,21 @@ img { max-width: 100%; display: block; }
   border-radius: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  border: 1px solid transparent;
 }
 
-.tag-type { background: var(--brand); color: #FFFFFF; }
-.tag-normal { background: var(--brand-light); color: var(--brand); }
-.tag-free { background: var(--green-light); color: var(--green); }
+/* Primary type chip keeps brand emphasis; secondary chips stay quiet/outline. */
+.tag-type { background: var(--brand); color: #FFFFFF; border-color: var(--brand); }
+.tag-normal {
+  background: #FFFFFF;
+  color: var(--text-mid);
+  border-color: var(--border);
+}
+.tag-free {
+  background: #FFFFFF;
+  color: var(--green);
+  border-color: #C8E6C9;
+}
 
 .event-body h3 {
   font-size: 22px;
@@ -2049,16 +2110,9 @@ img.author-avatar {
   margin: 0;
 }
 
+/* The fifth card spans the whole row; same filled pink and shadow as the others */
 .home-career-card--spotlight {
   grid-column: 1 / -1;
-  display: flex;
-  padding: 0;
-  overflow: hidden;
-}
-
-.home-career-spotlight-inner {
-  padding: 32px;
-  flex: 1;
 }
 
 /* Stories page (issue #36) */
@@ -3528,12 +3582,16 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .hp-deck-track {
   position: relative;
   display: flex;
-  gap: 24px;
+  gap: 80px; /* wider than the padding plus the shadow, so the next slide stays out of view */
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding: 22px 2px 10px; /* room for the PINNED tab and the card shadow */
+  /* A scrolling track clips whatever spills out of it, so it is padded wide enough for the PINNED tab
+     and the whole card shadow (--tint-shadow), and pulled back by the same amount so the cards don't move */
+  padding: 22px 40px 52px;
+  margin: 0 -40px -42px;
+  scroll-padding-inline: 40px;
 }
 
 .hp-deck-track::-webkit-scrollbar { display: none; }
@@ -3975,6 +4033,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
   .hp-section { margin-bottom: 56px; }
   .hp-head h2 { font-size: 26px; }
   .hp-cards { grid-template-columns: 1fr; }
+  .hp-deck-track { gap: 56px; padding: 22px 20px 48px; margin: 0 -20px -38px; scroll-padding-inline: 20px; } /* stays inside the 20px page gutter */
   .hp-deck .hp-card { flex-direction: column; }
   .hp-deck .hp-card-media { flex: none; aspect-ratio: 16 / 9; min-height: 0; }
   .hp-deck .hp-card--pinned .hp-card-media { border-radius: 16px 16px 0 0; }
