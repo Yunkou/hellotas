@@ -15,6 +15,9 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var TZ = 'Australia/Hobart';
   var DAY = 86400000;
+  var at = new Date(new URLSearchParams(location.search).get('at') || NaN);
+  var loaded = Date.now();
+  function clockNow() { return isNaN(at) ? new Date() : new Date(at.getTime() + Date.now() - loaded); }
 
   // ---- Days ----------------------------------------------------------------------------------------------
   // Events are compared by their calendar day in Hobart, written as "2026-11-19" keys, whatever the
@@ -137,7 +140,7 @@
 
   //   past      over
   //   live      on right now
-  //   running   a multi-day event part-way through ("On now")
+  //   running   a multi-day event part-way through (both show "Happening Now")
   //   today / tomorrow / week (within the next 7 days) / later
   //   tbc       only the month is known
   function statusOf(e, now, today) {
@@ -151,21 +154,100 @@
   }
   function isNow(status) { return status === 'live' || status === 'running' || status === 'today' || status === 'tomorrow'; }
 
-  var badgeText = { live: S.liveNow, running: S.onNow, today: S.today, tomorrow: S.tomorrow, week: S.thisWeek, tbc: S.dateTbc };
-  var countdownFrom = null; // today's key, for the pinned events' countdown
   var liveIcon = '<svg class="live-icon" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true" focusable="false"><circle class="live-ring live-ring--outer" cx="10" cy="10" r="8.25"/><circle class="live-ring live-ring--inner" cx="10" cy="10" r="5.25"/><circle class="live-dot" cx="10" cy="10" r="2.5"/></svg>';
 
-  // Pinned events count down instead of saying "This week" (or nothing, further out): "In 9 days"
-  function setBadge(el, status, e) {
-    var badge = el && el.querySelector('[data-status]');
-    if (!badge) return;
-    var text = badgeText[status];
-    var countdown = e && e.pinned && (status === 'week' || status === 'later');
-    if (countdown) text = S.inDays.replace('{n}', Math.round((keyTime(e.startKey) - keyTime(countdownFrom)) / DAY));
-    badge.hidden = !text;
-    badge.className = 'hp-status hp-status--' + (countdown ? 'countdown' : status);
-    badge.innerHTML = status === 'live' ? liveIcon : '';
-    badge.appendChild(document.createTextNode(text || ''));
+  // ---- When it starts: a flip clock, or "Happening Now" -----------------------------------------------------
+  // An upcoming event counts down to its start in flip-clock digits (days, hours, minutes, seconds); each digit
+  // that changes turns over like a split-flap card. An event that is on says "Happening Now" with the live dot,
+  // and one with only a month says "Date to be confirmed". Clocks tick every second (see tick() at the end);
+  // the screen-reader label only changes once a minute.
+  var clocks = [];
+
+  function flipDigit() {
+    var d = document.createElement('span');
+    d.className = 'flip';
+    d.innerHTML = '<span class="flip-top"><span></span></span><span class="flip-bottom"><span></span></span>' +
+      '<span class="flip-flap flip-flap-top"><span></span></span><span class="flip-flap flip-flap-bottom"><span></span></span>';
+    return d;
+  }
+  function setDigit(d, v, animate) {
+    var old = d.getAttribute('data-v');
+    if (old === v) return;
+    d.setAttribute('data-v', v);
+    function face(cls) { return d.querySelector('.' + cls + ' > span'); }
+    face('flip-top').textContent = v;
+    clearTimeout(d.flipDone);
+    if (!animate || old === null || reduceMotion) { face('flip-bottom').textContent = v; d.classList.remove('flip--go'); return; }
+    // The new top shows at once; the old top flaps down over it, then the new bottom flaps down over the old one
+    face('flip-bottom').textContent = old;
+    face('flip-flap-top').textContent = old;
+    face('flip-flap-bottom').textContent = v;
+    d.classList.remove('flip--go');
+    void d.offsetWidth; // restart the animation
+    d.classList.add('flip--go');
+    d.flipDone = setTimeout(function () { face('flip-bottom').textContent = v; d.classList.remove('flip--go'); }, 620);
+  }
+
+  function makeClock(e, small) {
+    var el = document.createElement('span');
+    el.className = 'flipclock' + (small ? ' flipclock--sm' : '');
+    el.setAttribute('role', 'timer');
+    var groups = [S.days, S.hours, S.minutes, S.seconds].map(function (label) {
+      var g = document.createElement('span');
+      g.className = 'flipclock-group';
+      var digits = document.createElement('span');
+      digits.className = 'flipclock-digits';
+      digits.setAttribute('aria-hidden', 'true');
+      var name = document.createElement('span');
+      name.className = 'flipclock-label';
+      name.setAttribute('aria-hidden', 'true');
+      name.textContent = label;
+      g.appendChild(digits);
+      g.appendChild(name);
+      el.appendChild(g);
+      return digits;
+    });
+    var c = { el: el, e: e, groups: groups, label: '' };
+    clocks.push(c);
+    renderClock(c, clockNow(), false);
+    return el;
+  }
+  function renderClock(c, now, animate) {
+    var s = Math.max(0, Math.floor((c.e.startDate - now) / 1000));
+    var parts = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];
+    parts.forEach(function (n, i) {
+      var text = String(n);
+      while (text.length < 2) text = '0' + text;
+      var box = c.groups[i];
+      while (box.children.length < text.length) box.insertBefore(flipDigit(), box.firstChild);
+      while (box.children.length > text.length) box.removeChild(box.firstChild);
+      Array.prototype.forEach.call(box.children, function (d, j) { setDigit(d, text[j], animate); });
+    });
+    var label = S.startsIn + ' ' + parts[0] + ' ' + S.days + ' ' + parts[1] + ' ' + S.hours + ' ' + parts[2] + ' ' + S.minutes;
+    if (label !== c.label) { c.label = label; c.el.setAttribute('aria-label', label); }
+    return s;
+  }
+
+  // Fills an event's [data-status] slot on a card or list row; rebuilt only when the kind of slot changes
+  function whenSlot(slot, e, small) {
+    var kind = e.status === 'past' ? 'past' : e.status === 'tbc' ? 'tbc' : e.status === 'live' || e.status === 'running' ? 'live' : 'count';
+    slot.hidden = false;
+    if (slot.getAttribute('data-kind') === kind) return;
+    slot.setAttribute('data-kind', kind);
+    slot.innerHTML = '';
+    if (kind === 'live') {
+      slot.innerHTML = '<span class="hp-live">' + liveIcon + '</span>';
+      slot.firstChild.appendChild(document.createTextNode(S.happeningNow));
+    } else if (kind === 'count') {
+      if (!small) slot.appendChild(h('span', { class: 'hp-countdown-lead', text: S.startsIn }));
+      slot.appendChild(makeClock(e, small));
+    } else {
+      slot.appendChild(h('span', { class: 'hp-when-note', text: kind === 'past' ? S.past : S.dateTbc }));
+    }
+  }
+  function setWhen(el, e, small) {
+    var slot = el && el.querySelector('[data-status]');
+    if (slot) whenSlot(slot, e, small);
   }
 
   // Dates in the page's language (the HTML carries an English fallback)
@@ -316,7 +398,6 @@
 
   function sortEvents(now) {
     var today = dayKey(now);
-    countdownFrom = today;
     var happening = [];
     var upcoming = [];
     var picksLeft = 0;
@@ -328,13 +409,13 @@
         // their fade-in
         var list = here ? nowList : cardList;
         if (e.card.parentNode !== list) list.appendChild(e.card);
-        setBadge(e.card, e.status, e);
+        setWhen(e.card, e);
       }
-      if (e.row) setBadge(e.row, e.status, e);
+      if (e.row) setWhen(e.row, e, true);
       if (e.spot) {
         e.spot.hidden = e.status === 'past';
         if (!e.spot.hidden) picksLeft++;
-        setBadge(e.spot, e.status, e);
+        setWhen(e.spot, e);
       }
       if (here) happening.push(e);
       else if (e.status !== 'past') upcoming.push(e);
@@ -649,7 +730,6 @@
     var monthFmt = e ? fmtMonthShort : keyMonthShort;
     var dayFmt = e ? fmtDayNum : keyDayNum;
     var status = itemStatus(item);
-    var badge = a ? null : status === 'past' ? S.past : badgeText[e.status];
     var actions = [];
     if (e && e.url) {
       actions.push(h('a', { class: 'hp-row-link', href: e.url, target: '_blank', rel: 'noopener' }, [
@@ -667,12 +747,12 @@
       ]),
       h('span', { class: 'hp-row-main' }, [
         h('span', { class: 'hp-row-title', text: e ? e.title : a.title }),
-        h('span', { class: 'hp-row-host', text: e ? e.type + (e.host ? ' · ' + e.host : '') : S.archived })
+        (e ? e.host : S.archived) ? h('span', { class: 'hp-row-host', text: e ? e.host : S.archived }) : null
       ]),
       h('span', { class: 'hp-row-place', text: e ? (e.format === 'online' ? S.online : e.location) : '' }),
       h('span', { class: 'hp-row-when' }, [
         e ? h('time', { datetime: e.start, text: when(e, true) }) : null,
-        badge ? h('span', { class: 'hp-status hp-status--' + (status === 'past' ? 'past' : e.status), text: badge }) : null
+        e ? (function () { var slot = h('span', { class: 'hp-when-slot' }); whenSlot(slot, status === 'past' ? { status: 'past' } : e, true); return slot; })() : null
       ]),
       h('span', { class: 'hp-row-actions' }, actions)
     ]);
@@ -764,10 +844,10 @@
 
   // Every minute the events are re-sorted; the calendar is only redrawn when the date changes,
   // so it doesn't move under someone who is using it.
-  // ?at=2026-11-08T10:00 shows the page as it will look at that moment (for checking pinned events, Happening Now…)
-  var at = new Date(new URLSearchParams(location.search).get('at') || NaN);
+  // ?at=2026-11-08T10:00 shows the page as it will look at that moment (for checking pinned events, Happening Now…);
+  // the preview clock then runs on from there
   function refresh() {
-    var now = isNaN(at) ? new Date() : at;
+    var now = clockNow();
     var newToday = dayKey(now);
     sortEvents(now);
     if (newToday === today) return;
@@ -781,4 +861,16 @@
   refresh();
   setView(view);
   setInterval(refresh, 60000);
+
+  // Flip clocks, every second: drop the ones no longer on the page, turn the rest over, and re-sort as soon as
+  // one reaches zero so the event moves to "Happening Now" right away. Skipped while the tab is in the background.
+  function tick() {
+    if (document.hidden) return;
+    var now = clockNow();
+    var started = false;
+    clocks = clocks.filter(function (c) { return c.el.isConnected; });
+    clocks.forEach(function (c) { if (renderClock(c, now, true) === 0) started = true; });
+    if (started) refresh();
+  }
+  setInterval(tick, 1000);
 })();

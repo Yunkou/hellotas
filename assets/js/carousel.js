@@ -595,7 +595,50 @@
     });
   }
 
+  // Header channels (header.html): the button opens the list of platforms; it closes on a choice, a click outside,
+  // or Esc. A platform whose account isn't set up yet opens a small "coming soon" note with its icon, which closes
+  // with its button, Esc, or a click outside the card; focus goes back to the channels button.
+  function initChannels() {
+    var more = document.querySelector('.channel-more');
+    var menu = more && document.getElementById(more.getAttribute('aria-controls'));
+    function setMenu(open) {
+      if (!menu) return;
+      more.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menu.hidden = !open;
+    }
+    if (menu) {
+      more.addEventListener('click', function () { setMenu(menu.hidden); });
+      document.addEventListener('click', function (e) {
+        if (!menu.hidden && (!more.parentNode.contains(e.target) || e.target.closest('.channel-menu-item'))) setMenu(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menu.hidden) { setMenu(false); more.focus(); }
+      });
+    }
+
+    var dialog = document.querySelector('.channel-dialog');
+    if (!dialog || !dialog.showModal) return;
+    var opener = null;
+    document.addEventListener('click', function (e) {
+      var button = e.target.closest('[data-channel-soon]');
+      if (!button) return;
+      opener = more || button;
+      dialog.querySelector('[data-channel-icon]').innerHTML = button.querySelector('svg').outerHTML;
+      dialog.querySelector('[data-channel-title]').textContent = button.dataset.channelSoon;
+      dialog.querySelector('[data-channel-text]').textContent = button.dataset.channelSoonText;
+      dialog.showModal();
+      dialog.querySelector('[data-channel-close]').focus();
+    });
+    dialog.addEventListener('click', function (e) {
+      if (e.target === dialog || e.target.closest('[data-channel-close]')) dialog.close();
+    });
+    dialog.addEventListener('close', function () {
+      if (opener && opener.offsetWidth) opener.focus();
+    });
+  }
+
   document.querySelectorAll('.nav-toggle').forEach(initMobileMenu);
+  initChannels();
   document.querySelectorAll('[data-carousel]').forEach(initCarousel);
   document.querySelectorAll('[data-copy]').forEach(initCopy);
   document.querySelectorAll('[data-event-filter]').forEach(initEventFilter);

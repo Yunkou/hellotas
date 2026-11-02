@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section class="hero-section">
   <div class="container">
-    <h1>{{ i18n "happeningTitle" }}</h1>
+    <h1 class="hp-title">{{ i18n "happeningTitle" }}<svg class="live-icon hp-title-live" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle class="live-ring live-ring--outer" cx="10" cy="10" r="8.25"/><circle class="live-ring live-ring--inner" cx="10" cy="10" r="5.25"/><circle class="live-dot" cx="10" cy="10" r="2.5"/></svg></h1>
     <p class="hero-sub">{{ i18n "happeningSubtitle" }}</p>
   </div>
 </section>
@@ -95,12 +95,13 @@
 {{- end -}}
 
 {{- $strings := dict
-    "liveNow" (i18n "happeningLiveNow")
+    "happeningNow" (i18n "happeningNowTitle")
     "today" (i18n "happeningToday")
-    "tomorrow" (i18n "happeningTomorrow")
-    "thisWeek" (i18n "happeningThisWeek")
-    "onNow" (i18n "happeningOnNow")
-    "inDays" (i18n "happeningInDays")
+    "startsIn" (i18n "happeningStartsIn")
+    "days" (i18n "happeningClockDays")
+    "hours" (i18n "happeningClockHours")
+    "minutes" (i18n "happeningClockMinutes")
+    "seconds" (i18n "happeningClockSeconds")
     "prevEvent" (i18n "happeningPrevEvent")
     "nextEvent" (i18n "happeningNextEvent")
     "pause" (i18n "carouselPause")
@@ -212,10 +213,10 @@
         <span class="hp-row-main">
           {{ if .pinned }}<span class="hp-row-pin">{{ partial "pin-icon.html" 12 }}{{ i18n "happeningPinned" }}</span>{{ end }}
           <span class="hp-row-title">{{ .title }}</span>
-          <span class="hp-row-host">{{ .type }} · {{ .host }}</span>
+          {{ with .host }}<span class="hp-row-host">{{ . }}</span>{{ end }}
         </span>
         <span class="hp-row-place">{{ if eq .format "online" }}{{ .formatLabel }}{{ else }}{{ .location }}{{ end }}</span>
-        <span class="hp-row-when"><time datetime="{{ .start }}" data-when data-time-only>{{ .fallbackDate }}</time><span class="hp-status" data-status hidden></span></span>
+        <span class="hp-row-when"><time datetime="{{ .start }}" data-when data-time-only>{{ .fallbackDate }}</time><span class="hp-when-slot" data-status hidden></span></span>
         {{ with .url }}<a class="hp-row-link" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "happeningOfficialPage" }} <span aria-hidden="true">↗</span><span class="sr-only"> ({{ i18n "happeningNewTab" }})</span></a>{{ end }}
       </li>
       {{ end }}

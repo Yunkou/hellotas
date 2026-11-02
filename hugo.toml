@@ -29,32 +29,11 @@ defaultContentLanguageInSubdir = false
   title = "तस्मानियामा स्वागत"
   weight = 3
 
-[[languages.en.menu.main]]
-  name = "Home"
-  url = "/"
-  weight = 1
-
-[[languages.en.menu.main]]
-  name = "Past Events"
-  url = "/events/"
-  weight = 2
-
-[[languages.zh.menu.main]]
-  name = "首页"
-  url = "/zh/"
-  weight = 1
-
-[[languages.zh.menu.main]]
-  name = "往期活动"
-  url = "/zh/events/"
-  weight = 2
-
-[[languages.ne.menu.main]]
-  name = "गृहपृष्ठ"
-  url = "/ne/"
-  weight = 1
-
-[[languages.ne.menu.main]]
-  name = "पछिल्ला कार्यक्रमहरू"
-  url = "/ne/events/"
-  weight = 2
+# The journey steps live under /journey/ (Kickstart, Community, Volunteering), but the section has no page of its own:
+# /journey/ redirects to Kickstart (see content/journey/step-1.md).
+[[cascade]]
+  [cascade.build]
+    render = "never"
+  [cascade.target]
+    kind = "section"
+    path = "{/journey}"

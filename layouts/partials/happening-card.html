@@ -1,7 +1,8 @@
 {{- /*
   One upcoming event (Happening page). Takes the event dict built in layouts/happening/list.html.
   The script moves the card into "Happening Now" when it's on today or tomorrow, hides it once it's over,
-  and rewrites the date text and status badge in the visitor's language.
+  and rewrites the date text and fills [data-status] with a flip-clock countdown to the start (or "Happening Now"
+  with the live dot) in the visitor's language. The event's type and topics are search words only; the card shows no tags.
   A pinned event (pinned: N in its data file) gets the PINNED tab; spot: true renders the copy shown under
   "Recommended by us", with its own id so the page has no duplicate ids.
 */ -}}
@@ -25,11 +26,7 @@
     {{ end }}
   </div>
   <div class="hp-card-body">
-    <div class="hp-tags">
-      <span class="hp-status" data-status hidden></span>
-      <span class="tag tag-type">{{ .type }}</span>
-      {{ range .topics }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
-    </div>
+    <div class="hp-countdown" data-status hidden></div>
     <div class="hp-card-head">
       <span class="hp-date" aria-hidden="true">
         <span class="hp-date-month" data-month>{{ $start.Format "Jan" }}</span>

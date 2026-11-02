@@ -1,13 +1,14 @@
 {{ define "main" }}
 <div class="page-journey-step" id="step-3">
-  <section class="journey-hero">
+  <section class="hero-section">
     <div class="container">
-      <a class="journey-crumb" href="{{ "journey/" | relLangURL }}">{{ i18n "journeyBackToJourney" }}</a>
-      <p class="journey-eyebrow">{{ i18n "journeyStep3Eyebrow" }}</p>
       <h1>{{ i18n "journeyStep3Title" }}</h1>
-      <p class="journey-hero-sub">{{ i18n "journeyStep3Lead" }}</p>
+      <p class="hero-sub">{{ i18n "journeyStep3Lead" }}</p>
     </div>
   </section>
+
+  {{ partial "passon-bar.html" (dict "page" . "message" (i18n "journeyStep3ShareLabel")) }}
+
 
   <div class="container">
     <div class="journey-main">
@@ -43,7 +44,7 @@
           <h3>{{ i18n "journeyStep3NextTitle" }}</h3>
           <p>{{ i18n "journeyStep3NextText" }}</p>
         </div>
-        <a href="{{ "journey/" | relLangURL }}" class="btn-primary journey-next-btn">{{ i18n "journeyStep3NextCta" }}</a>
+        <a href="{{ "events/" | relLangURL }}" class="btn-primary journey-next-btn">{{ i18n "journeyStep3NextCta" }}</a>
       </section>
     </div>
   </div>
