@@ -28,16 +28,6 @@
     {{ with $facts.when }}<p class="event-detail-meta">{{ . }}</p>{{ end }}
     {{ end }}
 
-    <div class="event-tags">
-      {{ with $facts.type }}<span class="tag tag-type">{{ . }}</span>{{ end }}
-      {{ range $facts.topics }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
-      {{ if eq .Params.badge "free" }}<span class="tag tag-free">{{ i18n "tagFree" }}</span>{{ end }}
-      {{ if eq .Params.badge "gpa" }}<span class="tag tag-gpa">{{ i18n "tagGPARequired" }}</span>{{ end }}
-      {{ if eq .Params.badge "tbc" }}<span class="tag tag-normal">{{ i18n "tagCostTBC" }}</span>{{ end }}
-      {{ if $facts.eligibilityTbc }}<span class="tag tag-normal">{{ i18n "tagEligibilityTBC" }}</span>{{ end }}
-      {{ with $facts.eligibility }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
-    </div>
-
     {{ $photos := slice }}
     {{ with .Params.image }}{{ $photos = $photos | append . }}{{ end }}
     {{ with .Params.gallery }}{{ $photos = $photos | append . }}{{ end }}
@@ -49,14 +39,6 @@
     <div class="event-hero-image placeholder">{{ i18n "heroImage" }}</div>
     {{ end }}
   </div>
-
-  {{ with .Params.outcome }}
-  <div class="container">
-    <div class="event-detail-outcome">
-      <strong>{{ i18n "outcomeLabel" }}</strong> {{ . }}
-    </div>
-  </div>
-  {{ end }}
 
   {{ if .Params.about }}
   <div class="container event-section">

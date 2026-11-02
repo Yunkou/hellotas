@@ -11,23 +11,18 @@ cost:
   en: "Free"
   zh: "免费"
   ne: "निःशुल्क"
-badge: "free"
 eligibility:
   en: "Open to students, early-career professionals and anyone curious about cyber security"
   zh: "面向学生、职场新人以及所有对网络安全感兴趣的人"
   ne: "विद्यार्थी, करियर सुरु गर्दै गरेका पेशेवर र साइबर सुरक्षामा रुचि राख्ने सबैका लागि खुला"
 summary:
-  en: "A two-part GDG Hobart evening at UTAS on building analyst agents with BigQuery and breaking into a cyber security career."
-  zh: "GDG Hobart在UTAS举办的两段式晚间活动，主题是用BigQuery构建分析代理，以及如何进入网络安全行业。"
-  ne: "UTAS मा GDG Hobart को दुई भागको साँझ, BigQuery सँग एनालिस्ट एजेन्ट बनाउने र साइबर सुरक्षा करियरमा प्रवेश गर्ने विषयमा।"
+  en: "A two-part GDG Hobart evening at UTAS for 45+ attendees: building analyst agents with BigQuery, then a Q&A with a Google security engineer on breaking into cyber security."
+  zh: "GDG Hobart 在 UTAS 举办的两段式晚间活动，吸引 45 多人参加：先用 BigQuery 构建分析代理，再与 Google 安全工程师问答，了解如何进入网络安全行业。"
+  ne: "UTAS मा GDG Hobart को दुई भागको साँझ, 45+ सहभागीसहित: पहिले BigQuery सँग एनालिस्ट एजेन्ट बनाउने, अनि साइबर सुरक्षा करियरमा प्रवेशबारे Google सुरक्षा इन्जिनियरसँग प्रश्नोत्तर।"
 image: "/images/events/2026/gdg-hobart-ai-security/gdg-hobart-ai-security-2026-1.jpg"
 gallery:
   - "/images/events/2026/gdg-hobart-ai-security/gdg-hobart-ai-security-2026-2.jpg"
   - "/images/events/2026/gdg-hobart-ai-security/gdg-hobart-ai-security-2026-3.jpg"
-outcome:
-  en: "45+ attendees · Google security engineer Q&A"
-  zh: "45+名参与者 · 与谷歌安全工程师问答"
-  ne: "45+ सहभागी · Google सुरक्षा इन्जिनियरसँग प्रश्नोत्तर"
 about:
   en:
     - "GDG Hobart hosted Build with AI & Break Into Security on Thursday 5 March 2026, from 5:15 PM to 6:45 PM, in Room 132 of the Centenary Building at the University of Tasmania's Sandy Bay Campus. The free event marked the beginning of GDG Hobart's 2026 program and welcomed students, early-career professionals, developers, and technology enthusiasts interested in artificial intelligence and cybersecurity."

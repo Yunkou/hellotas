@@ -12,22 +12,17 @@ cost:
   en: "Sponsored by the School of ICT"
   zh: "由 School of ICT 资助"
   ne: "School of ICT द्वारा प्रायोजित"
-badge: "gpa"
 eligibility:
   en: "Five selected students"
   zh: "五名入选学生"
   ne: "छनोट भएका पाँच विद्यार्थी"
 summary:
-  en: "Five UTAS students attended AISA CyberCon 2026 in Melbourne, gaining valuable cybersecurity industry exposure, learning and networking opportunities with School of ICT sponsorship."
-  zh: "五名 UTAS 学生在 School of ICT 资助下参加了墨尔本 AISA CyberCon 2026，获得了宝贵的网络安全行业见识、学习和社交机会。"
-  ne: "School of ICT को प्रायोजनमा पाँच जना UTAS विद्यार्थी मेलबर्नमा भएको AISA CyberCon 2026 मा सहभागी भए र साइबर सुरक्षा उद्योगको महत्त्वपूर्ण अनुभव, सिकाइ र नेटवर्किङका अवसर पाए।"
+  en: "Five high-GPA UTAS students, sponsored by the School of ICT, spent three days at AISA CyberCon 2026 in Melbourne learning about cyber security and networking with the industry."
+  zh: "五名高 GPA 的 UTAS 学生获 School of ICT 资助，在墨尔本 AISA CyberCon 2026 度过三天，学习网络安全知识并与业界交流。"
+  ne: "School of ICT को प्रायोजनमा उच्च GPA भएका पाँच जना UTAS विद्यार्थीले मेलबर्नको AISA CyberCon 2026 मा तीन दिन बिताए, साइबर सुरक्षा सिके र उद्योगसँग नेटवर्किङ गरे।"
 image: "/images/events/2026/cybercon-melbourne/cybercon-2026-melbourne-1.jpg"
 gallery:
   - "/images/events/2026/cybercon-melbourne/cybercon-2026-melbourne-2.jpg"
-outcome:
-  en: "Five sponsored places · three days of cyber security learning"
-  zh: "五个资助名额 · 三天网络安全学习"
-  ne: "पाँच प्रायोजित स्थान · तीन दिनको साइबर सुरक्षा सिकाइ"
 about:
   en:
     - "AISA CyberCon Melbourne 2026, organised by the Australian Information Security Association (AISA), was held from 14 to 16 October 2026 at the Melbourne Convention and Exhibition Centre (MCEC)."

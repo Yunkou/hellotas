@@ -16,17 +16,13 @@ eligibility:
   zh: "面向学生、开发者和技术爱好者"
   ne: "विद्यार्थी, डेभलपर र प्रविधिप्रेमीहरूका लागि खुला"
 summary:
-  en: "A GDG Hobart double session at UTAS on putting AI into production and securing AI apps against prompt injection."
-  zh: "GDG Hobart在UTAS举办的双场活动，主题是将AI投入生产，以及保护AI应用免受提示词注入攻击。"
-  ne: "UTAS मा GDG Hobart को दोहोरो सत्र, AI लाई उत्पादनमा ल्याउने र AI एपलाई प्रम्प्ट इन्जेक्सनबाट सुरक्षित राख्ने विषयमा।"
+  en: "A GDG Hobart double session at UTAS on putting AI into production and securing AI apps, with live prompt injection demos and career tips from a UTAS alumnus."
+  zh: "GDG Hobart 在 UTAS 举办的双场活动，主题是将 AI 投入生产和保护 AI 应用，包括现场提示词注入演示和 UTAS 校友的职业建议。"
+  ne: "UTAS मा GDG Hobart को दोहोरो सत्र, AI लाई उत्पादनमा ल्याउने र AI एप सुरक्षित राख्ने विषयमा, जसमा प्रत्यक्ष प्रम्प्ट इन्जेक्सन प्रदर्शन र UTAS पूर्वविद्यार्थीका करियर सुझाव थिए।"
 image: "/images/events/2026/gdg-hobart-secure-ai-apps/gdg-hobart-secure-ai-apps-2026-1.jpg"
 gallery:
   - "/images/events/2026/gdg-hobart-secure-ai-apps/gdg-hobart-secure-ai-apps-2026-2.jpg"
   - "/images/events/2026/gdg-hobart-secure-ai-apps/gdg-hobart-secure-ai-apps-2026-3.jpg"
-outcome:
-  en: "Live prompt injection demos · career tips from a UTAS alumnus"
-  zh: "现场提示词注入演示 · UTAS校友的职业建议"
-  ne: "प्रत्यक्ष प्रम्प्ट इन्जेक्सन प्रदर्शन · UTAS पूर्वविद्यार्थीका करियर सुझाव"
 about:
   en:
     - "GDG Hobart hosted Build It, Guard It, Ship It: Building Secure AI Apps on 30 July 2026 at Room 132, Centenary Building, University of Tasmania (UTAS) Sandy Bay Campus, from 5:15 PM to 6:45 PM."

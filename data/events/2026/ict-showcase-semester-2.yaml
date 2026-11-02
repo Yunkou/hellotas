@@ -11,23 +11,18 @@ cost:
   en: "Free"
   zh: "免费"
   ne: "निःशुल्क"
-badge: "free"
 eligibility:
   en: "Open to all ICT students"
   zh: "面向所有 ICT 学生"
   ne: "सबै ICT विद्यार्थीका लागि खुला"
 summary:
-  en: "The School of ICT's fourth and largest showcase, with 17 graduating project teams, research lightning talks and industry awards."
-  zh: "ICT学院的第四届也是最大规模的展览会，有17个毕业项目团队、研究闪电演讲和行业奖项。"
-  ne: "17 वटा स्नातक प्रोजेक्ट टोलीहरू, अनुसन्धानका लाइटनिङ टकहरू र उद्योग पुरस्कारहरूसहित ICT विद्यालयको चौथो र सबैभन्दा ठूलो शोकेस।"
+  en: "The School of ICT's fourth and largest showcase, with 300+ registrations, 17 graduating project teams, research lightning talks and the InVent and Data#3 industry awards."
+  zh: "ICT 学院第四届也是规模最大的展示会，注册人数超过 300，有 17 个毕业项目团队、研究闪电演讲，并颁发 InVent 和 Data#3 行业奖项。"
+  ne: "School of ICT को चौथो र सबैभन्दा ठूलो शोकेस, 300+ दर्ता, 17 स्नातक प्रोजेक्ट टोली, अनुसन्धानका लाइटनिङ टक र InVent तथा Data#3 उद्योग पुरस्कारसहित।"
 image: "/images/events/2026/ict-showcase-semester-2/2026showcase.jpeg"
 gallery:
   - "/images/events/2026/ict-showcase-semester-2/showcase-photo-1.jpg"
   - "/images/events/2026/ict-showcase-semester-2/showcase-photo-2.jpg"
-outcome:
-  en: "17 project teams · 300+ registrations · InVent and Data#3 awards"
-  zh: "17个项目团队 · 300+注册 · InVent和Data#3奖项"
-  ne: "17 प्रोजेक्ट टोलीहरू · 300+ दर्ताहरू · InVent र Data#3 पुरस्कारहरू"
 about:
   en:
     - "The University of Tasmania (UTAS) School of ICT hosted its Semester 2 Showcase Expo, also known as ICT Showcase v4.0, on 6 October 2026 at the University Centre, Sandy Bay Campus, Hobart, from 11:00 AM to 2:00 PM. As the School's fourth and largest showcase, the event attracted more than 300 registrations and brought together students, academic staff, industry representatives, and members of Tasmania's technology community."

@@ -1,0 +1,74 @@
+{{- /* One Fun & Fitness tile: photos on top, then the text on the left and key details on the right.
+     Context: dict "item" (one localised file from data/fun_fitness/, with its id) and optional "eager" (first tile: load photos now) */ -}}
+{{- $it := .item -}}
+{{- $photos := slice -}}{{- $captions := slice -}}
+{{- range $it.photos }}{{ $photos = $photos | append .src }}{{ $captions = $captions | append (.caption | default "") }}{{ end -}}
+{{- $icons := dict
+  "hours" `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`
+  "address" `<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>`
+  "price" `<path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="8.5" r="1.5"/>`
+  "contact" `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>`
+  "works" `<rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3"/><circle cx="16" cy="11.5" r="1"/><circle cx="18" cy="13.5" r="1"/>`
+  "based" `<path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-6h4v6"/>`
+  "community" `<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.3c.6-.2 1.3-.3 2-.3 2.8 0 5 2.2 5 5"/>`
+-}}
+<article class="ff-card" id="{{ $it.id }}">
+  {{- with $photos }}
+  <div class="ff-media">
+    {{ partial "carousel.html" (dict "images" . "captions" $captions "alt" $it.title "source" $it.source "class" "carousel--fit" "backdrop" true "lightbox" true "lazy" (not $.eager)) }}
+  </div>
+  {{- end }}
+  <div class="ff-body">
+    <div class="ff-main">
+      <h3 class="ff-title">{{ $it.title }}</h3>
+      {{ range $it.intro }}<p class="ff-text">{{ . }}</p>{{ end }}
+      {{ with $it.points }}
+      <ul class="ff-points">
+        {{ range . }}<li>{{ . | safeHTML }}</li>{{ end }}
+      </ul>
+      {{ end }}
+      {{ with $it.links }}
+      <div class="ff-links">
+        {{ range . }}<a class="hp-btn-outline" href="{{ .href }}" target="_blank" rel="noopener">{{ .label }} ↗</a>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ with $it.facts }}
+    <aside class="ff-facts" aria-label="{{ i18n "funFitnessFactsLabel" }}: {{ $it.title }}">
+      {{ range . }}
+      <div class="ff-fact">
+        <p class="ff-fact-label"><svg viewBox="0 0 24 24" aria-hidden="true">{{ index $icons .type | safeHTML }}</svg>{{ i18n (printf "funFitnessFact%s" (strings.FirstUpper .type)) }}</p>
+        {{ $href := .href | default "" }}
+        <ul class="ff-fact-lines">
+          {{ range $i, $line := .lines }}
+          {{ $text := $line }}{{ $link := cond (eq $i 0) $href "" }}
+          {{ if reflect.IsMap $line }}{{ $text = $line.text }}{{ $link = $line.href }}{{ end }}
+          {{ $ext := strings.HasPrefix $link "http" }}
+          <li>{{ with $link }}<a href="{{ . }}"{{ if $ext }} target="_blank" rel="noopener"{{ end }}>{{ $text }}{{ if $ext }} ↗{{ end }}</a>{{ else }}{{ $text }}{{ end }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </aside>
+    {{ end }}
+  </div>
+  {{ with $it.showcase }}
+  <div class="ff-showcase">
+    <h4 class="ff-showcase-title">{{ i18n "funFitnessShowcaseTitle" }}</h4>
+    <ul class="ff-showcase-grid">
+      {{ range . }}
+      <li>
+        <a class="ff-game" href="{{ .href }}" target="_blank" rel="noopener">
+          <img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .title }}" loading="lazy" width="600" height="338">
+          <span class="ff-game-body">
+            <span class="ff-game-title">{{ .title }}</span>
+            <span class="ff-game-by">{{ .by }}</span>
+            <span class="ff-game-text">{{ .text }}</span>
+          </span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+</article>

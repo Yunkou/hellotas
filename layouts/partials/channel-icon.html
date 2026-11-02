@@ -1,0 +1,9 @@
+{{- /* One channel's glyph (24×24, currentColor). Context: the icon name from data/channels.yaml. */ -}}
+{{- $paths := dict
+  "discord" `<path fill-rule="evenodd" d="M19.6 5.3A16.5 16.5 0 0 0 15.4 4l-.5 1a15 15 0 0 0-5.8 0l-.5-1a16.5 16.5 0 0 0-4.2 1.3C1.8 9.4 1 13.4 1.4 17.4a16.7 16.7 0 0 0 5.1 2.6l1.1-1.8c-.6-.2-1.2-.5-1.8-.9l.4-.3a11.8 11.8 0 0 0 11.6 0l.4.3c-.6.4-1.2.7-1.8.9l1.1 1.8a16.7 16.7 0 0 0 5.1-2.6c.5-4.6-.8-8.6-3-12.1zM8.7 15c-1.1 0-2-1-2-2.3s.9-2.3 2-2.3 2 1 2 2.3-.9 2.3-2 2.3zm6.6 0c-1.1 0-2-1-2-2.3s.9-2.3 2-2.3 2 1 2 2.3-.9 2.3-2 2.3z"/>`
+  "youtube" `<path fill-rule="evenodd" d="M22.5 7.2a2.9 2.9 0 0 0-2-2C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.5.5a2.9 2.9 0 0 0-2 2C1 9 1 12 1 12s0 3 .5 4.8a2.9 2.9 0 0 0 2 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.9 2.9 0 0 0 2-2C23 15 23 12 23 12s0-3-.5-4.8zM9.8 15.3V8.7l5.7 3.3z"/>`
+  "twitch" `<path fill-rule="evenodd" d="M3.6 2 2 6v14h5v3h3l3-3h4l5-5V2zm16.4 12-3 3h-4.5l-3 3v-3H5.5V4H20zM11 7.5h2v5.5h-2zm5 0h2v5.5h-2z"/>`
+  "instagram" `<rect x="2.75" y="2.75" width="18.5" height="18.5" rx="5.25" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.25" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3"/>`
+  "facebook" `<path d="M23 12a11 11 0 1 0-12.7 10.9v-7.7H7.5V12h2.8V9.6c0-2.8 1.6-4.3 4.2-4.3 1.2 0 2.5.2 2.5.2v2.7h-1.4c-1.4 0-1.8.9-1.8 1.8V12h3.1l-.5 3.2h-2.6v7.7A11 11 0 0 0 23 12z"/>`
+-}}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false">{{ index $paths . | safeHTML }}</svg>

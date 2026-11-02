@@ -16,17 +16,13 @@ eligibility:
   zh: "面向学生、求职者和业内人士"
   ne: "विद्यार्थी, रोजगार खोज्नेहरू र पेशेवरहरूका लागि खुला"
 summary:
-  en: "GDG Hobart's DevFest at UTAS, with a Google engineer on AI in practice and UTAS alumni on moving from university into tech."
-  zh: "GDG Hobart在UTAS举办的DevFest,Google工程师讲解AI实践，UTAS校友分享从大学进入科技行业的经验。"
-  ne: "UTAS मा आयोजित GDG Hobart को DevFest — Google इन्जिनियरबाट व्यवहारिक AI, र UTAS पूर्वविद्यार्थीहरूबाट विश्वविद्यालयदेखि प्रविधि उद्योगसम्मको यात्राको अनुभव।"
+  en: "GDG Hobart's DevFest at UTAS drew 25+ attendees, with a Google engineer on AI in practice and a Q&A with UTAS alumni on moving from university into tech."
+  zh: "GDG Hobart 在 UTAS 举办的 DevFest 吸引了 25 多人参加：Google 工程师讲解 AI 实践，UTAS 校友在问答环节分享如何从大学进入科技行业。"
+  ne: "UTAS मा भएको GDG Hobart को DevFest मा 25+ जना सहभागी भए, जहाँ Google इन्जिनियरले व्यवहारिक AI बारे बताए र UTAS पूर्वविद्यार्थीहरूले विश्वविद्यालयदेखि प्रविधि उद्योगसम्मको यात्राबारे प्रश्नोत्तर गरे।"
 image: "/images/events/2025/gdg-hobart-devfest/gdg-hobart-devfest-2025-1.jpg"
 gallery:
   - "/images/events/2025/gdg-hobart-devfest/gdg-hobart-devfest-2025-2.jpg"
   - "/images/events/2025/gdg-hobart-devfest/gdg-hobart-devfest-2025-3.jpg"
-outcome:
-  en: "25+ attendees · alumni career Q&A"
-  zh: "25+参会者 · 校友职业问答"
-  ne: "25+ सहभागी · पूर्वविद्यार्थी करियर प्रश्नोत्तर"
 about:
   en:
     - "GDG Hobart hosted DevFest 2025: AI in Action and Career Insights on Wednesday 12 November 2025, from 5:15 PM to 6:45 PM, at the Centenary Building on the University of Tasmania's Sandy Bay Campus. The event brought together more than 25 developers, students, and technology enthusiasts for an evening of technical learning, career discussions, and community engagement."

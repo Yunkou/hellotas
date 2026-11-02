@@ -13,18 +13,14 @@ eligibility:
   zh: "UTAS 学生"
   ne: "UTAS विद्यार्थी"
 summary:
-  en: "A three-day hackathon where UTAS students built prototypes for real energy challenges set by TasNetworks."
-  zh: "为期三天的黑客松，UTAS学生针对TasNetworks提出的真实能源难题开发原型方案。"
-  ne: "तीन दिने ह्याकाथन, जहाँ UTAS का विद्यार्थीहरूले TasNetworks ले दिएका वास्तविक ऊर्जा समस्याहरूका लागि प्रोटोटाइप बनाए।"
+  en: "A three-day hackathon where UTAS students built prototypes for real energy challenges set by TasNetworks, and the winning team was offered paid internships."
+  zh: "为期三天的黑客松，UTAS 学生针对 TasNetworks 提出的真实能源难题开发原型，获胜团队获得了带薪实习机会。"
+  ne: "तीन दिने ह्याकाथन, जहाँ UTAS विद्यार्थीहरूले TasNetworks ले दिएका वास्तविक ऊर्जा समस्याका लागि प्रोटोटाइप बनाए, र विजेता टोलीलाई सशुल्क इन्टर्नसिपको प्रस्ताव गरियो।"
 url: "https://www.utas.edu.au/about/news-and-stories/articles/2026/hackathon-launched-to-tackle-real-world-energy-challenges"
 image: "/images/events/2026/tasnetworks-hackathon/tasnetworks-hackathon-2026-cover.jpg"
 gallery:
   - "/images/events/2026/tasnetworks-hackathon/tasnetworks-hackathon-2026-1.jpg"
   - "/images/events/2026/tasnetworks-hackathon/tasnetworks-hackathon-2026-2.jpg"
-outcome:
-  en: "Winning team offered paid internships with TasNetworks"
-  zh: "获胜团队获得TasNetworks带薪实习机会"
-  ne: "विजेता टोलीलाई TasNetworks मा सशुल्क इन्टर्नसिपको अवसर"
 about:
   en:
     - "The TasNetworks x UTAS x AWS Hackathon 2026 was a three-day industry collaboration held from 25 May 2026 at The Forest, the University of Tasmania's inner-city hub in Hobart. Organised by TasNetworks, the University of Tasmania (UTAS) School of ICT, and Amazon Web Services (AWS), the event challenged students to develop innovative technology solutions to real-world problems facing Tasmania's electricity network."

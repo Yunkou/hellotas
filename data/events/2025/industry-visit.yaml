@@ -15,20 +15,15 @@ cost:
   en: "Free"
   zh: "免费"
   ne: "निःशुल्क"
-badge: "free"
 eligibility:
   en: "Open to all ICT students"
   zh: "面向所有 ICT 学生"
   ne: "सबै ICT विद्यार्थीका लागि खुला"
 summary:
-  en: "Students visited local ICT companies in person."
-  zh: "学生们实地参观了本地ICT公司。"
-  ne: "विद्यार्थीहरूले स्थानीय ICT कम्पनीहरूको प्रत्यक्ष भ्रमण गरे।"
+  en: "Students visited local ICT companies in person, and for many it was their first connection with the industry."
+  zh: "学生们实地参观了本地 ICT 公司，对许多人来说，这是他们与行业的第一次接触。"
+  ne: "विद्यार्थीहरूले स्थानीय ICT कम्पनीहरूको प्रत्यक्ष भ्रमण गरे, र धेरैका लागि यो उद्योगसँगको पहिलो सम्पर्क थियो।"
 image: "/images/events/2025/industry-visit/industryvisit2025.jpg"
-outcome:
-  en: "First industry connection for many students"
-  zh: "许多学生的第一次行业联系"
-  ne: "धेरै विद्यार्थीहरूको पहिलो उद्योग सम्पर्क"
 about:
   en:
     - "Industry Visit 2025 provided ICT students with an opportunity to visit local technology companies in Tasmania and gain firsthand exposure to professional working environments. During the visit, students met and spoke with people working in the ICT industry, gaining insights into local workplaces and the different career opportunities available within Tasmania's technology sector."

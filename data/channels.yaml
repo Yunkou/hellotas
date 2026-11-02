@@ -1,0 +1,18 @@
+# Our channels, shown as icons in the header (and in the ☰ menu on phones), in this order.
+# Leave url empty until the account exists: the icon then opens a "coming soon" note instead of a link.
+# icon picks the glyph in layouts/partials/channel-icon.html.
+- icon: discord
+  name: Discord
+  url: ""
+- icon: youtube
+  name: YouTube
+  url: ""
+- icon: twitch
+  name: Twitch
+  url: ""
+- icon: instagram
+  name: Instagram
+  url: ""
+- icon: facebook
+  name: Facebook
+  url: ""

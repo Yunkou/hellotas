@@ -12,22 +12,17 @@ cost:
   en: "GPA requirement"
   zh: "有 GPA 要求"
   ne: "GPA आवश्यकता"
-badge: "gpa"
 eligibility:
   en: "High GPA students only"
   zh: "仅限高 GPA 学生"
   ne: "उच्च GPA भएका विद्यार्थीका लागि मात्र"
 summary:
-  en: "Students represented UTAS at /dev/world 2025 in Melbourne, presenting an AFL app built across Android, iOS, and Flutter."
-  zh: "学生代表UTAS参加在墨尔本举办的/dev/world 2025，展示了一款分别用Android、iOS和Flutter开发的AFL应用。"
-  ne: "विद्यार्थीहरूले मेलबर्नमा /dev/world 2025 मा UTAS को प्रतिनिधित्व गर्दै Android, iOS र Flutter मा बनाइएको AFL एप प्रस्तुत गरे।"
+  en: "High-GPA students represented UTAS at /dev/world 2025 in Melbourne, presenting an AFL app built across Android, iOS and Flutter. It was their first time presenting fully in English to experienced developers."
+  zh: "高 GPA 学生代表 UTAS 参加在墨尔本举办的 /dev/world 2025，展示了一款分别用 Android、iOS 和 Flutter 开发的 AFL 应用。这是他们第一次用全英文向资深开发者做演讲。"
+  ne: "उच्च GPA भएका विद्यार्थीहरूले मेलबर्नमा /dev/world 2025 मा UTAS को प्रतिनिधित्व गर्दै Android, iOS र Flutter मा बनाइएको AFL एप प्रस्तुत गरे। अनुभवी डेभलपरहरूसामु पूर्ण अंग्रेजीमा गरिएको यो उनीहरूको पहिलो प्रस्तुति थियो।"
 image: "/images/events/2025/devworld-melbourne/devworld-2025.jpg"
 gallery:
   - "/images/events/2025/devworld-melbourne/devworld-2025-2.jpg"
-outcome:
-  en: "First time presenting in full English to experienced developers"
-  zh: "第一次用全英文向资深开发者做演讲"
-  ne: "अनुभवी डेभलपरहरूसामु पहिलो पटक पूर्ण अंग्रेजीमा प्रस्तुति"
 about:
   en:
     - "/dev/world 2025 was held on 4–5 September 2025 at the SEEK campus in Melbourne. The two-day developer conference brought together software developers, technology professionals, and students to share technical knowledge, explore technologies, and connect with the wider developer community."

@@ -247,10 +247,18 @@ step3:
             - { key: tagTech, class: tag-normal }
           textKey: journeyStep3MotorsportText
           photos:
-            - { src: images/journey/utas/utas-engineering-site.jpg, altKey: journeyStep3MotorsportPhoto1Alt }
-            - { src: images/journey/step-3/step-3-fsae-1.jpg, altKey: journeyStep3MotorsportPhoto2Alt }
-            - { src: images/journey/step-3/step-3-fsae-2.jpg, altKey: journeyStep3MotorsportPhoto3Alt }
-            - { src: images/journey/step-3/step-3-av-lab.jpg, altKey: journeyStep3MotorsportPhoto4Alt }
+            - { src: images/journey/step-3/step-3-motorsport-workshop-entrance.jpg, altKey: journeyStep3MotorsportPhoto1Alt }
+            - { src: images/journey/step-3/step-3-motorsport-team-photo.jpg, altKey: journeyStep3MotorsportPhoto2Alt }
+            - { src: images/journey/step-3/step-3-motorsport-awards-night.jpg, altKey: journeyStep3MotorsportPhoto3Alt }
+            - { src: images/journey/step-3/step-3-motorsport-team-with-e44.jpg, altKey: journeyStep3MotorsportPhoto4Alt }
+            - { src: images/journey/step-3/step-3-motorsport-workshop.jpg, altKey: journeyStep3MotorsportPhoto5Alt }
+            - { src: images/journey/step-3/step-3-motorsport-driverless.jpg, altKey: journeyStep3MotorsportPhoto6Alt }
+            - { src: images/journey/step-3/step-3-motorsport-open-day.jpg, altKey: journeyStep3MotorsportPhoto7Alt }
+            - { src: images/journey/step-3/step-3-motorsport-scrutineering.jpg, altKey: journeyStep3MotorsportPhoto8Alt }
+            - { src: images/journey/step-3/step-3-motorsport-pits.jpg, altKey: journeyStep3MotorsportPhoto9Alt }
+            - { src: images/journey/step-3/step-3-motorsport-certificate.jpg, altKey: journeyStep3MotorsportPhoto10Alt }
+            - { src: images/journey/step-3/step-3-motorsport-on-track.jpg, altKey: journeyStep3MotorsportPhoto11Alt }
+            - { src: images/journey/step-3/step-3-motorsport-av-setup.jpg, altKey: journeyStep3MotorsportPhoto12Alt }
           map: { query: "School of Engineering, University of Tasmania, Sandy Bay TAS 7005" }
           details:
             - { labelKey: journeyStep2WhenLabel, valueKey: journeyStep3MotorsportWhen }
@@ -380,12 +388,12 @@ step3:
             - { labelKey: journeyStep3WhoLabel, valueKey: journeyStep3GccWho }
             - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3GccLink, href: "https://gccare.au/" }
   gallery:
-    - { src: images/journey/step-3/step-3-fsae-2.jpg, captionKey: journeyStep3Gallery1 }
-    - { src: images/journey/step-3/step-3-av-lab.jpg, captionKey: journeyStep3Gallery2 }
+    - { src: images/journey/step-3/step-3-motorsport-on-track.jpg, captionKey: journeyStep3Gallery1 }
+    - { src: images/journey/step-3/step-3-motorsport-av-setup.jpg, captionKey: journeyStep3Gallery2 }
     - { src: images/journey/step-3/step-3-cyber-3.jpg, captionKey: journeyStep3Gallery3 }
     - { src: images/journey/step-3/step-3-food-hub.jpg, captionKey: journeyStep3Gallery4 }
     - { src: images/journey/step-3/step-3-programming-pcjam25-2.jpg, captionKey: journeyStep3Gallery5 }
     - { src: images/journey/step-3/step-3-gcc-volunteers.jpg, captionKey: journeyStep3Gallery7 }
     - { src: images/events/2026/gdg-hobart-ai-security/linkedin-gdg-hobart-6.jpg, captionKey: journeyStep3Gallery8 }
-    - { src: images/journey/step-3/step-3-fsae-1.jpg, captionKey: journeyStep3Gallery6 }
+    - { src: images/journey/step-3/step-3-motorsport-team-with-e44.jpg, captionKey: journeyStep3Gallery6 }
     - { src: images/journey/step-3/step-3-food-hub-baskets.jpg, captionKey: journeyStep3Gallery9 }

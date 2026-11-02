@@ -1,5 +1,7 @@
-// Happening page: sorts events into "Happening Now" and "Upcoming" by today's date in Hobart, writes dates in the
-// page's language, makes "Add to calendar" files and draws the month / week calendar.
+// Happening page: sorts events into "Happening Now" and "Upcoming" by today's date in Hobart, keeps the pinned
+// events in "Recommended by us" until they're over, writes dates in the page's language, makes "Add to calendar"
+// files and draws the month / week calendar. Add ?at=2026-11-08T10:00 to the address to see the page as it will
+// look at that moment.
 // Without this script every event stays listed under Upcoming.
 (function () {
   var root = document.querySelector('[data-happening]');
@@ -10,8 +12,12 @@
   // Animated in-page changes come from carousel.js; without it, changes just happen
   var transition = window.siteTransition || function (update) { update(); return null; };
   var locale = root.dataset.locale;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var TZ = 'Australia/Hobart';
   var DAY = 86400000;
+  var at = new Date(new URLSearchParams(location.search).get('at') || NaN);
+  var loaded = Date.now();
+  function clockNow() { return isNaN(at) ? new Date() : new Date(at.getTime() + Date.now() - loaded); }
 
   // ---- Days ----------------------------------------------------------------------------------------------
   // Events are compared by their calendar day in Hobart, written as "2026-11-19" keys, whatever the
@@ -124,7 +130,8 @@
       e.startKey = dayKey(e.startDate);
       e.endKey = dayKey(e.endDate);
     }
-    e.card = root.querySelector('.hp-card[data-event="' + e.id + '"]');
+    e.card = root.querySelector('.hp-card[data-event="' + e.id + '"]:not(.hp-card--spot)');
+    e.spot = root.querySelector('.hp-card--spot[data-event="' + e.id + '"]'); // its copy under "Recommended by us"
     e.row = root.querySelector('.hp-row[data-event="' + e.id + '"]');
     return e;
   });
@@ -132,36 +139,120 @@
   events.forEach(function (e) { byId[e.id] = e; });
 
   //   past      over
-  //   live      on right now (or a multi-day event part-way through)
+  //   live      on right now
+  //   running   a multi-day event part-way through (both show "Happening Now")
   //   today / tomorrow / week (within the next 7 days) / later
   //   tbc       only the month is known
   function statusOf(e, now, today) {
     if (e.dateTbc) return today > e.endKey ? 'past' : 'tbc';
     if (now >= e.endDate) return 'past';
-    if (now >= e.startDate) return e.startKey === e.endKey ? 'live' : 'today';
+    if (now >= e.startDate) return e.startKey === e.endKey ? 'live' : 'running';
     if (e.startKey === today) return 'today';
     if (e.startKey === addDays(today, 1)) return 'tomorrow';
     if (e.startKey <= addDays(today, 6)) return 'week';
     return 'later';
   }
-  function isNow(status) { return status === 'live' || status === 'today' || status === 'tomorrow'; }
+  function isNow(status) { return status === 'live' || status === 'running' || status === 'today' || status === 'tomorrow'; }
 
-  var badgeText = { live: S.liveNow, today: S.today, tomorrow: S.tomorrow, week: S.thisWeek, tbc: S.dateTbc };
   var liveIcon = '<svg class="live-icon" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true" focusable="false"><circle class="live-ring live-ring--outer" cx="10" cy="10" r="8.25"/><circle class="live-ring live-ring--inner" cx="10" cy="10" r="5.25"/><circle class="live-dot" cx="10" cy="10" r="2.5"/></svg>';
 
-  function setBadge(el, status) {
-    var badge = el && el.querySelector('[data-status]');
-    if (!badge) return;
-    var text = badgeText[status];
-    badge.hidden = !text;
-    badge.className = 'hp-status hp-status--' + status;
-    badge.innerHTML = status === 'live' ? liveIcon : '';
-    badge.appendChild(document.createTextNode(text || ''));
+  // ---- When it starts: a flip clock, or "Happening Now" -----------------------------------------------------
+  // An upcoming event counts down to its start in flip-clock digits (days, hours, minutes, seconds); each digit
+  // that changes turns over like a split-flap card. An event that is on says "Happening Now" with the live dot,
+  // and one with only a month says "Date to be confirmed". Clocks tick every second (see tick() at the end);
+  // the screen-reader label only changes once a minute.
+  var clocks = [];
+
+  function flipDigit() {
+    var d = document.createElement('span');
+    d.className = 'flip';
+    d.innerHTML = '<span class="flip-top"><span></span></span><span class="flip-bottom"><span></span></span>' +
+      '<span class="flip-flap flip-flap-top"><span></span></span><span class="flip-flap flip-flap-bottom"><span></span></span>';
+    return d;
+  }
+  function setDigit(d, v, animate) {
+    var old = d.getAttribute('data-v');
+    if (old === v) return;
+    d.setAttribute('data-v', v);
+    function face(cls) { return d.querySelector('.' + cls + ' > span'); }
+    face('flip-top').textContent = v;
+    clearTimeout(d.flipDone);
+    if (!animate || old === null || reduceMotion) { face('flip-bottom').textContent = v; d.classList.remove('flip--go'); return; }
+    // The new top shows at once; the old top flaps down over it, then the new bottom flaps down over the old one
+    face('flip-bottom').textContent = old;
+    face('flip-flap-top').textContent = old;
+    face('flip-flap-bottom').textContent = v;
+    d.classList.remove('flip--go');
+    void d.offsetWidth; // restart the animation
+    d.classList.add('flip--go');
+    d.flipDone = setTimeout(function () { face('flip-bottom').textContent = v; d.classList.remove('flip--go'); }, 620);
+  }
+
+  function makeClock(e, small) {
+    var el = document.createElement('span');
+    el.className = 'flipclock' + (small ? ' flipclock--sm' : '');
+    el.setAttribute('role', 'timer');
+    var groups = [S.days, S.hours, S.minutes, S.seconds].map(function (label) {
+      var g = document.createElement('span');
+      g.className = 'flipclock-group';
+      var digits = document.createElement('span');
+      digits.className = 'flipclock-digits';
+      digits.setAttribute('aria-hidden', 'true');
+      var name = document.createElement('span');
+      name.className = 'flipclock-label';
+      name.setAttribute('aria-hidden', 'true');
+      name.textContent = label;
+      g.appendChild(digits);
+      g.appendChild(name);
+      el.appendChild(g);
+      return digits;
+    });
+    var c = { el: el, e: e, groups: groups, label: '' };
+    clocks.push(c);
+    renderClock(c, clockNow(), false);
+    return el;
+  }
+  function renderClock(c, now, animate) {
+    var s = Math.max(0, Math.floor((c.e.startDate - now) / 1000));
+    var parts = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];
+    parts.forEach(function (n, i) {
+      var text = String(n);
+      while (text.length < 2) text = '0' + text;
+      var box = c.groups[i];
+      while (box.children.length < text.length) box.insertBefore(flipDigit(), box.firstChild);
+      while (box.children.length > text.length) box.removeChild(box.firstChild);
+      Array.prototype.forEach.call(box.children, function (d, j) { setDigit(d, text[j], animate); });
+    });
+    var label = S.startsIn + ' ' + parts[0] + ' ' + S.days + ' ' + parts[1] + ' ' + S.hours + ' ' + parts[2] + ' ' + S.minutes;
+    if (label !== c.label) { c.label = label; c.el.setAttribute('aria-label', label); }
+    return s;
+  }
+
+  // Fills an event's [data-status] slot on a card or list row; rebuilt only when the kind of slot changes
+  function whenSlot(slot, e, small) {
+    var kind = e.status === 'past' ? 'past' : e.status === 'tbc' ? 'tbc' : e.status === 'live' || e.status === 'running' ? 'live' : 'count';
+    slot.hidden = false;
+    if (slot.getAttribute('data-kind') === kind) return;
+    slot.setAttribute('data-kind', kind);
+    slot.innerHTML = '';
+    if (kind === 'live') {
+      slot.innerHTML = '<span class="hp-live">' + liveIcon + '</span>';
+      slot.firstChild.appendChild(document.createTextNode(S.happeningNow));
+    } else if (kind === 'count') {
+      if (!small) slot.appendChild(h('span', { class: 'hp-countdown-lead', text: S.startsIn }));
+      slot.appendChild(makeClock(e, small));
+    } else {
+      slot.appendChild(h('span', { class: 'hp-when-note', text: kind === 'past' ? S.past : S.dateTbc }));
+    }
+  }
+  function setWhen(el, e, small) {
+    var slot = el && el.querySelector('[data-status]');
+    if (slot) whenSlot(slot, e, small);
   }
 
   // Dates in the page's language (the HTML carries an English fallback)
   events.forEach(function (e) {
-    [e.card, e.row].forEach(function (el) {
+    [e.card, e.row, e.spot].forEach(function (el) {
       if (!el) return;
       var w = el.querySelector('[data-when]');
       if (w) w.textContent = when(e, w.hasAttribute('data-time-only'));
@@ -172,10 +263,118 @@
     });
   });
 
-  // ---- Happening Now / Upcoming --------------------------------------------------------------------------
+  // ---- Carousels: Happening Now and Recommended by us --------------------------------------------------------
+  // One event per slide in a scroll-snap track, so swiping works. The controls sit above the cards: ‹ › loop
+  // round, the dots jump, "2 / 3" says where you are, and a ring fills up over ROTATE ms, then moves on to the
+  // next event (back to the first after the last). Clicking the ring pauses it (it shows ⏸ until the pointer
+  // leaves, then ▶) and clicking ▶ starts it again. The ring holds while the pointer is over a card, so a card
+  // never slides away from under a click, and it starts paused for people who prefer reduced motion.
+  // With fewer than two events the controls hide. Slides come and go as the days pass, so the controls are
+  // rebuilt from the visible slides on every refresh().
+  var ROTATE = 7000;
 
+  function Deck(el) {
+    var track = el.querySelector('[data-deck-track]');
+    var nav = document.createElement('div');
+    nav.className = 'hp-deck-nav';
+    nav.hidden = true;
+    nav.innerHTML = '<button type="button" class="hp-deck-btn" data-deck-prev>‹</button>' +
+      '<span class="hp-deck-dots"></span><span class="hp-deck-count" aria-hidden="true"></span>' +
+      '<button type="button" class="hp-deck-btn" data-deck-next>›</button>';
+    el.insertBefore(nav, track);
+    var dots = nav.querySelector('.hp-deck-dots');
+    var counter = nav.querySelector('.hp-deck-count');
+    nav.querySelector('[data-deck-prev]').setAttribute('aria-label', S.prevEvent);
+    nav.querySelector('[data-deck-next]').setAttribute('aria-label', S.nextEvent);
+    var index = 0;
+
+    function slides() { return Array.prototype.filter.call(track.children, function (c) { return !c.hidden; }); }
+    function mark() {
+      var list = slides();
+      counter.textContent = (index + 1) + ' / ' + list.length;
+      Array.prototype.forEach.call(dots.children, function (dot, j) {
+        if (j === index) dot.setAttribute('aria-current', 'true'); else dot.removeAttribute('aria-current');
+      });
+    }
+    function goTo(i, instant) {
+      var list = slides();
+      if (!list.length) return;
+      index = (i + list.length) % list.length;
+      if (auto) auto.reset(); // a new slide gets a full turn of the ring
+      track.scrollTo({ left: list[index].offsetLeft - list[0].offsetLeft, behavior: instant || reduceMotion ? 'auto' : 'smooth' });
+      mark();
+    }
+
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var list = slides();
+        if (!list.length) return;
+        var base = list[0].offsetLeft;
+        var best = 0;
+        list.forEach(function (slide, j) {
+          if (Math.abs(slide.offsetLeft - base - track.scrollLeft) < Math.abs(list[best].offsetLeft - base - track.scrollLeft)) best = j;
+        });
+        if (best !== index) { index = best; if (auto) auto.reset(); mark(); }
+      });
+    }, { passive: true });
+    nav.querySelector('[data-deck-prev]').addEventListener('click', function () { goTo(index - 1); });
+    nav.querySelector('[data-deck-next]').addEventListener('click', function () { goTo(index + 1); });
+    dots.addEventListener('click', function (ev) {
+      var dot = ev.target.closest('[data-dot]');
+      if (dot) goTo(Number(dot.dataset.dot));
+    });
+    el.addEventListener('keydown', function (ev) {
+      if (nav.hidden || ev.target.closest('input, textarea')) return;
+      if (ev.key === 'ArrowLeft') { ev.preventDefault(); goTo(index - 1); }
+      if (ev.key === 'ArrowRight') { ev.preventDefault(); goTo(index + 1); }
+    });
+
+    // Auto-advance ring from carousel.js; it holds while the pointer is over a card
+    var auto = null;
+    var holding = false;
+    if (window.siteAutoAdvance) {
+      var ring = window.siteRingButton(S.pause, S.play, 'hp-deck-ring');
+      nav.appendChild(ring);
+      auto = window.siteAutoAdvance(ring, {
+        delay: ROTATE,
+        next: function () { goTo(index + 1); },
+        held: function () { return holding || nav.hidden || el.hidden; }
+      });
+      track.addEventListener('pointerenter', function () { holding = true; });
+      track.addEventListener('pointerleave', function () { holding = false; });
+    }
+
+    this.refresh = function () {
+      var n = slides().length;
+      el.classList.toggle('hp-deck--multi', n > 1);
+      nav.hidden = n < 2;
+      if (dots.children.length !== n) {
+        dots.innerHTML = '';
+        for (var j = 0; j < n; j++) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'hp-deck-dot';
+          dot.dataset.dot = j;
+          dot.setAttribute('aria-label', (j + 1) + ' / ' + n);
+          dots.appendChild(dot);
+        }
+      }
+      if (n) goTo(Math.min(index, n - 1), true);
+    };
+  }
+
+  // ---- Happening Now / Recommended / Upcoming ------------------------------------------------------------
+
+  var nowDeckEl = root.querySelector('[data-now-deck]');
   var nowList = root.querySelector('[data-now-list]');
   var nowEmpty = root.querySelector('[data-now-empty]');
+  var nowDeck = new Deck(nowDeckEl);
+  var picks = root.querySelector('[data-picks]');
+  var picksDeck = picks ? new Deck(picks.querySelector('[data-deck]')) : null;
   var cardList = root.querySelector('[data-upcoming-cards]');
   var rowList = root.querySelector('[data-upcoming-list]');
   var upcomingEmpty = root.querySelector('[data-upcoming-empty]');
@@ -190,40 +389,56 @@
   var searchCount = searchStatus.querySelector('.events-count');
   var searchEmpty = root.querySelector('[data-search-empty]');
   var searchAnnounce = root.querySelector('[data-search-announce]');
-  function fold(text) { return text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
+  function fold(text) { return text.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   events.forEach(function (e) { e.searchText = fold(e.search || ''); });
   function searchTerms() { return fold(searchInput.value).split(/\s+/).filter(Boolean); }
+
+  // Pinned events first (by their number), then by start time; events are already in start order
+  function pinOrder(a, b) { return (a.pinned || Infinity) - (b.pinned || Infinity); }
 
   function sortEvents(now) {
     var today = dayKey(now);
     var happening = [];
     var upcoming = [];
+    var picksLeft = 0;
     events.forEach(function (e) {
       e.status = statusOf(e, now, today);
       var here = isNow(e.status);
       if (e.card) {
-        // Events only ever move Upcoming → Now in date order, so each list stays sorted. Cards that stay put
-        // aren't re-inserted, which would restart their fade-in.
+        // Cards only ever move Upcoming → Now; cards that stay put aren't re-inserted, which would restart
+        // their fade-in
         var list = here ? nowList : cardList;
         if (e.card.parentNode !== list) list.appendChild(e.card);
-        e.card.classList.remove('hp-card--feature');
-        setBadge(e.card, e.status);
+        setWhen(e.card, e);
       }
-      if (e.row) setBadge(e.row, e.status);
+      if (e.row) setWhen(e.row, e, true);
+      if (e.spot) {
+        e.spot.hidden = e.status === 'past';
+        if (!e.spot.hidden) picksLeft++;
+        setWhen(e.spot, e);
+      }
       if (here) happening.push(e);
       else if (e.status !== 'past') upcoming.push(e);
     });
 
-    if (happening.length) happening[0].card.classList.add('hp-card--feature');
-    nowList.classList.toggle('hp-now--several', happening.length > 1);
-    nowList.hidden = !happening.length;
+    // Happening Now in pin order; only touched when the order changes
+    happening = happening.slice().sort(pinOrder);
+    var inNow = Array.prototype.filter.call(nowList.children, function (c) {
+      return happening.some(function (e) { return e.card === c; });
+    });
+    if (happening.some(function (e, i) { return inNow[i] !== e.card; })) {
+      happening.forEach(function (e) { if (e.card) nowList.appendChild(e.card); });
+    }
+    nowDeckEl.hidden = !happening.length;
     nowEmpty.hidden = happening.length > 0;
+    if (picks) picks.hidden = !picksLeft;
 
-    // Nothing today or tomorrow: point to the next event instead
+    // Nothing today or tomorrow: point to the next event, and to Recommended and Upcoming
     var next = upcoming[0];
     nowEmpty.querySelector('[data-next-up]').hidden = !next;
     nowEmpty.querySelector('[data-next-none]').hidden = !!next;
-    nowEmpty.querySelector('.hp-btn-outline').hidden = !next;
+    nowEmpty.querySelector('[data-see-upcoming]').hidden = !next;
+    nowEmpty.querySelector('[data-see-picks]').hidden = !picksLeft;
     if (next) {
       var link = nowEmpty.querySelector('[data-next-link]');
       link.textContent = next.title;
@@ -233,6 +448,8 @@
 
     upcomingEvents = upcoming;
     applySearch();
+    nowDeck.refresh();
+    if (picksDeck) picksDeck.refresh();
   }
 
   // Which cards and rows show: past events never; Happening Now always; upcoming ones when they match the search
@@ -513,7 +730,6 @@
     var monthFmt = e ? fmtMonthShort : keyMonthShort;
     var dayFmt = e ? fmtDayNum : keyDayNum;
     var status = itemStatus(item);
-    var badge = a ? null : status === 'past' ? S.past : badgeText[e.status];
     var actions = [];
     if (e && e.url) {
       actions.push(h('a', { class: 'hp-row-link', href: e.url, target: '_blank', rel: 'noopener' }, [
@@ -531,12 +747,12 @@
       ]),
       h('span', { class: 'hp-row-main' }, [
         h('span', { class: 'hp-row-title', text: e ? e.title : a.title }),
-        h('span', { class: 'hp-row-host', text: e ? e.type + (e.host ? ' · ' + e.host : '') : S.archived })
+        (e ? e.host : S.archived) ? h('span', { class: 'hp-row-host', text: e ? e.host : S.archived }) : null
       ]),
       h('span', { class: 'hp-row-place', text: e ? (e.format === 'online' ? S.online : e.location) : '' }),
       h('span', { class: 'hp-row-when' }, [
         e ? h('time', { datetime: e.start, text: when(e, true) }) : null,
-        badge ? h('span', { class: 'hp-status hp-status--' + (status === 'past' ? 'past' : e.status), text: badge }) : null
+        e ? (function () { var slot = h('span', { class: 'hp-when-slot' }); whenSlot(slot, status === 'past' ? { status: 'past' } : e, true); return slot; })() : null
       ]),
       h('span', { class: 'hp-row-actions' }, actions)
     ]);
@@ -628,8 +844,10 @@
 
   // Every minute the events are re-sorted; the calendar is only redrawn when the date changes,
   // so it doesn't move under someone who is using it.
+  // ?at=2026-11-08T10:00 shows the page as it will look at that moment (for checking pinned events, Happening Now…);
+  // the preview clock then runs on from there
   function refresh() {
-    var now = new Date();
+    var now = clockNow();
     var newToday = dayKey(now);
     sortEvents(now);
     if (newToday === today) return;
@@ -643,4 +861,16 @@
   refresh();
   setView(view);
   setInterval(refresh, 60000);
+
+  // Flip clocks, every second: drop the ones no longer on the page, turn the rest over, and re-sort as soon as
+  // one reaches zero so the event moves to "Happening Now" right away. Skipped while the tab is in the background.
+  function tick() {
+    if (document.hidden) return;
+    var now = clockNow();
+    var started = false;
+    clocks = clocks.filter(function (c) { return c.el.isConnected; });
+    clocks.forEach(function (c) { if (renderClock(c, now, true) === 0) started = true; });
+    if (started) refresh();
+  }
+  setInterval(tick, 1000);
 })();

@@ -1,0 +1,92 @@
+weight: 4
+title: "Kingborough Squash Club"
+source: "https://kingboroughsquash.org.au/"
+photos:
+  - src: "/images/fun-fitness/kingborough/kingborough-1.jpg"
+    caption:
+      en: "A rally seen from the viewing gallery"
+      zh: "从观赛走廊看到的一次对打"
+      ne: "हेर्ने ग्यालरीबाट देखिएको र्‍याली"
+  - src: "/images/fun-fitness/kingborough/kingborough-2.jpg"
+    caption:
+      en: "Players and coaches on court"
+      zh: "球员和教练在场上"
+      ne: "कोर्टमा खेलाडी र प्रशिक्षकहरू"
+  - src: "/images/fun-fitness/kingborough/kingborough-3.jpg"
+    caption:
+      en: "Pennant winners in the clubrooms"
+      zh: "联赛冠军在俱乐部会所"
+      ne: "क्लबरुममा pennant विजेताहरू"
+  - src: "/images/fun-fitness/kingborough/kingborough-4.jpg"
+    caption:
+      en: "Club members at an end-of-pennant social night"
+      zh: "俱乐部成员在联赛结束后的社交晚会上"
+      ne: "pennant सकिएपछिको सामाजिक साँझमा क्लबका सदस्यहरू"
+intro:
+  - en: "\"Australia's southernmost squash club\" has been running for nearly 40 years at the Kingborough Sports Centre in Kingston, with its own clubrooms. It's friendly and social, and welcomes new players as much as experienced ones."
+    zh: "这家自称“澳大利亚最南端的壁球俱乐部”已在 Kingston 的 Kingborough Sports Centre 开办近 40 年，拥有自己的俱乐部会所。氛围友好、重社交，新手和老手同样欢迎。"
+    ne: "\"अस्ट्रेलियाको सबैभन्दा दक्षिणी स्क्वास क्लब\" लगभग 40 वर्षदेखि Kingston को Kingborough Sports Centre मा चलिरहेको छ, र यसको आफ्नै क्लबरुम छ। यो मिलनसार र सामाजिक छ, र अनुभवी जस्तै नयाँ खेलाडीलाई पनि स्वागत गर्छ।"
+points:
+  - en: "<strong>Try it:</strong> drop in on a Tuesday at 7 pm or a Thursday at 5 pm, or email the club to set up a trial game. Matches are arranged between players of a similar level."
+    zh: "<strong>来试试：</strong>周二 7 pm 或周四 5 pm 直接过来，或发邮件给俱乐部约一次试打。俱乐部会安排水平相近的球员对打。"
+    ne: "<strong>प्रयास गर्नुहोस्:</strong> मंगलबार 7 pm वा बिहिबार 5 pm मा सिधै आउनुहोस्, वा ट्रायल खेल मिलाउन क्लबलाई इमेल गर्नुहोस्। उस्तै स्तरका खेलाडीबीच खेल मिलाइन्छ।"
+  - en: "<strong>Mixed pennant:</strong> men and women play together on Tuesday evenings. There are two pennants a year (summer and winter, about 16 weeks each), and each ends with a social dinner. It costs $13 a week, or $160 for the whole pennant."
+    zh: "<strong>男女混合联赛：</strong>每周二晚上男女同场比赛。每年两季（夏季和冬季，各约 16 周），每季结束都有社交晚宴。每周 $13，或整季 $160。"
+    ne: "<strong>मिश्रित pennant:</strong> मंगलबार साँझ पुरुष र महिला सँगै खेल्छन्। वर्षमा दुई pennant हुन्छन् (गर्मी र जाडो, प्रत्येक करिब 16 हप्ता), र प्रत्येक सामाजिक डिनरसँग सकिन्छ। हप्ताको $13, वा पूरै pennant को $160।"
+  - en: "<strong>Bring:</strong> non-marking shoes and sportswear. You can borrow a racquet for a trial, and the club supplies balls."
+    zh: "<strong>需要带：</strong>不留痕的运动鞋和运动服。试打时可以借球拍，球由俱乐部提供。"
+    ne: "<strong>के ल्याउने:</strong> दाग नछोड्ने जुत्ता र खेलकुद पोसाक। ट्रायलका लागि र्‍याकेट सापट लिन सकिन्छ, र बल क्लबले दिन्छ।"
+  - en: "<strong>Coaching:</strong> the club has three qualified Level 1 coaches and a junior program."
+    zh: "<strong>教练：</strong>俱乐部有三名持证的一级教练，并设有青少年课程。"
+    ne: "<strong>प्रशिक्षण:</strong> क्लबमा तीन जना योग्य Level 1 प्रशिक्षक र जुनियर कार्यक्रम छन्।"
+facts:
+  - type: hours
+    lines:
+      - en: "Courts: 9 am – 10 pm (book with the Sports Centre)"
+        zh: "场地：9 am – 10 pm（向 Sports Centre 预订）"
+        ne: "कोर्ट: बिहान 9 – राति 10 (Sports Centre मा बुक गर्नुहोस्)"
+      - en: "Club play: Tuesday 7 pm, Thursday 5 pm"
+        zh: "俱乐部活动：周二 7 pm，周四 5 pm"
+        ne: "क्लब खेल: मंगलबार 7 pm, बिहिबार 5 pm"
+  - type: address
+    lines:
+      - "Kingborough Sports Centre"
+      - "10 Kingston View Drive, Kingston TAS 7050"
+    href: "https://www.google.com/maps/search/?api=1&query=Kingborough+Sports+Centre+10+Kingston+View+Drive+Kingston"
+  - type: price
+    lines:
+      - en: "Casual court: $33 an hour"
+        zh: "散客租场：每小时 $33"
+        ne: "क्याजुअल कोर्ट: घण्टाको $33"
+      - en: "Students and other concessions: $19 an hour"
+        zh: "学生及其他优惠人士：每小时 $19"
+        ne: "विद्यार्थी र अन्य छुट: घण्टाको $19"
+      - en: "Club members: $25 an hour"
+        zh: "俱乐部会员：每小时 $25"
+        ne: "क्लब सदस्य: घण्टाको $25"
+      - en: "Kingborough Council prices, 2026/27"
+        zh: "Kingborough 市政府 2026/27 年度价格"
+        ne: "Kingborough Council को 2026/27 मूल्य"
+  - type: contact
+    lines:
+      - "theclub@kingboroughsquash.org.au"
+      - en: "Court bookings: (03) 6211 8262"
+        zh: "订场电话：(03) 6211 8262"
+        ne: "कोर्ट बुकिङ: (03) 6211 8262"
+    href: "mailto:theclub@kingboroughsquash.org.au"
+links:
+  - label:
+      en: "Club website"
+      zh: "俱乐部网站"
+      ne: "क्लबको वेबसाइट"
+    href: "https://kingboroughsquash.org.au/"
+  - label:
+      en: "Facebook group"
+      zh: "Facebook 群组"
+      ne: "Facebook समूह"
+    href: "https://www.facebook.com/groups/1499977936699377"
+  - label:
+      en: "Squash Tasmania clubs"
+      zh: "Squash Tasmania 俱乐部列表"
+      ne: "Squash Tasmania क्लबहरू"
+    href: "https://www.squashtas.com.au/clubs"

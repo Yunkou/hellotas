@@ -1,0 +1,94 @@
+weight: 3
+title: "Eastside Squash Centre"
+source: "https://www.facebook.com/EastsideSquash"
+photos:
+  - src: "/images/fun-fitness/eastside/eastside-2.jpg"
+    caption:
+      en: "Wednesday coaching with Asher de Vries"
+      zh: "周三由 Asher de Vries 执教的训练课"
+      ne: "बुधबार Asher de Vries सँग प्रशिक्षण"
+  - src: "/images/fun-fitness/eastside/eastside-1.jpg"
+    caption:
+      en: "The centre on Alma Street, Bellerive"
+      zh: "位于 Bellerive Alma Street 的球馆"
+      ne: "Bellerive को Alma Street मा रहेको केन्द्र"
+  - src: "/images/fun-fitness/eastside/eastside-3.jpg"
+    caption:
+      en: "The lounge beside the glass-back courts"
+      zh: "玻璃后墙球场旁的休息区"
+      ne: "सिसाको पछाडि भित्ता भएका कोर्ट छेउको लाउन्ज"
+  - src: "/images/fun-fitness/eastside/eastside-4.jpg"
+    caption:
+      en: "A friendly spectator at a professional match on the show court"
+      zh: "表演球场上的职业比赛，旁边有一位友好的“观众”"
+      ne: "शो कोर्टमा पेसेवर खेल हेर्दै एक मिलनसार दर्शक"
+  - src: "/images/fun-fitness/eastside/eastside-5.jpg"
+    caption:
+      en: "Players catching up in the viewing gallery"
+      zh: "球友们在观赛走廊聊天"
+      ne: "हेर्ने ग्यालरीमा खेलाडीहरूको भलाकुसारी"
+intro:
+  - en: "The largest squash club in Tasmania, on Hobart's eastern shore. It has 8 courts, including 2 glass-back show courts that host professional events. Book a court in the app and play any day from 7 am to 10 pm; racquets and balls are included."
+    zh: "塔斯马尼亚最大的壁球俱乐部，位于 Hobart 东岸。共有 8 块场地，其中 2 块是举办职业赛事的玻璃后墙表演场。在应用里订场，每天 7 am 到 10 pm 都能打，球拍和球都包含在内。"
+    ne: "तस्मानियाको सबैभन्दा ठूलो स्क्वास क्लब, Hobart को पूर्वी किनारमा। यहाँ 8 वटा कोर्ट छन्, जसमध्ये पेसेवर प्रतियोगिता हुने सिसाको पछाडि भित्ता भएका 2 शो कोर्ट छन्। एपबाट कोर्ट बुक गरेर हरेक दिन बिहान 7 देखि राति 10 सम्म खेल्न सकिन्छ; र्‍याकेट र बल समावेश छन्।"
+points:
+  - en: "<strong>New to squash?</strong> Beginners Squash runs every Wednesday, 6–7 pm, coached by Asher de Vries, Tasmania's #1 junior. It's open to all ages: $10 casual, $80 for 10 visits, free for members. Junior coaching is at 4:30 pm."
+    zh: "<strong>第一次打壁球？</strong>每周三 6–7 pm 有 Beginners Squash 新手课，由塔斯马尼亚排名第一的青少年选手 Asher de Vries 执教，所有年龄都可参加：单次 $10，10 次卡 $80，会员免费。青少年训练在 4:30 pm。"
+    ne: "<strong>स्क्वासमा नयाँ?</strong> हरेक बुधबार 6–7 pm Beginners Squash हुन्छ, तस्मानियाका नम्बर 1 जुनियर Asher de Vries ले सिकाउँछन्। सबै उमेरका लागि खुला: एक पटकको $10, 10 पटकको $80, सदस्यलाई निःशुल्क। जुनियर प्रशिक्षण 4:30 pm मा हुन्छ।"
+  - en: "<strong>Bring:</strong> non-marking indoor shoes and a drink bottle. Racquets and balls are waiting by the courts."
+    zh: "<strong>需要带：</strong>不留痕的室内运动鞋和水瓶。球拍和球就放在场边。"
+    ne: "<strong>के ल्याउने:</strong> भुइँमा दाग नछोड्ने इनडोर जुत्ता र पानीको बोतल। र्‍याकेट र बल कोर्ट छेउमै हुन्छन्।"
+  - en: "<strong>How booking works:</strong> book in the GymMaster app (log in with your email; your mobile number is the first password), then press Check in at the door to unlock it."
+    zh: "<strong>订场方式：</strong>在 GymMaster 应用里订场（用邮箱登录，首次密码是手机号），到门口时按 Check in 即可开门。"
+    ne: "<strong>बुकिङ कसरी:</strong> GymMaster एपमा बुक गर्नुहोस् (इमेलले लगइन; पहिलो पासवर्ड मोबाइल नम्बर), अनि ढोकामा Check in थिचेर ढोका खोल्नुहोस्।"
+  - en: "<strong>Membership:</strong> unlimited squash at Eastside and at Parsons Squash Centre in the northern suburbs, plus free entry to the Wednesday in-house pennant and Tuesday night Rockit pennant."
+    zh: "<strong>会员：</strong>可在 Eastside 和北郊的 Parsons Squash Centre 无限次打球，还可免费参加周三的内部联赛和周二晚上的 Rockit 联赛。"
+    ne: "<strong>सदस्यता:</strong> Eastside र उत्तरी उपनगरको Parsons Squash Centre मा असीमित स्क्वास, साथै बुधबारको in-house pennant र मंगलबार राति हुने Rockit pennant मा निःशुल्क प्रवेश।"
+facts:
+  - type: hours
+    lines:
+      - en: "Court bookings: every day, 7 am – 10 pm"
+        zh: "订场时间：每天 7 am – 10 pm"
+        ne: "कोर्ट बुकिङ: हरेक दिन, बिहान 7 – राति 10"
+      - en: "Beginners: Wednesday 6 – 7 pm"
+        zh: "新手课：周三 6 – 7 pm"
+        ne: "सुरुवातकर्ता: बुधबार 6 – 7 pm"
+  - type: address
+    lines:
+      - "1 Alma Street, Bellerive TAS 7018"
+    href: "https://www.google.com/maps/search/?api=1&query=Eastside+Squash+Centre+1+Alma+Street+Bellerive"
+  - type: price
+    lines:
+      - en: "Court hire: $28 per court, any number of players"
+        zh: "租场：每场 $28，人数不限"
+        ne: "कोर्ट भाडा: प्रति कोर्ट $28, जतिसुकै खेलाडी"
+      - en: "Solo hit: $14"
+        zh: "单人练习：$14"
+        ne: "एक्लै अभ्यास: $14"
+      - en: "Beginners session: $10 ($80 for 10)"
+        zh: "新手课：$10（10 次 $80）"
+        ne: "सुरुवातकर्ता कक्षा: $10 (10 पटकको $80)"
+      - en: "Membership: $16.50 a week, both centres"
+        zh: "会员：每周 $16.50，两家球馆通用"
+        ne: "सदस्यता: हप्ताको $16.50, दुवै केन्द्र"
+  - type: contact
+    lines:
+      - "Eastside@SquashPro.com.au"
+      - "(03) 6244 1386"
+    href: "mailto:Eastside@SquashPro.com.au"
+links:
+  - label:
+      en: "Book a court"
+      zh: "预订场地"
+      ne: "कोर्ट बुक गर्नुहोस्"
+    href: "https://eastsidesquash.com.au/book-a-court/"
+  - label:
+      en: "Beginners squash"
+      zh: "新手壁球课"
+      ne: "सुरुवातकर्ताका लागि स्क्वास"
+    href: "https://eastsidesquash.com.au/beginners-squash/"
+  - label:
+      en: "Facebook page"
+      zh: "Facebook 主页"
+      ne: "Facebook पेज"
+    href: "https://www.facebook.com/EastsideSquash"

@@ -1,0 +1,42 @@
+{{- /*
+  Fun & Fitness. One tile per file: data/fun_fitness/fun/<slug>.yaml ("Something Fun") and
+  data/fun_fitness/fit/<slug>.yaml ("Something Fit"); the file name is the tile's anchor (#unigym).
+  Text is plain or has en / zh / ne inside. Fields:
+    weight    order within its group
+    title     tile heading
+    photos    [{ src, caption }], shown as a carousel; source is the page they came from (photo viewer link)
+    intro     paragraphs
+    points    bullet list (may contain <strong> and <a>)
+    facts     tiles on the right: { type, lines, href }; type picks the label and icon
+              (hours, address, price, contact, works, based, community);
+              href links the first line, or a line can be { text, href } to carry its own link
+    links     buttons under the text: { label, href }
+    showcase  games or projects made with it: { title, by, text, image, href }
+*/ -}}
+{{ define "main" }}
+{{- $lang := .Language.Lang -}}
+<section class="hero-section">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="hero-sub">{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+{{ partial "passon-bar.html" (dict "page" . "message" (i18n "funFitnessShareLabel")) }}
+
+<div class="container ff-page">
+  {{ range $i, $group := slice "fun" "fit" }}
+  {{ $tiles := slice }}
+  {{ range $slug, $raw := index hugo.Data.fun_fitness $group }}
+  {{ $tiles = $tiles | append (merge (partial "event-localize.html" (dict "v" $raw "lang" $lang)) (dict "id" $slug)) }}
+  {{ end }}
+  <section class="ff-section" aria-labelledby="ff-{{ $group }}">
+    <h2 class="ff-section-title" id="ff-{{ $group }}">{{ i18n (printf "funFitness%sTitle" (strings.FirstUpper $group)) }}</h2>
+    <p class="ff-section-lead">{{ i18n (printf "funFitness%sLead" (strings.FirstUpper $group)) }}</p>
+    <div class="ff-list">
+      {{ range $j, $tile := sort $tiles "weight" }}{{ partial "fun-fitness-card.html" (dict "item" $tile "eager" (and (eq $i 0) (eq $j 0))) }}{{ end }}
+    </div>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

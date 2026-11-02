@@ -16,17 +16,13 @@ eligibility:
   zh: "对所有人开放，欢迎初学者"
   ne: "सबैका लागि खुला, नयाँ सिक्नेहरूलाई स्वागत छ"
 summary:
-  en: "A GDG Hobart community workshop at UTAS where attendees built their first cross-platform Flutter app in the cloud."
-  zh: "GDG Hobart在UTAS举办的社区工作坊，参与者在云端搭建了自己的第一个跨平台Flutter应用。"
-  ne: "UTAS मा GDG Hobart को सामुदायिक कार्यशाला, जहाँ सहभागीहरूले क्लाउडमा आफ्नो पहिलो क्रस-प्लेटफर्म Flutter एप बनाए।"
+  en: "A GDG Hobart community workshop at UTAS where 35+ attendees built their first cross-platform Flutter app in the cloud."
+  zh: "GDG Hobart 在 UTAS 举办的社区工作坊，35 多名参与者在云端搭建了自己的第一个跨平台 Flutter 应用。"
+  ne: "UTAS मा GDG Hobart को सामुदायिक कार्यशाला, जहाँ 35+ सहभागीहरूले क्लाउडमा आफ्नो पहिलो क्रस-प्लेटफर्म Flutter एप बनाए।"
 image: "/images/events/2025/gdg-hobart-flutter/gdg-hobart-flutter-2025-1.jpg"
 gallery:
   - "/images/events/2025/gdg-hobart-flutter/gdg-hobart-flutter-2025-2.jpg"
   - "/images/events/2025/gdg-hobart-flutter/gdg-hobart-flutter-2025-3.jpg"
-outcome:
-  en: "35+ attendees · first Flutter app built in the cloud"
-  zh: "35+名参与者 · 在云端完成第一个Flutter应用"
-  ne: "35+ सहभागी · क्लाउडमा पहिलो Flutter एप"
 about:
   en:
     - "GDG Hobart hosted Flutter in 2025: Learn What Matters, Build What Works on Wednesday 17 September 2025, from 5:15 PM to 7:15 PM, in Room 134 of the Centenary Building at the University of Tasmania's Sandy Bay Campus. The workshop welcomed developers, ICT students, beginners, and members of Hobart's technology community interested in mobile application development."

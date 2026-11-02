@@ -11,22 +11,17 @@ cost:
   en: "Free"
   zh: "免费"
   ne: "निःशुल्क"
-badge: "free"
 eligibility:
   en: "Open to everyone, including IT students and beginners"
   zh: "对所有人开放，包括 IT 学生和初学者"
   ne: "IT विद्यार्थी र नयाँ सिक्नेहरूसहित सबैका लागि खुला"
 summary:
-  en: "A GDG Hobart session at UTAS on Progressive Web Apps and the shift from desktop software to the web."
-  zh: "GDG Hobart在UTAS举办的活动，主题是渐进式网页应用（PWA）以及软件从桌面转向网页的趋势。"
-  ne: "UTAS मा प्रोग्रेसिभ वेब एप र डेस्कटप सफ्टवेयरबाट वेबतर्फको परिवर्तनबारे GDG Hobart को सत्र।"
+  en: "A GDG Hobart session at UTAS where 35+ attendees took a deep dive into Progressive Web Apps and the shift from desktop software to the web, followed by Q&A."
+  zh: "GDG Hobart 在 UTAS 举办的活动，35 多名参与者深入了解渐进式网页应用（PWA）以及软件从桌面转向网页的趋势，并参与问答。"
+  ne: "UTAS मा GDG Hobart को सत्र, जहाँ 35+ सहभागीले प्रोग्रेसिभ वेब एप र डेस्कटप सफ्टवेयरबाट वेबतर्फको परिवर्तनबारे गहिरो प्रस्तुति सुने र प्रश्नोत्तर गरे।"
 image: "/images/events/2026/gdg-hobart-web-skills/gdg-hobart-web-skills-2026-1.jpg"
 gallery:
   - "/images/events/2026/gdg-hobart-web-skills/gdg-hobart-web-skills-2026-2.jpg"
-outcome:
-  en: "35+ attendees · PWA deep dive and Q&A"
-  zh: "35+名参与者 · PWA深度分享与问答"
-  ne: "35+ सहभागी · PWA गहिरो प्रस्तुति र प्रश्नोत्तर"
 about:
   en:
     - "GDG Hobart hosted Build with AI and Level Up Your Web Skills on Thursday 21 May 2026, from 5:15 PM to 6:00 PM, in Room 134 of the Centenary Building at the University of Tasmania's Sandy Bay Campus. The free meetup welcomed developers, ICT students, beginners, and technology enthusiasts interested in modern web development and emerging software technologies."

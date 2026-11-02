@@ -1,0 +1,139 @@
+weight: 1
+title: "Yarn Spinner"
+source: "https://yarnspinner.dev/"
+photos:
+  - src: "/images/fun-fitness/yarn-spinner/yarn-spinner-1.jpg"
+    caption:
+      en: "Yarn Spinner's studio, as drawn for their website"
+      zh: "Yarn Spinner 官网上的工作室插画"
+      ne: "Yarn Spinner को वेबसाइटमा कोरिएको स्टुडियोको चित्र"
+  - src: "/images/fun-fitness/yarn-spinner/yarn-spinner-2.jpg"
+    caption:
+      en: "Yarn Spinner for VS Code: a story script on the left, its graph of story nodes on the right"
+      zh: "VS Code 中的 Yarn Spinner：左边是故事脚本，右边是故事节点图"
+      ne: "VS Code मा Yarn Spinner: बायाँ कथाको स्क्रिप्ट, दायाँ कथाका नोडहरूको ग्राफ"
+intro:
+  - en: "Yarn Spinner is a tool for writing the dialogue and branching stories in video games, and it's made right here in Hobart. It's behind award-winning games like DREDGE, Night in the Woods, A Short Hike and Venba."
+    zh: "Yarn Spinner 是一款用来编写电子游戏对白和分支剧情的工具，就诞生在 Hobart。DREDGE、Night in the Woods、A Short Hike 和 Venba 等获奖游戏都用了它。"
+    ne: "Yarn Spinner भिडियो गेमका संवाद र शाखा भएका कथा लेख्ने उपकरण हो, र यो यहीँ Hobart मा बनेको हो। DREDGE, Night in the Woods, A Short Hike र Venba जस्ता पुरस्कार जितेका गेमहरू यसैबाट बनेका छन्।"
+  - en: "It's a fun way to spend an evening after class: write a short interactive story, play it straight away in your browser, then build it into a real game in Unity, Godot or Unreal Engine. Yarn Spinner is open source, so it's free for coursework, game jams and even games you sell later."
+    zh: "课后用它打发一个晚上很有意思：写一个简短的互动故事，马上在浏览器里试玩，再放进 Unity、Godot 或 Unreal Engine 做成真正的游戏。Yarn Spinner 是开源软件，课程作业、Game Jam，甚至以后出售的游戏都可以免费使用。"
+    ne: "कक्षापछि साँझ बिताउने रमाइलो तरिका हो: छोटो अन्तरक्रियात्मक कथा लेख्नुहोस्, तुरुन्तै ब्राउजरमा खेल्नुहोस्, अनि Unity, Godot वा Unreal Engine मा साँच्चिकै गेम बनाउनुहोस्। Yarn Spinner खुला स्रोत (open source) हो, त्यसैले कोर्सवर्क, game jam र पछि बेच्ने गेमका लागि पनि निःशुल्क छ।"
+points:
+  - en: "<strong>Try it now:</strong> write and play a story in your browser at <a href=\"https://try.yarnspinner.dev/\" target=\"_blank\" rel=\"noopener\">try.yarnspinner.dev</a>, with nothing to install."
+    zh: "<strong>马上试试：</strong>在 <a href=\"https://try.yarnspinner.dev/\" target=\"_blank\" rel=\"noopener\">try.yarnspinner.dev</a> 直接在浏览器里写故事、玩故事，无需安装。"
+    ne: "<strong>अहिले नै प्रयास गर्नुहोस्:</strong> <a href=\"https://try.yarnspinner.dev/\" target=\"_blank\" rel=\"noopener\">try.yarnspinner.dev</a> मा ब्राउजरमै कथा लेख्नुहोस् र खेल्नुहोस्, केही इन्स्टल गर्नु पर्दैन।"
+  - en: "<strong>Free tools:</strong> the Visual Studio Code extension checks your script for mistakes and shows how your story's nodes connect, and the docs have a beginner's guide."
+    zh: "<strong>免费工具：</strong>Visual Studio Code 扩展会检查脚本错误，并显示故事节点之间的连接；官方文档里有新手指南。"
+    ne: "<strong>निःशुल्क उपकरण:</strong> Visual Studio Code एक्सटेन्सनले स्क्रिप्टका गल्ती जाँच्छ र कथाका नोडहरू कसरी जोडिएका छन् देखाउँछ; डकुमेन्टेसनमा सुरुवातकर्ताका लागि गाइड छ।"
+  - en: "<strong>Local roots:</strong> co-founder Paris Buttfield-Addison completed a PhD in Computer Science at UTAS and has taught computing there since 2008. Yarn Spinner won the Minister's STEM Innovation Award in 2025."
+    zh: "<strong>本地渊源：</strong>联合创始人 Paris Buttfield-Addison 在 UTAS 获得计算机科学博士学位，自 2008 年起在 UTAS 教授计算机课程。Yarn Spinner 于 2025 年获得 Minister's STEM Innovation Award。"
+    ne: "<strong>स्थानीय जरा:</strong> सह-संस्थापक Paris Buttfield-Addison ले UTAS बाट कम्प्युटर विज्ञानमा PhD गर्नुभएको हो र 2008 देखि त्यहाँ कम्प्युटिङ पढाउँदै आउनुभएको छ। Yarn Spinner ले 2025 मा Minister's STEM Innovation Award जित्यो।"
+  - en: "<strong>Meet game makers:</strong> Tasmanian Game Makers hosts a free social meetup in Hobart most months (usually 5:30–9:30 pm, the venue changes, everyone is welcome) and runs online game jams. Each April, the Level Up Tasmania showcase at PW1 lets you play 40+ games made in Tasmania."
+    zh: "<strong>结识游戏开发者：</strong>Tasmanian Game Makers 几乎每月在 Hobart 举办免费交流聚会（通常 5:30–9:30 pm，场地每次不同，欢迎所有人），也会组织线上 Game Jam。每年 4 月，PW1 的 Level Up Tasmania 展会可以试玩 40 多款塔斯马尼亚本地游戏。"
+    ne: "<strong>गेम बनाउनेहरूलाई भेट्नुहोस्:</strong> Tasmanian Game Makers ले प्रायः हरेक महिना Hobart मा निःशुल्क सामाजिक भेटघाट गर्छ (सामान्यतया 5:30–9:30 pm, ठाउँ फेरिन्छ, सबैलाई स्वागत छ) र अनलाइन game jam पनि चलाउँछ। हरेक अप्रिलमा PW1 मा हुने Level Up Tasmania प्रदर्शनीमा तस्मानियामा बनेका 40 भन्दा बढी गेम खेल्न पाइन्छ।"
+  - en: "<strong>Get help:</strong> ask the Yarn Spinner team and other writers on their Discord."
+    zh: "<strong>寻求帮助：</strong>在 Yarn Spinner 的 Discord 上向团队和其他作者提问。"
+    ne: "<strong>सहयोग लिनुहोस्:</strong> Yarn Spinner को Discord मा टिम र अरू लेखकहरूलाई सोध्नुहोस्।"
+facts:
+  - type: price
+    lines:
+      - en: "Free and open source"
+        zh: "免费、开源"
+        ne: "निःशुल्क र खुला स्रोत"
+      - en: "Optional Yarn Spinner+ add-ons; one purchase covers a whole student team"
+        zh: "可选的 Yarn Spinner+ 扩展包；学生团队买一份即可全队使用"
+        ne: "ऐच्छिक Yarn Spinner+ एड-अन; एउटै खरिदले विद्यार्थीको पूरै टिमलाई पुग्छ"
+  - type: works
+    lines:
+      - "Unity 2022.3+"
+      - "Godot 4.6+ (GDScript, C#)"
+      - en: "Unreal Engine 5.7+ (pre-release)"
+        zh: "Unreal Engine 5.7+（预发布版）"
+        ne: "Unreal Engine 5.7+ (प्रि-रिलिज)"
+  - type: based
+    lines:
+      - "Hobart, Tasmania"
+      - en: "On the land of the muwinina and palawa people"
+        zh: "位于 muwinina 和 palawa 原住民的土地上"
+        ne: "muwinina र palawa जनताको भूमिमा"
+  - type: community
+    lines:
+      - text:
+          en: "Yarn Spinner Discord"
+          zh: "Yarn Spinner Discord 社区"
+          ne: "Yarn Spinner Discord"
+        href: "https://discord.com/invite/yarnspinner"
+      - text:
+          en: "Tasmanian Game Makers meetups"
+          zh: "Tasmanian Game Makers 聚会"
+          ne: "Tasmanian Game Makers भेटघाट"
+        href: "https://tasgamemakers.com/events"
+links:
+  - label:
+      en: "Yarn Spinner website"
+      zh: "Yarn Spinner 官网"
+      ne: "Yarn Spinner वेबसाइट"
+    href: "https://yarnspinner.dev/"
+  - label:
+      en: "Game showcase"
+      zh: "游戏展示"
+      ne: "गेम प्रदर्शनी"
+    href: "https://yarnspinner.dev/showcase/"
+  - label:
+      en: "Try it in your browser"
+      zh: "在浏览器中试用"
+      ne: "ब्राउजरमा प्रयास गर्नुहोस्"
+    href: "https://try.yarnspinner.dev/"
+showcase:
+  - title: "DREDGE"
+    by: "Black Salt Games"
+    image: "/images/fun-fitness/yarn-spinner/showcase/dredge.jpg"
+    href: "https://yarnspinner.dev/showcase/dredge/"
+    text:
+      en: "A fishing adventure about Lovecraftian horrors."
+      zh: "一款带有克苏鲁式恐怖元素的钓鱼冒险游戏。"
+      ne: "Lovecraft शैलीका डरलाग्दा कुराबारे माछा मार्ने साहसिक गेम।"
+  - title: "Night in the Woods"
+    by:
+      en: "Infinite Fall, with Hobart's Secret Lab"
+      zh: "Infinite Fall，与 Hobart 的 Secret Lab 合作"
+      ne: "Infinite Fall, Hobart को Secret Lab सँग"
+    image: "/images/fun-fitness/yarn-spinner/showcase/night-in-the-woods.jpg"
+    href: "https://yarnspinner.dev/showcase/night-in-the-woods/"
+    text:
+      en: "A narrative adventure about a college dropout returning to her rust-belt hometown."
+      zh: "讲述一名大学辍学生回到衰落工业小镇故乡的叙事冒险游戏。"
+      ne: "कलेज छोडेकी एक युवती आफ्नो पुरानो औद्योगिक गृहनगर फर्केको कथा भएको साहसिक गेम।"
+  - title: "A Short Hike"
+    by: "Adam Robinson-Yu"
+    image: "/images/fun-fitness/yarn-spinner/showcase/a-short-hike.jpg"
+    href: "https://yarnspinner.dev/showcase/a-short-hike/"
+    text:
+      en: "A little exploration game about hiking up a mountain."
+      zh: "一款关于登山的小型探索游戏。"
+      ne: "पहाड चढ्ने सानो खोजपूर्ण गेम।"
+  - title: "Venba"
+    by: "Visai Games"
+    image: "/images/fun-fitness/yarn-spinner/showcase/venba.jpg"
+    href: "https://yarnspinner.dev/showcase/venba/"
+    text:
+      en: "A narrative cooking game about family, love and loss, told through South Indian cuisine."
+      zh: "通过南印度菜讲述家庭、爱与失去的叙事烹饪游戏。"
+      ne: "दक्षिण भारतीय खानामार्फत परिवार, माया र गुमाउनेबारे भनिएको खाना पकाउने कथात्मक गेम।"
+  - title: "Tiny Bookshop"
+    by: "neoludic games"
+    image: "/images/fun-fitness/yarn-spinner/showcase/tiny-bookshop.jpg"
+    href: "https://yarnspinner.dev/showcase/tiny-bookshop/"
+    text:
+      en: "A relaxing story game about running a tiny bookshop by the sea."
+      zh: "在海边经营一家小书店的轻松叙事游戏。"
+      ne: "समुद्र किनारमा सानो किताब पसल चलाउने आरामदायी कथात्मक गेम।"
+  - title: "Among Us Story: On Guard"
+    by: "Innersloth"
+    image: "/images/fun-fitness/yarn-spinner/showcase/among-us-story-on-guard.jpg"
+    href: "https://yarnspinner.dev/showcase/among-us-story-on-guard/"
+    text:
+      en: "Coming soon: life as a Crewmate in a narrative adventure through space."
+      zh: "即将推出：以船员身份在太空中展开的叙事冒险。"
+      ne: "छिट्टै आउँदै: अन्तरिक्षमा Crewmate भएर बिताउने कथात्मक साहसिक यात्रा।"

@@ -2,9 +2,10 @@
   <nav class="nav">
     <a href="{{ .Site.Home.RelPermalink }}" class="logo"><img src="{{ "images/brand/logo.svg" | relURL }}" alt="{{ i18n "siteName" }}" width="330" height="84"></a>
     {{- /* Menu links, defined once: shown inline on wide screens and in the menu panel on narrower ones */ -}}
-    {{- /* Site structure from issue #33, plus Happening (issue #7). Each item: label key and page path. */ -}}
+    {{- /* Site structure from issue #33, plus Happening (issue #7): Kickstart, Community and Volunteering are journey
+         steps 1–3, Industry Events is step 4. Each item: label key and page path. */ -}}
     {{- $links := slice (dict "key" "home" "url" .Site.Home.RelPermalink "current" .IsHome) -}}
-    {{- range slice (slice "community" "/journey/step-2") (slice "volunteering" "/journey/step-3") (slice "industryEvents" "/events") (slice "stories" "/stories") (slice "afterClass" "/after_class") (slice "happening" "/happening") -}}
+    {{- range slice (slice "kickstart" "/journey/step-1") (slice "community" "/journey/step-2") (slice "volunteering" "/journey/step-3") (slice "industryEvents" "/events") (slice "stories" "/stories") (slice "funFitness" "/fun-fitness") (slice "happening" "/happening") -}}
       {{- $key := index . 0 -}}{{- $path := index . 1 -}}
       {{- $url := relURL (printf "%s/" (strings.TrimPrefix "/" $path)) -}}
       {{- with site.GetPage $path }}{{ $url = .RelPermalink }}{{ end -}}
@@ -19,13 +20,70 @@
       {{- end -}}
     {{- end }}
     <div class="nav-links"><span class="nav-pill" aria-hidden="true"></span>{{ partial "nav-link-items" $links }}</div>
+    <div class="nav-right">
+      {{- $page := . }}
+      <details class="lang-picker">
+        <summary class="lang-current" aria-haspopup="menu" aria-label="{{ i18n "languageLabel" }}: {{ $page.Language.Label }}" title="{{ $page.Language.Label }}">
+          {{- partial "flag.html" $page.Language.Lang -}}
+          <svg class="nav-caret" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M3 4.5 6 7.5 9 4.5"/></svg>
+        </summary>
+        <div class="lang-menu" role="menu">
+          {{- range hugo.Sites }}
+          {{- $lang := .Language }}
+          {{- if eq $lang.Lang $page.Language.Lang }}
+          <span class="lang-menu-item lang-menu-current" role="menuitem" aria-current="true">
+            <span class="lang-flag">{{ partial "flag.html" $lang.Lang }}</span>{{ $lang.Label }}
+          </span>
+          {{- else }}
+          {{- $url := cond (eq $lang.Lang "en") (relURL "/") (relURL (printf "%s/" $lang.Lang)) }}
+          {{- range $page.Translations }}{{ if eq .Language.Lang $lang.Lang }}{{ $url = .RelPermalink }}{{ end }}{{ end }}
+          <a class="lang-menu-item" role="menuitem" href="{{ $url }}" lang="{{ $lang.Lang }}">
+            <span class="lang-flag">{{ partial "flag.html" $lang.Lang }}</span>{{ $lang.Label }}
+          </a>
+          {{- end }}
+          {{- end }}
+        </div>
+      </details>
+      {{- /* Channels (data/channels.yaml): one button showing the first three icons side by side; it opens the full list.
+           A platform links out once its url is set, otherwise it opens the "coming soon" note (carousel.js). */}}
+      {{- $channels := hugo.Data.channels }}
+      <div class="channels">
+        <button type="button" class="channel-more" aria-expanded="false" aria-controls="channel-menu" aria-label="{{ i18n "channelsTitle" }}" title="{{ i18n "channelsTitle" }}">
+          <span class="channel-stack" aria-hidden="true">
+            {{- range first 3 $channels }}<span class="channel-stack-icon">{{ partial "channel-icon.html" .icon }}</span>{{ end -}}
+          </span>
+          <svg class="nav-caret" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M3 4.5 6 7.5 9 4.5"/></svg>
+        </button>
+        <ul class="channel-menu" id="channel-menu" hidden>
+          {{- range $channels }}
+          <li>
+            {{- if .url }}
+            <a class="channel-menu-item" href="{{ .url }}" target="_blank" rel="noopener">{{ partial "channel-icon.html" .icon }}<span>{{ .name }}</span></a>
+            {{- else }}
+            <button type="button" class="channel-menu-item" aria-haspopup="dialog" data-channel-soon="{{ i18n "channelSoonTitle" (dict "name" .name) }}" data-channel-soon-text="{{ i18n "channelSoonText" (dict "name" .name) }}">{{ partial "channel-icon.html" .icon }}<span>{{ .name }}</span></button>
+            {{- end }}
+          </li>
+          {{- end }}
+        </ul>
+      </div>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="{{ i18n "menuOpen" }}" data-label-open="{{ i18n "menuOpen" }}" data-label-close="{{ i18n "menuClose" }}">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
+    </div>
     <script>
-      // The red pill behind the current menu item, placed before the first paint. Arriving from another page,
-      // it starts where it was on that page and slides over, like the year selector's pill (.nav-pill in custom.css).
+      // Wide screens: if the menu words don't fit beside the logo and the right-hand controls (longer labels,
+      // a late web font), fold them into ☰ (.nav-folded). Then the red pill behind the current menu item, placed before
+      // the first paint. Arriving from another page, it starts where it was on that page and slides over, like the
+      // year selector's pill (.nav-pill in custom.css).
       (function () {
-        var nav = document.currentScript.previousElementSibling;
+        var bar = document.currentScript.parentNode;
+        var nav = bar.querySelector('.nav-links');
         var pill = nav.firstElementChild;
         var on = nav.querySelector('a[aria-current="page"]');
+        function fit() {
+          bar.classList.remove('nav-folded');
+          if (nav.scrollWidth > nav.clientWidth + 1) bar.classList.add('nav-folded');
+        }
         function spot() { return { x: on.offsetLeft, y: on.offsetTop, w: on.offsetWidth, h: on.offsetHeight }; }
         function put(r) {
           pill.style.width = r.w + 'px';
@@ -33,6 +91,7 @@
           pill.style.transform = 'translate(' + r.x + 'px, ' + r.y + 'px)';
         }
         function place() {
+          fit();
           pill.hidden = !on || !on.offsetWidth; // no current item, or the menu is folded into ☰
           if (!pill.hidden) put(spot());
         }
@@ -59,61 +118,21 @@
         });
       })();
     </script>
-    <div class="nav-right">
-      {{ $page := . }}
-      {{- /* Compact lang control: flag emoji + short code (frees nav space for Montserrat). */ -}}
-      {{- $langMeta := dict
-            "en" (dict "flag" "🇦🇺" "short" "EN" "label" "English")
-            "zh" (dict "flag" "🇨🇳" "short" "ZH" "label" "简体中文")
-            "ne" (dict "flag" "🇳🇵" "short" "NE" "label" "नेपाली")
-      -}}
-      <details class="lang-picker">
-        {{- $cur := index $langMeta $page.Language.Lang -}}
-        {{- if not $cur }}{{ $cur = dict "flag" "" "short" (upper $page.Language.Lang) "label" $page.Language.Label }}{{ end -}}
-        <summary class="lang-current" aria-haspopup="menu" aria-label="Language: {{ $cur.label }}" title="{{ $cur.label }}">
-          <span class="lang-flag" aria-hidden="true">{{ $cur.flag }}</span>
-          <span class="lang-code">{{ $cur.short }}</span>
-          <span class="lang-caret" aria-hidden="true">▾</span>
-        </summary>
-        <div class="lang-menu" role="menu">
-          {{ range hugo.Sites }}
-            {{ $lang := .Language }}
-            {{- $meta := index $langMeta $lang.Lang -}}
-            {{- if not $meta }}{{ $meta = dict "flag" "" "short" (upper $lang.Lang) "label" $lang.Label }}{{ end -}}
-            {{ if eq $lang.Lang $page.Language.Lang }}
-              <span class="lang-menu-item lang-menu-current" role="menuitem" aria-current="true">
-                <span class="lang-flag" aria-hidden="true">{{ $meta.flag }}</span>
-                <span class="lang-code">{{ $meta.short }}</span>
-                <span class="lang-full">{{ $meta.label }}</span>
-              </span>
-            {{ else }}
-              {{ $url := "" }}
-              {{ range $page.Translations }}
-                {{ if eq .Language.Lang $lang.Lang }}{{ $url = .RelPermalink }}{{ end }}
-              {{ end }}
-              {{ if not $url }}
-                {{ if eq $lang.Lang "en" }}{{ $url = relURL "/" }}{{ else }}{{ $url = relURL (printf "%s/" $lang.Lang) }}{{ end }}
-              {{ end }}
-              <a class="lang-menu-item" role="menuitem" href="{{ $url }}" aria-label="{{ $meta.label }}">
-                <span class="lang-flag" aria-hidden="true">{{ $meta.flag }}</span>
-                <span class="lang-code">{{ $meta.short }}</span>
-                <span class="lang-full">{{ $meta.label }}</span>
-              </a>
-            {{ end }}
-          {{ end }}
-        </div>
-      </details>
-      <a href="#" class="btn-primary"><span class="label-full">{{ i18n "shareYourStory" }}</span><span class="label-short" aria-hidden="true">{{ i18n "shareShort" }}</span></a>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="{{ i18n "menuOpen" }}" data-label-open="{{ i18n "menuOpen" }}" data-label-close="{{ i18n "menuClose" }}">
-        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
-      </button>
-    </div>
   </nav>
   <div class="mobile-menu" id="mobile-menu" hidden>
     {{- partial "nav-link-items" $links -}}
-    {{- /* On the smallest phones the header's Share button moves in here */ -}}
-    <a href="#" class="btn-primary mobile-menu-cta">{{ i18n "shareYourStory" }}</a>
   </div>
+    </div>
+  </div>
+  {{- /* Opened by a channel icon whose account isn't set up yet (data/channels.yaml); filled in by carousel.js */}}
+  <dialog class="channel-dialog" aria-labelledby="channel-dialog-title">
+    <div class="channel-dialog-card">
+      <span class="channel-dialog-icon" data-channel-icon></span>
+      <h2 class="channel-dialog-title" id="channel-dialog-title" data-channel-title></h2>
+      <p class="channel-dialog-text" data-channel-text></p>
+      <button type="button" class="btn-primary" data-channel-close>{{ i18n "channelSoonOk" }}</button>
+    </div>
+  </dialog>
   <script>
     document.addEventListener('click', function (e) {
       document.querySelectorAll('details.lang-picker').forEach(function (d) {
