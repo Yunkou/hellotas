@@ -6,7 +6,6 @@ stories: "कथाहरू"
 events: "कार्यक्रमहरू"
 industryEvents: "उद्योग कार्यक्रमहरू"
 volunteering: "स्वयंसेवा"
-sports: "खेलकुद"
 happening: "भइरहेका"
 menuOpen: "मेनु खोल्नुहोस्"
 menuClose: "मेनु बन्द गर्नुहोस्"
@@ -154,7 +153,6 @@ tagGPARequired: "GPA आवश्यक"
 tagCostTBC: "शुल्क निश्चित हुन बाँकी"
 tagEligibilityTBC: "योग्यता निश्चित हुन बाँकी"
 studentVoice: "विद्यार्थीको आवाज"
-studentFeedbackTBA: "विद्यार्थीहरूको प्रतिक्रिया कार्यक्रमपछि थपिनेछ।"
 
 # Event details
 backToEvents: "← सबै कार्यक्रमहरूमा फर्किनुहोस्"
@@ -167,8 +165,6 @@ aboutThisEvent: "यो कार्यक्रमको बारेमा"
 whatStudentsBuilt: "विद्यार्थीहरूले बनाएका कुराहरू"
 whatStudentsSaid: "विद्यार्थीहरूले LinkedIn मा लेखेका कुराहरू"
 whatStudentsSaidSubtitle: "कार्यक्रमबाट विद्यार्थीहरूका प्रतिबिम्ब र पोस्टहरू।"
-linkedInPost: "LinkedIn पोस्ट"
-readFullPost: "पूरा पोस्ट पढ्नुहोस्"
 visitOriginalPost: "मूल पोस्ट हेर्नुहोस्"
 postPrev: "अघिल्लो पोस्ट"
 postNext: "अर्को पोस्ट"
@@ -191,17 +187,10 @@ lightboxZoomLevel: "जुम स्तर"
 lightboxDownload: "डाउनलोड"
 lightboxOriginalPost: "मूल पोस्ट"
 lightboxSourcePage: "स्रोत पृष्ठ"
-studentReflectionsTBA: "कार्यक्रमपछि विद्यार्थीहरूका प्रतिबिम्ब थपिनेछन्।"
-photosFromTheDay: "त्यस दिनका तस्बिरहरू"
 
 # Project placeholders
 eventPhoto: "कार्यक्रमको तस्बिर"
 heroImage: "मुख्य तस्बिर"
-projectPhoto: "प्रोजेक्टको तस्बिर"
-linkedInScreenshot: "LinkedIn स्क्रिनसट"
-
-# Dates and meta
-thumbPlaceholder: "कार्यक्रमको तस्बिर"
 
 # Journey — Step 1 (arrival)
 journeyBackToJourney: "← यात्रा"
@@ -309,44 +298,16 @@ journeyStep2WhyText: "तलका गतिविधि निःशुल्�
 
 journeyStep2WhenLabel: "कहिले:"
 journeyStep2WhereLabel: "कहाँ:"
-journeyStep2AddressLabel: "ठेगाना"
-journeyStep2PhoneLabel: "फोन"
-journeyStep2EmailLabel: "इमेल"
 journeyStep2LinkLabel: "आधिकारिक लिंक"
 
 journeyStep2Section1Title: "कुराकानी र समुदाय"
-journeyStep2Section2Title: "स्वयंसेवा र जोडिने"
 journeyStep2Section3Title: "आफ्ना मानिस खोज्नुहोस्"
 
 journeyStep2LingoTitle: "UTAS Language Centre"
-journeyStep2LingoTag: "निःशुल्क · क्याम्पस"
 journeyStep2LingoText: "University of Tasmania English Language Centre मा अंग्रेजी पढ्नुहोस् — डिग्रीका लागि Direct Entry / EAP मार्ग, र अध्ययन, करियर वा यात्राका लागि General English। मैत्रीपूर्ण शिक्षकहरू, ऐतिहासिक Phillip Smith Centre मा आधुनिक सुविधाहरू, र स्वागतयोग्य समुदाय।"
 journeyStep2LingoWhen: "रिसेप्शन सोम–शुक्र, बिहान ९:०० – दिउँसो ४:०० · पाठ्यक्रम मिति वेबसाइटमा जाँच गर्नुहोस्"
 journeyStep2LingoWhere: "Phillip Smith Centre, Hobart क्याम्पस"
 journeyStep2LingoImageAlt: "UTAS English Language Centre रहेको ऐतिहासिक Phillip Smith Centre"
-
-journeyStep2LibraryTitle: "होबार्ट पुस्तकालयमा अंग्रेजी कुराकानी"
-journeyStep2LibraryTag: "निःशुल्क · ड्रप-इन"
-journeyStep2LibraryText: "सार्वजनिक पुस्तकालयमा स्वयंसेवकले चलाउने मैत्रीपूर्ण र अनौपचारिक वयस्क समूह। बोल्ने र सुन्ने अभ्यास गर्नुहोस्, आत्मविश्वास बढाउनुहोस् — बुकिङ चाहिँदैन।"
-journeyStep2LibraryWhen: "बुधबार, बिहान १०:०० – दिउँसो १२:०० (स्कूल टर्ममा)"
-journeyStep2LibraryAddress: "Level 1, 91 Murray Street, Hobart TAS 7000"
-journeyStep2LibraryPhone: "(03) 6165 5597"
-journeyStep2LibraryEmail: "hobartlend.library@libraries.tas.gov.au"
-journeyStep2LibraryLink: "libraries.tas.gov.au"
-journeyStep2LibraryImageAlt: "सार्वजनिक पुस्तकालयको कुराकानी समूहमा घेरा बनाएर कुरा गर्दै वयस्कहरू"
-journeyStep2LibraryMapAlt: "Murray Street मा होबार्ट पुस्तकालय चिन्ह लगाइएको सरल नक्सा"
-
-
-journeyStep2RedCrossTitle: "रेड क्रस स्वयंसेवी भ्रमण"
-journeyStep2RedCrossTag: "स्वयंसेवा"
-journeyStep2RedCrossText: "चिया वा कार्ड खेल्दै जेष्ठ समुदाय सदस्यलाई मैत्रीपूर्ण कुराकानीका लागि भेट्नुहोस्। अंग्रेजी अभ्यास र स्थानीय कथा सुन्ने नरम, फलदायी तरिका — रेड क्रसले तालिम र सहयोग दिन्छ, र प्रहरी जाँचको खर्च बेहोर्छ।"
-journeyStep2RedCrossWhen: "निरन्तर, तपाईंको तालिकाअनुसार — पहिले अनलाइन आवेदन दिनुहोस्"
-journeyStep2RedCrossAddress: "Red Cross House, 146 Elizabeth Street, Hobart TAS 7000"
-journeyStep2RedCrossPhone: "1300 559 992 (स्वयंसेवा)"
-journeyStep2RedCrossEmail: "agedcarevolunteers@redcross.org.au"
-journeyStep2RedCrossLink: "redcross.org.au/agedcarevolunteer"
-journeyStep2RedCrossImageAlt: "जेष्ठ समुदाय सदस्यसँग चिया खाँदै कुरा गर्दै स्वयंसेवक"
-journeyStep2RedCrossMapAlt: "Elizabeth Street मा रेड क्रस होबार्ट कार्यालय चिन्ह लगाइएको सरल नक्सा"
 
 journeyStep2PeopleRubricTitle: "Rubric"
 journeyStep2PeopleRubricImageAlt: "Rubric क्याम्पस कार्यक्रम एप"
@@ -423,9 +384,6 @@ homeStep4Text: "उद्योग कार्यक्रममा जान�
 homeStep4Cta: "ICT कार्यक्रम सूची"
 homeStep4ImageAlt: "विद्यार्थी क्लब टेन्टसहित व्यस्त UTAS क्याम्पस प्लाजा"
 
-
-
-
 # Homepage — career path (issue #55; replaces habits + homepage graduate stories)
 homeCareerTitle: "तपाईंको सपनाको करियरको बाटो"
 homeCareerLead: "यो केवल परीक्षा पास गर्ने कुरा होइन। यो सही आधार क्रमशः निर्माण गर्ने कुरा हो।"
@@ -440,9 +398,6 @@ homeCareerCard4Text: "अस्ट्रेलियामा जागिर �
 homeCareerCard5Title: "आफ्नो सपना पूरा गर्नुहोस्"
 homeCareerCard5Text: "मजबुत अङ्ग्रेजी, स्थानीय सांस्कृतिक बुझाइ, वास्तविक अनुभव र बलियो सिफारिस मिलाउनुहोस्। तस्मानियामा सफलता भाग्य होइन — यी कदम चाल्दा आउने स्वाभाविक परिणाम हो।"
 
-# Homepage — graduate stories (section removed from homepage; Stories page remains)
-homeStoriesTitle: "स्नातक कथाहरू"
-homeStoriesViewAll: "सबै कथाहरू हेर्नुहोस् →"
 # Stories page (issue #36)
 storiesTitle: "यो बाटो हिँडिसकेकाहरूका कथाहरू।"
 storiesSubtitle: "अन्तर्राष्ट्रिय ICT विद्यार्थीहरूले कसरी पहिलो जागिर पाए, सम्पर्क सञ्जाल बनाए र तस्मानियामा जीवन सुरु गरे, हेर्नुहोस्।"

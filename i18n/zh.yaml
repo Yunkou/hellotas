@@ -6,7 +6,6 @@ stories: "学生故事"
 events: "活动"
 industryEvents: "行业活动"
 volunteering: "志愿服务"
-sports: "运动"
 happening: "近期活动"
 menuOpen: "打开菜单"
 menuClose: "关闭菜单"
@@ -154,7 +153,6 @@ tagGPARequired: "需要GPA"
 tagCostTBC: "费用待定"
 tagEligibilityTBC: "资格待定"
 studentVoice: "学生心声"
-studentFeedbackTBA: "学生反馈将在活动后添加。"
 
 # Event details
 backToEvents: "← 返回所有活动"
@@ -167,8 +165,6 @@ aboutThisEvent: "关于本次活动"
 whatStudentsBuilt: "学生作品"
 whatStudentsSaid: "学生在LinkedIn上的分享"
 whatStudentsSaidSubtitle: "活动中学生的反思与分享。"
-linkedInPost: "LinkedIn帖子"
-readFullPost: "阅读完整帖子"
 visitOriginalPost: "查看原帖"
 postPrev: "上一篇"
 postNext: "下一篇"
@@ -191,17 +187,10 @@ lightboxZoomLevel: "缩放比例"
 lightboxDownload: "下载"
 lightboxOriginalPost: "查看原帖"
 lightboxSourcePage: "来源页面"
-studentReflectionsTBA: "学生的反思将在活动后添加。"
-photosFromTheDay: "活动照片"
 
 # Project placeholders
 eventPhoto: "活动照片"
 heroImage: "首图"
-projectPhoto: "项目照片"
-linkedInScreenshot: "LinkedIn截图"
-
-# Dates and meta
-thumbPlaceholder: "活动照片"
 
 # Journey — Step 1 (arrival)
 journeyBackToJourney: "← 成长之路"
@@ -309,44 +298,16 @@ journeyStep2WhyText: "下面的活动免费或花费很低、氛围友好，而�
 
 journeyStep2WhenLabel: "时间："
 journeyStep2WhereLabel: "地点："
-journeyStep2AddressLabel: "地址"
-journeyStep2PhoneLabel: "电话"
-journeyStep2EmailLabel: "邮箱"
 journeyStep2LinkLabel: "官方链接"
 
 journeyStep2Section1Title: "会话与社区"
-journeyStep2Section2Title: "志愿服务与连结"
 journeyStep2Section3Title: "找到你的圈子"
 
 journeyStep2LingoTitle: "UTAS 语言中心（Language Centre）"
-journeyStep2LingoTag: "免费 · 校内"
 journeyStep2LingoText: "在塔斯马尼亚大学英语语言中心学习英语——Direct Entry / EAP 学位衔接课程，以及面向学习、职业或旅行的通用英语。教师友好，教学设施位于历史建筑 Phillip Smith Centre，社区氛围欢迎你。"
 journeyStep2LingoWhen: "接待处周一至周五 9:00 – 16:00 · 开课日期以官网为准"
 journeyStep2LingoWhere: "Hobart 校区 Phillip Smith Centre"
 journeyStep2LingoImageAlt: "UTAS 英语语言中心所在的历史建筑 Phillip Smith Centre"
-
-journeyStep2LibraryTitle: "霍巴特图书馆英语会话小组"
-journeyStep2LibraryTag: "免费 · 随时加入"
-journeyStep2LibraryText: "公共图书馆里的志愿者带领的会话小组，氛围轻松友好。练习听力和口语，慢慢积累自信——无需预约。"
-journeyStep2LibraryWhen: "每周三 10:00 – 12:00（学校学期内）"
-journeyStep2LibraryAddress: "Level 1, 91 Murray Street, Hobart TAS 7000"
-journeyStep2LibraryPhone: "(03) 6165 5597"
-journeyStep2LibraryEmail: "hobartlend.library@libraries.tas.gov.au"
-journeyStep2LibraryLink: "libraries.tas.gov.au"
-journeyStep2LibraryImageAlt: "成年人在公共图书馆里围坐交谈"
-journeyStep2LibraryMapAlt: "标注霍巴特图书馆位置的示意图"
-
-
-journeyStep2RedCrossTitle: "红十字探访志愿者"
-journeyStep2RedCrossTag: "志愿"
-journeyStep2RedCrossText: "定期探访一位长者，一起喝茶聊天或打打牌。这是练习英语、听本地故事的温柔方式——红十字会提供培训和支持，并承担你的无犯罪证明费用。"
-journeyStep2RedCrossWhen: "长期进行，时间迁就你的安排——请先在线申请"
-journeyStep2RedCrossAddress: "Red Cross House, 146 Elizabeth Street, Hobart TAS 7000"
-journeyStep2RedCrossPhone: "1300 559 992（志愿者报名）"
-journeyStep2RedCrossEmail: "agedcarevolunteers@redcross.org.au"
-journeyStep2RedCrossLink: "redcross.org.au/agedcarevolunteer"
-journeyStep2RedCrossImageAlt: "志愿者与社区长者喝茶聊天"
-journeyStep2RedCrossMapAlt: "标注霍巴特红十字会办公室位置的示意图"
 
 journeyStep2PeopleRubricTitle: "Rubric"
 journeyStep2PeopleRubricImageAlt: "Rubric 校园活动应用"
@@ -423,9 +384,6 @@ homeStep4Text: "参加行业活动、建立人脉，了解塔斯马尼亚 ICT �
 homeStep4Cta: "ICT活动列表"
 homeStep4ImageAlt: "人头攒动的UTAS校园广场与学生社团帐篷"
 
-
-
-
 # Homepage — career path (issue #55; replaces habits + homepage graduate stories)
 homeCareerTitle: "通往理想职业之路"
 homeCareerLead: "这不只是通过考试，而是一步步打下正确的基础。"
@@ -440,9 +398,6 @@ homeCareerCard4Text: "在澳大利亚，工作机会往往取决于推荐人。�
 homeCareerCard5Title: "实现你的梦想"
 homeCareerCard5Text: "把扎实的英语、本地文化理解、真实经验和可靠推荐结合起来。在塔斯马尼亚取得成功不是运气——而是迈出这些步伐的自然结果。"
 
-# Homepage — graduate stories (section removed from homepage; Stories page remains)
-homeStoriesTitle: "毕业生故事"
-homeStoriesViewAll: "查看全部故事 →"
 # Stories page (issue #36)
 storiesTitle: "走过这条路的人的故事。"
 storiesSubtitle: "看看国际 ICT 学生如何找到第一份工作、建立人脉，并在塔斯马尼亚安家。"

@@ -6,7 +6,6 @@ stories: "Stories"
 events: "Events"
 industryEvents: "Industry Events"
 volunteering: "Volunteering"
-sports: "Sports"
 happening: "Happening"
 menuOpen: "Open menu"
 menuClose: "Close menu"
@@ -154,7 +153,6 @@ tagGPARequired: "GPA REQUIRED"
 tagCostTBC: "COST TO BE CONFIRMED"
 tagEligibilityTBC: "ELIGIBILITY TO BE CONFIRMED"
 studentVoice: "Student voice"
-studentFeedbackTBA: "Student feedback to be added."
 
 # Event details
 backToEvents: "← Back to all events"
@@ -167,8 +165,6 @@ aboutThisEvent: "About this event"
 whatStudentsBuilt: "What students built"
 whatStudentsSaid: "What students said on LinkedIn"
 whatStudentsSaidSubtitle: "Student reflections and posts from the event."
-linkedInPost: "LinkedIn Post"
-readFullPost: "Read full post"
 visitOriginalPost: "Visit original post"
 postPrev: "Previous post"
 postNext: "Next post"
@@ -191,17 +187,10 @@ lightboxZoomLevel: "Zoom level"
 lightboxDownload: "Download"
 lightboxOriginalPost: "Original post"
 lightboxSourcePage: "Source page"
-studentReflectionsTBA: "Student reflections will be added after the event."
-photosFromTheDay: "Photos from the day"
 
 # Project placeholders
 eventPhoto: "Event photo"
 heroImage: "Hero image"
-projectPhoto: "Project photo"
-linkedInScreenshot: "LinkedIn screenshot"
-
-# Dates and meta
-thumbPlaceholder: "Event photo"
 
 # Journey — Step 1 (arrival)
 journeyBackToJourney: "← Journey"
@@ -309,44 +298,16 @@ journeyStep2WhyText: "The activities below are free or very low cost, welcoming,
 
 journeyStep2WhenLabel: "When:"
 journeyStep2WhereLabel: "Where:"
-journeyStep2AddressLabel: "Address"
-journeyStep2PhoneLabel: "Phone"
-journeyStep2EmailLabel: "Email"
 journeyStep2LinkLabel: "Official link"
 
 journeyStep2Section1Title: "Conversation & Community"
-journeyStep2Section2Title: "Volunteer & Connect"
 journeyStep2Section3Title: "Find your people"
 
 journeyStep2LingoTitle: "UTAS Language Centre"
-journeyStep2LingoTag: "FREE · CAMPUS"
 journeyStep2LingoText: "Study English at the University of Tasmania English Language Centre — Direct Entry / EAP pathways into a degree, plus General English for study, career or travel. Friendly teachers, modern facilities in the historic Phillip Smith Centre, and a welcoming community."
 journeyStep2LingoWhen: "Reception Monday–Friday, 9:00 AM – 4:00 PM · course dates vary — check the website"
 journeyStep2LingoWhere: "Phillip Smith Centre, Hobart campus"
 journeyStep2LingoImageAlt: "Historic Phillip Smith Centre, home of the UTAS English Language Centre"
-
-journeyStep2LibraryTitle: "English Conversation at Hobart Library"
-journeyStep2LibraryTag: "FREE · DROP-IN"
-journeyStep2LibraryText: "A volunteer-led, friendly and informal group for adults at the public library. Practise speaking and listening, and build confidence — no bookings required."
-journeyStep2LibraryWhen: "Wednesdays, 10:00 AM – 12:00 PM (school terms)"
-journeyStep2LibraryAddress: "Level 1, 91 Murray Street, Hobart TAS 7000"
-journeyStep2LibraryPhone: "(03) 6165 5597"
-journeyStep2LibraryEmail: "hobartlend.library@libraries.tas.gov.au"
-journeyStep2LibraryLink: "libraries.tas.gov.au"
-journeyStep2LibraryImageAlt: "Adults chatting in a circle at a public library conversation group"
-journeyStep2LibraryMapAlt: "Simple map with a pin marking Hobart Library on Murray Street"
-
-
-journeyStep2RedCrossTitle: "Red Cross Volunteer Visiting"
-journeyStep2RedCrossTag: "VOLUNTEER"
-journeyStep2RedCrossText: "Visit an older community member for a friendly chat over tea or a card game. A gentle, rewarding way to practise English and hear local stories — Red Cross trains and supports you, and covers your police check."
-journeyStep2RedCrossWhen: "Ongoing, arranged around your schedule — apply online first"
-journeyStep2RedCrossAddress: "Red Cross House, 146 Elizabeth Street, Hobart TAS 7000"
-journeyStep2RedCrossPhone: "1300 559 992 (volunteering)"
-journeyStep2RedCrossEmail: "agedcarevolunteers@redcross.org.au"
-journeyStep2RedCrossLink: "redcross.org.au/agedcarevolunteer"
-journeyStep2RedCrossImageAlt: "Volunteer chatting over tea with an older community member"
-journeyStep2RedCrossMapAlt: "Simple map with a pin marking the Red Cross Hobart office on Elizabeth Street"
 
 journeyStep2PeopleRubricTitle: "Rubric"
 journeyStep2PeopleRubricImageAlt: "Rubric campus events app"
@@ -423,9 +384,6 @@ homeStep4Text: "Attend industry events, make connections, and explore what is ha
 homeStep4Cta: "ICT events list"
 homeStep4ImageAlt: "Busy UTAS campus plaza with student club tents"
 
-
-
-
 # Homepage — career path (issue #55; replaces habits + homepage graduate stories)
 homeCareerTitle: "The path to your dream career"
 homeCareerLead: "It's not just about passing exams. It's about building the right foundation step by step."
@@ -440,9 +398,6 @@ homeCareerCard4Text: "In Australia, job offers often hinge on references. The pe
 homeCareerCard5Title: "Achieve Your Dream"
 homeCareerCard5Text: "Combine strong English, local cultural understanding, real-world experience, and solid references. Success in Tasmania isn't a stroke of luck — it's the natural result of taking these steps."
 
-# Homepage — graduate stories (section removed from homepage; Stories page remains)
-homeStoriesTitle: "Graduate stories"
-homeStoriesViewAll: "View all stories →"
 # Stories page (issue #36)
 storiesTitle: "Stories from those who walked the path."
 storiesSubtitle: "See how international ICT students found their first jobs, built networks, and settled into life in Tasmania."
