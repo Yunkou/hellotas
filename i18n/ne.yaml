@@ -9,7 +9,7 @@ volunteering: "स्वयंसेवा"
 happening: "भइरहेका"
 menuOpen: "मेनु खोल्नुहोस्"
 menuClose: "मेनु बन्द गर्नुहोस्"
-afterClass: "कक्षापछिको गतिविधि"
+funFitness: "रमाइलो र फिटनेस"
 forStaff: "कर्मचारीहरूका लागि"
 
 # Header
@@ -23,10 +23,6 @@ footerTagline: "तस्मानियाका अन्तर्राष्
 # Events list page
 eventsTitle: "ICT कार्यक्रम संग्रह र विद्यार्थीहरूको आवाज"
 eventsSubtitle: "तस्मानियामा सफलताको तपाईंको मार्गचित्र। पछिल्ला ICT विद्यार्थीहरूले पहिलो दिनदेखि आफ्नो सपनाको कामसम्म कसरी यात्रा गरे, हेर्नुहोस्।"
-comingSoon: "छिट्टै आउँदैछ"
-comingSoonText: "यो पृष्ठ अझै बन्दैछ। त्यसबीच ICT विद्यार्थीका लागि के के भइरहेको छ हेर्नुहोस्।"
-comingSoonHappening: "के भइरहेको छ हेर्नुहोस्"
-comingSoonEvents: "विगतका कार्यक्रम हेर्नुहोस्"
 happeningTitle: "ICT कार्यक्रमहरू"
 happeningLead: "हरेक कार्यक्रम एउटा ढोका हो। तपाईंले भेट्ने हरेक व्यक्ति तपाईंको भावी सहकर्मी हुन सक्छ।"
 happeningSubtitle: "आगामी कार्यक्रमहरू हेर्नुहोस्, तस्मानियामा करियर बनाएका उद्योगका पेसाकर्मीहरूलाई भेट्नुहोस्, र तपाईंको भावी सहकर्मी बन्न सक्ने मानिसहरूसँग जोडिनुहोस्।"
@@ -148,17 +144,12 @@ eventsBottomText1: "यी केवल कार्यक्रम अभिल
 eventsBottomText2: "नयाँ विद्यार्थीहरूले यो पृष्ठ हेरेर सोच्न सक्छन्: मजस्ता मानिसहरूले यो गरिसकेका छन्। म पनि गर्न सक्छु।"
 
 # Event tags
-tagFree: "निःशुल्क"
-tagGPARequired: "GPA आवश्यक"
-tagCostTBC: "शुल्क निश्चित हुन बाँकी"
-tagEligibilityTBC: "योग्यता निश्चित हुन बाँकी"
 studentVoice: "विद्यार्थीको आवाज"
 
 # Event details
 backToEvents: "← सबै कार्यक्रमहरूमा फर्किनुहोस्"
 backToTop: "माथि फर्कनुहोस्"
 eventDetailsTBC: "कार्यक्रमको विवरण निश्चित हुन बाँकी"
-outcomeLabel: "नतिजा:"
 sourceLabel: "स्रोत:"
 referencesLabel: "सन्दर्भ सामग्री"
 aboutThisEvent: "यो कार्यक्रमको बारेमा"
@@ -401,6 +392,7 @@ homeCareerCard5Text: "मजबुत अङ्ग्रेजी, स्था�
 # Stories page (issue #36)
 storiesTitle: "यो बाटो हिँडिसकेकाहरूका कथाहरू।"
 storiesSubtitle: "अन्तर्राष्ट्रिय ICT विद्यार्थीहरूले कसरी पहिलो जागिर पाए, सम्पर्क सञ्जाल बनाए र तस्मानियामा जीवन सुरु गरे, हेर्नुहोस्।"
+storiesShareLabel: "यहाँका हरेक कथा पहिलो दिनबाट सुरु भएका हुन्: यिनलाई साझा गर्नुहोस् र अर्को ICT विद्यार्थीलाई आफ्नो बाटो कहाँसम्म पुग्न सक्छ भनेर देखाउन मद्दत गर्नुहोस्!"
 storiesMotto: "म जस्ता मानिसहरूले यो गरिसकेका छन्। म पनि गर्न सक्छु।"
 storiesShowing: "{year} का {n} कथाहरू देखाइँदै"
 storiesReadFull: "पूरा कथा पढ्नुहोस् →"
@@ -588,3 +580,19 @@ journeyStep3GccPhoto5Alt: "एउटा घरपरिवारका लाग
 journeyStep3GccPhoto6Alt: "दैनिक किराना सामानको बाकस: चाउचाउ, दूध, ओट्स र टिनको खाना"
 journeyStep3GccPhoto7Alt: "Glenorchy Community Care को चिन्ह: बिहीबार ९:३० देखि ११:०० सम्म खुला, प्रवेशद्वार यता"
 journeyStep3GccPhoto8Alt: "Glenorchy Community Care खाद्य राहत केन्द्रको चिन्हको नजिकको तस्बिर"
+
+# Fun & Fitness page
+funFitnessFunTitle: "केही रमाइलो"
+funFitnessFunLead: "कक्षापछि आफ्नै केही बनाउनुहोस्: तस्मानियामै बनेको Yarn Spinner मा आफ्नो गेमको कथा लेखेर खेल्नुहोस्, जुनसुकै क्याम्पसबाट ब्राउजरमा निःशुल्क, र अनलाइन वा भेटघाटमा स्थानीय गेम बनाउनेहरूलाई भेट्नुहोस्।"
+funFitnessFitTitle: "केही फिट"
+funFitnessFitLead: "सक्रिय रहनु पढाइको तनाव कम गर्ने, साथी बनाउने र घरजस्तो महसुस गर्ने उत्कृष्ट तरिकामध्ये एक हो। UniGym का जिम Hobart, Launceston र Burnie क्याम्पसमा छन्, तीनै क्याम्पस नजिक हरेक शनिबार निःशुल्क parkrun हुन्छ, र Hobart का स्क्वास क्लबहरूले नयाँ खेलाडीलाई स्वागत गर्छन्।"
+funFitnessShareLabel: "साथीसँग रमाइलो झन् धेरै हुन्छ: यो पृष्ठ सहपाठीलाई पठाउनुहोस् र जिम, parkrun को सुरुवात रेखा वा अर्को game jam मा भेट्नुहोस्!"
+funFitnessShowcaseTitle: "Yarn Spinner बाट बनेका गेमहरू"
+funFitnessFactsLabel: "मुख्य विवरण"
+funFitnessFactHours: "खुल्ने समय"
+funFitnessFactAddress: "ठेगाना"
+funFitnessFactPrice: "मूल्य"
+funFitnessFactContact: "सम्पर्क"
+funFitnessFactWorks: "काम गर्ने इन्जिन"
+funFitnessFactBased: "बनेको ठाउँ"
+funFitnessFactCommunity: "समुदाय"

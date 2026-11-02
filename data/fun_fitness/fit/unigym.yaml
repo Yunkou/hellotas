@@ -1,0 +1,98 @@
+weight: 1
+title: "UTAS UniGym"
+source: "https://www.utas.edu.au/community-and-partners/community-programs/unigym/hobart"
+photos:
+  - src: "/images/fun-fitness/unigym/unigym-1.jpg"
+    caption:
+      en: "Free weights at UniGym"
+      zh: "UniGym 的自由重量区"
+      ne: "UniGym मा फ्री-वेट"
+  - src: "/images/fun-fitness/unigym/unigym-2.jpg"
+    caption:
+      en: "Training together at UniGym"
+      zh: "在 UniGym 一起训练"
+      ne: "UniGym मा सँगै अभ्यास"
+  - src: "/images/fun-fitness/unigym/unigym-3.jpg"
+    caption:
+      en: "The dojo, matted for martial arts and fitness classes"
+      zh: "道场，铺有比赛标准地垫，用于武术和健身课"
+      ne: "मार्सल आर्ट र फिटनेस कक्षाका लागि म्याट बिछ्याइएको डोजो"
+  - src: "/images/fun-fitness/unigym/unigym-4.jpg"
+    caption:
+      en: "One of UniGym's two squash courts"
+      zh: "UniGym 的两块壁球场之一"
+      ne: "UniGym का दुईमध्ये एउटा स्क्वास कोर्ट"
+intro:
+  - en: "The University's own gym is on the Sandy Bay campus, a short walk from class. It's open to students, staff and the public, and students pay the lowest weekly rate. Members can come in any day from 5 am to midnight."
+    zh: "大学自己的健身房就在 Sandy Bay 校区，下课走几步就到。学生、教职员和公众都可以加入，学生的每周费用最低。会员每天 5 am 到午夜都能进场。"
+    ne: "विश्वविद्यालयको आफ्नै जिम Sandy Bay क्याम्पसमै छ, कक्षाबाट केही पाइलामा। विद्यार्थी, कर्मचारी र आम जनता सबै सदस्य बन्न सक्छन्, र विद्यार्थीको साप्ताहिक शुल्क सबैभन्दा कम छ। सदस्यहरू हरेक दिन बिहान 5 बजेदेखि मध्यरातसम्म आउन सक्छन्।"
+points:
+  - en: "<strong>Gym floor:</strong> cardio machines and free weights, plus the High Performance Centre with squat racks, lifting platforms and a full-length sled track."
+    zh: "<strong>健身区：</strong>有氧器械和自由重量区，另有 High Performance Centre，配备深蹲架、举重台和全长雪橇推道。"
+    ne: "<strong>जिम फ्लोर:</strong> कार्डियो मेसिन र फ्री-वेट, साथै squat rack, lifting platform र पूरा लम्बाइको sled track भएको High Performance Centre।"
+  - en: "<strong>Classes:</strong> group fitness and spin classes (the spin room has 28 bikes). Book online and download the Hobart timetable from the UniGym page."
+    zh: "<strong>团体课：</strong>团体健身课和动感单车课（单车房有 28 辆单车）。在线预约，并可在 UniGym 页面下载 Hobart 课程表。"
+    ne: "<strong>कक्षाहरू:</strong> समूह फिटनेस र स्पिन कक्षा (स्पिन कोठामा 28 वटा साइकल)। अनलाइन बुक गर्नुहोस् र UniGym पेजबाट Hobart को समयतालिका डाउनलोड गर्नुहोस्।"
+  - en: "<strong>Courts and fields:</strong> a sports hall for basketball, volleyball, netball, futsal, badminton and pickleball, two squash courts ($20 per court per hour, racquets for hire), tennis courts, ovals and a dojo."
+    zh: "<strong>球场和场地：</strong>综合体育馆可打篮球、排球、无板篮球、五人制足球、羽毛球和匹克球；两块壁球场（每场每小时 $20，可租球拍）；还有网球场、椭圆运动场和道场。"
+    ne: "<strong>कोर्ट र मैदान:</strong> बास्केटबल, भलिबल, नेटबल, फुटसल, ब्याडमिन्टन र पिकलबलका लागि स्पोर्ट्स हल, दुई स्क्वास कोर्ट (प्रति कोर्ट प्रति घण्टा $20, र्‍याकेट भाडामा), टेनिस कोर्ट, ओभल र डोजो।"
+  - en: "<strong>Joining:</strong> there's no joining fee, but you'll need a $20 access fob if you don't already have one. Watch the short induction video before your first workout."
+    zh: "<strong>入会：</strong>没有入会费，但如果还没有门禁钥匙扣，需要花 $20 购买。第一次训练前请先看简短的入门视频。"
+    ne: "<strong>सदस्यता:</strong> सदस्यता शुल्क छैन, तर पहिले नै नभए $20 को access fob किन्नुपर्छ। पहिलो पटक व्यायाम गर्नुअघि छोटो induction भिडियो हेर्नुहोस्।"
+  - en: "<strong>Other campuses:</strong> there are UniGyms in Launceston and Burnie too, and Hobart and Launceston members can use both."
+    zh: "<strong>其他校区：</strong>Launceston 和 Burnie 也有 UniGym，Hobart 和 Launceston 的会员可以互通使用。"
+    ne: "<strong>अन्य क्याम्पस:</strong> Launceston र Burnie मा पनि UniGym छन्, र Hobart तथा Launceston का सदस्यले दुवै प्रयोग गर्न सक्छन्।"
+facts:
+  - type: hours
+    lines:
+      - en: "Members: every day, 5 am – midnight"
+        zh: "会员：每天 5 am – 午夜"
+        ne: "सदस्य: हरेक दिन, बिहान 5 – मध्यरात"
+      - en: "Staffed: Mon–Fri 8 am – 9 pm, Sat 7:45 – 10:45 am"
+        zh: "有工作人员：周一至周五 8 am – 9 pm，周六 7:45 – 10:45 am"
+        ne: "कर्मचारी उपस्थित: सोम–शुक्र बिहान 8 – राति 9, शनि 7:45 – 10:45 am"
+  - type: address
+    lines:
+      - "Grace Street, Sandy Bay TAS 7005"
+      - en: "UTAS Sandy Bay campus"
+        zh: "UTAS Sandy Bay 校区"
+        ne: "UTAS Sandy Bay क्याम्पस"
+    href: "https://www.google.com/maps/search/?api=1&query=UniGym+Grace+Street+Sandy+Bay+TAS+7005"
+  - type: price
+    lines:
+      - en: "University student: $9.50 a week"
+        zh: "大学学生：每周 $9.50"
+        ne: "विश्वविद्यालयका विद्यार्थी: हप्ताको $9.50"
+      - en: "University staff: $16.35 a week"
+        zh: "大学教职员：每周 $16.35"
+        ne: "विश्वविद्यालयका कर्मचारी: हप्ताको $16.35"
+      - en: "Alumni or concession: $18.65 a week"
+        zh: "校友或优惠人士：每周 $18.65"
+        ne: "पूर्वविद्यार्थी वा छुट: हप्ताको $18.65"
+      - en: "General public: $20.70 a week"
+        zh: "公众：每周 $20.70"
+        ne: "आम जनता: हप्ताको $20.70"
+      - en: "Billed fortnightly; 1-month and 12-month terms also available"
+        zh: "每两周扣款；也有 1 个月和 12 个月的固定期限会员"
+        ne: "हरेक दुई हप्तामा भुक्तानी; 1 महिना र 12 महिनाका योजना पनि छन्"
+  - type: contact
+    lines:
+      - "Hobart.Sport@utas.edu.au"
+      - "+61 3 6226 2084"
+    href: "mailto:Hobart.Sport@utas.edu.au"
+links:
+  - label:
+      en: "Memberships"
+      zh: "会员价格"
+      ne: "सदस्यता"
+    href: "https://www.utas.edu.au/community-and-partners/community-programs/unigym/memberships"
+  - label:
+      en: "Hobart UniGym"
+      zh: "Hobart UniGym 页面"
+      ne: "Hobart UniGym"
+    href: "https://www.utas.edu.au/community-and-partners/community-programs/unigym/hobart"
+  - label:
+      en: "UTAS sports clubs"
+      zh: "UTAS 体育社团"
+      ne: "UTAS खेलकुद क्लब"
+    href: "https://www.utas.edu.au/uni-life/sport/sports-clubs"

@@ -9,6 +9,8 @@
   </div>
 </section>
 
+{{ partial "passon-bar.html" (dict "page" . "message" (i18n "storiesShareLabel")) }}
+
 <section class="container stories-section">
   <div class="year-tabs stories-filter" data-showing="{{ i18n "storiesShowing" }}">
     {{ range $i, $year := $years }}

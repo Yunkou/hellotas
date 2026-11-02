@@ -46,9 +46,9 @@
     {{ range $.Pages.ByWeight }}
     {{ if eq .Params.year $year }}
     {{ $event := . }}
-    {{- /* Everything a visitor might search for: name, type, tags, place, date, cost, write-up and LinkedIn posts */ -}}
+    {{- /* Everything a visitor might search for: name, type and topics (kept as search words), place, date, cost, write-up and LinkedIn posts */ -}}
     {{ $facts := partial "event-facts.html" . }}
-    {{ $search := slice .Title $facts.type $facts.location $facts.when .Params.cost $facts.eligibility .Params.summary .Params.outcome .Params.student_voice .Params.student_role }}
+    {{ $search := slice .Title $facts.type $facts.location $facts.when .Params.cost $facts.eligibility .Params.summary .Params.student_voice .Params.student_role }}
     {{ $search = $search | append $facts.topics }}
     {{ with .Params.about }}{{ $search = $search | append . }}{{ end }}
     {{ range .Params.linkedin_posts }}{{ $search = $search | append (slice .name .role .content .summary) }}{{ end }}
@@ -68,14 +68,6 @@
 </div>  
 
 <div class="event-body">
-        <div class="event-tags">
-          {{ with $facts.type }}<span class="tag tag-type">{{ . }}</span>{{ end }}
-          {{ range $facts.topics }}<span class="tag tag-normal">{{ . }}</span>{{ end }}
-          {{ if eq .Params.badge "free" }}<span class="tag tag-free">{{ i18n "tagFree" }}</span>{{ end }}
-          {{ if eq .Params.badge "gpa" }}<span class="tag tag-gpa">{{ i18n "tagGPARequired" }}</span>{{ end }}
-          {{ if eq .Params.badge "tbc" }}<span class="tag tag-normal">{{ i18n "tagCostTBC" }}</span>{{ end }}
-          {{ if $facts.eligibilityTbc }}<span class="tag tag-normal">{{ i18n "tagEligibilityTBC" }}</span>{{ end }}
-        </div>
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
         {{ if $facts.tbc }}
         <p class="event-meta">{{ i18n "eventDetailsTBC" }}</p>
@@ -83,7 +75,6 @@
         <p class="event-meta">{{ $facts.location }}{{ if and $facts.location $facts.when }} · {{ end }}{{ $facts.when }}</p>
         {{ end }}
         {{ with .Params.summary }}<p class="event-summary">{{ . }}</p>{{ end }}
-        {{ with .Params.outcome }}<p class="event-outcome">{{ . }}</p>{{ end }}
         {{ with .Params.student_voice }}
         <div class="student-voice">
           <div class="voice-head">

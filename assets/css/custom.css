@@ -691,12 +691,6 @@ img { max-width: 100%; display: block; }
   flex: 1;
 }
 
-.event-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-}
 .event-thumb img {
   width: 100%;
   height: 100%;
@@ -724,7 +718,6 @@ img { max-width: 100%; display: block; }
 .tag-type { background: var(--brand); color: #FFFFFF; }
 .tag-normal { background: var(--brand-light); color: var(--brand); }
 .tag-free { background: var(--green-light); color: var(--green); }
-.tag-gpa { background: var(--orange-light); color: var(--orange); }
 
 .event-body h3 {
   font-size: 22px;
@@ -746,13 +739,6 @@ img { max-width: 100%; display: block; }
 .event-summary {
   font-size: 15px;
   color: var(--text-dark);
-  margin-bottom: 8px;
-}
-
-.event-outcome {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--green);
   margin-bottom: 20px;
 }
 
@@ -910,15 +896,6 @@ img { max-width: 100%; display: block; }
   color: var(--text-dark);
   margin-bottom: 32px;
   line-height: 1.7;
-}
-
-.event-detail-outcome {
-  background: var(--green-light);
-  padding: 20px 24px;
-  border-radius: 14px;
-  font-size: 15px;
-  color: #1B5E20;
-  margin-bottom: 32px;
 }
 
 .event-source {
@@ -1079,8 +1056,8 @@ img { max-width: 100%; display: block; }
   margin-bottom: 6px;
 }
 
-.event-hero .event-tags {
-  margin: 20px 0 32px;
+.event-hero .event-hero-image {
+  margin-top: 28px;
 }
 
 .event-hero-image {
@@ -4111,35 +4088,110 @@ html:has(.lightbox[open]) { overflow: hidden; }
   .life-gallery { grid-template-columns: 1fr; }
 }
 
-/* ===== Placeholder pages (layouts/_default/placeholder.html) ===== */
-.soon-card {
-  max-width: 720px;
-  margin-bottom: 80px;
-  padding: 36px 40px;
-  border: 1px dashed var(--border);
-  border-radius: 20px;
-  background: #FFFFFF;
+/* ===== Fun & Fitness (layouts/fun-fitness/list.html, layouts/partials/fun-fitness-card.html) ===== */
+.ff-page { padding-bottom: 80px; }
+.ff-section + .ff-section { margin-top: 64px; }
+.ff-section-title { font-size: 28px; font-weight: 800; letter-spacing: -0.4px; color: var(--text-dark); margin-bottom: 6px; }
+.ff-section-lead { font-size: 16px; color: var(--text-mid); margin-bottom: 24px; }
+.ff-list { display: flex; flex-direction: column; gap: 40px; }
+
+.ff-card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: var(--tint-shadow);
+  scroll-margin-top: 96px;
 }
 
-.soon-badge {
-  display: inline-block;
-  margin-bottom: 12px;
-  padding: 5px 12px;
-  border-radius: 12px;
-  background: var(--brand-light);
-  color: var(--brand);
-  font-size: 11px;
+.ff-media { border-radius: 18px; overflow: hidden; background: var(--brand-light); }
+.ff-media .carousel { aspect-ratio: 12 / 5; }
+
+.ff-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 32px;
+  margin-top: 28px;
+  align-items: start;
+}
+
+.ff-title { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; color: var(--text-dark); margin-bottom: 14px; }
+.ff-text { font-size: 16px; line-height: 1.7; color: #334155; margin-bottom: 12px; }
+
+.ff-points { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.ff-points li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.65; color: #334155; }
+.ff-points li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+.ff-points strong { color: var(--text-dark); }
+.ff-points a, .ff-fact-lines a { color: var(--brand); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+.ff-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+/* Key details: small filled pink tiles stacked on the right */
+.ff-facts { display: flex; flex-direction: column; gap: 14px; }
+.ff-fact {
+  background: var(--tint-surface);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: var(--tint-shadow-sm);
+}
+.ff-fact-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
+  color: var(--brand);
+}
+.ff-fact-label svg { width: 18px; height: 18px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ff-fact-lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.ff-fact-lines li { font-size: 14px; line-height: 1.5; color: var(--text-dark); overflow-wrap: anywhere; }
+.ff-fact-lines li:first-child { font-weight: 700; }
+
+/* Yarn Spinner: games made with it */
+.ff-showcase { margin-top: 32px; }
+.ff-showcase-title { font-size: 18px; font-weight: 800; color: var(--text-dark); margin-bottom: 14px; }
+.ff-showcase-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.ff-game {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: var(--tint-shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.ff-game:hover { transform: translateY(-3px); box-shadow: var(--tint-shadow-hover); }
+.ff-game img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.ff-game-body { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px 14px; }
+.ff-game-title { font-weight: 800; color: var(--text-dark); }
+.ff-game-by { font-size: 12px; font-weight: 700; color: var(--brand); }
+.ff-game-text { font-size: 13px; line-height: 1.5; color: var(--text-mid); margin-top: 4px; }
+
+@media (max-width: 900px) {
+  .ff-body { grid-template-columns: 1fr; gap: 24px; }
+  .ff-showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-.soon-card p { font-size: 16px; color: var(--text-mid); margin-bottom: 20px; }
-.soon-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.soon-actions .hp-btn-outline { padding: 10px 22px; }
-
-@media (max-width: 768px) {
-  .soon-card { padding: 24px; margin-bottom: 56px; }
+@media (max-width: 600px) {
+  .ff-card { padding: 16px; border-radius: 20px; }
+  .ff-media { border-radius: 14px; }
+  .ff-media .carousel { aspect-ratio: 4 / 3; }
+  .ff-media .carousel-caption { display: none; } /* still shown in the photo viewer */
+  .ff-title { font-size: 24px; }
+  .ff-section-title { font-size: 24px; }
+  .ff-showcase-grid { grid-template-columns: 1fr; }
 }
 
 /* ===== Motion =====

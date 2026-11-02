@@ -13,14 +13,10 @@ cost:
   ne: "AUD $55 (GST सहित)"
 eligibility: "tbc"
 summary:
-  en: "TasICT's flagship technology and innovation day at Wrest Point."
-  zh: "TasICT在Wrest Point举办的旗舰技术与创新日。"
-  ne: "Wrest Point मा TasICT को फ्ल्यागसिप प्रविधि तथा नवप्रवर्तन दिवस।"
+  en: "TasICT's flagship technology and innovation day at Wrest Point, with industry speakers, exhibitions and networking."
+  zh: "TasICT 在 Wrest Point 举办的旗舰技术与创新日，有行业讲者、展览和社交环节。"
+  ne: "Wrest Point मा TasICT को फ्ल्यागसिप प्रविधि तथा नवप्रवर्तन दिवस, उद्योगका वक्ता, प्रदर्शनी र नेटवर्किङसहित।"
 image: "/images/events/2026/tasict-festival/2026Tasictfestval.PNG"
-outcome:
-  en: "Industry speakers · exhibitions · networking"
-  zh: "行业演讲者 · 展览 · 社交"
-  ne: "उद्योगका वक्ताहरू · प्रदर्शनीहरू · नेटवर्किङ"
 about:
   en:
     - "Tas Tech Fest 2026, organised by TasICT, was held on Wednesday 18 March 2026 at Wrest Point Conference Centre, 410 Sandy Bay Road, Hobart. The main conference program ran from 9:00 AM to 6:00 PM, bringing together technology professionals, industry leaders, government representatives, innovators, and organisations from across Tasmania's ICT sector."

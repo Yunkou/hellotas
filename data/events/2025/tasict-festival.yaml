@@ -8,20 +8,15 @@ cost:
   en: "Free"
   zh: "免费"
   ne: "निःशुल्क"
-badge: "free"
 eligibility:
   en: "Open to all ICT students"
   zh: "面向所有 ICT 学生"
   ne: "सबै ICT विद्यार्थीका लागि खुला"
 summary:
-  en: "A full-day TasICT technology conference featuring keynote speakers, industry discussions, a Tech Expo and networking opportunities."
-  zh: "TasICT 主办的全天科技大会，包括主题演讲、行业讨论、Tech Expo 科技展和社交机会。"
-  ne: "मुख्य वक्ता, उद्योग छलफल, Tech Expo र नेटवर्किङका अवसर समेटिएको TasICT को पूरा दिनको प्रविधि सम्मेलन।"
+  en: "A full-day TasICT technology conference where students heard keynotes and discussions from industry leaders, explored the Tech Expo and met people from local tech."
+  zh: "TasICT 主办的全天科技大会，学生聆听了行业领袖的主题演讲和讨论，参观了 Tech Expo 科技展，并结识本地科技从业者。"
+  ne: "TasICT को पूरा दिनको प्रविधि सम्मेलन, जहाँ विद्यार्थीहरूले उद्योगका अगुवाका मुख्य भाषण र छलफल सुने, Tech Expo घुमे र स्थानीय प्रविधि क्षेत्रका मानिसहरूलाई भेटे।"
 image: "/images/events/2025/tasict-festival/2025tasict.png"
-outcome:
-  en: "Industry leaders · talks · networking"
-  zh: "行业领袖 · 演讲 · 社交"
-  ne: "उद्योगका अगुवा · प्रस्तुतिहरू · नेटवर्किङ"
 about:
   en:
     - "Tas Tech Fest 2025, organised by TasICT, was held on Wednesday 26 March 2025 at Wrest Point Function Centre in Hobart, from 8:00 AM to 6:30 PM. The full-day conference brought together technology professionals, industry leaders, government representatives, innovators, and members of Tasmania's ICT community to explore emerging technologies and industry developments."

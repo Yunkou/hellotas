@@ -5,17 +5,12 @@ title:
 type: "industryVisit"
 topics: [networking, industry]
 location: "tbc"
-badge: "tbc"
 eligibility: "tbc"
 summary:
   en: "A 2026 visit connecting students with industry."
   zh: "2026年连接学生与行业的参观活动。"
   ne: "विद्यार्थीहरूलाई उद्योगसँग जोड्ने 2026 को भ्रमण।"
 image: "/images/events/2026/industry-visit/2026-industry-visit.JPG"
-outcome:
-  en: "To be confirmed"
-  zh: "待定"
-  ne: "निश्चित हुन बाँकी"
 about:
   en:
     - "Industry Visit 2026 featured a visit to Huon Aquaculture, a Tasmanian salmon farming company, providing University of Tasmania (UTAS) students with an opportunity to connect with industry and gain insights into a major local business."

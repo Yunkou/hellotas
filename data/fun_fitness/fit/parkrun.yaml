@@ -1,0 +1,79 @@
+weight: 2
+title: "parkrun"
+source: "https://www.parkrun.com.au/"
+photos:
+  - src: "/images/fun-fitness/parkrun/parkrun-1.jpg"
+    caption:
+      en: "parkrun: free, for everyone, forever"
+      zh: "parkrun：免费、人人可参加、永远如此"
+      ne: "parkrun: निःशुल्क, सबैका लागि, सधैँभरि"
+  - src: "/images/fun-fitness/parkrun/parkrun-2.jpg"
+    caption:
+      en: "Walk, jog or run, at your own pace"
+      zh: "走、慢跑或跑步，按自己的节奏来"
+      ne: "आफ्नै गतिमा हिँड्नुहोस्, जगिङ वा दौडनुहोस्"
+intro:
+  - en: "parkrun is a free community event where you can walk, jog, run, volunteer or spectate. It's 5 km and happens every Saturday morning. There's no time limit and no one finishes last, so everyone is welcome, whatever your pace."
+    zh: "parkrun 是一项免费的社区活动，你可以走、慢跑、跑步、做志愿者或只是观看。全程 5 公里，每周六早上举行。没有时间限制，也没有人会是最后一名，无论快慢都欢迎。"
+    ne: "parkrun निःशुल्क सामुदायिक कार्यक्रम हो, जहाँ तपाईं हिँड्न, जगिङ गर्न, दौडन, स्वयंसेवा गर्न वा हेर्न सक्नुहुन्छ। यो 5 किलोमिटरको हुन्छ र हरेक शनिबार बिहान हुन्छ। समयसीमा छैन र कोही पनि अन्तिम हुँदैन, त्यसैले जुनसुकै गतिमा भए पनि सबैलाई स्वागत छ।"
+  - en: "junior parkrun is a 2 km run for 4–14 year olds and their families on Sunday mornings; there isn't one near Hobart at the moment."
+    zh: "junior parkrun 是为 4–14 岁儿童及其家人举办的 2 公里跑，在周日早上进行；目前 Hobart 附近还没有。"
+    ne: "junior parkrun 4–14 वर्षका बालबालिका र उनीहरूको परिवारका लागि आइतबार बिहान हुने 2 किलोमिटरको दौड हो; अहिले Hobart नजिक छैन।"
+points:
+  - en: "<strong>Before your first one:</strong> <a href=\"https://www.parkrun.com.au/register/\" target=\"_blank\" rel=\"noopener\">register once</a> online (free) and bring a scannable copy of your barcode, printed or on your phone. No barcode, no time."
+    zh: "<strong>第一次参加前：</strong>在网上<a href=\"https://www.parkrun.com.au/register/\" target=\"_blank\" rel=\"noopener\">注册一次</a>（免费），并带上可扫描的条形码，打印或存在手机里都行。没有条形码就没有成绩。"
+    ne: "<strong>पहिलो पटकअघि:</strong> अनलाइन एक पटक <a href=\"https://www.parkrun.com.au/register/\" target=\"_blank\" rel=\"noopener\">दर्ता गर्नुहोस्</a> (निःशुल्क) र स्क्यान गर्न मिल्ने बारकोड छापेर वा फोनमा ल्याउनुहोस्। बारकोड छैन भने समय रेकर्ड हुँदैन।"
+  - en: "<strong>Easy English practice:</strong> every event is run by volunteers, and most groups have a coffee together afterwards. At Queens Domain it's The Serve Cafe at the Domain Tennis Centre."
+    zh: "<strong>轻松练英语：</strong>每场活动都由志愿者组织，大多数团体跑完会一起喝咖啡。Queens Domain 的大家会去 Domain Tennis Centre 的 The Serve Cafe。"
+    ne: "<strong>सजिलो अंग्रेजी अभ्यास:</strong> हरेक कार्यक्रम स्वयंसेवकहरूले चलाउँछन्, र धेरैजसो समूह पछि सँगै कफी पिउँछन्। Queens Domain मा Domain Tennis Centre को The Serve Cafe जान्छन्।"
+  - en: "<strong>Around Hobart:</strong> Queens Domain (2 Upper Domain Road), Bellerive (Bellerive Beach Park), Montrose Foreshore (825 Brooker Highway), Risdon Brook (Risdon Brook Park), Kingston Park (Goshawk Way, Kingston) and Pembroke."
+    zh: "<strong>Hobart 周边：</strong>Queens Domain（2 Upper Domain Road）、Bellerive（Bellerive Beach Park）、Montrose Foreshore（825 Brooker Highway）、Risdon Brook（Risdon Brook Park）、Kingston Park（Goshawk Way, Kingston）以及 Pembroke。"
+    ne: "<strong>Hobart वरपर:</strong> Queens Domain (2 Upper Domain Road), Bellerive (Bellerive Beach Park), Montrose Foreshore (825 Brooker Highway), Risdon Brook (Risdon Brook Park), Kingston Park (Goshawk Way, Kingston) र Pembroke।"
+  - en: "<strong>Other campuses:</strong> Inveresk Precinct parkrun is right by the Launceston campus, and there's a Burnie parkrun near the Cradle Coast campus."
+    zh: "<strong>其他校区：</strong>Inveresk Precinct parkrun 就在 Launceston 校区旁边，Cradle Coast 校区附近也有 Burnie parkrun。"
+    ne: "<strong>अन्य क्याम्पस:</strong> Inveresk Precinct parkrun Launceston क्याम्पसको छेउमै छ, र Cradle Coast क्याम्पस नजिक Burnie parkrun छ।"
+facts:
+  - type: hours
+    lines:
+      - en: "Every Saturday, 9:00 am"
+        zh: "每周六 9:00 am"
+        ne: "हरेक शनिबार, बिहान 9:00"
+      - en: "5 km; walk at any pace"
+        zh: "5 公里，可以按自己的速度走"
+        ne: "5 किलोमिटर; जुनसुकै गतिमा हिँड्न सकिन्छ"
+  - type: address
+    lines:
+      - "Queens Domain parkrun"
+      - "2 Upper Domain Road, Queens Domain"
+      - en: "Five more around Hobart (see the list)"
+        zh: "Hobart 周边还有五个（见列表）"
+        ne: "Hobart वरपर थप पाँच (सूची हेर्नुहोस्)"
+    href: "https://www.google.com/maps/search/?api=1&query=Queens+Domain+parkrun+2+Upper+Domain+Road"
+  - type: price
+    lines:
+      - en: "Free, forever"
+        zh: "永久免费"
+        ne: "सधैँ निःशुल्क"
+      - en: "Register once online before your first run"
+        zh: "第一次参加前在网上注册一次"
+        ne: "पहिलो दौडअघि एक पटक अनलाइन दर्ता"
+  - type: contact
+    lines:
+      - "queensdomain@parkrun.com"
+    href: "mailto:queensdomain@parkrun.com"
+links:
+  - label:
+      en: "Register for free"
+      zh: "免费注册"
+      ne: "निःशुल्क दर्ता"
+    href: "https://www.parkrun.com.au/register/"
+  - label:
+      en: "Queens Domain parkrun"
+      zh: "Queens Domain parkrun"
+      ne: "Queens Domain parkrun"
+    href: "https://www.parkrun.com.au/queensdomain/"
+  - label:
+      en: "Find a parkrun"
+      zh: "查找 parkrun"
+      ne: "parkrun खोज्नुहोस्"
+    href: "https://www.parkrun.com.au/"

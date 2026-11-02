@@ -15,5 +15,4 @@
     "location" $location
     "tbc" (and (eq $p.location "tbc") (not $when))
     "eligibility" (cond $eligibilityTbc "" ($p.eligibility | default ""))
-    "eligibilityTbc" $eligibilityTbc
 ) -}}

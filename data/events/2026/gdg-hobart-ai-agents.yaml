@@ -11,23 +11,18 @@ cost:
   en: "Free"
   zh: "免费"
   ne: "निःशुल्क"
-badge: "free"
 eligibility:
   en: "Open to everyone"
   zh: "对所有人开放"
   ne: "सबैका लागि खुला"
 summary:
-  en: "GDG Hobart's first event at UTAS's Forest Building, on AI agents, responsible data use and the future of work."
-  zh: "GDG Hobart在UTAS森林大楼举办的首次活动，主题为AI代理、负责任的数据使用和未来工作。"
-  ne: "UTAS को The Forest Building मा GDG Hobart को पहिलो कार्यक्रम — AI एजेन्ट, जिम्मेवार डाटा प्रयोग र कामको भविष्यमा केन्द्रित।"
+  en: "GDG Hobart's first event at UTAS's Forest Building, on AI agents, responsible data use and the future of work, with two industry talks and a hands-on Vertex AI session."
+  zh: "GDG Hobart 在 UTAS Forest Building 举办的首场活动，主题是 AI 代理、负责任的数据使用和未来工作，包括两场行业演讲和一个 Vertex AI 实操环节。"
+  ne: "UTAS को The Forest Building मा GDG Hobart को पहिलो कार्यक्रम, AI एजेन्ट, जिम्मेवार डाटा प्रयोग र कामको भविष्यबारे, जसमा दुई उद्योग प्रस्तुति र Vertex AI को व्यावहारिक सत्र थिए।"
 image: "/images/events/2026/gdg-hobart-ai-agents/gdg-hobart-ai-agents-2026-1.jpg"
 gallery:
   - "/images/events/2026/gdg-hobart-ai-agents/gdg-hobart-ai-agents-2026-2.jpg"
   - "/images/events/2026/gdg-hobart-ai-agents/gdg-hobart-ai-agents-2026-3.jpg"
-outcome:
-  en: "Two industry talks · hands-on Vertex AI session"
-  zh: "两场行业演讲 · Vertex AI实践环节"
-  ne: "दुई उद्योग प्रस्तुतिहरू · Vertex AI व्यावहारिक सत्र"
 about:
   en:
     - "GDG Hobart hosted Build with AI x The Future of Work with AI Agents on 18 June 2026 at Room 2038, Level 2, The Forest Building, University of Tasmania, Hobart. It was GDG Hobart's first event at its new venue."

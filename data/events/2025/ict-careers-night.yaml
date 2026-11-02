@@ -15,20 +15,15 @@ cost:
   en: "Free"
   zh: "免费"
   ne: "निःशुल्क"
-badge: "free"
 eligibility:
   en: "Open to all ICT students"
   zh: "面向所有 ICT 学生"
   ne: "सबै ICT विद्यार्थीका लागि खुला"
 summary:
-  en: "Alumni and industry guests shared career paths."
-  zh: "校友和行业嘉宾分享职业道路。"
-  ne: "पूर्वविद्यार्थीहरू र उद्योगका अतिथिहरूले करियर मार्गहरू साझा गर्नुभयो।"
+  en: "Alumni and industry guests shared their career paths, and students asked real questions and got honest answers."
+  zh: "校友和行业嘉宾分享了各自的职业道路，学生提出真实问题，也得到了坦诚的回答。"
+  ne: "पूर्वविद्यार्थी र उद्योगका अतिथिहरूले आफ्ना करियर मार्ग सुनाउनुभयो, र विद्यार्थीहरूले वास्तविक प्रश्न सोधेर इमानदार उत्तर पाए।"
 image: "/images/events/2025/ict-careers-night/2025ictcaree.jpg"
-outcome:
-  en: "Students asked real questions, got real answers"
-  zh: "学生提出真实问题，获得真实答案"
-  ne: "विद्यार्थीहरूले वास्तविक प्रश्नहरू सोधे, वास्तविक उत्तरहरू पाए"
 about:
   en:
     - "ICT Careers Night 2025 brought together ICT students, university alumni, and industry guests in Hobart for an evening focused on career development and employment opportunities in the technology sector."

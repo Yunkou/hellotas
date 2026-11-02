@@ -9,7 +9,7 @@ volunteering: "志愿服务"
 happening: "近期活动"
 menuOpen: "打开菜单"
 menuClose: "关闭菜单"
-afterClass: "课后活动"
+funFitness: "娱乐与健身"
 forStaff: "教职员工"
 
 # Header
@@ -23,10 +23,6 @@ footerTagline: "由塔斯马尼亚国际ICT学生打造，为国际ICT学生服�
 # Events list page
 eventsTitle: "ICT活动档案与学生心声"
 eventsSubtitle: "在塔斯马尼亚成功的路线图。了解往届ICT学生如何从第一天过渡到理想的工作岗位。"
-comingSoon: "即将上线"
-comingSoonText: "本页面正在建设中。你可以先看看ICT学生近期有哪些活动。"
-comingSoonHappening: "看看近期活动"
-comingSoonEvents: "浏览往期活动"
 happeningTitle: "ICT活动"
 happeningLead: "每一场活动都是一扇门。你遇到的每个人都可能成为你未来的同事。"
 happeningSubtitle: "看看接下来有什么活动，结识在塔斯马尼亚成就职业的业界人士，认识可能成为你未来同事的人。"
@@ -148,17 +144,12 @@ eventsBottomText1: "这些不只是活动记录。它们证明了塔斯马尼亚
 eventsBottomText2: "新生可以看到这个页面并想：像我这样的人做到了。我也可以做到。"
 
 # Event tags
-tagFree: "免费"
-tagGPARequired: "需要GPA"
-tagCostTBC: "费用待定"
-tagEligibilityTBC: "资格待定"
 studentVoice: "学生心声"
 
 # Event details
 backToEvents: "← 返回所有活动"
 backToTop: "回到顶部"
 eventDetailsTBC: "活动详情待定"
-outcomeLabel: "成果："
 sourceLabel: "来源："
 referencesLabel: "参考资料"
 aboutThisEvent: "关于本次活动"
@@ -401,6 +392,7 @@ homeCareerCard5Text: "把扎实的英语、本地文化理解、真实经验和�
 # Stories page (issue #36)
 storiesTitle: "走过这条路的人的故事。"
 storiesSubtitle: "看看国际 ICT 学生如何找到第一份工作、建立人脉，并在塔斯马尼亚安家。"
+storiesShareLabel: "这里的每个故事都从第一天开始：分享出去，让下一位 ICT 学生看到自己的路可以通向哪里！"
 storiesMotto: "像我一样的人做到了，我也可以。"
 storiesShowing: "显示 {year} 年的 {n} 个故事"
 storiesReadFull: "阅读完整故事 →"
@@ -566,3 +558,19 @@ tagTech: "技术"
 tagNetworking: "人脉"
 tagStudentLed: "学生主导"
 tagFoodAccess: "平价食品"
+
+# Fun & Fitness page
+funFitnessFunTitle: "找点乐子"
+funFitnessFunLead: "课后动手做点属于自己的东西：用塔斯马尼亚本土出品的 Yarn Spinner 编写并试玩你的游戏故事，在任何校区都能在浏览器里免费使用，还能在线上或聚会中认识本地游戏开发者。"
+funFitnessFitTitle: "动起来"
+funFitnessFitLead: "保持运动是缓解学习压力、结交朋友、找到归属感的最好方式之一。UniGym 在 Hobart、Launceston 和 Burnie 校区都有健身房，三个校区附近每周六都有免费的 parkrun，Hobart 的壁球俱乐部也欢迎新手。"
+funFitnessShareLabel: "快乐要和朋友一起分享：把这个页面发给同学，约好在健身房、parkrun 起跑线或下一场 Game Jam 见！"
+funFitnessShowcaseTitle: "用 Yarn Spinner 制作的游戏"
+funFitnessFactsLabel: "主要信息"
+funFitnessFactHours: "开放时间"
+funFitnessFactAddress: "地址"
+funFitnessFactPrice: "价格"
+funFitnessFactContact: "联系方式"
+funFitnessFactWorks: "支持引擎"
+funFitnessFactBased: "出品地"
+funFitnessFactCommunity: "社区"

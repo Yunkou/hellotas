@@ -4,7 +4,7 @@
     {{- /* Menu links, defined once: shown inline on wide screens and in the menu panel on narrower ones */ -}}
     {{- /* Site structure from issue #33, plus Happening (issue #7). Each item: label key and page path. */ -}}
     {{- $links := slice (dict "key" "home" "url" .Site.Home.RelPermalink "current" .IsHome) -}}
-    {{- range slice (slice "community" "/journey/step-2") (slice "volunteering" "/journey/step-3") (slice "industryEvents" "/events") (slice "stories" "/stories") (slice "afterClass" "/after_class") (slice "happening" "/happening") -}}
+    {{- range slice (slice "community" "/journey/step-2") (slice "volunteering" "/journey/step-3") (slice "industryEvents" "/events") (slice "stories" "/stories") (slice "funFitness" "/fun-fitness") (slice "happening" "/happening") -}}
       {{- $key := index . 0 -}}{{- $path := index . 1 -}}
       {{- $url := relURL (printf "%s/" (strings.TrimPrefix "/" $path)) -}}
       {{- with site.GetPage $path }}{{ $url = .RelPermalink }}{{ end -}}
