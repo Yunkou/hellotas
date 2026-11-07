@@ -4640,3 +4640,6 @@ html:has(.lightbox[open]) { overflow: hidden; }
     min-width: 0;
   }
 }
+
+.utas-events-preview img { display: block; width: 100%; height: auto; }
+.utas-events-preview p { font-size: 13px; color: var(--text-mid); margin: 12px 0; }
