@@ -12,7 +12,7 @@ menuClose: "मेनु बन्द गर्नुहोस्"
 funFitness: "रमाइलो र फिटनेस"
 
 # Header
-siteName: "तस्मानियामा स्वागत"
+siteName: "ICT Futures in Tasmania"
 languageLabel: "भाषा"
 channelsTitle: "हामीलाई यहाँ भेट्नुहोस्"
 channelSoonTitle: "{{ .name }} चाँडै आउँदैछ"
@@ -341,15 +341,42 @@ journeyStep2NextText: "बोल्न थप आत्मविश्वास 
 journeyStep2NextCta: "अर्को: स्वयंसेवा →"
 
 # Homepage — hero
-homeHeroTitle: "तपाईंको नयाँ अध्याय"
-homeHeroTitleHighlight: "तस्मानियाबाट सुरु हुन्छ।"
-homeHeroSubtitle: "सबै UTAS विद्यार्थीहरूका लागि वास्तविक कार्यक्रम, अनुभव र झलकहरू देखाउने मञ्च—आफ्नो समुदाय भेट्नुहोस् र तस्मानियामा मन पर्ने जीवन बनाउनुहोस्।"
+homeHeroTitle: "ICT Futures in Tasmania."
+homeHeroTitleHighlight: ""
+homeHeroSubtitle: "स्थानीय र अन्तर्राष्ट्रिय सबै UTAS ICT विद्यार्थीहरूका लागि वास्तविक कार्यक्रम, अनुभव र झलकहरू देखाउने मञ्च—तस्मानियामा अध्ययन र जीवनबाट अधिकतम लाभ लिन।"
 homeHeroNote: "तस्मानियाका अन्तर्राष्ट्रिय ICT विद्यार्थीहरूद्वारा निर्मित, तिनैका लागि।"
 homeHeroCtaStart: "आफ्नो यात्रा सुरु गर्नुहोस्"
+homeHeroCtaExplore: "समुदाय अन्वेषण गर्नुहोस्"
 homeHeroImageAlt: "२०२६ TasICT पुरस्कारमा UTAS विद्यार्थी, कर्मचारी र उद्योग साझेदारहरू आफ्ना पुरस्कारसहित"
 
 # Homepage — trust strip
-homeTrustStrip: "<strong>तस्मानियामा नयाँ हुनुहुन्छ? पहिले बसोबास मिलाउनुहोस्।</strong>बस्ने ठाउँ खोज्नुहोस्, बैंक खाता खोल्नुहोस् र आधारभूत आम्दानी सुनिश्चित गर्नुहोस्। <a href=\"%s\">आगमन चेकलिस्ट पढ्नुहोस् →</a>"
+homeTrustStrip: "<strong>तस्मानियामा नयाँ हुनुहुन्छ? पहिले बसोबास मिलाउनुहोस्।</strong> बस्ने ठाउँ खोज्नुहोस्, बैंक खाता खोल्नुहोस् र आधारभूत आम्दानी सुनिश्चित गर्नुहोस्। <a href=\"%s\">आगमन चेकलिस्ट पढ्नुहोस् →</a>"
+
+# Homepage — three community features (Figma 327:2 / issue #71)
+homeCommunitiesLabel: "समुदायहरू"
+homeCampusTitle: "UTAS क्याम्पस"
+homeCampusLead: "क्याम्पसमा आफ्ना मान्छे भेट्नुहोस्। रेस कार बनाउन चाहनुहुन्छ वा साइबरसुरक्षा अभ्यास गर्न—यहाँ तपाईंको ठाउँ छ।"
+homeCampusOrgs: "<a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>TUSA Clubs &amp; Societies</strong></a>, <a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>UTAS Cybersecurity Club</strong></a>, र <a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>UTAS Motorsport</strong></a> जस्ता प्रमुख क्लबहरू अन्वेषण गर्नुहोस्।"
+homeCampusExplore: "सबै UTAS क्लब हेर्नुहोस् ↗"
+homeCampusCta: "UTAS क्लब हेर्नुहोस्"
+homeCampusImageAlt: "बाहिरी क्याम्पस महोत्सवमा क्लब स्टलसहित विद्यार्थीहरू"
+
+homeLocalTitle: "तस्मानिया समुदाय"
+homeLocalLead: "स्थानीय समुदायलाई फिर्ता दिनुहोस्, नयाँ मान्छे भेट्नुहोस्, र विश्वविद्यालयबाहिर साँचो सम्बन्ध बनाउनुहोस्।"
+homeLocalOrgs: "<a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>Source Eco Hub</strong></a>, <a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>Rubric</strong></a>, र <a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>Migrant Resource Centre Tas</strong></a> जस्ता समूहसँग जोडिनुहोस्।"
+homeLocalExplore: "स्थानीय समुदाय अन्वेषण गर्नुहोस् ↗"
+homeLocalCta: "स्थानीय समुदाय हेर्नुहोस्"
+homeLocalImageAlt: "Source Eco Hub मा स्वयंसेवकहरूले बगैंचा हेरचाह गर्दै"
+
+homeIndustryTitle: "ICT उद्योग"
+homeIndustryLead: "उद्योग कार्यक्रमहरूमा सहभागी हुनुहोस्, सम्बन्ध बनाउनुहोस्, र तस्मानियाको बढ्दो ICT दृश्य अन्वेषण गर्नुहोस्। पढाइ गर्दा व्यावसायिक सञ्जाल बनाउनुहोस् र नयाँ करियर अवसर खोज्नुहोस्।"
+homeIndustryExplore: "सबै उद्योग कार्यक्रम हेर्नुहोस् ↗"
+homeIndustryCta: "कार्यक्रम पृष्ठ हेर्नुहोस्"
+homeIndustryImageAlt: "२०२६ TasICT पुरस्कारमा UTAS विद्यार्थी, कर्मचारी र उद्योग साझेदारहरू आफ्ना पुरस्कारसहित"
+
+homeDiscordTitle: "Yarn Spinner Discord"
+homeDiscordText: "कथात्मक खेल विकासकर्मीहरूसँग जोडिनुहोस्, प्रश्न सोध्नुहोस्, र सहकर्मी खोज्नुहोस्।"
+homeDiscordCta: "Discord मा सामेल हुनुहोस् ↗"
 
 # Homepage — journey
 homeJourneyTitle: "एक पटकमा एक चरण"

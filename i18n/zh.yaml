@@ -12,7 +12,7 @@ menuClose: "关闭菜单"
 funFitness: "娱乐与健身"
 
 # Header
-siteName: "塔斯马尼亚欢迎"
+siteName: "塔斯马尼亚 ICT Futures"
 languageLabel: "语言"
 channelsTitle: "关注我们"
 channelSoonTitle: "{{ .name }} 即将上线"
@@ -341,15 +341,42 @@ journeyStep2NextText: "等你开口更有自信了，就该去认识 ICT 行业�
 journeyStep2NextCta: "下一步：志愿服务 →"
 
 # Homepage — hero
-homeHeroTitle: "在塔斯马尼亚的新篇章"
-homeHeroTitleHighlight: "从这里开始。"
-homeHeroSubtitle: "面向所有 UTAS 学生的平台，分享真实活动、经历与精彩瞬间，帮助你找到社群，在塔斯马尼亚创造喜爱的生活。"
+homeHeroTitle: "ICT Futures in Tasmania."
+homeHeroTitleHighlight: ""
+homeHeroSubtitle: "面向所有 UTAS ICT 学生（本地与国际）的平台，分享真实活动、经历与精彩瞬间，帮助你充分利用在塔斯马尼亚的学习与生活。"
 homeHeroNote: "由塔斯马尼亚国际ICT学生打造，为国际ICT学生服务。"
 homeHeroCtaStart: "开始你的旅程"
+homeHeroCtaExplore: "探索社区"
 homeHeroImageAlt: "UTAS学生、教职工与行业伙伴在2026年TasICT颁奖典礼上手持奖项合影"
 
 # Homepage — trust strip
 homeTrustStrip: "<strong>刚到塔斯马尼亚？先安顿下来。</strong>找到住处、开设银行账户，并保障基本生活收入。<a href=\"%s\">阅读抵塔清单 →</a>"
+
+# Homepage — three community features (Figma 327:2 / issue #71)
+homeCommunitiesLabel: "社区"
+homeCampusTitle: "UTAS 校园"
+homeCampusLead: "在校园找到你的伙伴。无论你想造赛车还是练网络安全，这里都有适合你的地方。"
+homeCampusOrgs: "探索热门社团，例如 <a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>TUSA Clubs &amp; Societies</strong></a>、<a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>UTAS Cybersecurity Club</strong></a> 和 <a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>UTAS Motorsport</strong></a>。"
+homeCampusExplore: "浏览全部 UTAS 社团 ↗"
+homeCampusCta: "查看 UTAS 社团"
+homeCampusImageAlt: "学生们在户外校园节与社团摊位旁"
+
+homeLocalTitle: "塔州社区"
+homeLocalLead: "回馈本地社区，认识新朋友，在大学之外建立真实连接。"
+homeLocalOrgs: "连接这些团体，例如 <a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>Source Eco Hub</strong></a>、<a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>Rubric</strong></a> 和 <a href=\"%s\" target=\"_blank\" rel=\"noopener\"><strong>Migrant Resource Centre Tas</strong></a>。"
+homeLocalExplore: "探索本地社区 ↗"
+homeLocalCta: "查看本地社区"
+homeLocalImageAlt: "志愿者在 Source Eco Hub 照料抬高菜畦"
+
+homeIndustryTitle: "ICT 行业"
+homeIndustryLead: "参加行业活动、拓展人脉，了解塔斯马尼亚不断成长的 ICT 生态。在求学期间建立职业网络，发现新的职业机会。"
+homeIndustryExplore: "浏览全部行业活动 ↗"
+homeIndustryCta: "查看活动页"
+homeIndustryImageAlt: "UTAS学生、教职工与行业伙伴在2026年TasICT颁奖典礼上手持奖项合影"
+
+homeDiscordTitle: "Yarn Spinner Discord"
+homeDiscordText: "与叙事游戏开发者交流、提问，并寻找合作伙伴。"
+homeDiscordCta: "加入 Discord ↗"
 
 # Homepage — journey
 homeJourneyTitle: "一步一步来"
