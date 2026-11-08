@@ -167,7 +167,45 @@
       {{ end }}
     </div>
   </section>
+  
+  {{/* Stories moved from the Stories page for ICT Showcase Semester 2 */}}
+  {{ if eq .File.ContentBaseName "ict-showcase-semester-2" }}
+    {{ $storyNames := slice
+      "MD Ashik Mahmud"
+      "Hosna Ara Begum"
+      "MD Rifat Bin Yusuf"
+      "Pial Hossain"
+      "John Streat"
+      "Chris Jackson"
+      "Yu Wang"
+    }}
 
+    <section class="container event-section" id="showcase-stories">
+      <h2 class="section-heading">ICT Showcase Stories</h2>
+      <div class="section-divider"></div>
+
+      <div class="stories-grid">
+        {{ range hugo.Data.stories.items }}
+          {{ if in $storyNames .name }}
+          <article class="story-card">
+            <div class="story-image">
+              <img src="{{ .image | relURL }}" alt="{{ .name }}" loading="lazy">
+            </div>
+            <div class="story-body">
+              <h3>{{ .name }}</h3>
+              <p>{{ index .title $.Language.Lang | default .title.en }}</p>
+              <blockquote>{{ .quote }}</blockquote>
+              <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                Read full story →
+              </a>
+            </div>
+          </article>
+          {{ end }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+  
   {{ $booth := slice }}
   {{ with .Params.image }}{{ $booth = $booth | append . }}{{ end }}
   {{ with .Params.gallery }}{{ $booth = $booth | append . }}{{ end }}
