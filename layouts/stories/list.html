@@ -18,14 +18,11 @@
     {{ end }}
     <span class="year-stats" data-stories-count aria-live="polite"></span>
   </div>
-
   
 <div class="stories-grid">
   {{ $lang := site.Language.Lang }}
-
   {{ range hugo.Data.stories.items }}
-    {{ if in $storyNames .name }}
-      {{ $name := .name }}
+    {{ $name := .name }}
       {{ with .localName }}
         {{ with index . $lang }}
           {{ $name = . }}
@@ -77,7 +74,6 @@
           </div>
         </div>
       </article>
-    {{ end }}
   {{ end }}
 </div>
 
