@@ -14,7 +14,6 @@
       <div class="footer-col">
         <a href="{{ with .Site.GetPage "/events" }}{{ .RelPermalink }}{{ else }}{{ relURL "events/" }}{{ end }}">{{ i18n "industryEvents" }}</a>
         <a href="{{ with .Site.GetPage "/happening" }}{{ .RelPermalink }}{{ else }}{{ relURL "happening/" }}{{ end }}">{{ i18n "happening" }}</a>
-        <a href="{{ with .Site.GetPage "/stories" }}{{ .RelPermalink }}{{ else }}{{ relURL "stories/" }}{{ end }}">{{ i18n "stories" }}</a>
         <a href="{{ with .Site.GetPage "/fun-fitness" }}{{ .RelPermalink }}{{ else }}{{ relURL "fun-fitness/" }}{{ end }}">{{ i18n "funFitness" }}</a>
       </div>
       <div class="footer-col">
