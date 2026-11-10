@@ -4621,3 +4621,22 @@ html:has(.lightbox[open]) { overflow: hidden; }
   ::view-transition-old(*),
   ::view-transition-new(*) { animation: none !important; }
 }
+
+/* Let the text brand wrap beside fixed language, channel and menu controls. */
+@media (max-width: 1180px) {
+  .site-header .logo-text {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 280px;
+    font-size: 18px;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 520px) {
+  .home-feature-media,
+  .home-feature-media img {
+    min-height: 0;
+    min-width: 0;
+  }
+}
