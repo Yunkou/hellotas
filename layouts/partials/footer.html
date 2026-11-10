@@ -8,7 +8,7 @@
       <div class="footer-col">
         {{- $home := .Site.Home.RelPermalink -}}
         <a href="{{ $home }}">{{ i18n "home" }}</a>
-        <a href="{{ printf "%s#utas-campus" $home }}">{{ i18n "utas" }}</a>
+        <a href="{{ "utas/" | relLangURL }}">{{ i18n "utas" }}</a>
         <a href="{{ printf "%s#tasmania-community" $home }}">{{ i18n "localCommunity" }}</a>
         <a href="{{ printf "%s#ict-industry" $home }}">{{ i18n "ictIndustry" }}</a>
       </div>

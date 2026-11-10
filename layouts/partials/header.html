@@ -7,7 +7,7 @@
          Kickstart and Stories removed from nav (content pages kept). */ -}}
     {{- $home := .Site.Home.RelPermalink -}}
     {{- $links := slice (dict "key" "home" "url" $home "current" .IsHome) -}}
-    {{- $links = $links | append (dict "key" "utas" "url" (printf "%s#utas-campus" $home) "current" false) -}}
+    {{- $links = $links | append (dict "key" "utas" "url" ("utas/" | relLangURL) "current" (eq .Section "utas")) -}}
     {{- $links = $links | append (dict "key" "localCommunity" "url" (printf "%s#tasmania-community" $home) "current" false) -}}
     {{- $links = $links | append (dict "key" "ictIndustry" "url" (printf "%s#ict-industry" $home) "current" false) -}}
     {{- range slice (slice "funTime" "/fun-fitness") (slice "happening" "/happening") -}}

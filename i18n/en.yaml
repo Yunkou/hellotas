@@ -631,3 +631,12 @@ journeyStep3MrcLink: "mrctas.org.au"
 journeyStep3LibrariesText: "Free community spaces, study areas, events and learning programs in Launceston and regional Tasmania."
 journeyStep3LibrariesLink: "libraries.tas.gov.au"
 tagCommunity: "Community"
+
+# UTAS page (#77)
+utasTitle: "Discover UTAS Campus Life"
+utasLead: "Explore clubs, attend events, and find your community."
+utasRubricScreenshot: "Official Rubric student portal showing UTAS events"
+utasEventsTitle: "TUSA upcoming events"
+utasEventsScreenshot: "Snapshot of the official TUSA upcoming events page"
+utasEventsSnapshotNote: "Official page snapshot captured 7 November 2026. Open TUSA for the current event schedule."
+utasEventsCta: "View current TUSA events"
