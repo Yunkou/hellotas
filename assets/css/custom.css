@@ -2383,7 +2383,8 @@ img.author-avatar {
   overflow: hidden;
   background: #E8F0E8;
   min-height: 280px;
-  aspect-ratio: 4 / 3;
+  /* Figma homepage feature frames are ~466x416 (≈1.12), not 4:3. */
+  aspect-ratio: 466 / 416;
 }
 
 .home-feature--flip .home-feature-media {
@@ -2399,6 +2400,24 @@ img.author-avatar {
   height: 100%;
   object-fit: cover;
   min-height: 280px;
+}
+
+/* Per-block crop of the existing source photos (do not replace assets).
+   Positions come from matching the Figma feature-frame crops. */
+.home-feature#utas-campus .home-feature-media img {
+  /* Portrait booth: keep the people and the tablecloth wordmark/crest. */
+  object-position: 50% 38.5%;
+}
+
+.home-feature#tasmania-community .home-feature-media img {
+  /* Source is 4:3; a 1.12 frame alone still shows too much of the room. */
+  object-position: 55.4% 50%;
+  transform: scale(1.22);
+  transform-origin: 50.1% 57.8%;
+}
+
+.home-feature#ict-industry .home-feature-media img {
+  object-position: 50% 50%;
 }
 
 /* Homepage stories (Figma frame: six UTAS News cards from data/stories.yaml via homepage.stories) */
@@ -4689,6 +4708,3 @@ html:has(.lightbox[open]) { overflow: hidden; }
 }
 .utas-events-cta:hover { background: var(--brand-dark); color: #FFFFFF; }
 
-.home-feature#utas-campus .home-feature-media img {
-  object-position: center 30%;
-}
