@@ -1,0 +1,38 @@
+{
+  "branch": "preview/aggregate-20261110",
+  "commit": "021c81928e1267d2f5889e6ce6b5cd4d244eac5c",
+  "commitUrl": "https://github.com/Yunkou/hellotas/commit/021c81928e1267d2f5889e6ce6b5cd4d244eac5c",
+  "branchUrl": "https://github.com/Yunkou/hellotas/tree/preview/aggregate-20261110",
+  "previewUrl": "https://yunkou.github.io/hellotas/",
+  "builtAt": "2026-11-10T12:34:05+08:00",
+  "prs": [
+    {
+      "number": 72,
+      "url": "https://github.com/weiluoyan/hellotas/pull/72",
+      "head": "c5e35819cd934f749ecc52d5bbf037e84c252b48",
+      "merge": "e5d7bc3d539de657533d21f73856192cfc6c9acf"
+    },
+    {
+      "number": 82,
+      "url": "https://github.com/weiluoyan/hellotas/pull/82",
+      "head": "6a803974524195031f09c09ad380aecacf2d0d0e",
+      "merge": "9813e01ee0653113adcaa0101dca2f59acdc496a"
+    },
+    {
+      "number": 83,
+      "url": "https://github.com/weiluoyan/hellotas/pull/83",
+      "head": "460de4f8f479e66f7fbfb2a6689f35e47c3aedf5",
+      "merge": "7d1a52c939781347c5bfed29a39de3f26746b4c4"
+    },
+    {
+      "number": 84,
+      "url": "https://github.com/weiluoyan/hellotas/pull/84",
+      "head": "bc7493d0ef9491d992905b26f4ce9c02bc0c5e60",
+      "merge": "021c81928e1267d2f5889e6ce6b5cd4d244eac5c"
+    }
+  ],
+  "baseline": {
+    "upstreamMain": "71bdef8a58426174f99d30378c8525619a6688fa",
+    "includes": "PR #85 stories-to-ICT-showcase"
+  }
+}
