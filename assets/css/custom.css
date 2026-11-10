@@ -2401,33 +2401,6 @@ img.author-avatar {
   min-height: 280px;
 }
 
-.home-discord {
-  background: #F1F5F9;
-  padding: 36px 0;
-}
-
-.home-discord-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.home-discord-copy h2 {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--text-dark);
-  margin-bottom: 6px;
-}
-
-.home-discord-copy p {
-  font-size: 18px;
-  color: #475569;
-  margin: 0;
-  max-width: 640px;
-}
-
 /* Homepage stories (Figma frame: six UTAS News cards from data/stories.yaml via homepage.stories) */
 .home-stories {
   background: var(--brand-light);
@@ -2714,10 +2687,6 @@ img.author-avatar {
   }
   .home-feature-copy h2 {
     font-size: 32px;
-  }
-  .home-discord-inner {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
 
