@@ -2428,6 +2428,46 @@ img.author-avatar {
   max-width: 640px;
 }
 
+/* Homepage stories (Figma frame: six UTAS News cards from data/stories.yaml via homepage.stories) */
+.home-stories {
+  background: var(--brand-light);
+  padding: 64px 0 72px;
+}
+
+.home-stories #home-stories-title {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.home-stories-sub {
+  font-size: 16px;
+  color: var(--text-mid);
+  max-width: 720px;
+  line-height: 1.55;
+  margin: 0 0 10px;
+}
+
+.home-stories-motto {
+  font-size: 15px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--brand);
+  margin: 0 0 32px;
+}
+
+@media (max-width: 900px) {
+  .home-stories { padding: 48px 0 56px; }
+  .home-stories #home-stories-title { font-size: 32px; }
+}
+
+@media (max-width: 560px) {
+  .home-stories #home-stories-title { font-size: 28px; }
+}
+
 /* Stories page (issue #36) */
 .stories-motto {
   font-size: 15px;
@@ -2491,7 +2531,8 @@ img.author-avatar {
   margin-bottom: 12px;
 }
 
-.story-body h2 {
+.story-body h2,
+.story-body h3 {
   font-size: 19px;
   font-weight: 800;
   color: var(--text-dark);
