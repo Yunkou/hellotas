@@ -71,6 +71,24 @@
     </article>
   </section>
 
+  <section class="home-stories" id="home-stories" aria-labelledby="home-stories-title">
+    <div class="container">
+      <h2 id="home-stories-title">{{ i18n "storiesTitle" }}</h2>
+      <p class="home-stories-sub">{{ i18n "storiesSubtitle" }}</p>
+      <p class="home-stories-motto">“{{ i18n "storiesMotto" }}”</p>
+      <div class="stories-grid">
+        {{- range hugo.Data.homepage.stories }}
+          {{- $wanted := .name }}
+          {{- range hugo.Data.stories.items }}
+            {{- if eq .name $wanted }}
+              {{- partial "story-card.html" (dict "item" . "heading" "h3") }}
+            {{- end }}
+          {{- end }}
+        {{- end }}
+      </div>
+    </div>
+  </section>
+
   <section class="home-discord" aria-labelledby="home-discord-title">
     <div class="container home-discord-inner">
       <div class="home-discord-copy">
