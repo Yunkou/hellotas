@@ -1,11 +1,11 @@
 {
   "branch": "preview/aggregate-20261110",
-  "commit": "0958063608f392b8d0bcc2eeb7520a8fee90a202",
-  "commitUrl": "https://github.com/Yunkou/hellotas/commit/0958063608f392b8d0bcc2eeb7520a8fee90a202",
+  "commit": "259f8ab0d9f654451f4cd79c09920a149fdb7c34",
+  "commitUrl": "https://github.com/Yunkou/hellotas/commit/259f8ab0d9f654451f4cd79c09920a149fdb7c34",
   "branchUrl": "https://github.com/Yunkou/hellotas/tree/preview/aggregate-20261110",
   "previewUrl": "https://yunkou.github.io/hellotas/",
-  "builtAt": "2026-11-10T14:37:33+08:00",
-  "css": "custom.9256609aef14412841b22da8f6e29dad08fc1676b5052fbb2221b87d998e79ce.css",
+  "builtAt": "2026-11-10T15:39:35+08:00",
+  "css": "custom.cb9ea83c92f8abb905400b60445024721d48eb68d44a308faa81bdc82e915b22.css",
   "prs": [
     {
       "number": 72,
