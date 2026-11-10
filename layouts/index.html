@@ -1,13 +1,16 @@
 {{ define "main" }}
 <div class="page-home">
   <section class="home-hero">
-    <div class="container home-hero-inner home-hero-inner--solo">
+    <div class="container home-hero-inner">
       <div class="home-hero-copy">
-        <h1>{{ i18n "homeHeroTitle" }}</h1>
+        <h1>{{ i18n "homeHeroTitle" }} <span class="home-hero-highlight">{{ i18n "homeHeroTitleHighlight" }}</span></h1>
         <p class="home-hero-sub">{{ i18n "homeHeroSubtitle" }}</p>
         <div class="home-hero-ctas">
-          <a href="#home-communities" class="btn-primary">{{ i18n "homeHeroCtaExplore" }}</a>
+          <a href="{{ "utas/" | relLangURL }}" class="btn-primary">{{ i18n "homeHeroCtaStart" }}</a>
         </div>
+      </div>
+      <div class="home-hero-media">
+        <img src="{{ "images/home/hero-tasict-awards-2026.jpg" | relURL }}" alt="{{ i18n "homeHeroImageAlt" }}" width="1364" height="920">
       </div>
     </div>
   </section>
@@ -24,14 +27,13 @@
         <div class="home-feature-copy">
           <h2>{{ i18n "homeCampusTitle" }}</h2>
           <p>{{ i18n "homeCampusLead" }}</p>
-          <p>{{ printf (i18n "homeCampusOrgs") "https://tusa.org.au/clubs-societies/" "https://lnkd.in/p/g4J54Ywy" "https://www.utas.edu.au/about/colleges-and-schools/cose/engineering/motorsport-team" | safeHTML }}</p>
-          <a class="home-feature-link" href="{{ "utas/" | relLangURL }}">{{ i18n "homeCampusExplore" }}</a>
+          <p class="home-feature-orgs">{{ printf (i18n "homeCampusOrgs") "https://programmingclub.com.au/" "https://www.utas.edu.au/about/colleges-and-schools/cose/engineering/motorsport-team" | safeHTML }}</p>
           <div class="home-feature-actions">
-            <a href="{{ "utas/" | relLangURL }}" class="btn-primary">{{ i18n "homeCampusCta" }}</a>
+            <a href="{{ "utas/" | relLangURL }}" class="home-feature-cta">{{ i18n "homeCampusCta" }}</a>
           </div>
         </div>
         <div class="home-feature-media">
-          <img src="{{ "images/home/step-3-campus-fair.jpg" | relURL }}" alt="{{ i18n "homeCampusImageAlt" }}" width="640" height="480" loading="lazy">
+          <img src="{{ "images/home/section-utas-ict-booth.png" | relURL }}" alt="{{ i18n "homeCampusImageAlt" }}" width="1536" height="2048" loading="lazy">
         </div>
       </div>
     </article>
@@ -39,15 +41,14 @@
     <article class="home-feature home-feature--flip" id="tasmania-community">
       <div class="container home-feature-inner">
         <div class="home-feature-media">
-          <img src="{{ "images/journey/step-2/step-2-ecohub-1.jpg" | relURL }}" alt="{{ i18n "homeLocalImageAlt" }}" width="640" height="480" loading="lazy">
+          <img src="{{ "images/home/section-community-workshop.png" | relURL }}" alt="{{ i18n "homeLocalImageAlt" }}" width="1280" height="960" loading="lazy">
         </div>
         <div class="home-feature-copy">
           <h2>{{ i18n "homeLocalTitle" }}</h2>
           <p>{{ i18n "homeLocalLead" }}</p>
-          <p>{{ printf (i18n "homeLocalOrgs") "https://ecohubsource.org.au/" "https://campus.hellorubric.com/search?country=AU&state=Tasmania&type=events&universityid=24" "https://www.mrctas.org.au/" | safeHTML }}</p>
-          <a class="home-feature-link" href="{{ "journey/step-3/" | relLangURL }}">{{ i18n "homeLocalExplore" }}</a>
+          <p class="home-feature-orgs">{{ printf (i18n "homeLocalOrgs") "https://ecohubsource.org.au/" "https://campus.hellorubric.com/search?country=AU&state=Tasmania&type=events&universityid=24" | safeHTML }}</p>
           <div class="home-feature-actions">
-            <a href="{{ "journey/step-3/" | relLangURL }}" class="btn-primary">{{ i18n "homeLocalCta" }}</a>
+            <a href="{{ "journey/step-3/" | relLangURL }}" class="home-feature-cta">{{ i18n "homeLocalCta" }}</a>
           </div>
         </div>
       </div>
@@ -58,13 +59,13 @@
         <div class="home-feature-copy">
           <h2>{{ i18n "homeIndustryTitle" }}</h2>
           <p>{{ i18n "homeIndustryLead" }}</p>
-          <a class="home-feature-link" href="{{ "happening/" | relLangURL }}">{{ i18n "homeIndustryExplore" }}</a>
+          <p>{{ i18n "homeIndustryOrgs" }}</p>
           <div class="home-feature-actions">
-            <a href="{{ "happening/" | relLangURL }}" class="btn-primary">{{ i18n "homeIndustryCta" }}</a>
+            <a href="{{ "happening/" | relLangURL }}" class="home-feature-cta">{{ i18n "homeIndustryCta" }}</a>
           </div>
         </div>
         <div class="home-feature-media">
-          <img src="{{ "images/home/hero-tasict-awards-2026.jpg" | relURL }}" alt="{{ i18n "homeIndustryImageAlt" }}" width="640" height="480" loading="lazy">
+          <img src="{{ "images/home/section-industry-event.png" | relURL }}" alt="{{ i18n "homeIndustryImageAlt" }}" width="800" height="800" loading="lazy">
         </div>
       </div>
     </article>

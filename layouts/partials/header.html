@@ -1,6 +1,11 @@
 <header class="site-header">
   <nav class="nav">
-    <a href="{{ .Site.Home.RelPermalink }}" class="logo logo-text">{{ i18n "siteName" }}</a>
+    <a href="{{ .Site.Home.RelPermalink }}" class="logo logo-wordmark" aria-label="{{ i18n "siteName" }}">
+      <span class="logo-stack">
+        <span class="logo-line logo-line--primary">{{ i18n "logoLinePrimary" }}</span>
+        <span class="logo-line logo-line--secondary">{{ i18n "logoLineSecondary" }}</span>
+      </span>
+    </a>
     {{- /* Menu links, defined once: shown inline on wide screens and in the menu panel on narrower ones */ -}}
     {{- /* Issue #73 menu: Home, UTAS, Local Community, ICT Industry, Fun Time, Happening.
          UTAS / Local Community / ICT Industry point at homepage feature sections until dedicated pages (#77 etc.).

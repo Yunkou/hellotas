@@ -18,7 +18,7 @@ Both screenshots captured in local Edge on 7 November 2026 (UTC+8), without logi
 No licence/permission claim is made by this implementation.
 
 ## Events widget limitation
-TUSA events responds with X-Frame-Options: SAMEORIGIN. It cannot be embedded on GitHub Pages as an iframe. The card therefore displays a dated official-page snapshot and a prominent link to the current source schedule, rather than inventing event data or bypassing the embedding restriction. A live widget requires an authorized feed/embed or a confirmed alternate design. This remains a review item; the snapshot is not a live event feed.
+TUSA events responds with X-Frame-Options: SAMEORIGIN, so it cannot be embedded on GitHub Pages as an iframe. Public WordPress routes were checked on 10 November 2026 (UTC+8): `/events/feed/` is an empty comments feed, and there is no official events REST/ICS/embed endpoint. The card therefore explains this limitation and links to https://tusa.org.au/events/ for the current official schedule. It does not invent event data, scrape a private API, or bypass the embedding restriction. This remains an open review item and is not a live events calendar.
 
 ## Verification
 Hugo build and local installed Edge via Playwright: en/zh/ne at 360, 390, 1440px. Verified seven-card order, six navigation links, active UTAS state, language/channels controls, no broken sourced images, scrollWidth=clientWidth and scrollX=0. Evidence: local TEMP/hellotas77-evidence.
