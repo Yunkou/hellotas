@@ -5,13 +5,14 @@
     </a>
     {{- /* Menu links, defined once: shown inline on wide screens and in the menu panel on narrower ones */ -}}
     {{- /* Issue #73 menu: Home, UTAS, Local Community, ICT Industry, Fun Time, Happening.
-         UTAS / Local Community / ICT Industry point at homepage feature sections until dedicated pages (#77 etc.).
-         Kickstart and Stories removed from nav (content pages kept). */ -}}
+         Local Community still points at the homepage feature section. ICT Industry now opens
+         the /events/ archive (the previous homepage #ict-industry anchor looked like a missing
+         Events page). Kickstart and Stories removed from nav (content pages kept). */ -}}
     {{- $home := .Site.Home.RelPermalink -}}
     {{- $links := slice (dict "key" "home" "url" $home "current" .IsHome) -}}
     {{- $links = $links | append (dict "key" "utas" "url" ("utas/" | relLangURL) "current" (eq .Section "utas")) -}}
     {{- $links = $links | append (dict "key" "localCommunity" "url" (printf "%s#tasmania-community" $home) "current" false) -}}
-    {{- $links = $links | append (dict "key" "ictIndustry" "url" (printf "%s#ict-industry" $home) "current" false) -}}
+    {{- $links = $links | append (dict "key" "ictIndustry" "url" ("events/" | relLangURL) "current" (eq .Section "events")) -}}
     {{- range slice (slice "funTime" "/fun-fitness") (slice "happening" "/happening") -}}
       {{- $key := index . 0 -}}{{- $path := index . 1 -}}
       {{- $url := relURL (printf "%s/" (strings.TrimPrefix "/" $path)) -}}
