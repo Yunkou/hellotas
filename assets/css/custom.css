@@ -2063,17 +2063,8 @@ img.author-avatar {
   flex-wrap: wrap;
 }
 
-.footer-wordmark {
-  display: inline-flex;
+.site-footer .logo {
   margin: 0 0 8px;
-}
-
-.footer-wordmark .logo-line--primary {
-  font-size: 22px;
-}
-
-.footer-wordmark .logo-line--secondary {
-  font-size: 18px;
 }
 
 .footer-links {
@@ -2130,43 +2121,6 @@ img.author-avatar {
   max-width: 760px;
   font-size: 20px;
   margin-bottom: 28px;
-}
-
-.logo-text,
-.logo-wordmark {
-  text-decoration: none;
-}
-
-.logo-wordmark {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  min-width: 0;
-  margin-right: 8px;
-}
-
-.logo-stack {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  line-height: 1.05;
-  letter-spacing: -0.3px;
-}
-
-.logo-line {
-  display: block;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.logo-line--primary {
-  font-size: 18px;
-  color: var(--text-dark);
-}
-
-.logo-line--secondary {
-  font-size: 16px;
-  color: var(--brand);
 }
 
 .home-hero-copy h1 {
@@ -4699,23 +4653,6 @@ html:has(.lightbox[open]) { overflow: hidden; }
   ::view-transition-image-pair(*),
   ::view-transition-old(*),
   ::view-transition-new(*) { animation: none !important; }
-}
-
-/* Let the text brand wrap beside fixed language, channel and menu controls. */
-@media (max-width: 1180px) {
-  .site-header .logo-wordmark,
-  .site-header .logo-text {
-    flex: 1 1 0;
-    min-width: 0;
-    max-width: 200px;
-  }
-  .site-header .logo-line--primary { font-size: 16px; }
-  .site-header .logo-line--secondary { font-size: 14px; }
-}
-
-@media (max-width: 360px) {
-  .site-header .logo-line--primary { font-size: 15px; }
-  .site-header .logo-line--secondary { font-size: 13px; }
 }
 
 @media (max-width: 520px) {

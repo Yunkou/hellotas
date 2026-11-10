@@ -1,10 +1,7 @@
 <header class="site-header">
   <nav class="nav">
-    <a href="{{ .Site.Home.RelPermalink }}" class="logo logo-wordmark" aria-label="{{ i18n "siteName" }}">
-      <span class="logo-stack">
-        <span class="logo-line logo-line--primary">{{ i18n "logoLinePrimary" }}</span>
-        <span class="logo-line logo-line--secondary">{{ i18n "logoLineSecondary" }}</span>
-      </span>
+    <a href="{{ .Site.Home.RelPermalink }}" class="logo">
+      <img src="{{ "images/brand/logo.svg" | relURL }}" alt="ICT Futures in Tasmania" width="397" height="84">
     </a>
     {{- /* Menu links, defined once: shown inline on wide screens and in the menu panel on narrower ones */ -}}
     {{- /* Issue #73 menu: Home, UTAS, Local Community, ICT Industry, Fun Time, Happening.
