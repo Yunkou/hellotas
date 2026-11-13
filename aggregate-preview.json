@@ -1,11 +1,11 @@
 {
   "branch": "preview/aggregate-20261110",
-  "commit": "054520a6d5ba12c144bf047437f613dfd6262be1",
-  "commitUrl": "https://github.com/Yunkou/hellotas/commit/054520a6d5ba12c144bf047437f613dfd6262be1",
+  "commit": "184b2b5c8808398730ef2ed624901ef9784ff862",
+  "commitUrl": "https://github.com/Yunkou/hellotas/commit/184b2b5c8808398730ef2ed624901ef9784ff862",
   "branchUrl": "https://github.com/Yunkou/hellotas/tree/preview/aggregate-20261110",
   "previewUrl": "https://yunkou.github.io/hellotas/",
-  "builtAt": "2026-11-10T19:11:55+08:00",
-  "css": "custom.075c81482b9459c2c124ceb1b797b8650306ccbfb09fd14c8a160cd69d70e1d3.css",
+  "builtAt": "2026-11-13T17:25:23+08:00",
+  "css": "custom.5954ca433831e779f190cad6a40e560d1d720a86f4ca714dfb2a89f57f9957ff.css",
   "prs": [
     {
       "number": 72,
@@ -39,6 +39,11 @@
   ],
   "baseline": {
     "upstreamMain": "0d16236b8e36c82fbe247a55db4d6bd214edd3cf",
-    "includes": "Upstream main after merge of PR #89; plus Events archive reachability (PR #90, 054520a) \u2014 ICT Industry nav and VIEW EVENTS PAGE CTA both open /events/"
+    "includes": "Existing aggregate preview plus homepage typography and Local Community nav (issue #91, cherry-picked as 184b2b5c8808398730ef2ed624901ef9784ff862). Not synced to current upstream main."
+  },
+  "issue91": {
+    "fixBranch": "fix/homepage-minor-tweaks-91",
+    "upstreamHead": "6207ee1ec40b15933669ef83142f51cb7747b337",
+    "aggregateCherryPick": "184b2b5c8808398730ef2ed624901ef9784ff862"
   }
 }
