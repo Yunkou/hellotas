@@ -823,3 +823,8 @@ utasEventsTitle: "TUSA का आगामी कार्यक्रमहर�
 utasEventsScreenshot: "आधिकारिक TUSA कार्यक्रम पृष्ठको स्न्यापसट"
 utasEventsSnapshotNote: "TUSA को आधिकारिक साइटले यस पृष्ठमा प्रत्यक्ष क्यालेन्डर एम्बेड गर्न दिँदैन। हालको कार्यक्रम तालिकाका लागि आधिकारिक पृष्ठ खोल्नुहोस्।"
 utasEventsCta: "TUSA का हालका कार्यक्रमहरू हेर्नुहोस्"
+
+# The page shown for an address that doesn't exist (layouts/404.html)
+notFoundTitle: "त्यो पृष्ठ भेटिएन"
+notFoundText: "पृष्ठ सारिएको हुन सक्छ, वा कार्यक्रम सकिएको हुन सक्छ। गृहपृष्ठमा जानुहोस्, वा अहिले के भइरहेको छ हेर्नुहोस्।"
+notFoundHome: "गृहपृष्ठमा फर्कनुहोस्"

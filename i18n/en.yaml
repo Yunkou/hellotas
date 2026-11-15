@@ -801,3 +801,8 @@ utasEventsTitle: "TUSA upcoming events"
 utasEventsScreenshot: "Snapshot of the official TUSA upcoming events page"
 utasEventsSnapshotNote: "TUSA does not allow a live events calendar to be embedded here. Open the official TUSA page for the current schedule."
 utasEventsCta: "View current TUSA events"
+
+# The page shown for an address that doesn't exist (layouts/404.html)
+notFoundTitle: "We couldn't find that page"
+notFoundText: "It may have moved, or the event is over. Try the homepage, or see what's on now."
+notFoundHome: "Back to the homepage"

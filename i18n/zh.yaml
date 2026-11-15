@@ -801,3 +801,8 @@ utasEventsTitle: "TUSA 即将举行的活动"
 utasEventsScreenshot: "TUSA 官方活动页面截图"
 utasEventsSnapshotNote: "TUSA 官网不支持在本站内嵌实时活动日历。请打开官方页面查看最新活动安排。"
 utasEventsCta: "查看 TUSA 最新活动"
+
+# The page shown for an address that doesn't exist (layouts/404.html)
+notFoundTitle: "找不到这个页面"
+notFoundText: "页面可能已经移动，或者活动已经结束。请回到首页，或看看近期活动。"
+notFoundHome: "返回首页"

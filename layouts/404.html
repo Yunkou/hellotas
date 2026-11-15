@@ -1,0 +1,13 @@
+{{ define "main" }}
+<section class="not-found">
+  <div class="container">
+    <p class="not-found-code" aria-hidden="true">404</p>
+    <h1>{{ i18n "notFoundTitle" }}</h1>
+    <p>{{ i18n "notFoundText" }}</p>
+    <p class="not-found-actions">
+      <a class="btn-primary" href="{{ site.Home.RelPermalink }}">{{ i18n "notFoundHome" }}</a>
+      <a class="hp-btn-outline" href="{{ "happening/" | relLangURL }}">{{ i18n "homeNewSeeAll" }} <span aria-hidden="true">→</span></a>
+    </p>
+  </div>
+</section>
+{{ end }}

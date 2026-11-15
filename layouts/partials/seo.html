@@ -1,0 +1,41 @@
+{{- /* What search engines and link previews read: description, canonical address, the other languages of this
+     page, and Open Graph / Twitter tags (the card shown when a link is pasted into LinkedIn, Discord or WeChat).
+     Description: the page's own `description` or event `summary`, otherwise its section's intro text. */ -}}
+{{- $intro := dict "happening" "happeningSubtitle" "events" "eventsSubtitle" "utas" "utasLead" "stories" "storiesSubtitle"
+      "fun-fitness" "funFitnessFitLead" "noticeboard" "cmBoardWishLead" "suggest" "cmSuggestLead" -}}
+{{- $steps := dict "step1" "journeyStep1Lead" "step2" "journeyStep2Lead" "step3" "journeyStep3Lead" -}}
+{{- $desc := .Description | default .Params.summary -}}
+{{- if not $desc }}{{ with index $steps (.Params.layout | default "") }}{{ $desc = i18n . }}{{ end }}{{ end -}}
+{{- if not $desc }}{{ with index $intro (.Section | default (.File | default dict).ContentBaseName | default "") }}{{ $desc = i18n . }}{{ end }}{{ end -}}
+{{- if not $desc }}{{ $desc = i18n "homeHeroSubtitle" }}{{ end -}}
+{{- $desc = $desc | plainify | strings.TrimSpace | truncate 200 -}}
+{{- $title := cond .IsHome site.Title (printf "%s · %s" (cond (eq .Kind "404") (i18n "notFoundTitle") .Title) site.Title) -}}
+{{- $image := "images/home/hero-tasict-awards-2026.jpg" -}}
+{{- with .Params.image }}{{ $image = strings.TrimPrefix "/" . }}{{ end -}}
+{{- $hreflang := dict "en" "en-AU" "zh" "zh-Hans" "ne" "ne" -}}
+{{- /* Pages that shouldn't be in search results: the 404 page, the account and moderation pages, and the
+     community pages while the community API isn't switched on (they only say so) */ -}}
+{{- $hidden := or (eq .Kind "404") .Params.noindex (and .Params.cmPage (ne .Params.cmPage "suggest") (not site.Params.communityAPI)) -}}
+<meta name="description" content="{{ $desc }}">
+{{- if $hidden }}
+<meta name="robots" content="noindex">
+{{- else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{- if .IsTranslated }}
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ index $hreflang .Language.Lang | default .Language.Lang }}" href="{{ .Permalink }}">
+{{- end }}
+{{- range .AllTranslations }}{{ if eq .Language.Lang "en" }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{- end }}{{ end }}
+{{- end }}
+{{- end }}
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ cond (and (eq .Section "events") .IsPage) "article" "website" }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $image | absURL }}">
+<meta property="og:locale" content="{{ index (dict "en" "en_AU" "zh" "zh_CN" "ne" "ne_NP") .Language.Lang | default "en_AU" }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#c8102e">

@@ -1,9 +1,13 @@
 baseURL = "https://weiluoyan.github.io/hellotas/"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
+# robots.txt (layouts/robots.txt) points search engines at the sitemap
+enableRobotsTXT = true
+# The site has no tags or categories, so don't publish empty /tags/ and /categories/ pages
+disableKinds = ["taxonomy", "term"]
 
 [params]
-  description = "A step-by-step journey for international ICT students in Tasmania."
+  description = "A platform for all UTAS students, showcasing real events, experiences and highlights in Tasmania."
   # The community API (server/): accounts, event buddies, the Noticeboard, saved checklists and the weekly digest.
   # Empty: those features are hidden and the site works as a plain static site. The deploy workflow sets it from
   # the repository variable COMMUNITY_API_URL (or set HUGO_PARAMS_COMMUNITYAPI=http://127.0.0.1:8000 locally).
@@ -18,7 +22,7 @@ defaultContentLanguageInSubdir = false
   Content = "From Step 1 to the person you want to become."
 
 [languages.en]
-  locale = "en-us"
+  locale = "en-AU"
   label = "English"
   title = "ICT Futures in Tasmania"
   weight = 1

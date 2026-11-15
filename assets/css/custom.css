@@ -13,8 +13,10 @@
   --glass-hover: rgba(15, 23, 42, 0.68);
   --glass-blur: blur(6px) saturate(140%);
   --text-dark: #1E293B;
-  --text-mid: #64748B;
-  --text-light: #94A3B8;
+  /* Secondary and tertiary text. Both pass WCAG AA (4.5:1) on white and on the site's tinted backgrounds;
+     the earlier values (#64748B, #94A3B8) did not (2.6:1 for the lighter one). */
+  --text-mid: #55657D;
+  --text-light: #62728A;
   --green: #2E7D32;
   --green-light: #E8F5E9;
   --orange: #E65100;
@@ -1405,7 +1407,7 @@ html:has(.channel-dialog[open]) { overflow: hidden; }
   right: 10px;
   padding: 3px 10px;
   border-radius: 999px;
-  background: var(--glass);
+  background: var(--glass-hover); /* the darker glass: white 12px text must stay readable over a bright photo */
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
   color: #FFFFFF;
@@ -2073,12 +2075,16 @@ img.author-avatar {
   flex-wrap: wrap;
 }
 
-.footer-col a {
+.footer-col a,
+.footer-lang-current {
   display: block;
   font-size: 14px;
   color: var(--text-dark);
   margin-bottom: 10px;
 }
+
+/* The language being read: listed with the others, but not a link */
+.footer-lang-current { font-weight: 700; }
 
 .footer-col a:hover { color: var(--brand); }
 
@@ -2344,6 +2350,10 @@ img.author-avatar {
 .home-feature-orgs a {
   color: var(--text-dark);
   font-weight: 700;
+}
+
+/* Only the links are underlined, so it is clear which words can be clicked (the whole sentence used to be) */
+.home-feature-orgs a {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -5023,3 +5033,21 @@ button[aria-busy="true"] { opacity: 0.6; cursor: progress; }
 }
 .utas-events-cta:hover { background: var(--brand-dark); color: #FFFFFF; }
 
+/* ===== Page not found (layouts/404.html) ===== */
+.not-found { padding: 96px 0 120px; text-align: center; }
+.not-found .not-found-code {
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--brand);
+  margin-bottom: 16px;
+}
+.not-found h1 { font-size: 32px; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; }
+.not-found p { color: var(--text-mid); font-size: 17px; }
+.not-found-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+.not-found-actions .hp-btn-outline { display: inline-flex; }
+@media (max-width: 600px) {
+  .not-found { padding: 64px 0 80px; }
+  .not-found .not-found-code { font-size: 72px; }
+}
