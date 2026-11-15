@@ -136,3 +136,54 @@ def test_dates_and_no_fetch_hosts():
     assert mentions_upcoming_date("Next one: 3 March 2027", NOW)
     assert is_no_fetch("https://www.linkedin.com/posts/someone_activity-123")
     assert not is_no_fetch("https://events.humanitix.com/x")
+
+
+# -- pages read from their labelled parts (TasICT) ------------------------------------------------------------------
+
+TASICT_FIELDS = {"title": ".event-single__title", "date": ".event-meta__date", "time": ".event-meta__time",
+                 "description": ".event-single__content"}
+TASICT_CFG = {"id": "tasict", "kind": "html", "trust": "high", "listing": "https://www.tasict.com.au/about/events-2/",
+              "follow": r"^https://www\.tasict\.com\.au/event/", "fields": TASICT_FIELDS,
+              "defaults": {"host": "TasICT", "topics": ["community", "careers"], "region": "TAS"}}
+TASICT_EVENT = "https://www.tasict.com.au/event/tapas-tech-networking-event-hobart/"
+
+
+def test_times_in():
+    from hellotas_collector.sources.page import times_in
+    assert times_in("5:30PM - 7:30PM") == [(17, 30), (19, 30)]
+    assert times_in("6.30 pm to 11.00 p.m.") == [(18, 30), (23, 0)]
+    assert times_in("9am") == [(9, 0)] and times_in("12:15AM") == [(0, 15)] and times_in("12pm") == [(12, 0)]
+    assert times_in("Level 13, room 25") == []
+
+
+def test_tasict_page_is_read_without_its_blocked_registration_site():
+    from hellotas_collector.sources import html
+    listing = f'<a href="{TASICT_EVENT}">Tech Jobs Showcase</a><a href="https://www.tasict.com.au/about/">About</a>'
+    c = ctx({TASICT_CFG["listing"]: listing, TASICT_EVENT: fixture("tasict_event.html")})
+    events = html.collect(TASICT_CFG, c)
+    assert len(events) == 1
+    ev = events[0]
+    assert ev.title == "Tech Jobs Showcase – Hobart" and ev.url == TASICT_EVENT
+    assert ev.start.isoformat() == "2026-05-14T17:30:00+10:00"  # May: standard time in Hobart
+    assert ev.end.isoformat() == "2026-05-14T19:30:00+10:00" and ev.all_day is False
+    assert ev.host == "TasICT" and ev.region == "TAS"
+    assert ev.description.startswith("Attention Employers")
+    assert ev.images == ["https://www-tasict-com-au.assets.ionatahosting.net/uploads/2025/12/Tapas-Tech-Jobs-Showcase-1.png"]
+    assert ev.extra["registration"].startswith("https://events.humanitix.com/")
+    # Humanitix refuses automated visitors: the page itself was enough, so it was never asked
+    assert c.fetcher.asked == [TASICT_CFG["listing"], TASICT_EVENT]
+
+
+def test_fields_without_a_time_or_a_date():
+    from hellotas_collector.fetch import Page
+    from hellotas_collector.sources.page import from_fields
+
+    def read(html):
+        page = Page(url="https://x.example/e", status=200, content_type="text/html", body=html.encode())
+        return from_fields(page, "x", ctx({}), {"title": "h1", "date": ".d", "time": ".t"})
+    all_day = read('<h1>Tas Tech Fest</h1><span class="d">Friday, 21st August 2026</span>')
+    assert all_day.all_day and all_day.start.isoformat() == "2026-08-21T00:00:00+10:00" and all_day.end is None
+    late = read('<h1>Awards night</h1><span class="d">26 June 2026</span><span class="t">10:00PM - 1:00AM</span>')
+    assert late.end.isoformat() == "2026-06-27T01:00:00+10:00"  # past midnight is the next day
+    assert read('<h1>Date to be announced</h1><span class="d">Coming soon</span>') is None
+    assert read('<span class="d">26 June 2026</span>') is None  # no title

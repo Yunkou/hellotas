@@ -33,7 +33,7 @@ ready for when someone can fund it: see [Switching the AI on](#switching-the-ai-
 | ACS | the JSON list behind the ACS events page, then each event page for prices | online events from anywhere, in-person ones only in Tasmania; no short courses, AGMs or members-only events |
 | AISA (Hobart and Online branches) | branch pages and event pages (plain HTML) | |
 | SecTalks Hobart | Meetup event pages' schema.org data | Meetup keeps its event links in page data, which the collector reads |
-| TasICT | event pages, then the Humanitix registration page they link to | pages with no event data and no registration link are skipped |
+| TasICT | the title, date, time and description on each event page (CSS selectors under `fields` in `sources.yaml`) | its pages have no event data, and the Humanitix pages they link to refuse automated visitors, so the page itself is read |
 | Careerify (Tasmanian Government) | iCalendar feed | its firewall refuses some cloud networks; the run summary says when |
 | Eventbrite (Hobart, science and tech) | listing page | **off**: mostly children's and library events, and Eventbrite's terms restrict automated access |
 | UTAS events | | **off**: utas.edu.au answers every automated request with a Cloudflare challenge |

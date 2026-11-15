@@ -1,15 +1,18 @@
-"""Turning any event page into a RawEvent: structured data first, then the registration link, then the AI."""
+"""Turning any event page into a RawEvent: structured data first, then the page's own labelled parts (when the
+source lists them), then the registration link, then the AI."""
 
 from __future__ import annotations
 
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from urllib.parse import urlsplit
+
+from bs4 import BeautifulSoup
 
 from ..extract import event_from_jsonld, jsonld_event_objects, meta, registration_links
 from ..fetch import Blocked, FetchError, Page
 from ..model import RawEvent
-from ..text import html_to_text, url_key
+from ..text import clean, clean_title, html_to_text, url_key
 from .base import Context, apply_defaults
 
 # Sites whose terms forbid automated access: never fetched; people paste the text instead
@@ -64,6 +67,58 @@ def from_structured(page: Page, source: str, ctx: Context) -> RawEvent | None:
     return ev
 
 
+_TIME = re.compile(r"(\d{1,2})(?:[:.](\d{2}))?\s*([ap])\.?m\.?", re.I)
+
+
+def times_in(text: str) -> list[tuple[int, int]]:
+    """(hour, minute) for every clock time written like 5:30PM, 6.30 pm or 9am."""
+    found = []
+    for hour, minute, half in _TIME.findall(text):
+        h, m = int(hour), int(minute or 0)
+        if not 1 <= h <= 12 or m > 59:
+            continue
+        found.append((h % 12 + (12 if half.lower() == "p" else 0), m))
+    return found
+
+
+def from_fields(page: Page, source: str, ctx: Context, fields: dict) -> RawEvent | None:
+    """An event read from the labelled parts of its page, for sites that publish no event data.
+
+    `fields` (from the source's entry in sources.yaml) maps title, date, time and description to CSS selectors.
+    The date must be written out ("14 May 2026"); with no time the event is treated as all day. Returns None
+    when the title or the date can't be read, so the caller can try something else.
+    """
+    soup = BeautifulSoup(page.text, "lxml")
+
+    def part(name: str) -> str:
+        node = soup.select_one(fields[name]) if fields.get(name) else None
+        return clean(node.get_text(" ", strip=True)) if node else ""
+
+    title = clean_title(part("title"))
+    days = dates_in(part("date"))
+    if not title or not days:
+        return None
+    year, month, day = days[0]
+    start = datetime(year, month, day, tzinfo=ctx.tz)
+    ev = RawEvent(source=source, url=page.url, title=title, start=start, all_day=True,
+                  description=part("description")[:3000])
+    times = times_in(part("time"))
+    if times:
+        ev.all_day = False
+        ev.start = start.replace(hour=times[0][0], minute=times[0][1])
+        if len(times) > 1:
+            ev.end = start.replace(hour=times[1][0], minute=times[1][1])
+            if ev.end <= ev.start:  # "10:00PM - 1:00AM" finishes the next day
+                ev.end += timedelta(days=1)
+    og = meta(page.text).get("og:image")
+    ev.images = [og] if og else []
+    tickets = registration_links(page.text, page.url)
+    if tickets:
+        ev.extra["registration"] = tickets[0]
+    ev.extra["read_from"] = "page fields"
+    return ev
+
+
 def resolve_page(page: Page, source: str, ctx: Context, cfg: dict | None = None,
                  pasted_text: str = "") -> list[RawEvent]:
     """Events described by a fetched page (usually one). Empty when nothing reliable could be read."""
@@ -71,6 +126,11 @@ def resolve_page(page: Page, source: str, ctx: Context, cfg: dict | None = None,
     ev = from_structured(page, source, ctx)
     if ev:
         return [apply_defaults(ev, cfg)]
+    # A source whose pages have no event data but a regular layout: read the labelled parts directly
+    if cfg.get("fields"):
+        ev = from_fields(page, source, ctx, cfg["fields"])
+        if ev:
+            return [apply_defaults(ev, cfg)]
     # A page without event data that links to a ticketing page that has it ("Register here")
     for link in registration_links(page.text, page.url)[:2]:
         if ctx.skip_url(link):

@@ -247,3 +247,20 @@ def test_check_data_finds_events_without_pictures(site, capsys):
     from hellotas_collector.cli import main
     assert main(["--root", str(site), "check-data"]) == 1  # the copied entries' picture files aren't in this site
     assert "isn't in static/" in capsys.readouterr().out
+
+
+# -- TasICT: read from the page's own fields ------------------------------------------------------------------------
+
+def test_tasict_event_is_proposed_from_its_own_page(site):
+    listing = "https://www.tasict.com.au/about/events-2/"
+    event = "https://www.tasict.com.au/event/tapas-tech-networking-event-hobart/"
+    pages = {listing: f'<a href="{event}">Tech Jobs Showcase</a>',
+             event: fixture("tasict_event.html").replace("14 May 2026", "13 May 2027")}
+    c = collector(site, pages)
+    result = c.run(["tasict"])
+    assert result.found["tasict"] == 1 and not result.errors
+    assert len(result.added) == 1, markdown(result)
+    text = (site / result.added[0].file_path).read_text(encoding="utf-8")
+    assert 'start: "2027-05-13T17:30:00+10:00"' in text and 'end: "2027-05-13T19:30:00+10:00"' in text
+    assert f'url: "{event}"' in text and 'source: "tasict"' in text
+    assert not any("humanitix" in url for url in c.fetcher.asked)

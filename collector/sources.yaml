@@ -11,8 +11,9 @@
 #            page (GDG/Bevy, Meetup, Humanitix and Eventbrite pages all carry it)
 #   acs      the Australian Computer Society's event list (the JSON file behind its events page)
 #   aisa     AISA branch pages (plain HTML, parsed directly)
-#   html     pages with no event data: follows the registration link (Humanitix, Eventbrite, ...) when there is
-#            one, otherwise asks the AI to read the page (only when the AI is switched on, see ai: below)
+#   html     pages with no event data: reads the parts of the page named under `fields` (CSS selectors for the
+#            title, date, time and description) when the source lists them; otherwise follows the registration
+#            link (Humanitix, Eventbrite, ...), and last asks the AI (only when it is switched on, see ai: below)
 #   ical     an iCalendar (.ics) feed
 #
 # trust: high (local ICT community, almost everything fits), medium (national body, needs filtering) or low.
@@ -117,6 +118,13 @@ sources:
     listing: "https://www.tasict.com.au/about/events-2/"
     follow: '^https://www\.tasict\.com\.au/event/'
     max_events: 12
+    # TasICT's pages carry no event data, and the Humanitix pages they link to refuse automated visitors. The
+    # pages are laid out the same way every time, so the collector reads these parts of them (CSS selectors):
+    fields:
+      title: ".event-single__title"
+      date: ".event-meta__date"          # "14 May 2026"
+      time: ".event-meta__time"          # "5:30PM - 7:30PM"
+      description: ".event-single__content"
     defaults: { host: "TasICT", topics: [community, careers], region: "TAS", type: "networking" }
 
   - id: careerify
