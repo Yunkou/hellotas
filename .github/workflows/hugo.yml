@@ -8,22 +8,28 @@ on:
 permissions:
   contents: write
 
+# One deploy at a time, in order: a newer push waits for the running deploy instead of racing it
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       # Optional: a Discord channel webhook (Server settings > Integrations > Webhooks). When set, events that are
       # new since the last deploy are announced there (upstream issue #63).
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
-          submodules: recursive
-          fetch-depth: 0
+          fetch-depth: 0 # the Discord step reads the last deploy from the gh-pages branch
+          persist-credentials: false # the Deploy step is given its own token
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
         with:
           hugo-version: '0.166.0'
           extended: true
@@ -32,15 +38,22 @@ jobs:
         env:
           # The community API's address (server/), e.g. https://api.example.org. Unset: those features stay hidden.
           HUGO_PARAMS_COMMUNITYAPI: ${{ vars.COMMUNITY_API_URL }}
-        run: hugo --minify --baseURL "${{ vars.CUSTOM_DOMAIN && format('https://{0}/', vars.CUSTOM_DOMAIN) || format('https://{0}.github.io/{1}/', github.repository_owner, github.event.repository.name) }}"
-
+          # The site's address: the custom domain when the CUSTOM_DOMAIN variable is set, otherwise GitHub Pages.
+          # Passed through the environment so the values are never pasted into the shell command itself.
+          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          if [ -n "$CUSTOM_DOMAIN" ]; then base="https://$CUSTOM_DOMAIN/"; else base="https://$OWNER.github.io/$REPO/"; fi
+          echo "Building for $base"
+          hugo --minify --baseURL "$base"
 
       - name: Keep the events list from the last deploy
         if: env.DISCORD_WEBHOOK_URL != ''
         run: git show origin/gh-pages:happening/index.json > "$RUNNER_TEMP/old-events.json" 2>/dev/null || echo "No earlier events list."
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
