@@ -1,6 +1,6 @@
 import hashlib
 import re
-from datetime import date, timedelta
+from datetime import date, timedelta, UTC
 
 from conftest import last_email, sign_in
 
@@ -124,9 +124,9 @@ def test_posts_wait_for_a_moderator(client, app):
     student = sign_in(client, app, "s@utas.edu.au")
     mod = sign_in(client, app, "admin@utas.edu.au")
     r = client.post("/v1/posts", json={"kind": "wish", "title": "A Rust meetup in Hobart",
-                                       "body": "Monthly would be great.‮"}, headers=student)
+                                       "body": "Monthly would be great.\u202e"}, headers=student)
     assert r.status_code == 201 and r.json()["status"] == "pending"
-    assert "‮" not in r.json()["body"]  # direction-override characters stripped
+    assert "\u202e" not in r.json()["body"]  # direction-override characters stripped
     assert client.get("/v1/posts?kind=wish").json()["posts"] == []
     assert client.get("/v1/posts?kind=wish", headers=student).json()["pending"][0]["title"] == "A Rust meetup in Hobart"
     assert client.get("/v1/mod/queue", headers=student).status_code == 403
@@ -242,3 +242,86 @@ def test_cors_only_for_the_site(client):
 def test_health_and_config(client):
     assert client.get("/health").json()["events_on_site"] == 4
     assert client.get("/v1/config").json()["email_domains"] == ["utas.edu.au"]
+
+
+# -- visitor addresses, housekeeping and dates ---------------------------------------------------------------------
+
+def _request(headers: dict, peer: str = "10.0.0.9"):
+    from starlette.requests import Request
+    raw = [(k.lower().encode(), v.encode()) for k, v in headers.items()]
+    return Request({"type": "http", "headers": raw, "client": (peer, 1234), "method": "GET", "path": "/"})
+
+
+def test_a_made_up_forwarded_address_cannot_dodge_the_limits():
+    from hellotas_api.security import client_ip
+    spoofed = _request({"X-Forwarded-For": "1.2.3.4, 203.0.113.7"})
+    # Not behind a proxy: the header is ignored and the connection's own address is used
+    assert client_ip(spoofed, trust_proxy=False) == "10.0.0.9"
+    # Behind one proxy: the entry the proxy appended (the last one), never the one the visitor sent
+    assert client_ip(spoofed, trust_proxy=True) == "203.0.113.7"
+    # Behind a load balancer and a proxy: two entries from the right
+    assert client_ip(_request({"X-Forwarded-For": "1.2.3.4, 203.0.113.7, 198.51.100.1"}), True, hops=2) == "203.0.113.7"
+    assert client_ip(_request({"X-Forwarded-For": "203.0.113.7"}), True, hops=2) == "203.0.113.7"
+    assert client_ip(_request({}), trust_proxy=True) == "10.0.0.9"
+
+
+def test_changing_the_forwarded_header_does_not_reset_the_limit(client, app):
+    app.state.settings.trust_proxy = True
+    codes = [client.post("/v1/auth/request", json={"email": f"s{i}@utas.edu.au"},
+                         headers={"X-Forwarded-For": f"9.9.9.{i}, 203.0.113.7"}).status_code for i in range(21)]
+    assert codes[:20] == [202] * 20 and codes[20] == 429  # 20 an hour per visitor, whatever the first entry says
+
+
+def test_the_limiter_forgets_idle_keys(monkeypatch):
+    from hellotas_api import limits
+    limiter = limits.Limiter()
+    clock = [1000.0]
+    monkeypatch.setattr(limits.time, "monotonic", lambda: clock[0])
+    limiter._swept = clock[0]
+    for i in range(50):
+        limiter.hit("subscribe", f"visitor-{i}")
+    assert len(limiter) == 50
+    clock[0] += 86400 + limits.SWEEP_SECONDS + 1  # longer than the longest window
+    limiter.hit("subscribe", "someone-new")
+    assert len(limiter) == 1
+
+
+def test_expired_sessions_and_old_links_are_deleted(client, app):
+    from datetime import datetime
+
+    from hellotas_api.models import Session
+    from hellotas_api.security import purge_expired
+    headers = sign_in(client, app, "tidy@utas.edu.au")
+    db = app.state.sessionmaker()
+    assert purge_expired(db) == 0  # nothing has expired yet
+    long_ago = datetime(2020, 1, 1)
+    for row in list(db.query(Session)) + list(db.query(LoginLink)):
+        row.expires_at = long_ago
+    db.commit()
+    assert purge_expired(db) == 2
+    assert db.query(Session).count() == 0 and db.query(LoginLink).count() == 0
+    db.close()
+    assert client.get("/v1/me", headers=headers).status_code == 401
+
+
+def test_https_responses_ask_browsers_to_stay_on_https(app):
+    from fastapi.testclient import TestClient
+    secure = TestClient(app, base_url="https://api.example")
+    assert secure.get("/health").headers["strict-transport-security"] == "max-age=31536000"
+    assert "strict-transport-security" not in TestClient(app).get("/health").headers
+
+
+def test_closing_dates_follow_hobart_time(monkeypatch):
+    from datetime import datetime
+
+    from hellotas_api.models import Post
+    from hellotas_api.routes import posts
+
+    class Clock(datetime):
+        @classmethod
+        def now(cls, tz=None):  # 11:30 pm UTC on 30 June is already 1 July in Hobart
+            return datetime(2026, 6, 30, 23, 30, tzinfo=UTC).astimezone(tz)
+    monkeypatch.setattr(posts, "datetime", Clock)
+    assert posts._open(Post(kind="opportunity", title="x", meta={"closes_on": "2026-07-01"}))
+    assert not posts._open(Post(kind="opportunity", title="x", meta={"closes_on": "2026-06-30"}))
+    assert posts._open(Post(kind="opportunity", title="x", meta={}))

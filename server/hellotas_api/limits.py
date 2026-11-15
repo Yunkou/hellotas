@@ -20,15 +20,21 @@ LIMITS = {
 }
 
 
+SWEEP_SECONDS = 600
+
+
 class Limiter:
     def __init__(self):
         self._hits: dict[str, deque] = defaultdict(deque)
         self._lock = threading.Lock()
+        self._swept = time.monotonic()
 
     def hit(self, action: str, key: str) -> None:
         count, window = LIMITS[action]
         now = time.monotonic()
         with self._lock:
+            if now - self._swept > SWEEP_SECONDS:
+                self._sweep(now)
             hits = self._hits[f"{action}:{key}"]
             while hits and now - hits[0] > window:
                 hits.popleft()
@@ -37,6 +43,16 @@ class Limiter:
                 raise HTTPException(status_code=429, detail="Too many requests; try again later.",
                                     headers={"Retry-After": str(retry)})
             hits.append(now)
+
+    def _sweep(self, now: float) -> None:
+        """Forget keys whose hits have all aged out, so memory doesn't grow with every address ever seen."""
+        longest = max(window for _count, window in LIMITS.values())
+        for name in [k for k, hits in self._hits.items() if not hits or now - hits[-1] > longest]:
+            del self._hits[name]
+        self._swept = now
+
+    def __len__(self) -> int:
+        return len(self._hits)
 
     def reset(self) -> None:
         with self._lock:

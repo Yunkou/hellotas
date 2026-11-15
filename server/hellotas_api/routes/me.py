@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 from fastapi import APIRouter, Depends, Request
 from pydantic import BaseModel, Field
@@ -70,7 +70,7 @@ def export(user: User = Depends(current_user), db=Depends(get_db)):
         "reports": rows(Report, Report.user_id == user.id),
         "checklist": rows(ChecklistItem, ChecklistItem.user_id == user.id),
         "suggestions": rows(Suggestion, Suggestion.user_id == user.id),
-        "exported_at": datetime.now(timezone.utc).isoformat(),
+        "exported_at": datetime.now(UTC).isoformat(),
     }
 
 
@@ -122,7 +122,7 @@ def update_checklist(body: ChecklistUpdate, user: User = Depends(current_user), 
 def my_events(request: Request, user: User = Depends(current_user), db=Depends(get_db)):
     """Interested and going, with 'went' for events that are over: a record to copy into a CV or LinkedIn."""
     feed = state(request).feed.events(user.lang)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     out = []
     for mark in db.scalars(select(EventMark).where(EventMark.user_id == user.id)):
         live = feed.get(mark.event_id)

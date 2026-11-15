@@ -39,6 +39,9 @@ class Settings:
     cron_secret: str = ""
     # Behind a proxy (Caddy, Cloud Run, Render, Fly): trust X-Forwarded-For for rate limiting
     trust_proxy: bool = False
+    # How many of our own proxies sit in front of the API. The visitor's address is read that many entries from
+    # the right-hand end of X-Forwarded-For (1 for Caddy or Cloud Run alone, 2 behind a load balancer as well).
+    trusted_proxy_hops: int = 1
     session_days: int = 30
     login_link_minutes: int = 20
     feed_refresh_seconds: int = 600
@@ -79,5 +82,6 @@ def from_env() -> Settings:
     s.github_token = env("GITHUB_TOKEN", "")
     s.cron_secret = env("CRON_SECRET", "")
     s.trust_proxy = env("TRUST_PROXY", "false").lower() in ("1", "true", "yes")
+    s.trusted_proxy_hops = max(1, int(env("TRUSTED_PROXY_HOPS", "1")))
     s.session_days = int(env("SESSION_DAYS", "30"))
     return s

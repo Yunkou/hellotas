@@ -6,15 +6,16 @@ Opportunities carry who can apply (visa conditions) and a closing date, after wh
 
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime
 
 from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel, Field
 from sqlalchemy import func, select
 
+from ..mail import HOBART
 from ..models import OPPORTUNITY_TYPES, POST_KINDS, REACTIONS, WORK_RIGHTS, Post, Reaction, Report, User
-from ..security import client_key, current_user, get_db, optional_user
-from .common import clean_text, clean_url, state
+from ..security import current_user, get_db, optional_user
+from .common import clean_text, clean_url, state, visitor_key
 
 router = APIRouter(prefix="/v1/posts", tags=["posts"])
 
@@ -46,7 +47,9 @@ def post_out(p: Post, reactions: int = 0, mine: bool = False, reacted: bool = Fa
 
 def _open(p: Post) -> bool:
     closes = (p.meta or {}).get("closes_on")
-    return not closes or closes >= date.today().isoformat()
+    # "Today" is the date in Hobart, where the closing dates were written, not on the server's clock (UTC):
+    # otherwise an opportunity would stay listed until 10 or 11 am the day after it closed.
+    return not closes or closes >= datetime.now(HOBART).date().isoformat()
 
 
 @router.get("")
@@ -110,7 +113,7 @@ def react(post_id: int, user: User = Depends(current_user), db=Depends(get_db)):
 def report(post_id: int, body: ReportBody, request: Request, user: User = Depends(current_user),
            db=Depends(get_db)):
     s = state(request)
-    s.limiter.hit("report", client_key(request, s.settings.secret_key, s.settings.trust_proxy))
+    s.limiter.hit("report", visitor_key(request))
     if db.get(Post, post_id) is None:
         raise HTTPException(status_code=404, detail="No such post.")
     db.add(Report(post_id=post_id, user_id=user.id, reason=clean_text(body.reason, 500)))

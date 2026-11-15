@@ -25,9 +25,14 @@ def _md(s: str) -> str:
     return str(s).replace("|", "\\|").replace("\n", " ").replace("@", "@\u200b")
 
 
+def _link(url: str) -> str:
+    """An address from an event page, made safe as a Markdown link target (a bracket or space can't end it early)."""
+    return str(url).replace(" ", "%20").replace("(", "%28").replace(")", "%29").replace("|", "%7C")
+
+
 def markdown(result: RunResult, heading: str = "Event collector run") -> str:
     out = [f"## {heading}", ""]
-    blocked = {k: v for k, v in result.errors.items()}
+    blocked = dict(result.errors)
     out.append(
         f"**{len(result.added)} new**, {len(result.updated)} updated, {len(result.skipped)} skipped. "
         f"{len(result.found)} source(s) read" + (f", {len(blocked)} couldn't be read." if blocked else ".")
@@ -40,8 +45,8 @@ def markdown(result: RunResult, heading: str = "Event collector run") -> str:
         for p in result.added:
             j = p.judgement
             score = f"{j.score} ({j.by})" if j.by != "person" else f"{j.score} (suggested)"
-            out.append(f"| {_when(p.raw)} | [{_md(p.fields['title']['en'])}]({p.raw.url}) | {_md(p.fields.get('host', ''))} "
-                       f"| {score} | {p.written_by} | `{p.file_path}` |")
+            out.append(f"| {_when(p.raw)} | [{_md(p.fields['title']['en'])}]({_link(p.raw.url)}) "
+                       f"| {_md(p.fields.get('host', ''))} | {score} | {p.written_by} | `{p.file_path}` |")
         out += ["", "<details><summary>Why each was picked</summary>", ""]
         for p in result.added:
             note = p.raw.extra.get("suggester_note")
@@ -70,7 +75,7 @@ def markdown(result: RunResult, heading: str = "Event collector run") -> str:
         for s in sorted(result.skipped, key=lambda s: (s.why, s.raw.start.isoformat() if s.raw.start else "")):
             if s.why in ("over",):
                 continue
-            out.append(f"- {s.why}: [{_md(s.raw.title or s.raw.url)}]({s.raw.url}) ({_when(s.raw)})"
+            out.append(f"- {s.why}: [{_md(s.raw.title or s.raw.url)}]({_link(s.raw.url)}) ({_when(s.raw)})"
                        + (f", {_md(s.detail)}" if s.detail else ""))
         out += ["", "</details>", ""]
 

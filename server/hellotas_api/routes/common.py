@@ -7,7 +7,11 @@ import unicodedata
 
 from fastapi import HTTPException, Request
 
-_CONTROL = re.compile(r"[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f​-‏‪-‮⁦-⁩]")
+from ..security import client_key
+
+# Control characters, zero-width characters and the Unicode direction overrides (which can make text read
+# differently from what was typed). Written as escapes so the source file itself contains none of them.
+_CONTROL = re.compile(r"[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\u200b-\u200f\u202a-\u202e\u2066-\u2069]")
 EVENT_ID = re.compile(r"^[a-z0-9][a-z0-9-]{0,99}$")
 LANGS = ("en", "zh", "ne")
 
@@ -39,6 +43,12 @@ def lang_of(value: str | None) -> str:
 
 def state(request: Request):
     return request.app.state
+
+
+def visitor_key(request: Request) -> str:
+    """The rate-limit key for whoever sent this request (a keyed hash of their address, never the address)."""
+    s = request.app.state.settings
+    return client_key(request, s.secret_key, s.trust_proxy, s.trusted_proxy_hops)
 
 
 def check_event_id(event_id: str) -> str:

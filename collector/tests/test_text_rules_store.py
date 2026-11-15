@@ -35,7 +35,8 @@ def test_house_style_text():
 
 
 def _ev(**kw):
-    base = dict(source="t", url="https://x.org/e", title="Event", start=parse_when("2026-11-20T18:00:00+11:00", HOBART)[0])
+    base = {"source": "t", "url": "https://x.org/e", "title": "Event",
+            "start": parse_when("2026-11-20T18:00:00+11:00", HOBART)[0]}
     base.update(kw)
     ev = RawEvent(**base)
     ev.extra.setdefault("trust", "medium")

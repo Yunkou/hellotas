@@ -7,7 +7,7 @@ it), or by `hellotas-api send-digest` on the server.
 from __future__ import annotations
 
 import hmac
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, UTC
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Request
 from fastapi.responses import HTMLResponse
@@ -17,8 +17,8 @@ from sqlalchemy import select
 from ..db import utcnow
 from ..mail import Message, text, when
 from ..models import Subscriber
-from ..security import client_key, email_allowed, get_db, hash_token, new_token, normalise_email
-from .common import lang_of, state
+from ..security import email_allowed, get_db, hash_token, new_token, normalise_email, purge_expired
+from .common import lang_of, state, visitor_key
 
 router = APIRouter(prefix="/v1", tags=["digest"])
 TOPICS = {"cyber", "ai", "careers", "data", "development", "community", "ux"}
@@ -43,11 +43,10 @@ def _page(title: str, message: str, site: str) -> HTMLResponse:
 @router.post("/digest/subscribe", status_code=202)
 def subscribe(body: Subscribe, request: Request, db=Depends(get_db)):
     app = state(request)
-    s = app.settings
     email = normalise_email(body.email)
     if not email_allowed(email, ["*"]):
         raise HTTPException(status_code=422, detail="That doesn't look like an email address.")
-    app.limiter.hit("subscribe", client_key(request, s.secret_key, s.trust_proxy))
+    app.limiter.hit("subscribe", visitor_key(request))
     lang = lang_of(body.lang)
     topics = ",".join(sorted(t for t in body.topics if t in TOPICS))
     token = new_token()
@@ -133,7 +132,7 @@ def compose(e_list: list[dict], lang: str, site: str, unsubscribe_link: str) -> 
 
 def send_all(app, db, base_url: str) -> dict:
     """One email per active subscriber. Each gets a fresh unsubscribe token."""
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     sent = 0
     for sub in db.scalars(select(Subscriber).where(Subscriber.status == "active")):
         events = upcoming(app.feed.events(sub.lang), sub.topics, now)
@@ -157,4 +156,5 @@ def send(request: Request, authorization: str = Header(default=""), db=Depends(g
     secret = state(request).settings.cron_secret
     if not secret or not hmac.compare_digest(authorization, f"Bearer {secret}"):
         raise HTTPException(status_code=403, detail="Wrong or missing CRON_SECRET.")
+    purge_expired(db)  # the weekly call doubles as housekeeping: expired sessions and old sign-in links
     return send_all(state(request), db, str(request.base_url))

@@ -11,8 +11,8 @@ from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel, Field
 
 from ..models import Suggestion, User
-from ..security import client_key, get_db, optional_user
-from .common import clean_text, clean_url, state
+from ..security import get_db, optional_user
+from .common import clean_text, clean_url, state, visitor_key
 from .mod import forward, suggestion_out
 
 router = APIRouter(prefix="/v1", tags=["suggestions"])
@@ -30,7 +30,7 @@ def suggest(body: NewSuggestion, request: Request, user: User | None = Depends(o
     app = state(request)
     if body.website:
         return {"status": "pending"}  # quietly drop bot submissions
-    app.limiter.hit("suggest", client_key(request, app.settings.secret_key, app.settings.trust_proxy))
+    app.limiter.hit("suggest", visitor_key(request))
     url = clean_url(body.url)
     if not url:
         raise HTTPException(status_code=422, detail="Add the event's link.")

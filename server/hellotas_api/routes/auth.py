@@ -6,14 +6,14 @@ from datetime import timedelta
 
 from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel, Field
-from sqlalchemy import select
+from sqlalchemy import select, update
 
 from ..db import utcnow
 from ..mail import Message, text
 from ..models import LoginLink, Session, User
-from ..security import (client_key, create_session, current_user, default_name, email_allowed, get_db,
+from ..security import (create_session, current_user, default_name, email_allowed, get_db,
                         hash_token, new_token, normalise_email)
-from .common import lang_of, state
+from .common import lang_of, state, visitor_key
 from .me import user_out
 
 router = APIRouter(prefix="/v1/auth", tags=["auth"])
@@ -36,7 +36,7 @@ def request_link(body: LinkRequest, request: Request, db=Depends(get_db)):
     if not email_allowed(email, s.allowed_email_domains):
         domains = ", ".join(s.allowed_email_domains)
         raise HTTPException(status_code=422, detail=f"Use your university email address ({domains}).")
-    app.limiter.hit("login_ip", client_key(request, s.secret_key, s.trust_proxy))
+    app.limiter.hit("login_ip", visitor_key(request))
     app.limiter.hit("login", email)
     token = new_token()
     lang = lang_of(body.lang)
@@ -56,11 +56,16 @@ def request_link(body: LinkRequest, request: Request, db=Depends(get_db)):
 @router.post("/verify")
 def verify(body: Verify, request: Request, db=Depends(get_db)):
     s = state(request).settings
+    now = utcnow()
     link = db.scalar(select(LoginLink).where(LoginLink.token_hash == hash_token(body.token)))
-    if link is None or link.used_at is not None or link.expires_at < utcnow():
+    # Claim the link in one statement, so two requests arriving together can't both sign in with it
+    claimed = link is not None and db.execute(
+        update(LoginLink).where(LoginLink.id == link.id, LoginLink.used_at.is_(None), LoginLink.expires_at >= now)
+        .values(used_at=now)).rowcount == 1
+    if not claimed:
+        db.rollback()
         raise HTTPException(status_code=400, detail="That sign-in link has expired or was already used. "
                                                     "Ask for a new one.")
-    link.used_at = utcnow()
     user = db.scalar(select(User).where(User.email == link.email))
     if user is None:
         user = User(email=link.email, display_name=default_name(link.email), lang=link.lang)

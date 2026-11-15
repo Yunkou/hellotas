@@ -16,6 +16,7 @@ from .feed import EventFeed
 from .limits import Limiter
 from .mail import Mailer
 from .routes import auth, digest, events, me, mod, posts, suggest
+from .security import purge_expired
 
 
 def create_app(settings: Settings | None = None, feed: EventFeed | None = None, mailer: Mailer | None = None,
@@ -34,6 +35,8 @@ def create_app(settings: Settings | None = None, feed: EventFeed | None = None, 
     app.state.mailer = mailer or Mailer(settings)
     app.state.limiter = Limiter()
     app.state.http = http or requests.Session()
+    with app.state.sessionmaker() as db:
+        purge_expired(db)  # housekeeping on every start; the weekly digest call does it too
 
     # Sessions travel in the Authorization header, not cookies, so no credentials mode and no CSRF exposure
     app.add_middleware(CORSMiddleware, allow_origins=settings.allowed_origins, allow_credentials=False,
@@ -46,6 +49,8 @@ def create_app(settings: Settings | None = None, feed: EventFeed | None = None, 
         response.headers.setdefault("X-Content-Type-Options", "nosniff")
         response.headers.setdefault("Referrer-Policy", "no-referrer")
         response.headers.setdefault("X-Frame-Options", "DENY")
+        if request.url.scheme == "https":
+            response.headers.setdefault("Strict-Transport-Security", "max-age=31536000")
         if request.url.path.startswith("/v1/"):
             response.headers.setdefault("Cache-Control", "no-store")
         return response

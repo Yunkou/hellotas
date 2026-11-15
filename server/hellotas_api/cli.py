@@ -13,7 +13,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="hellotas-api")
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("serve", help="run the API (reads settings from environment variables)")
-    p.add_argument("--host", default=os.environ.get("HOST", "0.0.0.0"))
+    p.add_argument("--host", default=os.environ.get("HOST", "127.0.0.1"),
+                   help="address to listen on (this computer only by default; the container passes 0.0.0.0)")
     p.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8000")))
     p.add_argument("--reload", action="store_true", help="restart on code changes (development)")
     p = sub.add_parser("send-digest", help="send the weekly digest now")
@@ -25,8 +26,12 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "serve":
         import uvicorn
+        # Forwarded headers (the visitor's address and https) are believed only when TRUST_PROXY says the API
+        # sits behind a proxy; otherwise anyone could put a made-up address in them.
+        behind_proxy = os.environ.get("TRUST_PROXY", "false").lower() in ("1", "true", "yes")
         uvicorn.run("hellotas_api.app:create_app", factory=True, host=args.host, port=args.port,
-                    reload=args.reload, proxy_headers=True, forwarded_allow_ips="*")
+                    reload=args.reload, proxy_headers=behind_proxy,
+                    forwarded_allow_ips="*" if behind_proxy else "127.0.0.1")
         return 0
 
     from .app import create_app

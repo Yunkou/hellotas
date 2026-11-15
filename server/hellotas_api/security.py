@@ -13,10 +13,10 @@ import secrets
 from datetime import timedelta
 
 from fastapi import Depends, HTTPException, Request
-from sqlalchemy import select
+from sqlalchemy import delete, select
 
 from .db import utcnow
-from .models import Session, User
+from .models import LoginLink, Session, User
 
 EMAIL_RX = re.compile(r"^[A-Za-z0-9._%+'-]+@([A-Za-z0-9-]+\.)+[A-Za-z]{2,}$")
 
@@ -51,14 +51,32 @@ def email_allowed(email: str, domains: list[str]) -> bool:
     return any(domain == d or domain.endswith("." + d) for d in domains)
 
 
-def client_key(request: Request, secret: str, trust_proxy: bool) -> str:
-    """A keyed hash of the visitor's IP address: enough to rate-limit, without storing the address."""
-    ip = request.client.host if request.client else "unknown"
+def client_ip(request: Request, trust_proxy: bool, hops: int = 1) -> str:
+    """The visitor's address. Behind a proxy it comes from X-Forwarded-For, counted from the right-hand end:
+    each proxy appends the address it saw, so the last `hops` entries were written by our own proxies and
+    everything to their left was sent by the visitor and can be made up."""
+    scope_client = request.scope.get("client")
+    ip = scope_client[0] if scope_client else "unknown"
     if trust_proxy:
-        forwarded = request.headers.get("x-forwarded-for", "")
-        if forwarded:
-            ip = forwarded.split(",")[0].strip()
+        parts = [p.strip() for p in request.headers.get("x-forwarded-for", "").split(",") if p.strip()]
+        if parts:
+            ip = parts[-hops] if len(parts) >= hops else parts[0]
+    return ip
+
+
+def client_key(request: Request, secret: str, trust_proxy: bool, hops: int = 1) -> str:
+    """A keyed hash of the visitor's IP address: enough to rate-limit, without storing the address."""
+    ip = client_ip(request, trust_proxy, hops)
     return hmac.new(secret.encode(), ip.encode(), hashlib.sha256).hexdigest()[:32]
+
+
+def purge_expired(db) -> int:
+    """Delete sessions that have expired and sign-in links that are a day past their expiry. Returns how many."""
+    now = utcnow()
+    gone = db.execute(delete(Session).where(Session.expires_at < now)).rowcount or 0
+    gone += db.execute(delete(LoginLink).where(LoginLink.expires_at < now - timedelta(days=1))).rowcount or 0
+    db.commit()
+    return gone
 
 
 def create_session(db, user: User, days: int) -> str:

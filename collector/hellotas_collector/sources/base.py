@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Callable
+from collections.abc import Callable
 from zoneinfo import ZoneInfo
 
 from ..fetch import Fetcher

@@ -77,7 +77,7 @@ class Site:
         for path, kind in files:
             try:
                 data = y.load(path.read_text(encoding="utf-8")) or {}
-            except Exception:  # a broken file shouldn't stop the run; Hugo will complain about it anyway
+            except Exception:  # noqa: S112  a broken file shouldn't stop the run; the site build reports it
                 continue
             entry = Entry(path=path, kind=kind, data=data, title=_text(data.get("title")))
             entry.start, _ = parse_when(data.get("start"), self.tz)

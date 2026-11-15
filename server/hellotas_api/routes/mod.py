@@ -114,7 +114,8 @@ def stats(user: User = Depends(moderator), db=Depends(get_db)):
         "event_marks": count(EventMark), "going": count(EventMark, EventMark.status == "going"),
         "buddy_listings": count(BuddyListing), "buddy_requests": count(BuddyIntro),
         "buddy_requests_accepted": count(BuddyIntro, BuddyIntro.status == "accepted"),
-        "posts_approved": count(Post, Post.status == "approved"), "posts_pending": count(Post, Post.status == "pending"),
+        "posts_approved": count(Post, Post.status == "approved"),
+        "posts_pending": count(Post, Post.status == "pending"),
         "digest_subscribers": count(Subscriber, Subscriber.status == "active"),
         "suggestions": count(Suggestion), "suggestions_forwarded": count(Suggestion, Suggestion.status == "forwarded"),
     }

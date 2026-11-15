@@ -72,7 +72,7 @@ def credentials_present(name: str = "anthropic") -> bool:
     return bool(api_key(name))
 
 
-def make_provider(ai: dict, client=None) -> "Provider":
+def make_provider(ai: dict, client=None) -> Provider:
     """The provider sources.yaml asks for. `client` replaces the network in tests: an Anthropic client for
     anthropic, and an object with requests' post() for the others."""
     name = provider_name(ai)
@@ -150,14 +150,14 @@ class AnthropicProvider(Provider):
         self.client = client
 
     def ask(self, task, system, user, schema, effort, max_tokens):
-        params = dict(
-            model=self.model,
-            max_tokens=max_tokens,
+        params = {
+            "model": self.model,
+            "max_tokens": max_tokens,
             # The stable part of the prompt first, so repeated calls in a run reuse the prompt cache
-            system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
-            messages=[{"role": "user", "content": user}],
-            output_config={"effort": effort, "format": {"type": "json_schema", "schema": schema}},
-        )
+            "system": [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
+            "messages": [{"role": "user", "content": user}],
+            "output_config": {"effort": effort, "format": {"type": "json_schema", "schema": schema}},
+        }
         if self.model in _FALLBACK_MODELS:
             # If a safety classifier declines, the API retries on Anthropic's recommended fallback model
             params.update(betas=[_FALLBACK_BETA], fallbacks="default")
@@ -251,7 +251,7 @@ class GeminiProvider(Provider):
 
     name = "gemini"
     BASE = "https://generativelanguage.googleapis.com/v1beta/models/"
-    DECLINED = {"SAFETY", "RECITATION", "BLOCKLIST", "PROHIBITED_CONTENT", "SPII", "IMAGE_SAFETY", "OTHER"}
+    DECLINED = frozenset({"SAFETY", "RECITATION", "BLOCKLIST", "PROHIBITED_CONTENT", "SPII", "IMAGE_SAFETY", "OTHER"})
 
     def __init__(self, model: str, key: str, session=None):
         self.model = model

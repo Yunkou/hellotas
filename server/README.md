@@ -51,6 +51,7 @@ All settings are environment variables (or a `.env` file read by docker compose)
 | `GITHUB_REPO`, `GITHUB_TOKEN` | `dongyi-guo/hellotas`, none | Website suggestions become "Event suggestion" issues there. A fine-grained token for that repository with *Issues: read and write* only. Without it, suggestions wait on `/moderate/`. |
 | `CRON_SECRET` | none | Protects `POST /v1/admin/digest/send`. The same value goes in the repository secret `COMMUNITY_CRON_SECRET`. |
 | `TRUST_PROXY` | `false` (`true` in the container) | Behind a proxy, use the visitor's address from `X-Forwarded-For` for rate limits. |
+| `TRUSTED_PROXY_HOPS` | `1` | How many of your own proxies sit in front of the API. The visitor's address is read that many entries from the right-hand end of `X-Forwarded-For`; entries further left come from the visitor and can be made up. `1` for Caddy or Cloud Run on its own, `2` when a load balancer sits in front as well. |
 | `SESSION_DAYS` | `30` | How long a sign-in lasts. |
 
 ## Deploying

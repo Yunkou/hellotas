@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
@@ -14,7 +14,7 @@ class Base(DeclarativeBase):
 
 def utcnow() -> datetime:
     """Naive UTC: stored the same way in SQLite and Postgres, so comparisons never mix kinds."""
-    return datetime.now(timezone.utc).replace(tzinfo=None)
+    return datetime.now(UTC).replace(tzinfo=None)
 
 
 def make_engine(url: str):

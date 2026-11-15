@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 # deciding whether two links point at the same event.
 _ID_PARAMS = {"eventid", "eventkey", "id", "eid", "event", "e", "p"}
 
-_SPACE = re.compile(r"[ \t  ​]+")
+_SPACE = re.compile(r"[ \t\xa0\u2009\u200b]+")  # incl. no-break, thin and zero-width spaces
 _FORMAT_MARKERS = re.compile(r"\s*[\[(](?:in[- ]?person|virtual|online|webinar|hybrid)[\])]\s*", re.I)
 _SITE_SUFFIXES = re.compile(r"\s*[|\-–]\s*(?:humanitix|eventbrite|meetup|tickets?)\s*$", re.I)
 
