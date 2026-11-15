@@ -12,21 +12,28 @@
     caption  text under each photo in the photo viewer (defaults to alt; a slide's own caption is added after it)
     source   page the photos came from (a LinkedIn post, the official event page), for the viewer's "Original post" link
     sources  optional slice, one source per slide ("" for none); overrides source
+    sizes    how wide a slide is shown, as an <img sizes> value; the default suits cards (full width on phones,
+             up to 640px otherwise). Lazy slides add "auto" in front, so browsers that support it measure the slide
+             themselves. Photos are served as resized WebP copies (partials/img.html); the viewer opens the original.
   With one image it renders a plain image, no controls.
 */ -}}
 {{- $images := .images -}}
 {{- $n := len $images -}}
 {{- $multi := gt $n 1 -}}
+{{- $sizes := .sizes | default "(max-width: 760px) 100vw, 640px" -}}
 <div class="carousel{{ with .class }} {{ . }}{{ end }}"{{ if .lightbox }} data-lightbox{{ end }}{{ if $multi }} data-carousel{{ if .autoplay }} data-autoplay="6000" data-label-pause="{{ i18n "carouselPause" }}" data-label-play="{{ i18n "carouselPlay" }}"{{ end }} role="region" aria-roledescription="carousel" aria-label="{{ .label | default .alt }}"{{ end }}>
   <div class="carousel-track">
     {{- range $i, $src := $images }}
     <div class="carousel-slide"{{ if $multi }} role="group" aria-roledescription="slide" aria-label="{{ add $i 1 }} / {{ $n }}"{{ end }}>
       {{- if $.backdrop }}
-      <img class="carousel-backdrop" src="{{ strings.TrimPrefix "/" $src | relURL }}" alt="" aria-hidden="true" loading="lazy">
+      {{- /* The blurred fill behind a photo only needs a tiny copy */ -}}
+      <img class="carousel-backdrop" src="{{ (partial "img.html" (dict "src" $src "width" 64)).src }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
       {{- end }}
       {{- $caption := $.caption | default $.alt }}{{ with $.captions }}{{ with index . $i }}{{ $caption = printf "%s · %s" $caption . }}{{ end }}{{ end }}
       {{- $source := $.source | default "" }}{{ with $.sources }}{{ with index . $i }}{{ $source = . }}{{ end }}{{ end }}
-      <img src="{{ strings.TrimPrefix "/" $src | relURL }}" alt="{{ $.alt }}"{{ if $.lightbox }} data-caption="{{ $caption }}"{{ with $source }} data-source="{{ . }}"{{ end }}{{ end }}{{ if or $.lazy (gt $i 0) }} loading="lazy"{{ end }}>
+      {{- $img := partial "img.html" (dict "src" $src "widths" (slice 480 960 1600)) }}
+      {{- $isLazy := or $.lazy (gt $i 0) }}
+      <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}" sizes="{{ if $isLazy }}auto, {{ end }}{{ $sizes }}"{{ end }}{{ with $img.width }} width="{{ . }}" height="{{ $img.height }}"{{ end }} alt="{{ $.alt }}"{{ if $.lightbox }} data-full="{{ $img.full }}" data-caption="{{ $caption }}"{{ with $source }} data-source="{{ . }}"{{ end }}{{ end }}{{ if $isLazy }} loading="lazy"{{ end }} decoding="async">
       {{- with $.captions }}{{ with index . $i }}<span class="carousel-caption">{{ . }}</span>{{ end }}{{ end }}
     </div>
     {{- end }}

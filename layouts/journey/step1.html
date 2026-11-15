@@ -47,7 +47,8 @@
         {{ range hugo.Data.journey.step1.priorities }}
         <article class="journey-priority-card{{ with .tips }} journey-priority-card--detailed{{ end }}"{{ with .id }} id="{{ . }}"{{ end }}>
           <div class="journey-priority-media">
-            <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" width="140" height="140"{{ with .imagePosition }} style="object-position: {{ . | safeCSS }}"{{ end }}>
+            {{- $img := partial "img.html" (dict "src" .image "widths" (slice 480 760 1100)) }}
+            <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}" sizes="(max-width: 1100px) 100vw, 980px"{{ end }} alt="{{ i18n .altKey }}" width="140" height="140"{{ with .imagePosition }} style="object-position: {{ . | safeCSS }}"{{ end }}>
           </div>
           <div class="journey-priority-body">
             <div class="journey-priority-head">
@@ -99,7 +100,8 @@
           <article class="journey-basic-card">
             <div class="journey-basic-head">
               <div class="journey-basic-icon">
-                <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" loading="lazy" width="60" height="60">
+                {{- $img := partial "img.html" (dict "src" .image "width" 60) }}
+                <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }} alt="{{ i18n .altKey }}" loading="lazy" width="60" height="60">
               </div>
               <h3>{{ i18n .titleKey }}</h3>
             </div>

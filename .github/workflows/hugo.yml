@@ -34,6 +34,13 @@ jobs:
           hugo-version: '0.166.0'
           extended: true
 
+      - name: Reuse the resized photos from earlier builds
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: resources/_gen
+          key: hugo-images-${{ hashFiles('static/images/**', 'layouts/partials/img.html') }}
+          restore-keys: hugo-images-
+
       - name: Build
         env:
           # The community API's address (server/), e.g. https://api.example.org. Unset: those features stay hidden.

@@ -328,7 +328,7 @@
         var labelled = n.closest('[data-caption]');
         var sourced = n.closest('[data-source]');
         return {
-          src: n.src,
+          src: n.dataset.full || n.src, // the original photo; the page itself shows a resized copy
           alt: n.alt,
           caption: labelled && group.contains(labelled) ? labelled.dataset.caption : '',
           source: sourced && group.contains(sourced) ? sourced.dataset.source : ''
@@ -637,7 +637,24 @@
     });
   }
 
+  // Embedded maps (layouts/partials/place-card.html) get their address only when they are about to be seen
+  function initMaps() {
+    var maps = document.querySelectorAll('iframe[data-map-src]');
+    if (!maps.length) return;
+    function load(frame) { frame.src = frame.dataset.mapSrc; frame.removeAttribute('data-map-src'); }
+    if (!('IntersectionObserver' in window)) { maps.forEach(load); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        load(entry.target);
+      });
+    }, { rootMargin: '300px 0px' });
+    maps.forEach(function (frame) { io.observe(frame); });
+  }
+
   document.querySelectorAll('.nav-toggle').forEach(initMobileMenu);
+  initMaps();
   initChannels();
   document.querySelectorAll('[data-carousel]').forEach(initCarousel);
   document.querySelectorAll('[data-copy]').forEach(initCopy);

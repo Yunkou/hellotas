@@ -10,7 +10,9 @@
         </div>
       </div>
       <div class="home-hero-media">
-        <img src="{{ "images/home/hero-tasict-awards-2026.jpg" | relURL }}" alt="{{ i18n "homeHeroImageAlt" }}" width="1364" height="920">
+        {{- /* The first thing people see: not lazy, and marked as the photo to fetch first */ -}}
+        {{ $img := partial "img.html" (dict "src" "images/home/hero-tasict-awards-2026.jpg" "widths" (slice 480 760 1100)) }}
+        <img src="{{ $img.src }}" srcset="{{ $img.srcset }}" sizes="(max-width: 900px) 100vw, 520px" alt="{{ i18n "homeHeroImageAlt" }}" width="{{ $img.width }}" height="{{ $img.height }}" fetchpriority="high">
       </div>
     </div>
   </section>
@@ -108,7 +110,8 @@
           </div>
         </div>
         <div class="home-feature-media">
-          <img src="{{ "images/home/section-utas-ict-booth.png" | relURL }}" alt="{{ i18n "homeCampusImageAlt" }}" width="1536" height="2048" loading="lazy">
+          {{ $img := partial "img.html" (dict "src" "images/home/section-utas-ict-booth.png" "widths" (slice 480 760 1100)) }}
+          <img src="{{ $img.src }}" srcset="{{ $img.srcset }}" sizes="auto, (max-width: 900px) 100vw, 704px" alt="{{ i18n "homeCampusImageAlt" }}" width="{{ $img.width }}" height="{{ $img.height }}" loading="lazy" decoding="async">
         </div>
       </div>
     </article>
@@ -116,7 +119,8 @@
     <article class="home-feature home-feature--flip" id="tasmania-community">
       <div class="container home-feature-inner">
         <div class="home-feature-media">
-          <img src="{{ "images/home/section-community-workshop.png" | relURL }}" alt="{{ i18n "homeLocalImageAlt" }}" width="1280" height="960" loading="lazy">
+          {{ $img := partial "img.html" (dict "src" "images/home/section-community-workshop.png" "widths" (slice 480 760 1100)) }}
+          <img src="{{ $img.src }}" srcset="{{ $img.srcset }}" sizes="auto, (max-width: 900px) 100vw, 704px" alt="{{ i18n "homeLocalImageAlt" }}" width="{{ $img.width }}" height="{{ $img.height }}" loading="lazy" decoding="async">
         </div>
         <div class="home-feature-copy">
           <h2>{{ i18n "homeLocalTitle" }}</h2>
@@ -140,7 +144,8 @@
           </div>
         </div>
         <div class="home-feature-media">
-          <img src="{{ "images/home/section-industry-event.png" | relURL }}" alt="{{ i18n "homeIndustryImageAlt" }}" width="800" height="800" loading="lazy">
+          {{ $img := partial "img.html" (dict "src" "images/home/section-industry-event.png" "widths" (slice 480 760 1100)) }}
+          <img src="{{ $img.src }}" srcset="{{ $img.srcset }}" sizes="auto, (max-width: 900px) 100vw, 704px" alt="{{ i18n "homeIndustryImageAlt" }}" width="{{ $img.width }}" height="{{ $img.height }}" loading="lazy" decoding="async">
         </div>
       </div>
     </article>

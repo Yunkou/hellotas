@@ -10,8 +10,9 @@
 {{- end -}}
 <article class="story-card" data-year="{{ $item.year }}">
   <div class="story-image">
+    {{- $img := partial "img.html" (dict "src" $item.image "width" 400) }}
     <img
-      src="{{ $item.image | relURL }}"
+      src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }}
       alt="{{ $name }}"
       loading="lazy"
       width="400"

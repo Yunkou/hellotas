@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ index (dict "en" "en-AU" "zh" "zh-CN" "ne" "ne-NP") .Language.Lang | default .Language.Lang }}">
 <head>
-  {{ $style := resources.Get "css/custom.css" | fingerprint }}
+  {{ $style := resources.Get "css/custom.css" | minify | fingerprint }}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {{ partial "extend_head.html" . }}

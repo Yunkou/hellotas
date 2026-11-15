@@ -6,6 +6,24 @@ enableRobotsTXT = true
 # The site has no tags or categories, so don't publish empty /tags/ and /categories/ pages
 disableKinds = ["taxonomy", "term"]
 
+# Rendering a page includes making the right-sized copies of its photos (layouts/partials/img.html). The first
+# build after a clean checkout makes all of them, which takes longer than Hugo's default 60 seconds a page.
+timeout = "10m"
+
+# The photos live in static/images/ and are published as they are. Mounting the same folder as assets/images
+# lets templates also resize them (layouts/partials/img.html). Listing a folder here replaces Hugo's default
+# for it, so static and assets are listed too.
+[module]
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "static/images"
+    target = "assets/images"
+
 [params]
   description = "A platform for all UTAS students, showcasing real events, experiences and highlights in Tasmania."
   # The community API (server/): accounts, event buddies, the Noticeboard, saved checklists and the weekly digest.
