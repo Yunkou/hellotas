@@ -55,7 +55,12 @@
               <span class="home-new-tag">{{ i18n "homeNewBadge" }}</span>
               {{- end }}
               <span class="home-new-title">{{ .title }}</span>
-              <span class="home-new-meta"><time datetime="{{ .start }}">{{ if eq site.Language.Lang "en" }}{{ time.Format "Mon 2 Jan 2006" .start }}{{ else }}{{ time.Format ":date_medium" .start }}{{ end }}</time>{{ with .host }} · {{ . }}{{ end }}{{ if eq .format "online" }} · {{ i18n "happeningFormatOnline" }}{{ end }}</span>
+              {{- /* An event that runs over several days shows both ends ("Mon 9 Nov – Thu 3 Dec 2026"); with only
+                   the first day it looks finished once that day has passed */ -}}
+              {{- $en := eq site.Language.Lang "en" -}}
+              {{- $multiDay := ne (time.Format "2006-01-02" .start) (time.Format "2006-01-02" .end) -}}
+              {{- $sameYear := eq (time.Format "2006" .start) (time.Format "2006" .end) }}
+              <span class="home-new-meta"><time datetime="{{ .start }}">{{ if $en }}{{ time.Format (cond (and $multiDay $sameYear) "Mon 2 Jan" "Mon 2 Jan 2006") .start }}{{ else }}{{ partial "date-short.html" .start }}{{ end }}</time>{{ if $multiDay }} – <time datetime="{{ .end }}">{{ if $en }}{{ time.Format "Mon 2 Jan 2006" .end }}{{ else }}{{ partial "date-short.html" .end }}{{ end }}</time>{{ end }}{{ with .host }} · {{ . }}{{ end }}{{ if eq .format "online" }} · {{ i18n "happeningFormatOnline" }}{{ end }}</span>
             </span>
           </a>
         </li>

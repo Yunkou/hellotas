@@ -806,3 +806,6 @@ utasEventsCta: "View current TUSA events"
 notFoundTitle: "We couldn't find that page"
 notFoundText: "It may have moved, or the event is over. Try the homepage, or see what's on now."
 notFoundHome: "Back to the homepage"
+
+# Footer link to the feedback form (.github/ISSUE_TEMPLATE/feedback.yml)
+feedback: "Give feedback"

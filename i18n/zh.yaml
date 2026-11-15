@@ -806,3 +806,6 @@ utasEventsCta: "查看 TUSA 最新活动"
 notFoundTitle: "找不到这个页面"
 notFoundText: "页面可能已经移动，或者活动已经结束。请回到首页，或看看近期活动。"
 notFoundHome: "返回首页"
+
+# Footer link to the feedback form (.github/ISSUE_TEMPLATE/feedback.yml)
+feedback: "意见反馈"

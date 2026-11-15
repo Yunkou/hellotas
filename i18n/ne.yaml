@@ -828,3 +828,6 @@ utasEventsCta: "TUSA का हालका कार्यक्रमहरू
 notFoundTitle: "त्यो पृष्ठ भेटिएन"
 notFoundText: "पृष्ठ सारिएको हुन सक्छ, वा कार्यक्रम सकिएको हुन सक्छ। गृहपृष्ठमा जानुहोस्, वा अहिले के भइरहेको छ हेर्नुहोस्।"
 notFoundHome: "गृहपृष्ठमा फर्कनुहोस्"
+
+# Footer link to the feedback form (.github/ISSUE_TEMPLATE/feedback.yml)
+feedback: "प्रतिक्रिया दिनुहोस्"

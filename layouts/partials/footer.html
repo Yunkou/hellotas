@@ -23,6 +23,8 @@
         {{- else }}
         <a href="{{ site.Params.repoURL }}/issues/new?template=suggest-event.yml" target="_blank" rel="noopener">{{ i18n "suggestEvent" }} ↗</a>
         {{- end }}
+        {{- /* Feedback about the site itself (upstream issue #86): an issue form, .github/ISSUE_TEMPLATE/feedback.yml */}}
+        <a href="{{ site.Params.repoURL }}/issues/new?template=feedback.yml" target="_blank" rel="noopener">{{ i18n "feedback" }} ↗</a>
       </div>
       <div class="footer-col">
         {{ $page := . }}
