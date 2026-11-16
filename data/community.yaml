@@ -20,8 +20,33 @@ sections:
           tags:
             - { key: tagStudentLed, class: tag-type }
           textKey: journeyStep3TusaText
+          photos:
+            - { src: images/utas/tusa-mini-cs-day.jpg, altKey: utasTusaPhoto1Alt }
+            - { src: images/utas/tusa-oweek-sandy-bay.jpg, altKey: utasTusaPhoto2Alt }
+            - { src: images/utas/tusa-clubs-stalls.jpg, altKey: utasTusaPhoto3Alt }
+            - { src: images/utas/tusa-banner-cs-day.jpg, altKey: utasTusaPhoto4Alt }
+            - { src: images/utas/tusa-banner-mini-cs-day.jpg, altKey: utasTusaPhoto5Alt }
+            - { src: images/utas/tusa-banner-riawunna.jpg, altKey: utasTusaPhoto6Alt }
+            - { src: images/utas/tusa-banner-grounded.jpg, altKey: utasTusaPhoto7Alt }
+            - { src: images/utas/tusa-banner-awards-night.jpg, altKey: utasTusaPhoto8Alt }
+          calendar: tusa
           details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: utasTusaWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: utasTusaWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: utasTusaWho }
             - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3TusaLink, href: "https://tusa.org.au/clubs-societies/" }
+        - id: rubric
+          titleKey: utasRubricTitle
+          textKey: utasRubricText
+          photos:
+            - { src: images/utas/rubric-events.jpg, altKey: utasRubricPhoto1Alt }
+            - { src: images/utas/rubric-clubs.jpg, altKey: utasRubricPhoto2Alt }
+          feature: { src: images/utas/rubric-search.jpg, altKey: utasRubricFeatureAlt, href: "https://hellorubric.com/clubs/", labelKey: utasRubricApp }
+          details:
+            - { labelKey: journeyStep2WhenLabel, valueKey: utasRubricWhen }
+            - { labelKey: journeyStep2WhereLabel, valueKey: utasRubricWhere }
+            - { labelKey: journeyStep3WhoLabel, valueKey: utasRubricWho }
+            - { labelKey: journeyStep2LinkLabel, valueKey: utasRubricLink, href: "https://campus.hellorubric.com/" }
         - id: utas-cybersecurity-club
           titleKey: journeyStep3CyberTitle
           tags:

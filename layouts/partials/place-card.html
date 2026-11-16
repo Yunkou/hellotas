@@ -3,7 +3,9 @@
      titleKey, tags[{key,class}], textKey, photos[{src,altKey}],
      map{query,labelKey,zoom,pins}, details[{labelKey,valueKey,href}],
      groups{labelKey, list[{titleKey, items[{name,href,venue,at}]}]} (optional fold-out list, e.g. every club in a network).
-     map.pins: true swaps the Google map for one with a pin per group item that has at: [lat, lng] (assets/js/pin-map.js) */}}
+     map.pins: true swaps the Google map for one with a pin per group item that has at: [lat, lng] (assets/js/pin-map.js)
+     calendar: tusa puts a two-week calendar of data/tusa_events.yaml where the map goes (initEventCalendar in carousel.js);
+     feature{src, altKey, href, labelKey} puts one large picture there instead, with a link under it */}}
 {{ $p := . }}
 <article class="place-card" id="{{ $p.id }}">
   <div class="place-card-head">
@@ -28,12 +30,32 @@
   </ul>
   {{ end }}
 
-  <div class="place-card-meta">
-    {{ if $p.eventsWidget }}
-    <div class="place-map utas-events-preview">
-      <h4>{{ i18n "utasEventsTitle" }}</h4>
-      <p>{{ i18n "utasEventsSnapshotNote" }}</p>
-      <a class="utas-events-cta" href="https://tusa.org.au/events/" target="_blank" rel="noopener">{{ i18n "utasEventsCta" }}</a>
+  <div class="place-card-meta{{ if $p.calendar }} place-card-meta--wide{{ end }}">
+    {{ if eq $p.calendar "tusa" }}
+    {{- /* Server-rendered as a plain list (what shows without JavaScript); the script turns it into the calendar */}}
+    {{- $locale := index (dict "en" "en-AU" "zh" "zh-CN" "ne" "ne-NP-u-nu-latn") site.Language.Lang | default "en-AU" }}
+    <div class="place-map event-cal" data-event-cal data-locale="{{ $locale }}" data-empty="{{ i18n "tusaCalEmpty" }}">
+      <div class="event-cal-head">
+        <h4>{{ i18n "tusaCalTitle" }}</h4>
+        <div class="event-cal-nav" hidden>
+          <button type="button" class="event-cal-btn" data-cal-prev aria-label="{{ i18n "tusaCalPrev" }}">‹</button>
+          <span class="event-cal-range" data-cal-range aria-live="polite"></span>
+          <button type="button" class="event-cal-btn" data-cal-next aria-label="{{ i18n "tusaCalNext" }}">›</button>
+        </div>
+      </div>
+      <ul class="event-cal-list" data-cal-body>
+        {{- range sort hugo.Data.tusa_events "start" }}
+        <li data-start="{{ .start }}"><a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a> <span>{{ .start | replaceRE "T" " " }}{{ with .where }} · {{ . }}{{ end }}</span></li>
+        {{- end }}
+      </ul>
+      <a class="place-map-link" href="https://tusa.org.au/events/" target="_blank" rel="noopener">{{ i18n "tusaCalAll" }} ↗</a>
+    </div>
+    {{ end }}
+    {{ with $p.feature }}
+    <div class="place-map place-feature">
+      {{- $img := partial "img.html" (dict "src" .src "widths" (slice 480 760 1100)) }}
+      <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }} sizes="(max-width: 900px) 100vw, 560px" alt="{{ i18n .altKey }}" width="{{ $img.width }}" height="{{ $img.height }}" loading="lazy" decoding="async">
+      <a class="place-map-link" href="{{ .href }}" target="_blank" rel="noopener">{{ i18n .labelKey }} ↗</a>
     </div>
     {{ end }}
     {{ with $p.map }}
