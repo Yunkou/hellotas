@@ -152,7 +152,7 @@ sources:
     kind: jsonld
     trust: high
     # Off: utas.edu.au answers every automated request (even robots.txt) with a Cloudflare challenge.
-    # UTAS events come in through the "Suggest an event" form instead. Turn on if UTAS ever offers a feed.
+    # UTAS events are added by hand (or with hellotas-collect suggest) instead. Turn on if UTAS ever offers a feed.
     enabled: false
     listing: "https://www.utas.edu.au/events"
     follow: '^https://www\.utas\.edu\.au/events/\d{4}/'

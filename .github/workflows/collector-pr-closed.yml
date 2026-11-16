@@ -1,6 +1,6 @@
 name: Remember rejected events
 
-# When a collector or suggestion pull request is closed without merging, copy its ledger entries to main, so the
+# When a collector pull request is closed without merging, copy its ledger entries to main, so the
 # collector treats those events as rejected and doesn't propose them again tomorrow.
 
 on:
@@ -15,8 +15,7 @@ jobs:
     if: >-
       github.event.pull_request.merged == false &&
       github.event.pull_request.head.repo.full_name == github.repository &&
-      (startsWith(github.event.pull_request.head.ref, 'collector/') ||
-       startsWith(github.event.pull_request.head.ref, 'suggestion/'))
+      startsWith(github.event.pull_request.head.ref, 'collector/')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:

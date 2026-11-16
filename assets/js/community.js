@@ -5,7 +5,6 @@
 //   Happening    Interested / Going / "Find someone to go with" on every event card, and the digest form
 //   /account/    sign in by email link, profile, going-together requests, my events, data export and deletion
 //   /noticeboard/ Wish Wall, achievements and opportunities
-//   /suggest/    suggest an event
 //   /moderate/   the moderation queue, numbers and roles
 (function () {
   'use strict';
@@ -571,42 +570,6 @@
     return form;
   }
 
-  // -- /suggest/ --------------------------------------------------------------------------------------------------
-  function suggestPage(root) {
-    root.textContent = '';
-    var url = h('input', { id: 'cm-s-url', type: 'url', required: true, maxlength: '500', placeholder: 'https://events.humanitix.com/…' });
-    var details = h('textarea', { id: 'cm-s-details', rows: '4', maxlength: '4000' });
-    var note = h('textarea', { id: 'cm-s-note', rows: '2', maxlength: '1000' });
-    // Hidden from people (CSS and the screen reader rule below); bots fill it in, and the API drops those
-    var trap = h('input', { name: 'website', tabindex: '-1', autocomplete: 'off', 'aria-hidden': 'true', class: 'cm-trap' });
-    var submit = h('button', { type: 'submit', class: 'btn-primary' }, S.cmSuggestSubmit);
-    var status = h('p', { class: 'cm-message', hidden: true, role: 'status' });
-    var form = h('form', { class: 'cm-card cm-suggest' }, [
-      field(S.cmSuggestLink, url), field(S.cmSuggestDetails, details), field(S.cmSuggestNote, note), trap,
-      h('div', { class: 'cm-actions cm-actions--wrap' }, [submit, h('a', { href: S.suggestIssue, target: '_blank', rel: 'noopener' }, S.cmSuggestGitHub + ' ↗')]),
-      status
-    ]);
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      busy(submit, true);
-      api('POST', '/v1/suggestions', { url: url.value, details: details.value, note: note.value, website: trap.value }).then(function (s) {
-        form.reset();
-        if (s.status === 'forwarded' && s.issue_url) {
-          status.textContent = '';
-          status.className = 'cm-message cm-message--ok';
-          status.hidden = false;
-          var parts = S.cmSuggestForwarded.split('{link}');
-          status.appendChild(document.createTextNode(parts[0]));
-          status.appendChild(h('a', { href: s.issue_url, target: '_blank', rel: 'noopener' }, s.issue_url));
-          if (parts[1]) status.appendChild(document.createTextNode(parts[1]));
-        } else {
-          message(status, S.cmSuggestPending, 'ok');
-        }
-      }, function (err) { message(status, err.message, 'error'); }).then(function () { busy(submit, false); });
-    });
-    root.appendChild(form);
-  }
-
   // -- /moderate/ -------------------------------------------------------------------------------------------------
   function moderatePage(root) {
     root.textContent = '';
@@ -619,7 +582,6 @@
       queue.textContent = '';
       var posts = section('cmModQueue');
       var reports = section('cmModReports');
-      var suggestions = section('cmModSuggestions');
       var numbers = section('cmModStats');
       api('GET', '/v1/mod/queue').then(function (q) {
         if (!q.posts.length) posts.appendChild(h('p', { class: 'cm-empty' }, S.cmModEmpty));
@@ -643,18 +605,6 @@
             h('button', { type: 'button', class: 'hp-btn-outline', onclick: function () { api('POST', '/v1/mod/reports/' + r.id + '/dismiss').then(draw); } }, S.cmDismiss)
           ]));
           reports.appendChild(card);
-        });
-        if (!q.suggestions.length) suggestions.appendChild(h('p', { class: 'cm-empty' }, S.cmModEmpty));
-        q.suggestions.forEach(function (s) {
-          suggestions.appendChild(h('div', { class: 'cm-intro' }, [
-            h('p', {}, safeLink(s.url) ? h('a', { href: s.url, target: '_blank', rel: 'noopener nofollow' }, s.url) : s.url),
-            s.details ? h('p', { class: 'cm-post-body' }, s.details) : null,
-            s.note ? h('p', { class: 'cm-muted' }, s.note) : null,
-            h('div', { class: 'cm-actions' }, [
-              h('button', { type: 'button', class: 'btn-primary', onclick: function () { decide('/v1/mod/suggestions/' + s.id, 'forward'); } }, S.cmForward),
-              h('button', { type: 'button', class: 'hp-btn-outline', onclick: function () { decide('/v1/mod/suggestions/' + s.id, 'reject'); } }, S.cmReject)
-            ])
-          ]));
         });
       }, function (err) { posts.appendChild(h('p', { class: 'cm-message cm-message--error' }, err.message)); });
       api('GET', '/v1/mod/stats').then(function (n) {
@@ -694,7 +644,7 @@
     var page = document.querySelector('[data-cm-page]');
     var root = page && page.querySelector('[data-cm-root]');
     if (!root) return;
-    var renderers = { account: accountPage, noticeboard: boardPage, suggest: suggestPage, moderate: moderatePage };
+    var renderers = { account: accountPage, noticeboard: boardPage, moderate: moderatePage };
     var kind = page.getAttribute('data-cm-page');
     var render = renderers[kind];
     if (render) render(root);

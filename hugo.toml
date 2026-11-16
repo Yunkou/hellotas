@@ -30,8 +30,6 @@ timeout = "10m"
   # Empty: those features are hidden and the site works as a plain static site. The deploy workflow sets it from
   # the repository variable COMMUNITY_API_URL (or set HUGO_PARAMS_COMMUNITYAPI=http://127.0.0.1:8000 locally).
   communityAPI = ""
-  # Where the code lives: used for the "Suggest an event" issue form link
-  repoURL = "https://github.com/weiluoyan/hellotas"
   author = "Luoyan Wei"
   defaultTheme = "light"
 

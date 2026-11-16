@@ -4971,10 +4971,6 @@ button[aria-busy="true"] { opacity: 0.6; cursor: progress; }
   .cm-board { grid-template-columns: 1fr; }
 }
 
-/* Suggest an event */
-.cm-suggest { max-width: 640px; }
-.cm-trap { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; }
-
 /* Arrival checklist (Kickstart) */
 .cm-checklist-progress { font-size: 14px; font-weight: 600; color: var(--green); margin: -4px 0 14px; }
 .cm-checklist-progress[hidden] { display: none; }

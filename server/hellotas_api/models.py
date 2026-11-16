@@ -168,17 +168,3 @@ class Subscriber(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
     confirmed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     last_sent_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
-
-
-class Suggestion(Base):
-    """An event suggested on the website, forwarded to GitHub as an "Event suggestion" issue."""
-    __tablename__ = "suggestions"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
-    url: Mapped[str] = mapped_column(String(500))
-    details: Mapped[str] = mapped_column(Text, default="")
-    note: Mapped[str] = mapped_column(String(1000), default="")
-    status: Mapped[str] = mapped_column(String(20), default="pending")  # pending, forwarded, rejected
-    issue_url: Mapped[str] = mapped_column(String(300), default="")
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
-    user: Mapped[User | None] = relationship()

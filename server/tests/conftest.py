@@ -37,24 +37,6 @@ EVENTS = [
 ]
 
 
-class FakeGitHub:
-    def __init__(self):
-        self.calls = []
-
-    def post(self, url, headers=None, json=None, timeout=None):
-        self.calls.append({"url": url, "headers": headers, "json": json})
-
-        class R:
-            status_code = 201
-
-            def raise_for_status(self):
-                pass
-
-            def json(self):
-                return {"html_url": "https://github.com/weiluoyan/hellotas/issues/99"}
-        return R()
-
-
 @pytest.fixture
 def feed_file(tmp_path: Path) -> Path:
     path = tmp_path / "index.json"
@@ -76,10 +58,10 @@ def app(tmp_path, feed_file):
         engine.dispose()
     settings = Settings(database_url=url, site_url="https://site.example/",
                         allowed_email_domains=["utas.edu.au"], admin_emails=["admin@utas.edu.au"],
-                        secret_key="test-secret", cron_secret="cron-secret", github_token="gh-token",
+                        secret_key="test-secret", cron_secret="cron-secret",
                         allowed_origins=["https://site.example"])
     feed = EventFeed(lambda lang: str(feed_file), refresh_seconds=0)
-    return create_app(settings, feed=feed, mailer=Mailer(settings), http=FakeGitHub())
+    return create_app(settings, feed=feed, mailer=Mailer(settings))
 
 
 @pytest.fixture

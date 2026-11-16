@@ -14,7 +14,6 @@ LIMITS = {
     "login_ip": (20, 3600),      # sign-in emails per visitor
     "post": (10, 86400),         # wall posts and opportunities per user
     "ask": (15, 86400),          # buddy requests per user
-    "suggest": (8, 86400),       # event suggestions per visitor
     "subscribe": (5, 3600),      # digest sign-ups per visitor
     "report": (20, 86400),
 }

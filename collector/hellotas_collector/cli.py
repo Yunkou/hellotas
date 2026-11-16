@@ -5,12 +5,13 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from . import issue_form, notify
+from . import notify
 from .config import find_root, load
 from .fetch import Blocked, Fetcher, FetchError
 from .pipeline import Collector, RunResult
@@ -64,15 +65,11 @@ def cmd_suggest(args) -> int:
     url, text, note = args.url, "", args.note or ""
     if args.text_file:
         text = Path(args.text_file).read_text(encoding="utf-8")
-    if args.from_issue:
-        # The issue body comes through an environment variable, never through the command line or a shell
-        form = issue_form.suggestion(os.environ.get("ISSUE_BODY", ""))
-        url, text, note = form["url"], form["details"], form["note"]
     if not url and text:
-        url = issue_form.first_link(text)
+        found = re.search(r"https?://[^\s<>()\"']+", text)
+        url = found.group(0).rstrip(".,;") if found else ""
     if not url:
-        report = ("## Event suggestion\n\nI couldn't find a link in the suggestion. Edit the issue and put the "
-                  "event's web address in the *Event link* field.\n")
+        report = "## Event suggestion\n\nNo link given: pass the event's web address, or put it in the text file.\n"
         print(report)
         _write_outputs(RunResult(errors={"suggestion": "no link"}), report, args)
         return 0
@@ -213,11 +210,10 @@ def main(argv: list[str] | None = None) -> int:
     common(p)
     p.set_defaults(func=cmd_run)
 
-    p = sub.add_parser("suggest", help="add the event at one link (what the suggestion form runs)")
+    p = sub.add_parser("suggest", help="add the event at one link")
     p.add_argument("url", nargs="?", default="")
     p.add_argument("--text-file", help="pasted event details (for LinkedIn and other pages that can't be fetched)")
-    p.add_argument("--note", help="the suggester's note for reviewers")
-    p.add_argument("--from-issue", action="store_true", help="read the link and details from $ISSUE_BODY")
+    p.add_argument("--note", help="a note for reviewers")
     common(p)
     p.set_defaults(func=cmd_suggest)
 

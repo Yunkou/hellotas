@@ -1,8 +1,7 @@
 # Community API
 
 The small server behind the site's community features: sign-in by email link, Interested / Going, event buddies,
-the Noticeboard (Wish Wall, achievements, opportunities), the saved arrival checklist, website event suggestions
-and the weekly digest.
+the Noticeboard (Wish Wall, achievements, opportunities), the saved arrival checklist and the weekly digest.
 
 The site stays a static site on GitHub Pages. It calls this API from the browser, and only when
 `params.communityAPI` is set (the deploy workflow takes it from the repository variable `COMMUNITY_API_URL`).
@@ -10,7 +9,7 @@ Without it, the site works exactly as before.
 
 - Python 3.11+, FastAPI, SQLAlchemy. Postgres in production, SQLite for development and tests.
 - Interactive API documentation at `/docs` on any running server.
-- 19 tests, run on both SQLite and Postgres in CI (`pytest server -q`).
+- 24 tests, run on both SQLite and Postgres in CI (`pytest server -q`).
 
 ## Run it on your computer
 
@@ -48,7 +47,6 @@ All settings are environment variables (or a `.env` file read by docker compose)
 | `EMAIL_FROM` | | Sender, e.g. `Tasmania Welcome <hello@ictfuturesintas.com>`. Must be on a domain verified with your provider. |
 | `RESEND_API_KEY` | | For `EMAIL_BACKEND=resend`. |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD` | port 587 | For `EMAIL_BACKEND=smtp` (STARTTLS). |
-| `GITHUB_REPO`, `GITHUB_TOKEN` | `weiluoyan/hellotas`, none | Website suggestions become "Event suggestion" issues there. A fine-grained token for that repository with *Issues: read and write* only. Without it, suggestions wait on `/moderate/`. |
 | `CRON_SECRET` | none | Protects `POST /v1/admin/digest/send`. The same value goes in the repository secret `COMMUNITY_CRON_SECRET`. |
 | `TRUST_PROXY` | `false` (`true` in the container) | Behind a proxy, use the visitor's address from `X-Forwarded-For` for rate limits. |
 | `TRUSTED_PROXY_HOPS` | `1` | How many of your own proxies sit in front of the API. The visitor's address is read that many entries from the right-hand end of `X-Forwarded-For`; entries further left come from the visitor and can be made up. `1` for Caddy or Cloud Run on its own, `2` when a load balancer sits in front as well. |
@@ -79,8 +77,8 @@ on each provider's pricing page; they change.
 
    ```bash
    gcloud run deploy hellotas-api --source server --region australia-southeast1 --allow-unauthenticated \
-     --set-env-vars "SITE_URL=https://ictfuturesintas.com/,ALLOWED_ORIGINS=https://ictfuturesintas.com,ADMIN_EMAILS=you@utas.edu.au,EMAIL_BACKEND=resend,EMAIL_FROM=Tasmania Welcome <hello@your-domain>,GITHUB_REPO=weiluoyan/hellotas" \
-     --set-secrets "DATABASE_URL=hellotas-db:latest,SECRET_KEY=hellotas-secret:latest,RESEND_API_KEY=hellotas-resend:latest,GITHUB_TOKEN=hellotas-github:latest,CRON_SECRET=hellotas-cron:latest"
+     --set-env-vars "SITE_URL=https://ictfuturesintas.com/,ALLOWED_ORIGINS=https://ictfuturesintas.com,ADMIN_EMAILS=you@utas.edu.au,EMAIL_BACKEND=resend,EMAIL_FROM=Tasmania Welcome <hello@your-domain>" \
+     --set-secrets "DATABASE_URL=hellotas-db:latest,SECRET_KEY=hellotas-secret:latest,RESEND_API_KEY=hellotas-resend:latest,CRON_SECRET=hellotas-cron:latest"
    ```
 
    Create each secret first in Secret Manager (`gcloud secrets create hellotas-db --data-file=-`, then paste the
@@ -179,6 +177,6 @@ provider (Amazon SES, Brevo), or the digest will stop partway. `/moderate/` show
   it as text, never as HTML.
 - Sessions travel in the `Authorization` header, not cookies, so other sites can't make requests on someone's
   behalf; CORS admits only the site.
-- Rate limits on sign-in emails, posts, buddy requests, suggestions and digest sign-ups, keyed on a keyed hash
+- Rate limits on sign-in emails, posts, buddy requests and digest sign-ups, keyed on a keyed hash
   of the visitor's address; addresses themselves are never stored.
 - The digest needs double opt-in and supports one-click unsubscribe (RFC 8058).
