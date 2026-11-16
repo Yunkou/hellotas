@@ -858,7 +858,7 @@
   // A swipeable row of cards ([data-rail], e.g. the award winners on an event page): the ‹ › buttons appear
   // only when the row is wider than the screen, and each one fades out at its end of the row
   function initRail(root) {
-    var track = root.querySelector('.award-rail');
+    var track = root.querySelector('.award-rail, .rail-track');
     var nav = root.querySelector('.rail-nav');
     if (!track || !nav) return;
     var prev = nav.querySelector('.rail-prev');
