@@ -103,22 +103,10 @@ img { max-width: 100%; display: block; }
   white-space: nowrap;
 }
 
-/* "Happening" menu item: a small live/broadcast icon before the word */
-.nav-live {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
 .live-icon {
   flex: none;
   overflow: visible;
 }
-
-/* Homepage/header Happening mark: Figma shows a simple red live dot, not the pulsing rings. */
-.nav-live .live-ring { display: none; }
-.nav-live .live-icon { width: 10px; height: 10px; }
-.nav-live .live-dot { fill: var(--brand); }
 
 .live-dot { fill: var(--brand); }
 
@@ -4884,7 +4872,6 @@ html:has(.lightbox[open]) { overflow: hidden; }
   margin-bottom: 24px;
 }
 .home-latest-head .home-section-lead { margin-bottom: 0; }
-.home-latest-title { display: flex; align-items: center; gap: 12px; }
 .home-latest-links { display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* The big stories: the first one large on the left, the others stacked beside it */
