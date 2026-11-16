@@ -14,7 +14,7 @@
       <section class="journey-voice-section">
         <div class="place-list">
           {{ range .places }}
-          {{ partial "place-card.html" (dict "place" .) }}
+          {{ partial "place-card.html" . }}
           {{ end }}
         </div>
       </section>
