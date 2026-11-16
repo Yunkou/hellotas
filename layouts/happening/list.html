@@ -138,25 +138,6 @@
 <section class="container happening" data-happening data-locale="{{ $locale }}">
   <script type="application/json" class="happening-data">{{ dict "events" $events "archive" $archive "strings" $strings | jsonify | safeJS }}</script>
 
-  <div class="hp-section hp-now-section" id="now">
-    <div class="hp-head">
-      <h2><svg class="live-icon" viewBox="0 0 20 20" width="22" height="22" aria-hidden="true" focusable="false"><circle class="live-ring live-ring--outer" cx="10" cy="10" r="8.25"/><circle class="live-ring live-ring--inner" cx="10" cy="10" r="5.25"/><circle class="live-dot" cx="10" cy="10" r="2.5"/></svg>{{ i18n "happeningNowTitle" }}</h2>
-      <p>{{ i18n "happeningNowSub" }}</p>
-    </div>
-    <div class="hp-deck" data-deck data-now-deck aria-roledescription="carousel" aria-label="{{ i18n "happeningNowTitle" }}">
-      <div class="hp-deck-track" data-deck-track data-now-list></div>
-    </div>
-    <div class="hp-now-empty" data-now-empty hidden>
-      <p class="hp-now-empty-title">{{ i18n "happeningNowEmptyTitle" }}</p>
-      <p class="hp-now-empty-next" data-next-up hidden>{{ i18n "happeningNowEmptyNext" }} <a href="#" data-next-link></a> <span data-next-when></span></p>
-      <p class="hp-now-empty-none" data-next-none hidden>{{ i18n "happeningNowEmptyNone" }}</p>
-      <div class="hp-now-empty-actions">
-        <a class="hp-btn-outline" href="#recommended" data-see-picks hidden>{{ i18n "happeningSeeRecommended" }} ↓</a>
-        <a class="hp-btn-outline" href="#upcoming" data-see-upcoming>{{ i18n "happeningSeeUpcoming" }} ↓</a>
-      </div>
-    </div>
-  </div>
-
   {{- /* Pinned events, in pin order. The script hides each one once it's over, and the section when none are left. */ -}}
   {{ with sort (where $events "pinned" "gt" 0) "pinned" }}
   <div class="hp-section hp-picks-section" id="recommended" data-picks>

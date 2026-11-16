@@ -1,5 +1,6 @@
-// Happening page: sorts events into "Happening Now" and "Upcoming" by today's date in Hobart, keeps the pinned
-// events in "Recommended by us" until they're over, writes dates in the page's language, makes "Add to calendar"
+// Happening page: hides events that are over by today's date in Hobart (an event that's on says "Happening Now"
+// in its card; the Happening Now section itself is on the homepage), keeps the pinned events in "Recommended by
+// us" until they're over, writes dates in the page's language, makes "Add to calendar"
 // files and draws the month / week calendar. Add ?at=2026-11-08T10:00 to the address to see the page as it will
 // look at that moment.
 // Without this script every event stays listed under Upcoming.
@@ -263,7 +264,7 @@
     });
   });
 
-  // ---- Carousels: Happening Now and Recommended by us --------------------------------------------------------
+  // ---- Carousel: Recommended by us -------------------------------------------------------------------------
   // One event per slide in a scroll-snap track, so swiping works. The controls sit above the cards: ‹ › loop
   // round, the dots jump, "2 / 3" says where you are, and a ring fills up over ROTATE ms, then moves on to the
   // next event (back to the first after the last). Clicking the ring pauses it (it shows ⏸ until the pointer
@@ -367,12 +368,8 @@
     };
   }
 
-  // ---- Happening Now / Recommended / Upcoming ------------------------------------------------------------
+  // ---- Recommended / Upcoming ---------------------------------------------------------------------------
 
-  var nowDeckEl = root.querySelector('[data-now-deck]');
-  var nowList = root.querySelector('[data-now-list]');
-  var nowEmpty = root.querySelector('[data-now-empty]');
-  var nowDeck = new Deck(nowDeckEl);
   var picks = root.querySelector('[data-picks]');
   var picksDeck = picks ? new Deck(picks.querySelector('[data-deck]')) : null;
   var cardList = root.querySelector('[data-upcoming-cards]');
@@ -393,76 +390,38 @@
   events.forEach(function (e) { e.searchText = fold(e.search || ''); });
   function searchTerms() { return fold(searchInput.value).split(/\s+/).filter(Boolean); }
 
-  // Pinned events first (by their number), then by start time; events are already in start order
-  function pinOrder(a, b) { return (a.pinned || Infinity) - (b.pinned || Infinity); }
-
   function sortEvents(now) {
     var today = dayKey(now);
-    var happening = [];
     var upcoming = [];
     var picksLeft = 0;
     events.forEach(function (e) {
       e.status = statusOf(e, now, today);
-      var here = isNow(e.status);
-      if (e.card) {
-        // Cards only ever move Upcoming → Now; cards that stay put aren't re-inserted, which would restart
-        // their fade-in
-        var list = here ? nowList : cardList;
-        if (e.card.parentNode !== list) list.appendChild(e.card);
-        setWhen(e.card, e);
-      }
+      if (e.card) setWhen(e.card, e);
       if (e.row) setWhen(e.row, e, true);
       if (e.spot) {
         e.spot.hidden = e.status === 'past';
         if (!e.spot.hidden) picksLeft++;
         setWhen(e.spot, e);
       }
-      if (here) happening.push(e);
-      else if (e.status !== 'past') upcoming.push(e);
+      if (e.status !== 'past') upcoming.push(e);
     });
-
-    // Happening Now in pin order; only touched when the order changes
-    happening = happening.slice().sort(pinOrder);
-    var inNow = Array.prototype.filter.call(nowList.children, function (c) {
-      return happening.some(function (e) { return e.card === c; });
-    });
-    if (happening.some(function (e, i) { return inNow[i] !== e.card; })) {
-      happening.forEach(function (e) { if (e.card) nowList.appendChild(e.card); });
-    }
-    nowDeckEl.hidden = !happening.length;
-    nowEmpty.hidden = happening.length > 0;
     if (picks) picks.hidden = !picksLeft;
-
-    // Nothing today or tomorrow: point to the next event, and to Recommended and Upcoming
-    var next = upcoming[0];
-    nowEmpty.querySelector('[data-next-up]').hidden = !next;
-    nowEmpty.querySelector('[data-next-none]').hidden = !!next;
-    nowEmpty.querySelector('[data-see-upcoming]').hidden = !next;
-    nowEmpty.querySelector('[data-see-picks]').hidden = !picksLeft;
-    if (next) {
-      var link = nowEmpty.querySelector('[data-next-link]');
-      link.textContent = next.title;
-      link.href = '#event-' + next.id;
-      nowEmpty.querySelector('[data-next-when]').textContent = '· ' + when(next);
-    }
 
     upcomingEvents = upcoming;
     applySearch();
-    nowDeck.refresh();
     if (picksDeck) picksDeck.refresh();
   }
 
-  // Which cards and rows show: past events never; Happening Now always; upcoming ones when they match the search
+  // Which cards and rows show: past events never; the others when they match the search
   function applySearch() {
     var terms = searchTerms();
     shownUpcoming = 0;
     events.forEach(function (e) {
       var past = e.status === 'past';
-      var here = isNow(e.status);
       var match = terms.every(function (t) { return e.searchText.indexOf(t) !== -1; });
-      if (!past && !here && match) shownUpcoming++;
-      if (e.card) e.card.hidden = past || (!here && !match);
-      if (e.row) e.row.hidden = past || here || !match;
+      if (!past && match) shownUpcoming++;
+      if (e.card) e.card.hidden = past || !match;
+      if (e.row) e.row.hidden = past || !match;
     });
 
     var any = upcomingEvents.length > 0;
@@ -863,7 +822,7 @@
   setInterval(refresh, 60000);
 
   // Flip clocks, every second: drop the ones no longer on the page, turn the rest over, and re-sort as soon as
-  // one reaches zero so the event moves to "Happening Now" right away. Skipped while the tab is in the background.
+  // one reaches zero so the card says "Happening Now" right away. Skipped while the tab is in the background.
   function tick() {
     if (document.hidden) return;
     var now = clockNow();
