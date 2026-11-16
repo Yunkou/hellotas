@@ -1,0 +1,48 @@
+name: Remember rejected events
+
+# When a collector pull request is closed without merging, copy its ledger entries to main, so the
+# collector treats those events as rejected and doesn't propose them again tomorrow.
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  remember:
+    if: >-
+      github.event.pull_request.merged == false &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'collector/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      HEAD_REF: ${{ github.event.pull_request.head.ref }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: Install the collector
+        run: pip install ./collector
+
+      - name: Merge the pull request's ledger into main
+        run: |
+          git fetch origin "$HEAD_REF"
+          if ! git show "origin/$HEAD_REF:collector/ledger.yaml" > "$RUNNER_TEMP/theirs.yaml" 2>/dev/null; then
+            echo "That branch has no ledger; nothing to remember."
+            exit 0
+          fi
+          hellotas-collect ledger-merge "$RUNNER_TEMP/theirs.yaml"
+          if git diff --quiet; then exit 0; fi
+          git config user.name "hellotas-collector"
+          git config user.email "collector@hellotas.invalid"
+          git commit -am "Collector: remember events rejected in #${{ github.event.pull_request.number }}"
+          git push origin HEAD:main

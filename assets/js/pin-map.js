@@ -14,9 +14,15 @@
       var css = document.createElement("link");
       css.rel = "stylesheet";
       css.href = LEAFLET + "leaflet.css";
+      // Integrity hashes (from cdnjs's own listing for 1.9.4): the browser refuses the files if the CDN ever
+      // serves something different. Update both hashes when the version in LEAFLET changes.
+      css.integrity = "sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w==";
+      css.crossOrigin = "anonymous";
       document.head.appendChild(css);
       var js = document.createElement("script");
       js.src = LEAFLET + "leaflet.js";
+      js.integrity = "sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==";
+      js.crossOrigin = "anonymous";
       js.onload = function () { window.L ? resolve(window.L) : reject(); };
       js.onerror = reject;
       document.head.appendChild(js);

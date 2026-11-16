@@ -37,7 +37,8 @@
           <article class="journey-basic-card">
             <div class="journey-basic-head">
               <div class="journey-basic-icon">
-                <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" loading="lazy" width="60" height="60">
+                {{- $img := partial "img.html" (dict "src" .image "width" 60) }}
+                <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }} alt="{{ i18n .altKey }}" loading="lazy" width="60" height="60">
               </div>
               <h3>{{ i18n .titleKey }}</h3>
             </div>

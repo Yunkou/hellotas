@@ -34,7 +34,7 @@
     {{ if $photos }}
     {{ $from := partial "photo-sources.html" . }}
     {{ $sources := slice }}{{ range $photos }}{{ $sources = $sources | append (index $from . | default ($.Params.url | default "")) }}{{ end }}
-    {{ partial "carousel.html" (dict "images" $photos "sources" $sources "alt" .Title "class" "event-hero-image" "autoplay" true "lightbox" true) }}
+    {{ partial "carousel.html" (dict "images" $photos "sources" $sources "alt" .Title "class" "event-hero-image" "autoplay" true "lightbox" true "sizes" "(max-width: 1280px) 100vw, 1200px") }}
     {{ else }}
     <div class="event-hero-image placeholder">{{ i18n "heroImage" }}</div>
     {{ end }}
@@ -96,7 +96,8 @@
       {{ range $i, $project := .Params.projects }}
       <article class="project-card">
         {{ if .image }}
-        <div class="project-image"><img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .name }}" data-caption="{{ .name }}{{ with .award }} · {{ . }}{{ end }}"></div>
+        {{- $img := partial "img.html" (dict "src" .image "widths" (slice 480 760)) }}
+        <div class="project-image"><img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}" sizes="auto, (max-width: 1000px) 100vw, 400px"{{ end }}{{ with $img.width }} width="{{ . }}" height="{{ $img.height }}"{{ end }} data-full="{{ $img.full }}" alt="{{ .name }}" data-caption="{{ .name }}{{ with .award }} · {{ . }}{{ end }}" loading="lazy" decoding="async"></div>
         {{ else }}
         <div class="project-image project-cover project-cover--{{ mod $i 4 }}" aria-hidden="true">
           <span class="project-monogram">{{ partial "initials.html" .name }}</span>
@@ -201,7 +202,8 @@
     <div data-lightbox class="booth-wall{{ if le (len .) 2 }} booth-wall--{{ len . }}{{ end }}">
       {{ range . }}
       <a class="booth-frame" href="{{ strings.TrimPrefix "/" . | relURL }}" target="_blank" rel="noopener">
-        <img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="{{ i18n "photoBooth" }} · {{ $.Title }}" data-caption="{{ $.Title }}"{{ with index $from . | default ($.Params.url | default "") }} data-source="{{ . }}"{{ end }} loading="lazy">
+        {{- $img := partial "img.html" (dict "src" . "width" 400) }}
+        <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }}{{ with $img.width }} width="{{ . }}" height="{{ $img.height }}"{{ end }} data-full="{{ $img.full }}" alt="{{ i18n "photoBooth" }} · {{ $.Title }}" data-caption="{{ $.Title }}"{{ with index $from . | default ($.Params.url | default "") }} data-source="{{ . }}"{{ end }} loading="lazy">
       </a>
       {{ end }}
     </div>

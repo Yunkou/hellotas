@@ -328,7 +328,7 @@
         var labelled = n.closest('[data-caption]');
         var sourced = n.closest('[data-source]');
         return {
-          src: n.src,
+          src: n.dataset.full || n.src, // the original photo; the page itself shows a resized copy
           alt: n.alt,
           caption: labelled && group.contains(labelled) ? labelled.dataset.caption : '',
           source: sourced && group.contains(sourced) ? sourced.dataset.source : ''
@@ -637,7 +637,108 @@
     });
   }
 
+  // Embedded maps (layouts/partials/place-card.html) get their address only when they are about to be seen
+  function initMaps() {
+    var maps = document.querySelectorAll('iframe[data-map-src]');
+    if (!maps.length) return;
+    function load(frame) { frame.src = frame.dataset.mapSrc; frame.removeAttribute('data-map-src'); }
+    if (!('IntersectionObserver' in window)) { maps.forEach(load); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        load(entry.target);
+      });
+    }, { rootMargin: '300px 0px' });
+    maps.forEach(function (frame) { io.observe(frame); });
+  }
+
+  // Two-week events calendar in a place card (the TUSA card on the UTAS page): the server writes the events as a
+  // plain list; this turns it into Monday-to-Sunday weeks, starting with the week of today in Hobart. ‹ › move a
+  // week at a time, from this week to the last week with an event. Past days fade; on phones only days with events
+  // show (custom.css). Event times are Hobart times written as "YYYY-MM-DDTHH:MM", so all the date maths is done in
+  // UTC on those numbers and no visitor's own time zone gets in the way.
+  function initEventCalendar(root) {
+    var list = root.querySelector('[data-cal-body]');
+    var locale = root.dataset.locale;
+    var DAY = 864e5;
+    var events = Array.prototype.map.call(list.querySelectorAll('[data-start]'), function (li) {
+      var a = li.querySelector('a');
+      return { start: li.dataset.start, day: li.dataset.start.slice(0, 10), title: a.textContent, href: a.href };
+    });
+    function utc(key) { return Date.parse(key + 'T00:00:00Z'); }
+    function key(ms) { return new Date(ms).toISOString().slice(0, 10); }
+    function fmt(ms, opts) { return new Intl.DateTimeFormat(locale, Object.assign({ timeZone: 'UTC' }, opts)).format(new Date(ms)); }
+    var today = new Date().toLocaleDateString('en-CA', { timeZone: 'Australia/Hobart' });
+    var first = utc(today) - ((new Date(utc(today)).getUTCDay() + 6) % 7) * DAY; // this week's Monday
+    var last = events.reduce(function (m, e) { return Math.max(m, utc(e.day)); }, first);
+    var maxWeek = Math.floor((last - first) / (7 * DAY));
+    var week = 0;
+
+    var grid = document.createElement('div');
+    grid.className = 'event-cal-grid';
+    list.replaceWith(grid);
+    var nav = root.querySelector('.event-cal-nav');
+    var prev = root.querySelector('[data-cal-prev]');
+    var next = root.querySelector('[data-cal-next]');
+    var range = root.querySelector('[data-cal-range]');
+    nav.hidden = false;
+
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text) n.textContent = text;
+      return n;
+    }
+
+    function render() {
+      var from = first + week * 7 * DAY;
+      grid.textContent = '';
+      for (var d = 0; d < 7; d++) grid.appendChild(el('div', 'event-cal-dow', fmt(from + d * DAY, { weekday: 'short' })));
+      var any = false;
+      for (var i = 0; i < 14; i++) {
+        var ms = from + i * DAY;
+        var k = key(ms);
+        var todays = events.filter(function (e) { return e.day === k; });
+        var cell = el('div', 'event-cal-day' + (k < today ? ' is-past' : '') + (k === today ? ' is-today' : '') + (todays.length ? '' : ' is-empty'));
+        var label = el('div', 'event-cal-date');
+        label.appendChild(el('span', 'event-cal-wday', fmt(ms, { weekday: 'long' }) + ' '));
+        label.appendChild(document.createTextNode(fmt(ms, (i === 0 || k.slice(8) === '01') ? { day: 'numeric', month: 'short' } : { day: 'numeric' })));
+        cell.appendChild(label);
+        todays.forEach(function (e) {
+          var a = el('a', 'event-cal-event');
+          a.href = e.href;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          if (e.start.length > 10) {
+            var t = el('time', '', fmt(Date.parse(e.start + ':00Z'), { hour: 'numeric', minute: '2-digit' }));
+            t.dateTime = e.start;
+            a.appendChild(t);
+          }
+          a.title = e.title;
+          a.appendChild(el('span', 'event-cal-title', e.title));
+          cell.appendChild(a);
+          if (k >= today) any = true;
+        });
+        grid.appendChild(cell);
+      }
+      if (!any) grid.appendChild(el('p', 'event-cal-empty', root.dataset.empty));
+      var end = from + 13 * DAY;
+      range.textContent = Intl.DateTimeFormat.prototype.formatRange
+        ? new Intl.DateTimeFormat(locale, { timeZone: 'UTC', day: 'numeric', month: 'short' }).formatRange(new Date(from), new Date(end))
+        : fmt(from, { day: 'numeric', month: 'short' }) + ' – ' + fmt(end, { day: 'numeric', month: 'short' });
+      prev.disabled = week === 0;
+      next.disabled = week >= maxWeek;
+    }
+
+    prev.addEventListener('click', function () { if (week > 0) { week--; render(); } });
+    next.addEventListener('click', function () { if (week < maxWeek) { week++; render(); } });
+    render();
+  }
+
   document.querySelectorAll('.nav-toggle').forEach(initMobileMenu);
+  document.querySelectorAll('[data-event-cal]').forEach(initEventCalendar);
+  initMaps();
   initChannels();
   document.querySelectorAll('[data-carousel]').forEach(initCarousel);
   document.querySelectorAll('[data-copy]').forEach(initCopy);

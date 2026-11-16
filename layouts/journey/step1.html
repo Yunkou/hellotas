@@ -47,7 +47,8 @@
         {{ range hugo.Data.journey.step1.priorities }}
         <article class="journey-priority-card{{ with .tips }} journey-priority-card--detailed{{ end }}"{{ with .id }} id="{{ . }}"{{ end }}>
           <div class="journey-priority-media">
-            <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" width="140" height="140"{{ with .imagePosition }} style="object-position: {{ . | safeCSS }}"{{ end }}>
+            {{- $img := partial "img.html" (dict "src" .image "widths" (slice 480 760 1100)) }}
+            <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}" sizes="(max-width: 1100px) 100vw, 980px"{{ end }} alt="{{ i18n .altKey }}" width="140" height="140"{{ with .imagePosition }} style="object-position: {{ . | safeCSS }}"{{ end }}>
           </div>
           <div class="journey-priority-body">
             <div class="journey-priority-head">
@@ -99,7 +100,8 @@
           <article class="journey-basic-card">
             <div class="journey-basic-head">
               <div class="journey-basic-icon">
-                <img src="{{ .image | relURL }}" alt="{{ i18n .altKey }}" loading="lazy" width="60" height="60">
+                {{- $img := partial "img.html" (dict "src" .image "width" 60) }}
+                <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }} alt="{{ i18n .altKey }}" loading="lazy" width="60" height="60">
               </div>
               <h3>{{ i18n .titleKey }}</h3>
             </div>
@@ -113,12 +115,15 @@
         </div>
       </section>
 
-      <section class="journey-checklist">
+      {{- /* Ticks are kept in the browser, and in the account when signed in (assets/js/checklist.js).
+           Each item's id is its i18n key in lower case, so don't rename the keys in data/journey.yaml. */}}
+      <section class="journey-checklist" data-checklist>
         <h2>{{ i18n "journeyStep1ChecklistTitle" }}</h2>
         <p class="journey-checklist-lead">{{ i18n "journeyStep1ChecklistLead" }}</p>
+        <p class="cm-checklist-progress" data-checklist-progress data-template="{{ i18n "checklistProgress" }}" data-local="{{ if site.Params.communityAPI }}{{ i18n "checklistLocal" }}{{ else }}{{ i18n "checklistLocalOnly" }}{{ end }}" data-synced="{{ i18n "checklistSynced" }}" aria-live="polite" hidden></p>
         {{ range hugo.Data.journey.step1.checklist }}
         <label class="journey-check-item">
-          <input type="checkbox">
+          <input type="checkbox" data-checklist-item="{{ lower . }}">
           <span>{{ i18n . }}</span>
         </label>
         {{ end }}
@@ -141,4 +146,10 @@
     </div>
   </div>
 </div>
+{{ end }}
+
+{{ define "scripts" }}
+{{ with resources.Get "js/checklist.js" }}{{ with . | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" defer></script>
+{{ end }}{{ end }}
 {{ end }}

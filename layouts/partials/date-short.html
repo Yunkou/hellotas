@@ -1,0 +1,14 @@
+{{- /*
+  A short date in the page's language, from the site's own month names and pattern (eventsDateShort and
+  happeningMonthsLong in i18n/): "9 November 2026", "2026年11月9日", "9 नोभेम्बर 2026".
+  Hugo's built-in ":date_medium" has no Nepali month names and prints "2026  9", so it isn't used.
+  Call with a date string or time.
+*/ -}}
+{{- $t := time . -}}
+{{- $months := split (i18n "happeningMonthsLong") "," -}}
+{{- $line := i18n "eventsDateShort" -}}
+{{- $line = replace $line "{day}" (string $t.Day) -}}
+{{- $line = replace $line "{month}" (index $months (sub (int $t.Month) 1)) -}}
+{{- $line = replace $line "{m}" (string (int $t.Month)) -}}
+{{- $line = replace $line "{year}" (string $t.Year) -}}
+{{- return $line -}}

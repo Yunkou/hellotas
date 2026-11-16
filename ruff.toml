@@ -1,0 +1,18 @@
+# Lint settings for the Python code (collector/ and server/). Run: ruff check collector server
+line-length = 120
+target-version = "py311"
+
+[lint]
+# pycodestyle, pyflakes, bugbear, pyupgrade, simplify, comprehensions, security (bandit) and pylint's errors/warnings
+select = ["E", "F", "W", "B", "UP", "SIM", "C4", "S", "PLE", "PLW"]
+ignore = [
+  "B008",   # FastAPI's Depends(...) in argument defaults is how the framework is used
+  "E741",   # short names such as l for a language code inside comprehensions
+  "SIM108", # if/else blocks are often clearer than a one-line conditional
+  "SIM905", # "a b c".split() for word lists reads better than a long list literal
+  "PLW2901", # reassigning a loop variable to its cleaned-up value is deliberate here
+]
+
+[lint.per-file-ignores]
+"**/tests/*" = ["S101", "S105", "S106", "E501"]  # asserts, made-up secrets and long sample data belong in tests
+"server/hellotas_api/mail.py" = ["E501"]  # the email texts in three languages are kept one sentence per line
