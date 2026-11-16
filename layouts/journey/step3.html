@@ -1,14 +1,18 @@
 {{ define "main" }}
 <div class="page-journey-step" id="step-3">
+  <section class="hero-section">
+    <div class="container">
+      <h1>{{ i18n "journeyStep3Title" }}</h1>
+      <p class="hero-sub">{{ i18n "journeyStep3Lead" }}</p>
+    </div>
+  </section>
+  {{ partial "passon-bar.html" (dict "page" . "message" (i18n "journeyStep3ShareLabel")) }}
+
   <div class="container">
     <div class="journey-main">
       {{ range after 1 hugo.Data.community.sections }}
       <section class="journey-voice-section">
-        {{ if eq .titleKey "journeyStep3SectionTasmaniaTitle" }}
-        <h1 class="journey-basics-title">{{ i18n .titleKey }}</h1>
-        {{ else }}
         <h2 class="journey-basics-title">{{ i18n .titleKey }}</h2>
-        {{ end }}
         <div class="section-divider"></div>
         <div class="place-list">
           {{ range .places }}
