@@ -129,27 +129,6 @@ sections:
                 textKey: journeyStep2EcoHubService3Text
           details:
             - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep2EcoHubLink, href: "https://ecohubsource.org.au/" }
-        - id: rubric
-          titleKey: journeyStep2PeopleRubricTitle
-          tags:
-            - { key: tagOnCampus, class: tag-normal }
-          textKey: journeyStep3RubricText
-          details:
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3RubricLink, href: "https://campus.hellorubric.com/search?country=AU&state=Tasmania&type=events&universityid=24" }
-        - id: migrant-resource-centre
-          titleKey: journeyStep2PeopleMrcTitle
-          tags:
-            - { key: tagCommunity, class: tag-normal }
-          textKey: journeyStep3MrcText
-          details:
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3MrcLink, href: "https://www.mrctas.org.au/" }
-        - id: regional-libraries
-          titleKey: journeyStep2PeopleLibrariesTitle
-          tags:
-            - { key: tagCommunity, class: tag-normal }
-          textKey: journeyStep3LibrariesText
-          details:
-            - { labelKey: journeyStep2LinkLabel, valueKey: journeyStep3LibrariesLink, href: "https://libraries.tas.gov.au/" }
         - id: rotary-tasmania
           titleKey: journeyStep3RotaryTitle
           tags:

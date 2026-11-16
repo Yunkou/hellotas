@@ -45,15 +45,17 @@ jobs:
         env:
           # The community API's address (server/), e.g. https://api.example.org. Unset: those features stay hidden.
           HUGO_PARAMS_COMMUNITYAPI: ${{ vars.COMMUNITY_API_URL }}
-          # The site's address: the custom domain when the CUSTOM_DOMAIN variable is set, otherwise GitHub Pages.
-          # Passed through the environment so the values are never pasted into the shell command itself.
+          # The site's address: baseURL in hugo.toml (ictfuturesintas.com), or the CUSTOM_DOMAIN variable when a
+          # copy of the repo is set to preview on its own domain. Passed through the environment so the value is never
+          # pasted into the shell command itself.
           CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
-          OWNER: ${{ github.repository_owner }}
-          REPO: ${{ github.event.repository.name }}
         run: |
-          if [ -n "$CUSTOM_DOMAIN" ]; then base="https://$CUSTOM_DOMAIN/"; else base="https://$OWNER.github.io/$REPO/"; fi
-          echo "Building for $base"
-          hugo --minify --baseURL "$base"
+          if [ -n "$CUSTOM_DOMAIN" ]; then
+            echo "Building for https://$CUSTOM_DOMAIN/"
+            hugo --minify --baseURL "https://$CUSTOM_DOMAIN/"
+          else
+            hugo --minify
+          fi
 
       - name: Keep the events list from the last deploy
         if: env.DISCORD_WEBHOOK_URL != ''
