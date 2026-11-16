@@ -52,6 +52,7 @@
     {{ $search = $search | append $facts.topics }}
     {{ with .Params.about }}{{ $search = $search | append . }}{{ end }}
     {{ range .Params.linkedin_posts }}{{ $search = $search | append (slice .name .role .content .summary) }}{{ end }}
+    {{ range .Params.awards }}{{ range .items }}{{ $search = $search | append (slice .name .winner .sponsor) }}{{ end }}{{ end }}
     {{ if not .Date.IsZero }}{{ $search = $search | append (slice (.Date.Format "2 January 2006") (time.Format ":date_long" .Date)) }}{{ end }}
     <article class="event-card" data-search="{{ delimit $search " " | plainify | lower }}">
 {{ $photos := slice }}
@@ -79,7 +80,7 @@
         <div class="student-voice">
           <div class="voice-head">
             <span class="linkedin-icon">in</span>
-            <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
+            <span class="linkedin-label">{{ $event.Params.voice_label | default (i18n "studentVoice") }}</span>
           </div>
           <p class="voice-quote">"{{ . }}"</p>
           <p class="voice-role">— {{ $event.Params.student_role }}</p>

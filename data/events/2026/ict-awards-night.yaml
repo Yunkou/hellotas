@@ -1,0 +1,578 @@
+title:
+  en: "ICT Awards Night 2026"
+  zh: "ICT 颁奖之夜 2026"
+  ne: "ICT Awards Night 2026 (ICT पुरस्कार रात्रि)"
+start: "2026-11-09T17:30:00+11:00"
+end: "2026-11-09T20:00:00+11:00"
+event_time:
+  en: "Monday 9 November 2026 · Inaugural event"
+  zh: "2026 年 11 月 9 日（星期一）· 首届"
+  ne: "सोमबार 9 नोभेम्बर 2026 · पहिलो पटक"
+type: "awards"
+topics: [careers, community, annual]
+location:
+  en: "University of Tasmania School of ICT · Hobart and Launceston"
+  zh: "University of Tasmania School of ICT · 霍巴特和朗塞斯顿"
+  ne: "University of Tasmania School of ICT · होबार्ट र लन्सेस्टन"
+cost:
+  en: "Free"
+  zh: "免费"
+  ne: "निःशुल्क"
+eligibility:
+  en: "ICT students, graduates, staff and industry partners"
+  zh: "ICT 学生、毕业生、教职员和行业伙伴"
+  ne: "ICT विद्यार्थी, स्नातक, कर्मचारी र उद्योग साझेदार"
+summary:
+  en: "On Monday evening, the University of Tasmania’s School of ICT celebrated the achievements of its students and graduates, with over 150 people joining across Hobart and Launceston. Around 30 awards and around 100 certificates of unit excellence were presented."
+  zh: "周一晚上，University of Tasmania 的 School of ICT 表彰了学生和毕业生的成就，霍巴特和朗塞斯顿两地共有 150 多人参加。当晚颁发了约 30 个奖项和约 100 份单元卓越证书。"
+  ne: "सोमबार साँझ University of Tasmania को School of ICT ले आफ्ना विद्यार्थी र स्नातकहरूको उपलब्धि मनायो, जसमा होबार्ट र लन्सेस्टनबाट 150 भन्दा बढी जना सहभागी भए। करिब 30 पुरस्कार र करिब 100 युनिट उत्कृष्टता प्रमाणपत्र प्रदान गरिए।"
+# The quote on the card and its label (instead of "Student voice")
+voice_label:
+  en: "From the Head of School"
+  zh: "来自院长"
+  ne: "विद्यालय प्रमुखबाट"
+student_voice:
+  en: "There is a wonderful energy in our Tasmanian ICT community at the moment."
+  zh: "此刻，我们塔斯马尼亚 ICT 社区充满了美好的活力。"
+  ne: "अहिले हाम्रो तस्मानियाको ICT समुदायमा अद्भुत ऊर्जा छ।"
+student_role:
+  en: "Professor Nicole Herbert, Head of School of ICT, University of Tasmania"
+  zh: "Nicole Herbert 教授，University of Tasmania School of ICT 院长"
+  ne: "प्राध्यापक Nicole Herbert, School of ICT प्रमुख, University of Tasmania"
+# The detail page keeps About, the numbers, the awards and the LinkedIn posts (upstream issue #95)
+photo_booth: false
+closing_quote: false
+linkedin_heading:
+  en: "What people said on LinkedIn"
+  zh: "大家在 LinkedIn 上怎么说"
+  ne: "LinkedIn मा मानिसहरूले के भने"
+linkedin_sub:
+  en: "Posts from winners, finalists, sponsors and the Head of School."
+  zh: "来自获奖者、入围者、赞助方和院长的帖子。"
+  ne: "विजेता, फाइनलिस्ट, प्रायोजक र विद्यालय प्रमुखका पोस्टहरू।"
+# Every photo on the page that isn't in a LinkedIn post below comes from this post
+url: "https://www.linkedin.com/posts/nicole-herbert0_what-a-night-our-inaugural-school-of-ugcPost-7525776538030620672-Yfln/"
+image: "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-10.jpg"
+gallery:
+  - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-1.jpg"
+  - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-9.jpg"
+  - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-2.jpg"
+  - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-4.jpg"
+  - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-16.jpg"
+  - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-3.jpg"
+  - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-5.jpg"
+about:
+  en:
+    - "The University of Tasmania (UTAS) School of ICT held its inaugural ICT Awards Night on Monday 9 November 2026, with more than 150 students, graduates, industry partners and staff joining across Hobart and Launceston. The idea for the evening came from students, who were also invited to help shape the awards by telling the School which achievements and contributions deserved recognition. Every award presented on the night was sponsored by industry partners."
+    - "Around 30 awards and around 100 Unit Excellence certificates were presented. The certificates recognised students who achieved the highest academic result in their unit in 2026, in units ranging from first-year undergraduate subjects to final-year Master’s units. The awards also celebrated students who create amazing projects, engage with industry, demonstrate leadership, volunteer, support their classmates and make the School a better place to study and belong, including 27 nominations for the Outstanding ICT Project Awards."
+    - "The four highest honours recognised research excellence, academic excellence in the Bachelor of Information and Communication Technology and the Master of Information Technology and Systems, and the 2026 ICT Graduate of the Year, awarded to Gazi MD Wasi-UL Hoque Eusha. The Students’ Choice Awards, shaped by students themselves, included the Inquisitor Award for the student who asks the questions everyone else is secretly hoping someone will ask, and the ICT Community Spirit Award went to Chhunly Chhek. Two students, Rakhitha Dassanayake in Launceston and Taylah Stewart in Hobart, also shared student addresses during the evening."
+  zh:
+    - "University of Tasmania（UTAS）School of ICT 于 2026 年 11 月 9 日（星期一）举办了首届 ICT 颁奖之夜，霍巴特和朗塞斯顿两地共有 150 多名学生、毕业生、行业伙伴和教职员参加。举办这场晚会的想法来自学生，学院还邀请学生参与设计奖项，告诉学院哪些成就和贡献值得表彰。当晚颁发的每一个奖项都由行业伙伴赞助。"
+    - "当晚共颁发约 30 个奖项和约 100 份单元卓越证书（Unit Excellence）。证书授予 2026 年在各自单元中取得最高成绩的学生，单元从本科一年级课程到硕士最后一年的课程都有。奖项还表彰了做出出色项目、积极对接行业、展现领导力、参与志愿服务、帮助同学，并让学院成为更好的学习和归属之地的学生；其中“杰出 ICT 项目奖”共收到 27 项提名。"
+    - "四项最高荣誉分别表彰研究卓越、ICT 学士（Bachelor of Information and Communication Technology）和信息技术与系统硕士（Master of Information Technology and Systems）的学业卓越，以及 2026 年度 ICT 毕业生，最后一项由 Gazi MD Wasi-UL Hoque Eusha 获得。由学生自己参与设计的“学生之选”奖中，有一个“提问者奖”（Inquisitor Award），颁给那位总是问出大家心里都想问的问题的同学；ICT 社区精神奖由 Chhunly Chhek 获得。当晚还有两位学生发表了学生致辞：朗塞斯顿的 Rakhitha Dassanayake 和霍巴特的 Taylah Stewart。"
+  ne:
+    - "University of Tasmania (UTAS) को School of ICT ले सोमबार 9 नोभेम्बर 2026 मा पहिलो ICT Awards Night आयोजना गर्‍यो, जसमा होबार्ट र लन्सेस्टनबाट 150 भन्दा बढी विद्यार्थी, स्नातक, उद्योग साझेदार र कर्मचारी सहभागी भए। यो साँझको विचार विद्यार्थीहरूबाटै आएको थियो, र कुन उपलब्धि र योगदानलाई सम्मान गर्नुपर्छ भनेर बताउँदै पुरस्कारहरू तय गर्न पनि विद्यार्थीहरूलाई आमन्त्रण गरिएको थियो। रातमा दिइएका सबै पुरस्कार उद्योग साझेदारहरूले प्रायोजन गरेका थिए।"
+    - "करिब 30 पुरस्कार र करिब 100 Unit Excellence प्रमाणपत्र प्रदान गरिए। प्रमाणपत्रहरूले 2026 मा आफ्नो युनिटमा सबैभन्दा उच्च नतिजा ल्याउने विद्यार्थीलाई सम्मान गरे, जसमा स्नातकको पहिलो वर्षदेखि स्नातकोत्तरको अन्तिम वर्षसम्मका युनिट थिए। पुरस्कारहरूले उत्कृष्ट परियोजना बनाउने, उद्योगसँग जोडिने, नेतृत्व देखाउने, स्वयंसेवा गर्ने, सहपाठीलाई सहयोग गर्ने र School लाई पढ्न र आफ्नोपन महसुस गर्न अझ राम्रो ठाउँ बनाउने विद्यार्थीहरूलाई पनि सम्मान गरे; Outstanding ICT Project Awards का लागि मात्र 27 वटा मनोनयन आएका थिए।"
+    - "चार सर्वोच्च सम्मानले अनुसन्धान उत्कृष्टता, Bachelor of Information and Communication Technology र Master of Information Technology and Systems मा शैक्षिक उत्कृष्टता, र 2026 ICT Graduate of the Year लाई सम्मान गरे, जुन Gazi MD Wasi-UL Hoque Eusha ले पाए। विद्यार्थी आफैंले तय गरेका Students’ Choice Awards मा सबैले मनमनै सोध्न चाहेका प्रश्न सोध्ने विद्यार्थीका लागि Inquisitor Award पनि थियो, र ICT Community Spirit Award Chhunly Chhek ले पाए। साँझमा दुई विद्यार्थी, लन्सेस्टनमा Rakhitha Dassanayake र होबार्टमा Taylah Stewart, ले विद्यार्थी सम्बोधन पनि गरे।"
+references:
+  - title: "Nicole Herbert: What a night, our inaugural School of ICT Awards Night (LinkedIn)"
+    url: "https://www.linkedin.com/posts/nicole-herbert0_what-a-night-our-inaugural-school-of-ugcPost-7525776538030620672-Yfln/"
+  - title: "Nicole Herbert: the 2026 ICT Excellence Awards and Graduate of the Year (LinkedIn)"
+    url: "https://www.linkedin.com/posts/nicole-herbert0_celebrating-the-best-of-the-best-our-2026-ugcPost-7525855771184619520-DQZ6/"
+  - title: "Nicole Herbert: the 10 Academic Excellence Awards (LinkedIn)"
+    url: "https://www.linkedin.com/posts/nicole-herbert0_celebrating-academic-excellence-in-ict-ugcPost-7525787184596033536-QOl_/"
+  - title: "Nicole Herbert: Outstanding ICT Student Projects (LinkedIn)"
+    url: "https://www.linkedin.com/posts/nicole-herbert0_celebrating-outstanding-ict-student-projects-ugcPost-7525798492011741184-bGMC/"
+  - title: "Nicole Herbert: the Students’ Choice Awards (LinkedIn)"
+    url: "https://www.linkedin.com/posts/nicole-herbert0_celebrating-our-students-choices-the-awards-ugcPost-7525793562945392640-uv1z/"
+  - title: "Nicole Herbert: community, industry and leadership awards (LinkedIn)"
+    url: "https://www.linkedin.com/posts/nicole-herbert0_celebrating-more-than-academic-excellence-ugcPost-7525848564518797312-uwg5/"
+  - title: "Nicole Herbert: the 2026 Unit Excellence Award recipients (LinkedIn)"
+    url: "https://www.linkedin.com/posts/nicole-herbert0_celebrating-academic-excellence-our-2026-ugcPost-7525865082279317505-gmaL/"
+stats:
+  - number: "150+"
+    label:
+      en: "People joining across Hobart and Launceston"
+      zh: "霍巴特和朗塞斯顿两地参加人数"
+      ne: "होबार्ट र लन्सेस्टनबाट सहभागी"
+  - number: "~30"
+    label:
+      en: "Awards presented"
+      zh: "颁发的奖项"
+      ne: "प्रदान गरिएका पुरस्कार"
+  - number: "~100"
+    label:
+      en: "Unit Excellence certificates"
+      zh: "单元卓越证书"
+      ne: "Unit Excellence प्रमाणपत्र"
+  - number: "27"
+    label:
+      en: "Outstanding ICT Project nominations"
+      zh: "杰出 ICT 项目奖提名"
+      ne: "Outstanding ICT Project मनोनयन"
+# Winners and sponsors as Nicole Herbert announced them on LinkedIn (see references).
+# A group with feature: true shows its awards as photo cards; the others are compact tiles.
+awards:
+  - title:
+      en: "The highest honours"
+      zh: "最高荣誉"
+      ne: "सर्वोच्च सम्मान"
+    icon: "🌟"
+    feature: true
+    items:
+      - name:
+          en: "2026 ICT Graduate of the Year"
+          zh: "2026 年度 ICT 毕业生"
+          ne: "2026 ICT Graduate of the Year"
+        winner: "Gazi MD Wasi-UL Hoque Eusha"
+        sponsor: "ISW Development"
+        image: "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-11.jpg"
+      - name:
+          en: "Academic Excellence: Bachelor of ICT"
+          zh: "学业卓越奖：ICT 学士"
+          ne: "शैक्षिक उत्कृष्टता: Bachelor of ICT"
+        winner: "Tim Cox"
+        sponsor: "Red Apple IT"
+        image: "/images/events/2026/ict-awards-night/award-tim-cox.jpg"
+      - name:
+          en: "Academic Excellence: Master of IT and Systems"
+          zh: "学业卓越奖：信息技术与系统硕士"
+          ne: "शैक्षिक उत्कृष्टता: Master of IT and Systems"
+        winner: "Gothami Jayasingha"
+        sponsor: "Skills Solutions Australia"
+        image: "/images/events/2026/ict-awards-night/award-gothami-jayasingha.jpg"
+      - name:
+          en: "ICT Research Excellence"
+          zh: "ICT 研究卓越奖"
+          ne: "ICT अनुसन्धान उत्कृष्टता"
+        winner: "Riseul Ryu"
+        sponsor: "Firmus Technologies"
+  - title:
+      en: "Academic Excellence by major and specialisation"
+      zh: "各专业方向学业卓越奖"
+      ne: "मेजर र विशेषज्ञता अनुसार शैक्षिक उत्कृष्टता"
+    icon: "🎓"
+    items:
+      - name:
+          en: "BICT Software Development"
+          zh: "ICT 学士 · 软件开发"
+          ne: "BICT सफ्टवेयर विकास"
+        winner: "Syed Ali Hossain"
+        sponsor: "Skills Solutions Australia"
+      - name:
+          en: "BICT Business Analysis"
+          zh: "ICT 学士 · 商业分析"
+          ne: "BICT व्यापार विश्लेषण"
+        winner: "Vanni Pham"
+        sponsor: "TasmaNet"
+      - name:
+          en: "BICT Artificial Intelligence"
+          zh: "ICT 学士 · 人工智能"
+          ne: "BICT कृत्रिम बुद्धिमत्ता"
+        winner: "Tim Cox"
+        sponsor: "Data#3"
+      - name:
+          en: "BICT Games and Creative Technology"
+          zh: "ICT 学士 · 游戏与创意技术"
+          ne: "BICT गेम्स तथा क्रिएटिभ टेक्नोलोजी"
+        winner: "Patrick Wing"
+        sponsor: "Yarn Spinner"
+      - name:
+          en: "BICT Networks and Cybersecurity"
+          zh: "ICT 学士 · 网络与网络安全"
+          ne: "BICT नेटवर्क र साइबर सुरक्षा"
+        winner: "Liam Partridge"
+        sponsor: "Intuit Technologies"
+      - name:
+          en: "BICT Application and Web Development"
+          zh: "ICT 学士 · 应用与网页开发"
+          ne: "BICT एप तथा वेब विकास"
+        winner: "Max Crabtree"
+        sponsor: "ISW"
+      - name:
+          en: "MITS Cybersecurity"
+          zh: "信息技术与系统硕士 · 网络安全"
+          ne: "MITS साइबर सुरक्षा"
+        winner: "Jane Chanatda Chaithanakunmongkhon"
+        sponsor: "Intuit Technologies"
+      - name:
+          en: "MITS Data Analytics and Artificial Intelligence"
+          zh: "信息技术与系统硕士 · 数据分析与人工智能"
+          ne: "MITS डेटा एनालिटिक्स र कृत्रिम बुद्धिमत्ता"
+        winner: "Gazi MD Wasi-UL Hoque Eusha"
+        sponsor: "Data#3"
+      - name:
+          en: "MITS Software Development"
+          zh: "信息技术与系统硕士 · 软件开发"
+          ne: "MITS सफ्टवेयर विकास"
+        winner: "Hang Li"
+        sponsor: "Echoview"
+      - name:
+          en: "MITS Systems Analysis"
+          zh: "信息技术与系统硕士 · 系统分析"
+          ne: "MITS प्रणाली विश्लेषण"
+        winner: "Yixi Chen"
+        sponsor: "Red Apple IT"
+  - title:
+      en: "Outstanding ICT Projects"
+      zh: "杰出 ICT 项目奖"
+      ne: "Outstanding ICT Projects"
+    icon: "💡"
+    items:
+      - name:
+          en: "Game Development"
+          zh: "游戏开发"
+          ne: "गेम विकास"
+        winner: "Brie Healy"
+        sponsor: "Tasmanian Game Makers"
+      - name:
+          en: "Individual project: Business Process Improvement"
+          zh: "个人项目：业务流程改进"
+          ne: "व्यक्तिगत परियोजना: व्यापार प्रक्रिया सुधार"
+        winner: "Chris Thiraphadungphong"
+        sponsor: "Sportstech Tasmania"
+      - name:
+          en: "Individual project: Professional Portfolio"
+          zh: "个人项目：专业作品集"
+          ne: "व्यक्तिगत परियोजना: पेसागत पोर्टफोलियो"
+        winner: "Billal Hossain Shishir"
+        sponsor: "Firmus Technologies"
+      - name:
+          en: "Team project: Complex Integrated Systems Solution"
+          zh: "团队项目：复杂集成系统方案"
+          ne: "टिम परियोजना: जटिल एकीकृत प्रणाली समाधान"
+        winner: "AMC Mate, an AI maritime oral examination assistant"
+        sponsor: "Rapid Circle"
+      - name:
+          en: "Team project: Professionalism and Innovative Technology Solution"
+          zh: "团队项目：专业精神与创新技术方案"
+          ne: "टिम परियोजना: व्यावसायिकता र नवीन प्रविधि समाधान"
+        winner: "BinSight"
+        sponsor: "ReadyTech"
+      - name:
+          en: "Best project from the ICT Student Showcase"
+          zh: "ICT 学生展示会最佳项目"
+          ne: "ICT Student Showcase को उत्कृष्ट परियोजना"
+        winner: "Veteran’s Phone, a curated digital space for Australian veterans"
+        sponsor: "Data#3"
+  - title:
+      en: "Students’ Choice"
+      zh: "学生之选"
+      ne: "Students’ Choice"
+    icon: "🏆"
+    items:
+      - name:
+          en: "The Inquisitor Award"
+          zh: "提问者奖"
+          ne: "Inquisitor Award"
+        winner: "Yixi Chen"
+        sponsor: "Forgotten Isle Consulting"
+      - name:
+          en: "The Eagle Eye Award"
+          zh: "火眼金睛奖"
+          ne: "Eagle Eye Award"
+        winner: "Hang Li"
+        sponsor: "Forgotten Isle Consulting"
+      - name:
+          en: "The Team Leadership Award"
+          zh: "团队领导奖"
+          ne: "Team Leadership Award"
+        winner: "Hosna Ara Begum"
+        sponsor: "Forgotten Isle Consulting"
+      - name:
+          en: "Staff award: Outstanding Impact on Student Experience and Learning"
+          zh: "教职员奖：对学生体验与学习的杰出影响"
+          ne: "कर्मचारी पुरस्कार: विद्यार्थी अनुभव र सिकाइमा उत्कृष्ट प्रभाव"
+        winner: "Tony Gray"
+      - name:
+          en: "Staff award: Excellence in Student Learning Support"
+          zh: "教职员奖：卓越学习支持"
+          ne: "कर्मचारी पुरस्कार: विद्यार्थी सिकाइ सहयोगमा उत्कृष्टता"
+        winner: "Gothami Jayasingha"
+  - title:
+      en: "Community, industry and growth"
+      zh: "社区、行业与成长"
+      ne: "समुदाय, उद्योग र प्रगति"
+    icon: "🤝"
+    items:
+      - name:
+          en: "ICT Community Spirit Award"
+          zh: "ICT 社区精神奖"
+          ne: "ICT Community Spirit Award"
+        winner: "Chhunly Chhek"
+        sponsor: "Secret Lab"
+      - name:
+          en: "ICT Industry Engagement and Professional Development Award"
+          zh: "ICT 行业参与与职业发展奖"
+          ne: "ICT उद्योग संलग्नता र पेसागत विकास पुरस्कार"
+        winner: "Abir Hossain Khondoker"
+        sponsor: "TasICT"
+      - name:
+          en: "ICT Ambassador Award"
+          zh: "ICT 大使奖"
+          ne: "ICT Ambassador Award"
+        winner: "Bronson Billing"
+        sponsor: "ACS Tasmania"
+      - name:
+          en: "ICT Outstanding Progress Award"
+          zh: "ICT 杰出进步奖"
+          ne: "ICT Outstanding Progress Award"
+        winner: "Taylah Stewart"
+        sponsor: "The Project Lab"
+      - name:
+          en: "ICT Emerging Star Award"
+          zh: "ICT 新星奖"
+          ne: "ICT Emerging Star Award"
+        winner: "Md. Farahbi Ishrak"
+        sponsor: "ACS Tasmania"
+awards_note:
+  en: "More than 100 Unit Excellence certificates went to the top student in each unit. Tim Cox, Hang Li, Bronson Billing, Jacob de Graaf, Abir Hossain Khondoker, Youngseok Kim, Gopal Baidawar Chhetri, Yixi Chen and Nusaiba Nizam each topped more than one unit."
+  zh: "100 多份单元卓越证书颁给了每个单元成绩最高的学生。Tim Cox、Hang Li、Bronson Billing、Jacob de Graaf、Abir Hossain Khondoker、Youngseok Kim、Gopal Baidawar Chhetri、Yixi Chen 和 Nusaiba Nizam 都在不止一个单元中取得第一。"
+  ne: "100 भन्दा बढी Unit Excellence प्रमाणपत्र हरेक युनिटमा सबैभन्दा उच्च अंक ल्याउने विद्यार्थीलाई दिइए। Tim Cox, Hang Li, Bronson Billing, Jacob de Graaf, Abir Hossain Khondoker, Youngseok Kim, Gopal Baidawar Chhetri, Yixi Chen र Nusaiba Nizam ले एकभन्दा बढी युनिटमा शीर्ष स्थान पाए।"
+linkedin_posts:
+  - name: "Nicole Herbert"
+    role:
+      en: "Professor, Head of School of ICT, University of Tasmania"
+      zh: "教授，University of Tasmania School of ICT 院长"
+      ne: "प्राध्यापक, School of ICT प्रमुख, University of Tasmania"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-10.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-9.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-nicole-herbert-11.jpg"
+    content:
+      en: "Of course, academic and research excellence deserve recognition. But university is about so much more than marks!"
+      zh: "当然，学业和研究上的卓越值得表彰。但大学远不止分数！"
+      ne: "पक्कै पनि, शैक्षिक र अनुसन्धान उत्कृष्टताले सम्मान पाउनुपर्छ। तर विश्वविद्यालय अंकभन्दा धेरै बढी हो!"
+    summary:
+      en: "Nicole Herbert looks back on the first ICT Awards Night: over 150 people across Hobart and Launceston, around 30 awards and around 100 Unit Excellence certificates, with every award sponsored by industry. Nicole thanks the 19 sponsors and hopes to make the night an annual tradition."
+      zh: "Nicole Herbert 回顾首届 ICT 颁奖之夜：霍巴特和朗塞斯顿两地 150 多人参加，颁发约 30 个奖项和约 100 份单元卓越证书，每个奖项都有行业赞助。Nicole 感谢了 19 家赞助方，并希望把这个晚会办成每年的传统。"
+      ne: "Nicole Herbert पहिलो ICT Awards Night सम्झनुहुन्छ: होबार्ट र लन्सेस्टनबाट 150 भन्दा बढी जना, करिब 30 पुरस्कार र करिब 100 Unit Excellence प्रमाणपत्र, र हरेक पुरस्कार उद्योगले प्रायोजन गरेको। Nicole 19 प्रायोजकलाई धन्यवाद दिनुहुन्छ र यो रातलाई वार्षिक परम्परा बनाउने आशा गर्नुहुन्छ।"
+    url: "https://www.linkedin.com/posts/nicole-herbert0_what-a-night-our-inaugural-school-of-ugcPost-7525776538030620672-Yfln/"
+  - name: "Gazi MD Wasi-UL Hoque Eusha"
+    role:
+      en: "ICT Academic Staff, University of Tasmania · 2026 ICT Graduate of the Year"
+      zh: "University of Tasmania ICT 学术人员 · 2026 年度 ICT 毕业生"
+      ne: "ICT शैक्षिक कर्मचारी, University of Tasmania · 2026 ICT Graduate of the Year"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-gazi-eusha-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-gazi-eusha-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-gazi-eusha-2.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-gazi-eusha-3.jpg"
+    content:
+      en: "I am incredibly honoured to have been awarded the 2026 ICT Graduate of the Year (sponsored by ISW) and Academic Excellence in Master of Information Technology and Systems – Data Analytics and AI Specialisation (sponsored by Data#3)."
+      zh: "我非常荣幸获得 2026 年度 ICT 毕业生奖（ISW 赞助），以及信息技术与系统硕士数据分析与 AI 方向学业卓越奖（Data#3 赞助）。"
+      ne: "2026 ICT Graduate of the Year (ISW प्रायोजित) र Master of Information Technology and Systems – Data Analytics and AI Specialisation मा शैक्षिक उत्कृष्टता (Data#3 प्रायोजित) पाउँदा म अत्यन्तै सम्मानित महसुस गर्छु।"
+    summary:
+      en: "Eusha won the night's highest honour, the 2026 ICT Graduate of the Year, and the MITS Data Analytics and AI award. Eusha thanks Chris Jackson from Data#3 and Georgi Brown from Red Apple IT for presenting the awards, and Ming Wong and Nicole Herbert for the work behind the event."
+      zh: "Eusha 获得了当晚的最高荣誉——2026 年度 ICT 毕业生，以及硕士数据分析与 AI 方向奖。Eusha 感谢 Data#3 的 Chris Jackson 和 Red Apple IT 的 Georgi Brown 颁奖，也感谢 Ming Wong 和 Nicole Herbert 在幕后的付出。"
+      ne: "Eusha ले रातको सर्वोच्च सम्मान 2026 ICT Graduate of the Year र MITS Data Analytics and AI पुरस्कार जित्नुभयो। Eusha पुरस्कार हस्तान्तरण गर्ने Data#3 का Chris Jackson र Red Apple IT का Georgi Brown, र कार्यक्रमपछाडि मिहिनेत गर्ने Ming Wong र Nicole Herbert लाई धन्यवाद दिनुहुन्छ।"
+    url: "https://www.linkedin.com/posts/gazi-eusha_beyond-ecstatic-to-share-a-major-milestone-ugcPost-7527259256446767104-udQF/"
+  - name: "Tim Cox"
+    role:
+      en: "Student Research Programmer at CSIRO · Bachelor of ICT graduate"
+      zh: "CSIRO 学生研究程序员 · ICT 学士毕业生"
+      ne: "CSIRO मा स्टुडेन्ट रिसर्च प्रोग्रामर · Bachelor of ICT स्नातक"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-tim-cox-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-tim-cox-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-tim-cox-2.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-tim-cox-3.jpg"
+    content:
+      en: "I would also encourage students to be curious and learn for the sake of learning; not every skill or project needs to have immediate value in the 'real-world'."
+      zh: "我也鼓励同学们保持好奇，为了学习而学习；不是每一项技能或每一个项目都必须马上在“现实世界”里有用。"
+      ne: "म विद्यार्थीहरूलाई जिज्ञासु बन्न र सिकाइकै लागि सिक्न पनि प्रोत्साहन गर्छु; हरेक सीप वा परियोजनाको तुरुन्तै 'वास्तविक संसार' मा मूल्य हुनुपर्छ भन्ने छैन।"
+    summary:
+      en: "Tim Cox won the Bachelor of ICT Academic Excellence Award as the top BICT graduate, plus the AI major award and two unit awards, and was a Graduate of the Year finalist. Tim's advice to students: work hard, stay curious, challenge yourself and take pride in your work."
+      zh: "Tim Cox 作为成绩最好的 ICT 学士毕业生获得 ICT 学士学业卓越奖，还拿下人工智能专业奖和两个单元奖，并入围年度毕业生。Tim 给同学们的建议是：努力、保持好奇、挑战自己，并为自己的作品感到自豪。"
+      ne: "Tim Cox ले सबैभन्दा उत्कृष्ट BICT स्नातकका रूपमा Bachelor of ICT Academic Excellence Award, AI मेजर पुरस्कार र दुई युनिट पुरस्कार जित्नुभयो, र Graduate of the Year को फाइनलिस्ट पनि हुनुभयो। विद्यार्थीलाई Tim को सल्लाह: मिहिनेत गर्नुहोस्, जिज्ञासु रहनुहोस्, आफूलाई चुनौती दिनुहोस् र आफ्नो कामप्रति गर्व गर्नुहोस्।"
+    url: "https://www.linkedin.com/posts/tim-cox-8695122b4_im-stoked-to-have-received-the-bachelor-ugcPost-7525764709963247616-8USR/"
+  - name: "Gothami Jayasingha"
+    role:
+      en: "Master of IT and Systems (Cybersecurity), University of Tasmania · IT Tutor"
+      zh: "University of Tasmania 信息技术与系统硕士（网络安全）· IT 助教"
+      ne: "Master of IT and Systems (साइबर सुरक्षा), University of Tasmania · IT ट्युटर"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-gothami-jayasingha-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-gothami-jayasingha-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-gothami-jayasingha-2.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-gothami-jayasingha-3.jpg"
+    content:
+      en: "I have successfully completed my Master of Information Technology and Systems, specialising in Cybersecurity and Software Development, with a perfect GPA of 7.00/7.00, achieving High Distinctions in every unit!"
+      zh: "我顺利完成了信息技术与系统硕士学业，主修网络安全和软件开发，GPA 满分 7.00/7.00，每个单元都拿到 High Distinction！"
+      ne: "मैले साइबर सुरक्षा र सफ्टवेयर विकासमा विशेषज्ञतासहित Master of Information Technology and Systems पूरा गरें, 7.00/7.00 को पूर्ण GPA र हरेक युनिटमा High Distinction सहित!"
+    summary:
+      en: "Gothami won the Academic Excellence Award for the Master of IT and Systems, sponsored by Skills Solutions Australia, and was a finalist for Graduate of the Year and in both specialisations. Students also chose Gothami for the Excellence in Student Learning Support award."
+      zh: "Gothami 获得由 Skills Solutions Australia 赞助的信息技术与系统硕士学业卓越奖，并入围年度毕业生和两个专业方向的奖项。学生们还把“卓越学习支持奖”投给了 Gothami。"
+      ne: "Gothami ले Skills Solutions Australia प्रायोजित Master of IT and Systems को Academic Excellence Award जित्नुभयो, र Graduate of the Year तथा दुवै विशेषज्ञताको फाइनलिस्ट हुनुभयो। विद्यार्थीहरूले Gothami लाई Excellence in Student Learning Support पुरस्कार पनि दिए।"
+    url: "https://www.linkedin.com/posts/gothamijayasingheau_universityoftasmania-academicexcellence-graduateoftheyear-ugcPost-7526000720274247680-325Z/"
+  - name: "Hang Li"
+    role:
+      en: "Graduate Software Engineer · Master of IT and Systems, University of Tasmania"
+      zh: "毕业生软件工程师 · University of Tasmania 信息技术与系统硕士"
+      ne: "ग्राजुएट सफ्टवेयर इन्जिनियर · Master of IT and Systems, University of Tasmania"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-hang-li-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-hang-li-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-hang-li-2.jpg"
+    content:
+      en: "Attending the University of Tasmania School of ICT Awards Night was an unforgettable experience and a proud milestone in my academic and professional journey."
+      zh: "参加 University of Tasmania School of ICT 颁奖之夜是一次难忘的经历，也是我学业和职业道路上值得骄傲的里程碑。"
+      ne: "University of Tasmania School of ICT Awards Night मा सहभागी हुनु अविस्मरणीय अनुभव र मेरो शैक्षिक तथा पेसागत यात्राको गर्वलाग्दो कोसेढुङ्गा थियो।"
+    summary:
+      en: "Hang Li won the MITS Software Development award from Echoview, the Students’ Choice Eagle Eye Award and four Unit Academic Excellence awards, and was a finalist for Graduate of the Year. Next week Hang Li joins Intuit Technologies' Industry Connect day for award winners."
+      zh: "Hang Li 获得 Echoview 赞助的硕士软件开发方向奖、学生之选“火眼金睛奖”和四个单元学业卓越奖，并入围年度毕业生。下周 Hang Li 将参加 Intuit Technologies 为获奖者举办的 Industry Connect 活动。"
+      ne: "Hang Li ले Echoview को MITS Software Development पुरस्कार, Students’ Choice Eagle Eye Award र चार Unit Academic Excellence पुरस्कार जित्नुभयो, र Graduate of the Year को फाइनलिस्ट हुनुभयो। अर्को हप्ता Hang Li पुरस्कार विजेताका लागि Intuit Technologies को Industry Connect दिनमा सहभागी हुँदै हुनुहुन्छ।"
+    url: "https://www.linkedin.com/posts/lihang0012_utas-schoolofict-ictawards-ugcPost-7525777419086061570-Vcv_/"
+  - name: "Hosna Ara Begum"
+    role:
+      en: "Power BI and Business Intelligence Consultant · Master of IT and Systems, University of Tasmania"
+      zh: "Power BI 与商业智能顾问 · University of Tasmania 信息技术与系统硕士"
+      ne: "Power BI तथा बिजनेस इन्टेलिजेन्स कन्सल्टेन्ट · Master of IT and Systems, University of Tasmania"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-hosna-ara-begum-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-hosna-ara-begum-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-hosna-ara-begum-2.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-hosna-ara-begum-3.jpg"
+    content:
+      en: "These awards mean a lot to me because they reflect two things I genuinely value: delivering quality work and helping a team succeed together."
+      zh: "这些奖项对我意义重大，因为它们体现了我真正看重的两件事：交出高质量的工作，以及帮助团队一起成功。"
+      ne: "यी पुरस्कार मेरा लागि धेरै अर्थपूर्ण छन्, किनकि यसले मैले साँच्चै मूल्य दिने दुई कुरा देखाउँछ: गुणस्तरीय काम गर्नु र टिमलाई सँगै सफल हुन सहयोग गर्नु।"
+    summary:
+      en: "While studying with two toddlers at home, Hosna won the Students’ Choice Team Leadership Award and a Unit Academic Excellence award for KIT700, and was named a finalist in seven categories, including Graduate of the Year and three Outstanding ICT Project nominations."
+      zh: "Hosna 一边照顾两个幼儿一边读书，获得了学生之选“团队领导奖”和 KIT700 单元学业卓越奖，并在七个类别中入围，包括年度毕业生和三项杰出 ICT 项目提名。"
+      ne: "घरमा दुई साना बच्चा हुँदाहुँदै पढ्नुहुने Hosna ले Students’ Choice Team Leadership Award र KIT700 को Unit Academic Excellence पुरस्कार जित्नुभयो, र Graduate of the Year तथा तीन Outstanding ICT Project मनोनयनसहित सात वर्गमा फाइनलिस्ट हुनुभयो।"
+    url: "https://www.linkedin.com/posts/habegum_it-might-be-late-but-better-late-than-never-ugcPost-7527388006081671169-bcGz/"
+  - name: "Billal Hossain Shishir"
+    role:
+      en: "Bachelor of ICT (Artificial Intelligence) student, University of Tasmania"
+      zh: "University of Tasmania ICT 学士（人工智能）学生"
+      ne: "Bachelor of ICT (कृत्रिम बुद्धिमत्ता) विद्यार्थी, University of Tasmania"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-billal-hossain-shishir-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-billal-hossain-shishir-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-billal-hossain-shishir-2.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-billal-hossain-shishir-3.jpg"
+    content:
+      en: "Two awards are a beautiful reminder of the journey so far, but this is only the beginning."
+      zh: "两个奖项是对这一路的美好纪念，但这只是开始。"
+      ne: "दुई पुरस्कार अहिलेसम्मको यात्राको सुन्दर सम्झना हुन्, तर यो त सुरुवात मात्र हो।"
+    summary:
+      en: "Billal won the Outstanding ICT Individual Project award for a Professional Portfolio, sponsored by Firmus Technologies, and a Unit Academic Excellence award for KIT300. Billal was also a finalist for Outstanding Progress, Industry Engagement and Team Leadership."
+      zh: "Billal 凭借专业作品集获得 Firmus Technologies 赞助的杰出 ICT 个人项目奖，以及 KIT300 单元学业卓越奖。Billal 还入围了杰出进步、行业参与和团队领导三个奖项。"
+      ne: "Billal ले Professional Portfolio का लागि Firmus Technologies प्रायोजित Outstanding ICT Individual Project पुरस्कार र KIT300 को Unit Academic Excellence पुरस्कार जित्नुभयो। Billal Outstanding Progress, Industry Engagement र Team Leadership का फाइनलिस्ट पनि हुनुभयो।"
+    url: "https://www.linkedin.com/posts/billal-hossain-shishir-046a02358_universityoftasmania-ictawards2026-artificialintelligence-ugcPost-7526489165547556865-vLh_/"
+  - name: "Bronson Billing"
+    role:
+      en: "Bachelor of ICT student and Student Ambassador, University of Tasmania"
+      zh: "University of Tasmania ICT 学士学生、学生大使"
+      ne: "Bachelor of ICT विद्यार्थी र Student Ambassador, University of Tasmania"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-bronson-billing-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-bronson-billing-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-bronson-billing-2.jpg"
+    content:
+      en: "I've always been proud to represent our field and to use my role as a Student Ambassador to help open doors for people who never considered ICT as an option."
+      zh: "我一直为代表我们这个领域而自豪，也希望借学生大使的身份，为从没想过学 ICT 的人打开一扇门。"
+      ne: "आफ्नो क्षेत्रको प्रतिनिधित्व गर्न र ICT लाई विकल्पका रूपमा कहिल्यै नसोचेका मानिसका लागि ढोका खोल्न Student Ambassador को भूमिका प्रयोग गर्न पाउँदा मलाई सधैं गर्व लाग्छ।"
+    summary:
+      en: "Bronson won five awards: the ICT Ambassador Award from ACS Tasmania, three Unit Academic Excellence awards, and the team project award for BinSight with Maddy Wright, Thomas Bates, Max Crabtree and Liam Partridge, presented by ReadyTech."
+      zh: "Bronson 一共拿了五个奖：ACS Tasmania 赞助的 ICT 大使奖、三个单元学业卓越奖，以及和 Maddy Wright、Thomas Bates、Max Crabtree、Liam Partridge 一起凭 BinSight 获得的团队项目奖（由 ReadyTech 颁发）。"
+      ne: "Bronson ले पाँच पुरस्कार जित्नुभयो: ACS Tasmania को ICT Ambassador Award, तीन Unit Academic Excellence पुरस्कार, र Maddy Wright, Thomas Bates, Max Crabtree र Liam Partridge सँग BinSight का लागि ReadyTech ले दिएको टिम परियोजना पुरस्कार।"
+    url: "https://www.linkedin.com/posts/bronsonkb_im-still-ecstatic-about-this-one-ugcPost-7527564350597939200-tjkK/"
+  - name: "Chhunly Chhek"
+    role:
+      en: "ICT student and Senior Student Success Leader, University of Tasmania"
+      zh: "University of Tasmania ICT 学生、高级学生成功导师"
+      ne: "ICT विद्यार्थी र Senior Student Success Leader, University of Tasmania"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-chhunly-chhek-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-chhunly-chhek-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-chhunly-chhek-2.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-chhunly-chhek-3.jpg"
+    content:
+      en: "It's been a privilege to be part of such a wonderful community, and I'm proud to have made a small contribution along the way."
+      zh: "能成为这样一个美好社区的一员是我的荣幸，也很自豪一路上能出一点力。"
+      ne: "यस्तो अद्भुत समुदायको हिस्सा हुन पाउनु सौभाग्य हो, र बाटोमा सानो योगदान दिन पाएकोमा मलाई गर्व छ।"
+    summary:
+      en: "Chhunly received the ICT Community Spirit Award, sponsored by Secret Lab, at the end of a university journey. Chhunly thanks the lecturers, staff and fellow students who helped along the way."
+      zh: "在大学生活即将结束之际，Chhunly 获得了 Secret Lab 赞助的 ICT 社区精神奖。Chhunly 感谢一路给予支持的老师、教职员和同学。"
+      ne: "विश्वविद्यालयको यात्रा सकिँदै गर्दा Chhunly ले Secret Lab प्रायोजित ICT Community Spirit Award पाउनुभयो। Chhunly सहयोग गर्ने लेक्चरर, कर्मचारी र साथी विद्यार्थीलाई धन्यवाद दिनुहुन्छ।"
+    url: "https://www.linkedin.com/posts/chhunly-chhek-b626681b6_it-is-a-great-honour-to-have-received-ict-ugcPost-7525835319775064064-yqfe/"
+  - name: "Chris Thiraphadungphong"
+    role:
+      en: "ICT student, University of Tasmania"
+      zh: "University of Tasmania ICT 学生"
+      ne: "ICT विद्यार्थी, University of Tasmania"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-chris-thiraphadungphong-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-chris-thiraphadungphong-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-chris-thiraphadungphong-2.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-chris-thiraphadungphong-3.jpg"
+    content:
+      en: "What started as an idea became an internal platform and a mobile app being used in the operations."
+      zh: "最初只是一个想法，后来变成了一个内部平台和一款正在实际运营中使用的手机应用。"
+      ne: "एउटा विचारबाट सुरु भएको काम आन्तरिक प्लेटफर्म र सञ्चालनमा प्रयोग भइरहेको मोबाइल एप बन्यो।"
+    summary:
+      en: "Chris won the Outstanding ICT Individual Project award for Business Process Improvement. Working as an interpreter at Amigos Translate, Chris saw how hard bookings were to manage and built the business an internal platform and mobile app."
+      zh: "Chris 获得杰出 ICT 个人项目奖（业务流程改进）。Chris 在 Amigos Translate 做口译时发现预约很难管理，于是为公司开发了一个内部平台和手机应用。"
+      ne: "Chris ले Business Process Improvement का लागि Outstanding ICT Individual Project पुरस्कार जित्नुभयो। Amigos Translate मा दोभाषेका रूपमा काम गर्दा बुकिङ व्यवस्थापन कति गाह्रो छ भनेर देखेपछि Chris ले आन्तरिक प्लेटफर्म र मोबाइल एप बनाउनुभयो।"
+    url: "https://www.linkedin.com/posts/chris-thiraphadungphong-264415162_utas-businessanalysis-softwaredevelopment-ugcPost-7525700028049428480-KWSV/"
+  - name: "Georgi Brown"
+    role:
+      en: "Managing Director, Red Apple IT"
+      zh: "Red Apple IT 董事总经理"
+      ne: "Managing Director, Red Apple IT"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-georgi-brown-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-georgi-brown-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-georgi-brown-2.jpg"
+    content:
+      en: "To every grad heading into the market this summer, start building your network now, before you need it."
+      zh: "给今年夏天要找工作的每一位毕业生：现在就开始建立人脉，别等到需要的时候。"
+      ne: "यो गर्मीमा रोजगार बजारमा जाँदै गरेका हरेक स्नातकलाई: आवश्यक पर्नुअघि नै अहिलेदेखि आफ्नो नेटवर्क बनाउन सुरु गर्नुहोस्।"
+    summary:
+      en: "Red Apple IT presented the Bachelor of ICT Academic Excellence Award to Tim Cox and the Systems Analysis award to Yixi Chen. Georgi shares that 90% of the jobs they recruit for are never advertised, so graduates relying on job boards alone miss most opportunities."
+      zh: "Red Apple IT 把 ICT 学士学业卓越奖颁给了 Tim Cox，把系统分析方向奖颁给了 Yixi Chen。Georgi 提到，他们招聘的职位有 90% 从不公开发布，只靠招聘网站的毕业生会错过大部分机会。"
+      ne: "Red Apple IT ले Tim Cox लाई Bachelor of ICT Academic Excellence Award र Yixi Chen लाई Systems Analysis पुरस्कार दियो। Georgi भन्नुहुन्छ, उनीहरूले भर्ती गर्ने 90% जागिर कहिल्यै विज्ञापन हुँदैनन्, त्यसैले जब बोर्डमा मात्र भर पर्ने स्नातकले धेरैजसो अवसर गुमाउँछन्।"
+    url: "https://www.linkedin.com/posts/georgibrown_utas-tasmania-technologyrecruitment-ugcPost-7526112267378204672-p1HA/"
+  - name: "Luoyan Wei"
+    role:
+      en: "Web Developer · UTAS Valedictorian 2026"
+      zh: "网页开发者 · UTAS 2026 届毕业生代表"
+      ne: "वेब डेभलपर · UTAS Valedictorian 2026"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-luoyan-wei-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-luoyan-wei-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-luoyan-wei-2.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-luoyan-wei-3.jpg"
+    content:
+      en: "Finding out someone put my name forward made my week."
+      zh: "得知有人提名了我，让我开心了一整周。"
+      ne: "कसैले मेरो नाम अघि सारेको थाहा पाउँदा मेरो पूरै हप्ता रमाइलो भयो।"
+    summary:
+      en: "Luoyan was a finalist for three awards: ICT Graduate of the Year, the ICT Community Spirit Award and the Students’ Choice Inquisitor Award. Two of the nominations came from people who nominated Luoyan without saying so."
+      zh: "Luoyan 入围了三个奖项：年度 ICT 毕业生、ICT 社区精神奖和学生之选“提问者奖”。其中两项提名来自悄悄提名的人。"
+      ne: "Luoyan तीन पुरस्कारको फाइनलिस्ट हुनुभयो: ICT Graduate of the Year, ICT Community Spirit Award र Students’ Choice Inquisitor Award। तीमध्ये दुई मनोनयन Luoyan लाई नभनी नाम अघि सार्ने मानिसबाट आएका थिए।"
+    url: "https://www.linkedin.com/posts/luoyan-wei-9693842b2_utas-universityoftasmania-schoolofict-ugcPost-7527470710353551360-MXQ2/"
+  - name: "Taniya Jayawardana"
+    role:
+      en: "IT and Systems Professional · Master of IT and Systems, University of Tasmania"
+      zh: "IT 与系统专业人士 · University of Tasmania 信息技术与系统硕士"
+      ne: "IT तथा सिस्टम्स प्रोफेसनल · Master of IT and Systems, University of Tasmania"
+    avatar: "/images/events/2026/ict-awards-night/linkedin-taniya-jayawardana-avatar.jpg"
+    images:
+      - "/images/events/2026/ict-awards-night/linkedin-taniya-jayawardana-1.jpg"
+      - "/images/events/2026/ict-awards-night/linkedin-taniya-jayawardana-2.jpg"
+    content:
+      en: "Some achievements are measured by awards. Others are measured by the journey it took to get there."
+      zh: "有些成就用奖项来衡量，有些则用走到这里的那段路来衡量。"
+      ne: "केही उपलब्धि पुरस्कारले नापिन्छन्। अरू त्यहाँसम्म पुग्न लागेको यात्राले नापिन्छन्।"
+    summary:
+      en: "Taniya was nominated in three categories and was a finalist for the Students’ Choice Team Leadership Award. Taniya's post celebrates the journey behind a nomination: moving countries, living independently and balancing study, work and life."
+      zh: "Taniya 获得三个类别的提名，并入围学生之选“团队领导奖”。Taniya 的帖子讲述了提名背后的路：出国、独立生活，以及兼顾学习、工作和生活。"
+      ne: "Taniya तीन वर्गमा मनोनीत हुनुभयो र Students’ Choice Team Leadership Award को फाइनलिस्ट हुनुभयो। Taniya को पोस्टले मनोनयनपछाडिको यात्रा मनाउँछ: देश बदल्नु, एक्लै बस्नु र पढाइ, काम र जीवन सन्तुलन गर्नु।"
+    url: "https://www.linkedin.com/posts/taniya-jayawardana_universityoftasmania-utas-ictawards2026-ugcPost-7525769575100100608-TE7k/"
+weight: -1
+aliases: ["/events/ict-awards-night-2026/"]
