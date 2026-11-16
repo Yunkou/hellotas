@@ -819,5 +819,7 @@ linkedin_posts:
       zh: "由 UTAS 校友 Kevin Ding 创办的 Healthy Shack Tech 赞助了杰出 ICT 研究论文奖，表彰 2026 年发表的优秀研究论文。"
       ne: "UTAS पूर्वविद्यार्थी Kevin Ding ले स्थापना गरेको Healthy Shack Tech ले 2026 मा प्रकाशित उत्कृष्ट अनुसन्धान लेखका लागि Outstanding ICT Research Publication Award प्रायोजन गर्‍यो।"
     url: "https://www.linkedin.com/posts/healthyshacktech-utas-ictawards2026-ugcPost-7525833922316935168-qtaq/"
+# "Check This Out!" at the top of the events page, in this order
+pinned: 1
 weight: -1
 aliases: ["/events/ict-awards-night-2026/"]
