@@ -15,10 +15,10 @@ def _list(value: str) -> list[str]:
 class Settings:
     database_url: str = "sqlite:///./hellotas.db"
     # The public site (ends with /). Links in emails point here; the events feed is read from here.
-    site_url: str = "https://dongyi-guo.github.io/hellotas/"
+    site_url: str = "https://ictfuturesintas.com/"
     # Where browsers may call the API from (the site's origin, plus local Hugo for development)
     allowed_origins: list[str] = field(default_factory=lambda: [
-        "https://dongyi-guo.github.io", "http://localhost:1313", "http://127.0.0.1:1313"])
+        "https://ictfuturesintas.com", "http://localhost:1313", "http://127.0.0.1:1313"])
     # Who may sign in. "*" allows any address (not recommended for a public site).
     allowed_email_domains: list[str] = field(default_factory=lambda: ["utas.edu.au"])
     # These addresses become admins when they first sign in
@@ -33,7 +33,7 @@ class Settings:
     smtp_password: str = ""
     resend_api_key: str = ""
     # Website suggestions become issues in this repository (needs a token with Issues: write)
-    github_repo: str = "dongyi-guo/hellotas"
+    github_repo: str = "weiluoyan/hellotas"
     github_token: str = ""
     # Protects POST /v1/admin/digest/send (called weekly by .github/workflows/weekly-digest.yml)
     cron_secret: str = ""

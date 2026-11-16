@@ -218,7 +218,7 @@ def test_suggestions(client, app):
                          headers=h).json()
     assert signed["status"] == "forwarded" and signed["issue_url"].endswith("/issues/99")
     call = app.state.http.calls[-1]
-    assert call["url"] == "https://api.github.com/repos/dongyi-guo/hellotas/issues"
+    assert call["url"] == "https://api.github.com/repos/weiluoyan/hellotas/issues"
     assert call["json"]["title"].startswith("Event suggestion: ")
     assert "### Event link\n\nhttps://events.humanitix.com/y" in call["json"]["body"]
     mod = sign_in(client, app, "admin@utas.edu.au")

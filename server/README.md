@@ -38,7 +38,7 @@ All settings are environment variables (or a `.env` file read by docker compose)
 
 | Variable | Default | What it does |
 |---|---|---|
-| `SITE_URL` | `https://dongyi-guo.github.io/hellotas/` | The site, ending in `/`. Sign-in links point here, and the API reads the events from `happening/index.json` under it. |
+| `SITE_URL` | `https://ictfuturesintas.com/` | The site, ending in `/`. Sign-in links point here, and the API reads the events from `happening/index.json` under it. |
 | `ALLOWED_ORIGINS` | the site and local Hugo | Origins allowed to call the API from a browser (CORS), comma-separated. Must include the site's origin. |
 | `ALLOWED_EMAIL_DOMAINS` | `utas.edu.au` | Who can sign in. `*` allows any address; don't, unless moderators are ready for the public. |
 | `ADMIN_EMAILS` | none | Addresses that become admins when they first sign in. Admins appoint moderators on `/moderate/`. |
@@ -48,7 +48,7 @@ All settings are environment variables (or a `.env` file read by docker compose)
 | `EMAIL_FROM` | | Sender, e.g. `Tasmania Welcome <hello@ictfuturesintas.com>`. Must be on a domain verified with your provider. |
 | `RESEND_API_KEY` | | For `EMAIL_BACKEND=resend`. |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD` | port 587 | For `EMAIL_BACKEND=smtp` (STARTTLS). |
-| `GITHUB_REPO`, `GITHUB_TOKEN` | `dongyi-guo/hellotas`, none | Website suggestions become "Event suggestion" issues there. A fine-grained token for that repository with *Issues: read and write* only. Without it, suggestions wait on `/moderate/`. |
+| `GITHUB_REPO`, `GITHUB_TOKEN` | `weiluoyan/hellotas`, none | Website suggestions become "Event suggestion" issues there. A fine-grained token for that repository with *Issues: read and write* only. Without it, suggestions wait on `/moderate/`. |
 | `CRON_SECRET` | none | Protects `POST /v1/admin/digest/send`. The same value goes in the repository secret `COMMUNITY_CRON_SECRET`. |
 | `TRUST_PROXY` | `false` (`true` in the container) | Behind a proxy, use the visitor's address from `X-Forwarded-For` for rate limits. |
 | `TRUSTED_PROXY_HOPS` | `1` | How many of your own proxies sit in front of the API. The visitor's address is read that many entries from the right-hand end of `X-Forwarded-For`; entries further left come from the visitor and can be made up. `1` for Caddy or Cloud Run on its own, `2` when a load balancer sits in front as well. |
@@ -79,7 +79,7 @@ on each provider's pricing page; they change.
 
    ```bash
    gcloud run deploy hellotas-api --source server --region australia-southeast1 --allow-unauthenticated \
-     --set-env-vars "SITE_URL=https://dongyi-guo.github.io/hellotas/,ALLOWED_ORIGINS=https://dongyi-guo.github.io,ADMIN_EMAILS=you@utas.edu.au,EMAIL_BACKEND=resend,EMAIL_FROM=Tasmania Welcome <hello@your-domain>,GITHUB_REPO=dongyi-guo/hellotas" \
+     --set-env-vars "SITE_URL=https://ictfuturesintas.com/,ALLOWED_ORIGINS=https://ictfuturesintas.com,ADMIN_EMAILS=you@utas.edu.au,EMAIL_BACKEND=resend,EMAIL_FROM=Tasmania Welcome <hello@your-domain>,GITHUB_REPO=weiluoyan/hellotas" \
      --set-secrets "DATABASE_URL=hellotas-db:latest,SECRET_KEY=hellotas-secret:latest,RESEND_API_KEY=hellotas-resend:latest,GITHUB_TOKEN=hellotas-github:latest,CRON_SECRET=hellotas-cron:latest"
    ```
 
@@ -102,7 +102,7 @@ compose file runs Caddy (HTTPS with automatic certificates), the API, Postgres a
 3. On the server:
 
    ```bash
-   git clone https://github.com/dongyi-guo/hellotas.git
+   git clone https://github.com/weiluoyan/hellotas.git
    cd hellotas/server
    cp .env.example .env             # fill it in; leave DATABASE_URL, compose sets it
    cd deploy
@@ -136,7 +136,7 @@ paid plans work fine with the Dockerfile.
 
 ## Connect the site
 
-1. In the API's settings, make sure `ALLOWED_ORIGINS` contains the site's origin (`https://dongyi-guo.github.io`,
+1. In the API's settings, make sure `ALLOWED_ORIGINS` contains the site's origin (`https://ictfuturesintas.com`,
    or your custom domain) and `SITE_URL` is the site's address.
 2. In GitHub: Settings > Secrets and variables > Actions > Variables > `COMMUNITY_API_URL` =
    the API's address without a trailing slash, e.g. `https://api.ictfuturesintas.com`.

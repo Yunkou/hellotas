@@ -39,7 +39,7 @@ ready for when someone can fund it: see [Switching the AI on](#switching-the-ai-
 | UTAS events | | **off**: utas.edu.au answers every automated request with a Cloudflare challenge |
 
 All sources were checked in November 2026. Every page the collector opens is allowed by that site's robots.txt
-for its user agent (`hellotas-collector/1.0 (+https://github.com/dongyi-guo/hellotas)`), and it waits 1.5 seconds
+for its user agent (`hellotas-collector/1.0 (+https://github.com/weiluoyan/hellotas)`), and it waits 1.5 seconds
 between requests to the same site. When a site blocks it, it reports that and moves on; it never disguises
 itself or works around a block.
 

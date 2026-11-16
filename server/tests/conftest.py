@@ -51,7 +51,7 @@ class FakeGitHub:
                 pass
 
             def json(self):
-                return {"html_url": "https://github.com/dongyi-guo/hellotas/issues/99"}
+                return {"html_url": "https://github.com/weiluoyan/hellotas/issues/99"}
         return R()
 
 

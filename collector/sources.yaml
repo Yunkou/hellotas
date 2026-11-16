@@ -18,7 +18,7 @@
 #
 # trust: high (local ICT community, almost everything fits), medium (national body, needs filtering) or low.
 
-user_agent: "hellotas-collector/1.0 (+https://github.com/dongyi-guo/hellotas)"
+user_agent: "hellotas-collector/1.0 (+https://github.com/weiluoyan/hellotas)"
 timezone: "Australia/Hobart"
 # Ignore events further ahead than this
 horizon_days: 240

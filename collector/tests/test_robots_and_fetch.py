@@ -42,7 +42,7 @@ def test_gdg_api_is_off_limits():
 
 
 def test_product_token():
-    assert product_token("hellotas-collector/1.0 (+https://github.com/dongyi-guo/hellotas)") == "hellotas-collector"
+    assert product_token("hellotas-collector/1.0 (+https://github.com/weiluoyan/hellotas)") == "hellotas-collector"
 
 
 class FakeResponse:
