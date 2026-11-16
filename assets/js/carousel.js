@@ -171,8 +171,20 @@
         panels[j].hidden = !on;
       });
       counter.textContent = index + 1;
-      if (focusTab) tabs[index].focus();
+      if (focusTab) tabs[index].focus({ preventScroll: true });
+      // Keep the selected face in the middle of the strip when it scrolls (many posts)
+      var tab = tabs[index];
+      if (list.scrollWidth > list.clientWidth) list.scrollTo({ left: tab.offsetLeft - (list.clientWidth - tab.offsetWidth) / 2, behavior: 'smooth' });
     }
+
+    var list = reader.querySelector('.lp-tablist');
+    function edges() {
+      list.classList.toggle('is-overflowing', list.scrollWidth > list.clientWidth + 2);
+      list.classList.toggle('at-end', list.scrollLeft >= list.scrollWidth - list.clientWidth - 2);
+    }
+    list.addEventListener('scroll', edges, { passive: true });
+    window.addEventListener('resize', edges);
+    edges();
 
     tabs.forEach(function (tab, j) {
       tab.addEventListener('click', function () { show(j); });
@@ -736,7 +748,42 @@
     render();
   }
 
+  // A swipeable row of cards ([data-rail], e.g. the award winners on an event page): the ‹ › buttons appear
+  // only when the row is wider than the screen, and each one fades out at its end of the row
+  function initRail(root) {
+    var track = root.querySelector('.award-rail');
+    var nav = root.querySelector('.rail-nav');
+    if (!track || !nav) return;
+    var prev = nav.querySelector('.rail-prev');
+    var next = nav.querySelector('.rail-next');
+
+    function update() {
+      var max = track.scrollWidth - track.clientWidth;
+      nav.hidden = max <= 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max - 2;
+      root.classList.toggle('rail-more-start', !nav.hidden && !prev.disabled);
+      root.classList.toggle('rail-more-end', !nav.hidden && !next.disabled);
+    }
+
+    function step(dir) {
+      var card = track.firstElementChild;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      var width = card ? card.getBoundingClientRect().width + gap : track.clientWidth;
+      // A whole number of cards, so the row always stops on a card's edge
+      var cards = Math.max(1, Math.floor((track.clientWidth + gap) / width));
+      track.scrollBy({ left: dir * cards * width, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+
+    prev.addEventListener('click', function () { step(-1); });
+    next.addEventListener('click', function () { step(1); });
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
   document.querySelectorAll('.nav-toggle').forEach(initMobileMenu);
+  document.querySelectorAll('[data-rail]').forEach(initRail);
   document.querySelectorAll('[data-event-cal]').forEach(initEventCalendar);
   initMaps();
   initChannels();
