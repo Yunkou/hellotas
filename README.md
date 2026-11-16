@@ -2,7 +2,7 @@
 
 A student-built guide to events, stories and community life for ICT students in Tasmania.
 
-**Live site:** https://weiluoyan.github.io/hellotas/events/
+**Live site:** https://ictfuturesintas.com/events/
 
 ---
 
