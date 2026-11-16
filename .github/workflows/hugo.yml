@@ -53,6 +53,8 @@ jobs:
           if [ -n "$CUSTOM_DOMAIN" ]; then
             echo "Building for https://$CUSTOM_DOMAIN/"
             hugo --minify --baseURL "https://$CUSTOM_DOMAIN/"
+            # static/CNAME names ictfuturesintas.com; a copy on its own domain must never publish that one
+            echo "$CUSTOM_DOMAIN" > public/CNAME
           else
             hugo --minify
           fi
