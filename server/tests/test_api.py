@@ -206,28 +206,6 @@ def test_digest_double_opt_in_and_one_click_unsubscribe(client, app):
     assert client.post("/v1/admin/digest/send", headers={"Authorization": "Bearer cron-secret"}).json() == {"sent": 0}
 
 
-# -- suggestions -----------------------------------------------------------------------------------------------------
-
-def test_suggestions(client, app):
-    anon = client.post("/v1/suggestions", json={"url": "https://events.humanitix.com/x", "details": "Thu 5pm"})
-    assert anon.status_code == 201 and anon.json()["status"] == "pending"
-    assert client.post("/v1/suggestions", json={"url": "https://spam.example", "website": "http://bot"}).json() == {
-        "status": "pending"}
-    h = sign_in(client, app, "a@utas.edu.au")
-    signed = client.post("/v1/suggestions", json={"url": "https://events.humanitix.com/y", "note": "Free pizza"},
-                         headers=h).json()
-    assert signed["status"] == "forwarded" and signed["issue_url"].endswith("/issues/99")
-    call = app.state.http.calls[-1]
-    assert call["url"] == "https://api.github.com/repos/weiluoyan/hellotas/issues"
-    assert call["json"]["title"].startswith("Event suggestion: ")
-    assert "### Event link\n\nhttps://events.humanitix.com/y" in call["json"]["body"]
-    mod = sign_in(client, app, "admin@utas.edu.au")
-    pending = client.get("/v1/mod/queue", headers=mod).json()["suggestions"]
-    assert [s["url"] for s in pending] == ["https://events.humanitix.com/x"]  # the bot one was never stored
-    assert client.post(f"/v1/mod/suggestions/{pending[0]['id']}", json={"action": "forward"},
-                       headers=mod).json()["status"] == "forwarded"
-
-
 # -- the browser's view ----------------------------------------------------------------------------------------------
 
 def test_cors_only_for_the_site(client):

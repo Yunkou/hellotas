@@ -260,7 +260,7 @@ class Collector:
         return self.finish()
 
     def suggest(self, url: str, pasted_text: str = "", note: str = "") -> RunResult:
-        """A link someone suggested (GitHub issue form or the website)."""
+        """One event link, added by hand with `hellotas-collect suggest`."""
         ctx = self.context()
         try:
             raws = resolve_url(url, ctx, pasted_text=pasted_text)

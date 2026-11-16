@@ -1,19 +1,16 @@
-"""Moderation: the queue of posts, reports and website suggestions; roles; usage numbers."""
+"""Moderation: the queue of posts and reports; roles; usage numbers."""
 
 from __future__ import annotations
 
 from datetime import timedelta
 
-import requests
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 from sqlalchemy import func, select
 
 from ..db import utcnow
-from ..github import create_issue
-from ..models import BuddyIntro, BuddyListing, EventMark, Post, Report, Subscriber, Suggestion, User
+from ..models import BuddyIntro, BuddyListing, EventMark, Post, Report, Subscriber, User
 from ..security import admin, get_db, moderator
-from .common import state
 from .posts import post_out
 
 router = APIRouter(prefix="/v1/mod", tags=["moderation"])
@@ -23,18 +20,8 @@ class Decision(BaseModel):
     action: str = Field(pattern="^(approve|reject|hide)$")
 
 
-class SuggestionDecision(BaseModel):
-    action: str = Field(pattern="^(forward|reject)$")
-
-
 class Role(BaseModel):
     role: str = Field(pattern="^(member|moderator|admin)$")
-
-
-def suggestion_out(s: Suggestion) -> dict:
-    return {"id": s.id, "url": s.url, "details": s.details, "note": s.note, "status": s.status,
-            "issue_url": s.issue_url, "by": s.user.public_name if s.user else "",
-            "created_at": s.created_at.isoformat() + "Z"}
 
 
 @router.get("/queue")
@@ -46,9 +33,7 @@ def queue(user: User = Depends(moderator), db=Depends(get_db)):
         post = db.get(Post, r.post_id)
         if post:
             reports.append({"id": r.id, "reason": r.reason, "post": post_out(post, full=True)})
-    suggestions = [suggestion_out(s) for s in db.scalars(select(Suggestion).where(Suggestion.status == "pending")
-                                                         .order_by(Suggestion.created_at))]
-    return {"posts": pending, "reports": reports, "suggestions": suggestions}
+    return {"posts": pending, "reports": reports}
 
 
 @router.post("/posts/{post_id}")
@@ -74,34 +59,6 @@ def dismiss(report_id: int, user: User = Depends(moderator), db=Depends(get_db))
     return {"dismissed": True}
 
 
-@router.post("/suggestions/{suggestion_id}")
-def decide_suggestion(suggestion_id: int, body: SuggestionDecision, request: Request,
-                      user: User = Depends(moderator), db=Depends(get_db)):
-    s = db.get(Suggestion, suggestion_id)
-    if s is None:
-        raise HTTPException(status_code=404, detail="No such suggestion.")
-    if body.action == "reject":
-        s.status = "rejected"
-    else:
-        forward(request, s, f"{user.public_name} (moderator)")
-    db.commit()
-    return suggestion_out(s)
-
-
-def forward(request: Request, s: Suggestion, who: str) -> None:
-    """Open the GitHub issue the collector picks up. Leaves the suggestion pending if GitHub isn't set up."""
-    app = state(request)
-    cfg = app.settings
-    if not cfg.github_token:
-        return
-    try:
-        s.issue_url = create_issue(cfg.github_repo, cfg.github_token, s.url, s.details, s.note, who,
-                                   session=app.http)
-        s.status = "forwarded"
-    except requests.RequestException as exc:
-        raise HTTPException(status_code=502, detail=f"GitHub didn't accept the issue: {exc}") from exc
-
-
 @router.get("/stats")
 def stats(user: User = Depends(moderator), db=Depends(get_db)):
     """The numbers that say whether the community features are used."""
@@ -117,7 +74,6 @@ def stats(user: User = Depends(moderator), db=Depends(get_db)):
         "posts_approved": count(Post, Post.status == "approved"),
         "posts_pending": count(Post, Post.status == "pending"),
         "digest_subscribers": count(Subscriber, Subscriber.status == "active"),
-        "suggestions": count(Suggestion), "suggestions_forwarded": count(Suggestion, Suggestion.status == "forwarded"),
     }
 
 

@@ -32,9 +32,6 @@ class Settings:
     smtp_user: str = ""
     smtp_password: str = ""
     resend_api_key: str = ""
-    # Website suggestions become issues in this repository (needs a token with Issues: write)
-    github_repo: str = "weiluoyan/hellotas"
-    github_token: str = ""
     # Protects POST /v1/admin/digest/send (called weekly by .github/workflows/weekly-digest.yml)
     cron_secret: str = ""
     # Behind a proxy (Caddy, Cloud Run, Render, Fly): trust X-Forwarded-For for rate limiting
@@ -78,8 +75,6 @@ def from_env() -> Settings:
     s.smtp_user = env("SMTP_USER", "")
     s.smtp_password = env("SMTP_PASSWORD", "")
     s.resend_api_key = env("RESEND_API_KEY", "")
-    s.github_repo = env("GITHUB_REPO", s.github_repo)
-    s.github_token = env("GITHUB_TOKEN", "")
     s.cron_secret = env("CRON_SECRET", "")
     s.trust_proxy = env("TRUST_PROXY", "false").lower() in ("1", "true", "yes")
     s.trusted_proxy_hops = max(1, int(env("TRUSTED_PROXY_HOPS", "1")))

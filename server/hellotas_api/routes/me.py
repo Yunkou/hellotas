@@ -9,8 +9,7 @@ from fastapi import APIRouter, Depends, Request
 from pydantic import BaseModel, Field
 from sqlalchemy import delete, or_, select
 
-from ..models import (BuddyIntro, BuddyListing, ChecklistItem, EventMark, Post, Reaction, Report, Session,
-                      Suggestion, User)
+from ..models import BuddyIntro, BuddyListing, ChecklistItem, EventMark, Post, Reaction, Report, Session, User
 from ..security import current_user, get_db
 from .common import clean_text, lang_of, state
 
@@ -69,7 +68,6 @@ def export(user: User = Depends(current_user), db=Depends(get_db)):
         "reactions": rows(Reaction, Reaction.user_id == user.id),
         "reports": rows(Report, Report.user_id == user.id),
         "checklist": rows(ChecklistItem, ChecklistItem.user_id == user.id),
-        "suggestions": rows(Suggestion, Suggestion.user_id == user.id),
         "exported_at": datetime.now(UTC).isoformat(),
     }
 
@@ -83,8 +81,6 @@ def delete_me(user: User = Depends(current_user), db=Depends(get_db)):
         db.execute(delete(model).where(column == user.id))
     db.execute(delete(BuddyIntro).where(or_(BuddyIntro.from_user_id == user.id, BuddyIntro.to_user_id == user.id)))
     db.execute(delete(Report).where(Report.user_id == user.id))
-    for s in db.scalars(select(Suggestion).where(Suggestion.user_id == user.id)):
-        s.user_id = None
     db.delete(user)
     db.commit()
     return {"deleted": True}

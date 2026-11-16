@@ -20,8 +20,7 @@ This project puts it all in one place, so that:
 
 - **ICT Events page** for 2025 and 2026, with photos and details for each event.
 - **Happening**: upcoming events, found automatically every morning by the [event collector](collector/README.md)
-  from GDG Hobart, ACS, AISA, SecTalks Hobart, TasICT and Careerify, plus events people suggest. It uses keyword
-  rules, not AI; an optional AI step (Claude, ChatGPT models, Gemini and others) can be switched on later with an
+  from GDG Hobart, ACS, AISA, SecTalks Hobart, TasICT and Careerify. It uses keyword rules, not AI; an optional AI step (Claude, ChatGPT models, Gemini and others) can be switched on later with an
   API key, as the collector guide explains.
 - **Calendar subscription**: `happening/index.ics` (all events, or one feed per topic), so new events appear in
   students' own calendars, and `happening/index.json` for other tools.
@@ -71,8 +70,8 @@ This is an early version. Some events are examples, and the full list is still b
 ## Adding or changing an event
 
 Most upcoming events now arrive by themselves: the collector opens a pull request with new events each morning.
-To add one it missed, use the **Suggest an event** issue form (or the site's Suggest page): it reads the link and
-proposes the entry for you.
+To add one it missed, run `hellotas-collect suggest <link>` (see the [collector guide](collector/README.md)): it
+reads the link and writes the entry for you.
 
 To write one by hand, add a YAML file to `data/happening/` (upcoming) or `data/events/<year>/` (past), using an
 existing one as your template; the fields are explained at the top of `layouts/happening/list.html` and

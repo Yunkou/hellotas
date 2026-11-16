@@ -2,7 +2,7 @@
      page, and Open Graph / Twitter tags (the card shown when a link is pasted into LinkedIn, Discord or WeChat).
      Description: the page's own `description` or event `summary`, otherwise its section's intro text. */ -}}
 {{- $intro := dict "happening" "happeningSubtitle" "events" "eventsSubtitle" "utas" "utasLead" "stories" "storiesSubtitle"
-      "fun-fitness" "funFitnessFitLead" "noticeboard" "cmBoardWishLead" "suggest" "cmSuggestLead" -}}
+      "fun-fitness" "funFitnessFitLead" "noticeboard" "cmBoardWishLead" -}}
 {{- $steps := dict "step1" "journeyStep1Lead" "step2" "journeyStep2Lead" "step3" "journeyStep3Lead" -}}
 {{- $desc := .Description | default .Params.summary -}}
 {{- if not $desc }}{{ with index $steps (.Params.layout | default "") }}{{ $desc = i18n . }}{{ end }}{{ end -}}
@@ -15,7 +15,7 @@
 {{- $hreflang := dict "en" "en-AU" "zh" "zh-Hans" "ne" "ne" -}}
 {{- /* Pages that shouldn't be in search results: the 404 page, the account and moderation pages, and the
      community pages while the community API isn't switched on (they only say so) */ -}}
-{{- $hidden := or (eq .Kind "404") .Params.noindex (and .Params.cmPage (ne .Params.cmPage "suggest") (not site.Params.communityAPI)) -}}
+{{- $hidden := or (eq .Kind "404") .Params.noindex (and .Params.cmPage (not site.Params.communityAPI)) -}}
 <meta name="description" content="{{ $desc }}">
 {{- if $hidden }}
 <meta name="robots" content="noindex">

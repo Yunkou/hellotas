@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import requests
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,12 +14,12 @@ from .db import Base, make_engine, make_sessionmaker
 from .feed import EventFeed
 from .limits import Limiter
 from .mail import Mailer
-from .routes import auth, digest, events, me, mod, posts, suggest
+from .routes import auth, digest, events, me, mod, posts
 from .security import purge_expired
 
 
-def create_app(settings: Settings | None = None, feed: EventFeed | None = None, mailer: Mailer | None = None,
-               http: requests.Session | None = None) -> FastAPI:
+def create_app(settings: Settings | None = None, feed: EventFeed | None = None,
+               mailer: Mailer | None = None) -> FastAPI:
     settings = settings or from_env()
     engine = make_engine(settings.database_url)
     Base.metadata.create_all(engine)  # creates missing tables; existing ones are left alone
@@ -34,7 +33,6 @@ def create_app(settings: Settings | None = None, feed: EventFeed | None = None, 
     app.state.feed = feed or EventFeed(settings.feed_url, settings.feed_refresh_seconds)
     app.state.mailer = mailer or Mailer(settings)
     app.state.limiter = Limiter()
-    app.state.http = http or requests.Session()
     with app.state.sessionmaker() as db:
         purge_expired(db)  # housekeeping on every start; the weekly digest call does it too
 
@@ -62,7 +60,7 @@ def create_app(settings: Settings | None = None, feed: EventFeed | None = None, 
         message = first.get("msg", "Invalid request")
         return JSONResponse(status_code=422, content={"detail": f"{field}: {message}" if field else message})
 
-    for router in (auth.router, me.router, events.router, posts.router, mod.router, digest.router, suggest.router):
+    for router in (auth.router, me.router, events.router, posts.router, mod.router, digest.router):
         app.include_router(router)
 
     @app.get("/health", tags=["health"])

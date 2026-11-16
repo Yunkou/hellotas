@@ -3,7 +3,6 @@ from types import SimpleNamespace
 
 from conftest import NOW, FakeFetcher, fixture
 
-from hellotas_collector import issue_form
 from hellotas_collector.config import load
 from hellotas_collector.pipeline import Collector
 from hellotas_collector.report import markdown
@@ -159,27 +158,7 @@ def test_refusal_falls_back_to_rules(site):
     assert result.added[0].written_by == "rules" and result.added[0].judgement.by == "rules"
 
 
-# -- suggestions -------------------------------------------------------------------------------------------------
-
-ISSUE = """### Event link
-
-https://www.linkedin.com/posts/someone_hobart-ai-meetup-activity-1234
-
-### Event details
-
-GDG Hobart: AI agents night, 3 December 2026, 5:30pm at The Forest building, UTAS.
-
-### Why it's useful
-
-_No response_
-"""
-
-
-def test_issue_form_parsing():
-    s = issue_form.suggestion(ISSUE)
-    assert s["url"].startswith("https://www.linkedin.com/posts/")
-    assert "3 December 2026" in s["details"] and s["note"] == ""
-
+# -- one link at a time (hellotas-collect suggest) ---------------------------------------------------------------
 
 def test_linkedin_is_never_fetched(site):
     c = collector(site, {})

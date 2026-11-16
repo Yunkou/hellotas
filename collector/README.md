@@ -4,8 +4,8 @@ Finds upcoming ICT events for the Happening page and writes them into `data/happ
 the hand-written entries. It replaces the manual sessions where someone browsed each organiser's site and copied
 the details across.
 
-It runs by itself every morning (GitHub Actions), and whenever someone suggests an event with the
-**Suggest an event** issue form.
+It runs by itself every morning (GitHub Actions). A maintainer can also add one event from its link with
+`hellotas-collect suggest <link>`.
 
 ```
  sources.yaml ──► read each source ──► drop: past, too far ahead, already listed, rejected before
@@ -44,9 +44,9 @@ between requests to the same site. When a site blocks it, it reports that and mo
 itself or works around a block.
 
 **LinkedIn** (upstream issue 62) forbids automated access in its terms and robots.txt, so the collector never
-opens LinkedIn links. Most LinkedIn event posts link to a Humanitix, Eventbrite or Meetup page: suggest that link
-instead and it is read automatically. If there is no such link, a maintainer adds the event by hand from the
-details pasted into the form.
+opens LinkedIn links. Most LinkedIn event posts link to a Humanitix, Eventbrite or Meetup page: give that link to
+`hellotas-collect suggest` instead and it is read automatically. If there is no such link, paste the post's text
+into a file and pass it with `--text-file`.
 
 ## How it decides
 
@@ -59,7 +59,7 @@ file is gone, someone removed it on purpose and it is not proposed again.
 (`hellotas_collector/rules.py`) score the title and short description: the source's trust level, ICT topics, signs
 the event is meant for students, its location (Tasmania or online, not in person interstate), and signs it isn't
 for students (AGMs, short courses, children, executive breakfasts). The rules were tuned against the events the team
-picked by hand from the same sources, and they match those picks. Suggestions from people are always proposed.
+picked by hand from the same sources, and they match those picks. Links added with `hellotas-collect suggest` are always proposed.
 
 **Writing**: the title as the organiser wrote it, and a summary from the organiser's opening sentences (greetings,
 exclamation marks and cut-off sentences removed).
@@ -77,10 +77,9 @@ The collector never overwrites what people wrote. The only thing it changes in a
 
 1. **Allow pull requests from Actions**: Settings > Actions > General > Workflow permissions > *Read and write
    permissions*, and tick *Allow GitHub Actions to create and approve pull requests*.
-2. **Turn on Issues** (Settings > General > Features), so the **Suggest an event** form works.
-3. **Optional: publish without review.** Variable `COLLECTOR_PUBLISH` = `true` (Settings > Secrets and variables >
+2. **Optional: publish without review.** Variable `COLLECTOR_PUBLISH` = `true` (Settings > Secrets and variables >
    Actions > Variables). Leave it off for the first few weeks and check the pull requests first.
-4. **Optional: Discord.** Secret `DISCORD_WEBHOOK_URL` (Discord: Server settings > Integrations > Webhooks). After
+3. **Optional: Discord.** Secret `DISCORD_WEBHOOK_URL` (Discord: Server settings > Integrations > Webhooks). After
    each deploy, events that are new on the site are posted to that channel.
 
 Then run it once by hand: Actions > Collect events > Run workflow.
