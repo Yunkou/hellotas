@@ -27,3 +27,6 @@ node_modules/
 .env
 .env.*
 *.log
+
+# Fork-domain local build output (scripts/build-fork-domain.sh)
+/public-fork-domain/

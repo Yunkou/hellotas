@@ -2,17 +2,13 @@
 <article class="event-detail-page">
 
   <div class="container">
-    {{ $eventsPath := "events" }}
-    {{ if ne .Language.Lang "en" }}
-      {{ $eventsPath = printf "%s/events" .Language.Lang }}
-    {{ end }}
-    <a href="{{ relURL $eventsPath }}" class="back-link">{{ i18n "backToEvents" }}</a>
+    <a href="{{ "events/" | relLangURL }}" class="back-link">{{ i18n "backToEvents" }}</a>
   </div>
 
   {{/* Slides in under the header once the title has scrolled away (assets/js/carousel.js) */}}
   <div class="event-subbar" data-subbar aria-hidden="true">
     <div class="container event-subbar-inner">
-      <a href="{{ relURL $eventsPath }}" class="event-subbar-back" tabindex="-1">{{ i18n "backToEvents" }}</a>
+      <a href="{{ "events/" | relLangURL }}" class="event-subbar-back" tabindex="-1">{{ i18n "backToEvents" }}</a>
       <button type="button" class="event-subbar-title" tabindex="-1" title="{{ i18n "backToTop" }}">{{ .Title }}</button>
     </div>
   </div>
@@ -169,7 +165,7 @@
   </section>
   
   {{/* Stories moved from the Stories page for ICT Showcase Semester 2 */}}
-  {{ if eq .RelPermalink "/hellotas/events/2026/ict-showcase-semester-2/" }}
+  {{ if strings.HasSuffix .RelPermalink "/events/2026/ict-showcase-semester-2/" }}
     {{ $storyIDs := slice "ashik-cyberquiz-2026" "hosna-showcase-award-2026" "rifat-tasmanian-leaders-2026" "pial-olinda-ai-2026" "john-island-intelligence-2026" "chris-ict-showcase-2026" "yu-ict-expo-2025" }}
     <section class="container event-section" id="showcase-stories">
       <h2 class="section-heading">ICT Showcase Stories</h2>
