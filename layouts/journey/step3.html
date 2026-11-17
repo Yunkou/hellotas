@@ -12,8 +12,6 @@
     <div class="journey-main">
       {{ range after 1 hugo.Data.community.sections }}
       <section class="journey-voice-section">
-        <h2 class="journey-basics-title">{{ i18n .titleKey }}</h2>
-        <div class="section-divider"></div>
         <div class="place-list">
           {{ range .places }}
           {{ partial "place-card.html" . }}
