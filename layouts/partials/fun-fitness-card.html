@@ -59,7 +59,8 @@
       {{ range . }}
       <li>
         <a class="ff-game" href="{{ .href }}" target="_blank" rel="noopener">
-          <img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .title }}" loading="lazy" width="600" height="338">
+          {{- $img := partial "img.html" (dict "src" .image "width" 400) }}
+          <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }} alt="{{ .title }}" loading="lazy" decoding="async" width="600" height="338">
           <span class="ff-game-body">
             <span class="ff-game-title">{{ .title }}</span>
             <span class="ff-game-by">{{ .by }}</span>

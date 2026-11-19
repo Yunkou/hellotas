@@ -1,25 +1,28 @@
 {{/* Reusable "place / club" card (Journey Step 2 & 3).
      Context: one item from data/journey.yaml with
-     titleKey, tags[{key,class}], textKey, photos[{src,altKey}],
+     textKey, photos[{src,altKey}],
      map{query,labelKey,zoom,pins}, details[{labelKey,valueKey,href}],
      groups{labelKey, list[{titleKey, items[{name,href,venue,at}]}]} (optional fold-out list, e.g. every club in a network).
-     map.pins: true swaps the Google map for one with a pin per group item that has at: [lat, lng] (assets/js/pin-map.js) */}}
+     map.pins: true swaps the Google map for one with a pin per group item that has at: [lat, lng] (assets/js/pin-map.js)
+     calendar: tusa puts a two-week calendar of data/tusa_events.yaml where the map goes (initEventCalendar in carousel.js);
+     feature{src, altKey, href, labelKey} puts one large picture there instead, with a link under it;
+     showcase: sample events with their photos, in place of the photo row (partials/tusa-showcase.html) */}}
 {{ $p := . }}
 <article class="place-card" id="{{ $p.id }}">
   <div class="place-card-head">
     <h3>{{ i18n $p.titleKey }}</h3>
-    <div class="place-card-tags">
-      {{ range $p.tags }}<span class="tag {{ .class | default "tag-type" }}">{{ i18n .key }}</span>{{ end }}
-    </div>
   </div>
   <p class="place-card-text">{{ i18n $p.textKey }}</p>
+
+  {{ with $p.showcase }}{{ partial "tusa-showcase.html" . }}{{ end }}
 
   {{ with $p.photos }}
   <ul class="place-gallery" aria-label="{{ i18n "placePhotosLabel" }}" data-lightbox>
     {{ range $i, $ph := . }}
     <li>
       <button type="button" class="place-photo" data-caption="{{ i18n $ph.altKey }}" aria-label="{{ i18n "placePhotoEnlarge" }}: {{ i18n $ph.altKey }}">
-        <img src="{{ $ph.src | relURL }}" alt="{{ i18n $ph.altKey }}" loading="lazy" width="260" height="200">
+        {{- $img := partial "img.html" (dict "src" $ph.src "width" 260) }}
+        <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }} data-full="{{ $img.full }}" alt="{{ i18n $ph.altKey }}" loading="lazy" decoding="async" width="260" height="200">
         <span class="place-photo-zoom" aria-hidden="true">🔍</span>
       </button>
     </li>
@@ -27,24 +30,50 @@
   </ul>
   {{ end }}
 
-  <div class="place-card-meta">
-    {{ if $p.eventsWidget }}
-    <div class="place-map utas-events-preview">
-      <h4>{{ i18n "utasEventsTitle" }}</h4>
-      <p>{{ i18n "utasEventsSnapshotNote" }}</p>
-      <a class="utas-events-cta" href="https://tusa.org.au/events/" target="_blank" rel="noopener">{{ i18n "utasEventsCta" }}</a>
+  <div class="place-card-meta{{ if $p.calendar }} place-card-meta--wide{{ end }}">
+    {{ if eq $p.calendar "tusa" }}
+    {{- /* Server-rendered as a plain list (what shows without JavaScript); the script turns it into the calendar */}}
+    {{- $locale := index (dict "en" "en-AU" "zh" "zh-CN" "ne" "ne-NP-u-nu-latn") site.Language.Lang | default "en-AU" }}
+    <div class="place-map event-cal" data-event-cal data-locale="{{ $locale }}" data-empty="{{ i18n "tusaCalEmpty" }}">
+      <div class="event-cal-head">
+        <h4>{{ i18n "tusaCalTitle" }}</h4>
+        <div class="event-cal-nav" hidden>
+          <button type="button" class="event-cal-btn" data-cal-prev aria-label="{{ i18n "tusaCalPrev" }}">‹</button>
+          <span class="event-cal-range" data-cal-range aria-live="polite"></span>
+          <button type="button" class="event-cal-btn" data-cal-next aria-label="{{ i18n "tusaCalNext" }}">›</button>
+        </div>
+      </div>
+      <ul class="event-cal-list" data-cal-body>
+        {{- range sort hugo.Data.tusa_events "start" }}
+        <li data-start="{{ .start }}"><a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a> <span>{{ .start | replaceRE "T" " " }}{{ with .where }} · {{ . }}{{ end }}</span></li>
+        {{- end }}
+      </ul>
+      <a class="place-map-link" href="https://tusa.org.au/events/" target="_blank" rel="noopener">{{ i18n "tusaCalAll" }} ↗</a>
+    </div>
+    {{ end }}
+    {{ with $p.feature }}
+    <div class="place-map place-feature">
+      {{- $img := partial "img.html" (dict "src" .src "widths" (slice 480 760 1100)) }}
+      <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }} sizes="(max-width: 900px) 100vw, 560px" alt="{{ i18n .altKey }}" width="{{ $img.width }}" height="{{ $img.height }}" loading="lazy" decoding="async">
+      <a class="place-map-link" href="{{ .href }}" target="_blank" rel="noopener">{{ i18n .labelKey }} ↗</a>
     </div>
     {{ end }}
     {{ with $p.map }}
     <div class="place-map">
-      {{ $iframe := printf `<iframe title="%s: %s" src="https://maps.google.com/maps?q=%s&z=%d&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>` (i18n "placeMapTitle") (i18n $p.titleKey) (.query | urlquery) (.zoom | default 15) }}
+      {{- /* A Google map is about 3.5 MB of script. The plain map below starts empty (data-map-src) and carousel.js
+           gives it its address when it is about to scroll into view, so maps nobody reaches cost nothing.
+           Without JavaScript the <noscript> copy loads as before. */ -}}
+      {{ $mapURL := printf "https://maps.google.com/maps?q=%s&z=%d&output=embed" (.query | urlquery) (.zoom | default 15) }}
+      {{ $mapTitle := printf "%s: %s" (i18n "placeMapTitle") (i18n $p.titleKey) }}
+      {{ $iframe := printf `<iframe title="%s" src="%s" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>` $mapTitle $mapURL }}
       {{ if and .pins $p.groups }}
       {{ $pins := slice }}
       {{ range $p.groups.list }}{{ range .items }}{{ $it := . }}{{ with .at }}{{ $pins = $pins | append (dict "name" $it.name "href" $it.href "venue" ($it.venue | default "") "lat" (index . 0) "lng" (index . 1)) }}{{ end }}{{ end }}{{ end }}
       <div class="place-pin-map" role="region" aria-label="{{ i18n "placeMapTitle" }}: {{ i18n $p.titleKey }}" data-pins="{{ $pins | jsonify }}" data-fallback="{{ $iframe }}" data-club-page="{{ i18n "placeMapClubPage" }}" data-contact="{{ i18n "placeMapContact" }}"><noscript>{{ $iframe | safeHTML }}</noscript></div>
       <p class="place-map-hint">{{ replace (i18n "placeMapPinsHint") "{n}" (string (len $pins)) }}</p>
       {{ else }}
-      {{ $iframe | safeHTML }}
+      <iframe title="{{ $mapTitle }}" data-map-src="{{ $mapURL }}" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <noscript>{{ $iframe | safeHTML }}</noscript>
       {{ end }}
       <a class="place-map-link" href="https://www.google.com/maps/search/?api=1&query={{ .query | urlquery }}" target="_blank" rel="noopener">{{ i18n "placeOpenInMaps" }} ↗</a>
     </div>

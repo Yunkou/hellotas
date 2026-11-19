@@ -30,7 +30,7 @@
     {{ if $photos }}
     {{ $from := partial "photo-sources.html" . }}
     {{ $sources := slice }}{{ range $photos }}{{ $sources = $sources | append (index $from . | default ($.Params.url | default "")) }}{{ end }}
-    {{ partial "carousel.html" (dict "images" $photos "sources" $sources "alt" .Title "class" "event-hero-image" "autoplay" true "lightbox" true) }}
+    {{ partial "carousel.html" (dict "images" $photos "sources" $sources "alt" .Title "class" "event-hero-image" "autoplay" true "lightbox" true "sizes" "(max-width: 1280px) 100vw, 1200px") }}
     {{ else }}
     <div class="event-hero-image placeholder">{{ i18n "heroImage" }}</div>
     {{ end }}
@@ -92,7 +92,8 @@
       {{ range $i, $project := .Params.projects }}
       <article class="project-card">
         {{ if .image }}
-        <div class="project-image"><img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .name }}" data-caption="{{ .name }}{{ with .award }} · {{ . }}{{ end }}"></div>
+        {{- $img := partial "img.html" (dict "src" .image "widths" (slice 480 760)) }}
+        <div class="project-image"><img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}" sizes="auto, (max-width: 1000px) 100vw, 400px"{{ end }}{{ with $img.width }} width="{{ . }}" height="{{ $img.height }}"{{ end }} data-full="{{ $img.full }}" alt="{{ .name }}" data-caption="{{ .name }}{{ with .award }} · {{ . }}{{ end }}" loading="lazy" decoding="async"></div>
         {{ else }}
         <div class="project-image project-cover project-cover--{{ mod $i 4 }}" aria-hidden="true">
           <span class="project-monogram">{{ partial "initials.html" .name }}</span>
@@ -110,8 +111,8 @@
 
   <section class="linkedin-section" id="linkedin">
     <div class="container">
-      <h2 class="section-heading red">{{ i18n "whatStudentsSaid" }}</h2>
-      <p class="section-sub">{{ i18n "whatStudentsSaidSubtitle" }}</p>
+      <h2 class="section-heading red">{{ .Params.linkedin_heading | default (i18n "whatStudentsSaid") }}</h2>
+      <p class="section-sub">{{ .Params.linkedin_sub | default (i18n "whatStudentsSaidSubtitle") }}</p>
 
       {{ with .Params.linkedin_posts }}
       {{ $posts := . }}
@@ -126,7 +127,7 @@
       {{/* 4+ posts: reader view, one post at a time; without JS every post shows stacked */}}
       <div class="lp-reader" data-reader>
         <div class="lp-tabs">
-          <div class="lp-tablist" role="tablist" aria-label="{{ i18n "whatStudentsSaid" }}">
+          <div class="lp-tablist" role="tablist" aria-label="{{ $.Params.linkedin_heading | default (i18n "whatStudentsSaid") }}">
             {{ range $i, $post := $posts }}
             <button type="button" class="lp-tab" role="tab" id="lp-tab-{{ $i }}" aria-controls="lp-post-{{ $i }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }} title="{{ $post.name }}">
               {{ with $post.avatar }}<img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="" width="40" height="40">{{ else }}<span class="author-initials" aria-hidden="true">{{ partial "initials.html" $post.name }}</span>{{ end }}
@@ -181,15 +182,62 @@
     </section>
   {{ end }}
   
+  {{/* Award winners: one swipeable row per group (assets/js/carousel.js initRail); every winner has a photo,
+       or their profile picture when there's no photo from the night */}}
+  {{ with .Params.awards }}
+  <div class="container event-section" id="awards">
+    <h2 class="section-heading">{{ i18n "awardWinners" }}</h2>
+    <div class="section-divider"></div>
+    {{ range $g, $group := . }}
+    <section class="award-group" data-rail aria-labelledby="award-group-{{ $g }}">
+      <div class="award-group-head">
+        <h3 class="award-group-title" id="award-group-{{ $g }}">{{ with .icon }}<span class="award-group-icon" aria-hidden="true">{{ . }}</span>{{ end }}<span>{{ .title }}</span><span class="award-group-count">{{ len .items }}</span></h3>
+        <div class="rail-nav" hidden>
+          <button type="button" class="rail-btn rail-prev" aria-label="{{ i18n "railPrev" }}">‹</button>
+          <button type="button" class="rail-btn rail-next" aria-label="{{ i18n "railNext" }}">›</button>
+        </div>
+      </div>
+      <ul class="award-rail" data-lightbox>
+        {{ range $i, $a := .items }}
+        <li class="award-card" data-caption="{{ .winner }} · {{ .name }}">
+          {{ with .image }}
+          {{- $img := partial "img.html" (dict "src" . "widths" (slice 480 760)) }}
+          <div class="award-photo"><img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}" sizes="(max-width: 600px) 85vw, 380px"{{ end }}{{ with $img.width }} width="{{ . }}" height="{{ $img.height }}"{{ end }} data-full="{{ $img.full }}" alt="{{ $a.winner }} · {{ $a.name }}" loading="lazy" decoding="async"></div>
+          {{ else }}
+          <div class="award-photo award-photo--portrait project-cover project-cover--{{ mod $i 4 }}">
+            {{ with $a.avatar }}
+            {{- $img := partial "img.html" (dict "src" . "width" 128) }}
+            <img class="award-avatar" src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }} width="128" height="128" data-full="{{ $img.full }}" alt="{{ $a.winner }}" loading="lazy" decoding="async">
+            {{ else }}
+            <span class="project-monogram" aria-hidden="true">{{ partial "initials.html" $a.winner }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+          <div class="award-body">
+            <p class="award-name">{{ .name }}</p>
+            <p class="award-winner">{{ .winner }}</p>
+            {{ with .sponsor }}<p class="award-sponsor">{{ replace (i18n "awardSponsoredBy") "{name}" . }}</p>{{ end }}
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+    {{ with $.Params.awards_note }}<p class="award-note"><span class="award-group-icon" aria-hidden="true">📚</span>{{ . }}</p>{{ end }}
+  </div>
+  {{ end }}
+
   {{ $booth := slice }}
   {{ with .Params.image }}{{ $booth = $booth | append . }}{{ end }}
   {{ with .Params.gallery }}{{ $booth = $booth | append . }}{{ end }}
   {{ range .Params.projects }}{{ with .image }}{{ $booth = $booth | append . }}{{ end }}{{ end }}
   {{ range .Params.linkedin_posts }}{{ with .images }}{{ $booth = $booth | append . }}{{ end }}{{ end }}
+  {{ range .Params.awards }}{{ range .items }}{{ with .image }}{{ $booth = $booth | append . }}{{ end }}{{ end }}{{ end }}
   {{ $hide := hugo.Data.photo_booth_hide | default slice }}
   {{ $from := partial "photo-sources.html" . }}
   {{ $shown := slice }}
   {{ range uniq $booth }}{{ if not (in $hide .) }}{{ $shown = $shown | append . }}{{ end }}{{ end }}
+  {{ if eq .Params.photo_booth false }}{{ $shown = slice }}{{ end }}
   {{ with $shown }}
   <section class="container event-section photo-booth" id="photo-booth">
     <h2 class="section-heading">{{ i18n "photoBooth" }}</h2>
@@ -197,19 +245,20 @@
     <div data-lightbox class="booth-wall{{ if le (len .) 2 }} booth-wall--{{ len . }}{{ end }}">
       {{ range . }}
       <a class="booth-frame" href="{{ strings.TrimPrefix "/" . | relURL }}" target="_blank" rel="noopener">
-        <img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="{{ i18n "photoBooth" }} · {{ $.Title }}" data-caption="{{ $.Title }}"{{ with index $from . | default ($.Params.url | default "") }} data-source="{{ . }}"{{ end }} loading="lazy">
+        {{- $img := partial "img.html" (dict "src" . "width" 400) }}
+        <img src="{{ $img.src }}"{{ with $img.srcset }} srcset="{{ . }}"{{ end }}{{ with $img.width }} width="{{ . }}" height="{{ $img.height }}"{{ end }} data-full="{{ $img.full }}" alt="{{ i18n "photoBooth" }} · {{ $.Title }}" data-caption="{{ $.Title }}"{{ with index $from . | default ($.Params.url | default "") }} data-source="{{ . }}"{{ end }} loading="lazy">
       </a>
       {{ end }}
     </div>
   </section>
   {{ end }}
 
-  {{ if and .Params.student_voice .Params.linkedin_posts }}
+  {{ if and .Params.student_voice .Params.linkedin_posts (ne .Params.closing_quote false) }}
   <div class="container event-section">
     <div class="bottom-quote">
       <div class="voice-head">
         <span class="linkedin-icon">in</span>
-        <span class="linkedin-label">{{ i18n "studentVoice" }}</span>
+        <span class="linkedin-label">{{ .Params.voice_label | default (i18n "studentVoice") }}</span>
       </div>
       <p class="voice-quote">"{{ .Params.student_voice }}"</p>
       <p class="voice-role">— {{ .Params.student_role }}</p>

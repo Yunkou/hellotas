@@ -1,0 +1,52 @@
+{{- /*
+  Right-sized copies of a photo from static/images/.
+  Call with a dict:
+    src     the path as written in the data files, e.g. "/images/events/2026/x/photo.jpg"
+    width   for a photo shown at one size: that size in CSS pixels. Gives a copy at that width and one at double
+            it for sharp screens (srcset "… 1x, … 2x").
+    widths  for a photo whose size depends on the screen (carousels): a list such as (slice 480 960 1600). Gives one
+            copy per width (srcset "… 480w, …"); the <img> then needs a sizes attribute.
+  Returns a dict for the <img> tag:
+    src, srcset    WebP copies, never larger than the original
+    width, height  the size of the copy in src, so the browser reserves the space before the photo loads
+    full           the original file, for the photo viewer and downloads
+  Hugo makes the copies at build time (static/images is also mounted as assets/images in hugo.toml) and keeps them
+  in resources/_gen/, so only new photos cost time. Originals are never changed. SVGs, GIFs and anything Hugo
+  can't read are passed through as they are.
+*/ -}}
+{{- $path := strings.TrimPrefix "/" .src -}}
+{{- $out := dict "src" ($path | relURL) "full" ($path | relURL) -}}
+{{- with resources.Get $path -}}
+  {{- if in (slice "jpeg" "png" "webp") .MediaType.SubType -}}
+    {{- $orig := . -}}
+    {{- if $.widths -}}
+      {{- $set := slice -}}
+      {{- $main := false -}}
+      {{- range $.widths -}}
+        {{- if lt . $orig.Width -}}
+          {{- $copy := $orig.Resize (printf "%dx webp q76" .) -}}
+          {{- $set = $set | append (printf "%s %dw" $copy.RelPermalink $copy.Width) -}}
+          {{- if or (not $main) (le . 960) }}{{ $main = $copy }}{{ end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- /* The original's own size is the largest copy when it is smaller than the largest width asked for */ -}}
+      {{- if le $orig.Width (index (last 1 $.widths) 0) -}}
+        {{- $copy := $orig.Process "webp q78" -}}
+        {{- $set = $set | append (printf "%s %dw" $copy.RelPermalink $copy.Width) -}}
+        {{- if not $main }}{{ $main = $copy }}{{ end -}}
+      {{- end -}}
+      {{- $out = merge $out (dict "src" $main.RelPermalink "width" $main.Width "height" $main.Height "srcset" (delimit $set ", ")) -}}
+    {{- else -}}
+      {{- $want := $.width | default 800 -}}
+      {{- $one := $orig -}}
+      {{- if gt $orig.Width $want }}{{ $one = $orig.Resize (printf "%dx webp q78" $want) }}{{ else }}{{ $one = $orig.Process "webp q80" }}{{ end -}}
+      {{- $out = merge $out (dict "src" $one.RelPermalink "width" $one.Width "height" $one.Height) -}}
+      {{- if gt $orig.Width $want -}}
+        {{- $two := $orig -}}
+        {{- if gt $orig.Width (mul $want 2) }}{{ $two = $orig.Resize (printf "%dx webp q72" (mul $want 2)) }}{{ else }}{{ $two = $orig.Process "webp q75" }}{{ end -}}
+        {{- $out = merge $out (dict "srcset" (printf "%s 1x, %s 2x" $one.RelPermalink $two.RelPermalink)) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

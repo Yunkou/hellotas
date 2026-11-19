@@ -10,16 +10,36 @@
         </div>
       </div>
       <div class="home-hero-media">
-        <img src="{{ "images/home/hero-tasict-awards-2026.jpg" | relURL }}" alt="{{ i18n "homeHeroImageAlt" }}" width="1364" height="920">
+        {{- /* The first thing people see: not lazy, and marked as the photo to fetch first */ -}}
+        {{ $img := partial "img.html" (dict "src" "images/home/hero-tasict-awards-2026.jpg" "widths" (slice 480 760 1100)) }}
+        <img src="{{ $img.src }}" srcset="{{ $img.srcset }}" sizes="(max-width: 900px) 100vw, 520px" alt="{{ i18n "homeHeroImageAlt" }}" width="{{ $img.width }}" height="{{ $img.height }}" fetchpriority="high">
       </div>
     </div>
   </section>
+
+  {{- /* Community features (server/): only when the API is configured */ -}}
+  {{- if site.Params.communityAPI }}
+  <section class="home-community" aria-labelledby="home-community-title">
+    <div class="container">
+      <h2 class="home-section-title" id="home-community-title">{{ i18n "homeCommunityTitle" }}</h2>
+      <ul class="home-community-list">
+        <li><a class="home-community-card" href="{{ "happening/" | relLangURL }}"><strong>{{ i18n "cmBuddyTitle" }}</strong><span>{{ i18n "homeCommunityBuddyText" }}</span></a></li>
+        <li><a class="home-community-card" href="{{ "noticeboard/" | relLangURL }}"><strong>{{ i18n "noticeboard" }}</strong><span>{{ i18n "homeCommunityBoardText" }}</span></a></li>
+        <li><a class="home-community-card" href="{{ "account/" | relLangURL }}"><strong data-cm-account-label>{{ i18n "cmSignIn" }}</strong><span>{{ i18n "homeCommunityAccountText" }}</span></a></li>
+      </ul>
+    </div>
+  </section>
+  {{- end }}
 
   <div class="container">
     <aside class="home-trust-strip">
       <p>{{ printf (i18n "homeTrustStrip") ("journey/step-1/" | relLangURL) | safeHTML }}</p>
     </aside>
   </div>
+
+  {{- /* The Latest (upstream issues #61 and #74) is hidden for now; the homepage stays as Nicole approved it.
+       To bring it back, put the line below back in, right after "Settle in first" and before the UTAS section:
+       {{- partial "home-latest.html" . }} */ -}}
 
   <section class="home-communities" id="home-communities" aria-label="{{ i18n "homeCommunitiesLabel" }}">
     <article class="home-feature" id="utas-campus">
@@ -33,7 +53,8 @@
           </div>
         </div>
         <div class="home-feature-media">
-          <img src="{{ "images/home/section-utas-ict-booth.png" | relURL }}" alt="{{ i18n "homeCampusImageAlt" }}" width="1536" height="2048" loading="lazy">
+          {{ $img := partial "img.html" (dict "src" "images/home/section-utas-ict-booth.png" "widths" (slice 480 760 1100)) }}
+          <img src="{{ $img.src }}" srcset="{{ $img.srcset }}" sizes="auto, (max-width: 900px) 100vw, 704px" alt="{{ i18n "homeCampusImageAlt" }}" width="{{ $img.width }}" height="{{ $img.height }}" loading="lazy" decoding="async">
         </div>
       </div>
     </article>
@@ -41,7 +62,8 @@
     <article class="home-feature home-feature--flip" id="tasmania-community">
       <div class="container home-feature-inner">
         <div class="home-feature-media">
-          <img src="{{ "images/home/section-community-workshop.png" | relURL }}" alt="{{ i18n "homeLocalImageAlt" }}" width="1280" height="960" loading="lazy">
+          {{ $img := partial "img.html" (dict "src" "images/home/section-community-workshop.png" "widths" (slice 480 760 1100)) }}
+          <img src="{{ $img.src }}" srcset="{{ $img.srcset }}" sizes="auto, (max-width: 900px) 100vw, 704px" alt="{{ i18n "homeLocalImageAlt" }}" width="{{ $img.width }}" height="{{ $img.height }}" loading="lazy" decoding="async">
         </div>
         <div class="home-feature-copy">
           <h2>{{ i18n "homeLocalTitle" }}</h2>
@@ -65,7 +87,8 @@
           </div>
         </div>
         <div class="home-feature-media">
-          <img src="{{ "images/home/section-industry-event.png" | relURL }}" alt="{{ i18n "homeIndustryImageAlt" }}" width="800" height="800" loading="lazy">
+          {{ $img := partial "img.html" (dict "src" "images/home/section-industry-event.png" "widths" (slice 480 760 1100)) }}
+          <img src="{{ $img.src }}" srcset="{{ $img.srcset }}" sizes="auto, (max-width: 900px) 100vw, 704px" alt="{{ i18n "homeIndustryImageAlt" }}" width="{{ $img.width }}" height="{{ $img.height }}" loading="lazy" decoding="async">
         </div>
       </div>
     </article>

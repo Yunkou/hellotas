@@ -11,18 +11,22 @@
         <a href="{{ $home }}">{{ i18n "home" }}</a>
         <a href="{{ "utas/" | relLangURL }}">{{ i18n "utas" }}</a>
         <a href="{{ "journey/step-3/" | relLangURL }}">{{ i18n "localCommunity" }}</a>
-        <a href="{{ printf "%s#ict-industry" $home }}">{{ i18n "ictIndustry" }}</a>
+        <a href="{{ "events/" | relLangURL }}">{{ i18n "ictIndustry" }}</a>
       </div>
       <div class="footer-col">
         <a href="{{ with .Site.GetPage "/fun-fitness" }}{{ .RelPermalink }}{{ else }}{{ relURL "fun-fitness/" }}{{ end }}">{{ i18n "funTime" }}</a>
         <a href="{{ with .Site.GetPage "/happening" }}{{ .RelPermalink }}{{ else }}{{ relURL "happening/" }}{{ end }}">{{ i18n "happening" }}</a>
+        {{- if site.Params.communityAPI }}
+        <a href="{{ "noticeboard/" | relLangURL }}">{{ i18n "noticeboard" }}</a>
+        <a href="{{ "account/" | relLangURL }}" data-cm-account-label>{{ i18n "cmSignIn" }}</a>
+        {{- end }}
       </div>
       <div class="footer-col">
         {{ $page := . }}
         {{ range hugo.Sites }}
           {{ $lang := .Language }}
           {{ if eq $lang.Lang $page.Language.Lang }}
-            <a href="#">{{ $lang.Label }}</a>
+            <span class="footer-lang-current" aria-current="true">{{ $lang.Label }}</span>
           {{ else }}
             {{ $url := "" }}
             {{ range $page.Translations }}

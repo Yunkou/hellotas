@@ -1,0 +1,245 @@
+import json
+from types import SimpleNamespace
+
+from conftest import NOW, FakeFetcher, fixture
+
+from hellotas_collector.config import load
+from hellotas_collector.pipeline import Collector
+from hellotas_collector.report import markdown
+
+GDG_LISTING = "https://gdg.community.dev/gdg-hobart/"
+SECTALKS_LISTING = "https://www.meetup.com/sectalks-hobart/events/"
+SECTALKS_EVENT = "https://www.meetup.com/sectalks-hobart/events/317249458/"
+
+
+def _pages():
+    return {
+        SECTALKS_LISTING: fixture("meetup_listing.html"),
+        SECTALKS_EVENT: fixture("meetup_event.html"),
+    }
+
+
+def collector(site, pages=None, **kwargs):
+    config = load(site / "collector" / "sources.yaml")
+    kwargs.setdefault("use_ai", False)
+    return Collector(site, config, now=NOW, fetcher=FakeFetcher(pages or _pages()), images=False, log=lambda *a: None,
+                     **kwargs)
+
+
+def test_past_event_is_skipped(site):
+    # The fixture is a real Meetup page for 11 December 2025, before NOW
+    result = collector(site).run(["sectalks-hobart"])
+    assert result.found["sectalks-hobart"] == 1
+    assert not result.added
+    assert [s.why for s in result.skipped] == ["over"]
+
+
+def _future_meetup(site):
+    """The Meetup fixture with its date moved into the future."""
+    html = fixture("meetup_event.html").replace("2025-12-11", "2026-11-10").replace("2025-12-11", "2026-11-10")
+    return {SECTALKS_LISTING: fixture("meetup_listing.html"), SECTALKS_EVENT: html}
+
+
+def test_new_event_then_never_again(site):
+    c = collector(site, _future_meetup(site))
+    result = c.run(["sectalks-hobart"])
+    assert len(result.added) == 1, markdown(result)
+    proposal = result.added[0]
+    path = site / proposal.file_path
+    text = path.read_text(encoding="utf-8")
+    assert text.startswith("# Added by the event collector from SecTalks Hobart")
+    assert 'source: "sectalks-hobart"' in text and 'url: "https://www.meetup.com/sectalks-hobart/events/317249458/"' in text
+    assert (site / "collector" / "ledger.yaml").exists()
+
+    # Second run: already listed
+    again = collector(site, _future_meetup(site)).run(["sectalks-hobart"])
+    assert not again.added and any(s.why == "already listed" for s in again.skipped)
+
+    # A maintainer deletes the file: the ledger keeps it out, and its page isn't even opened again
+    path.unlink()
+    c3 = collector(site, _future_meetup(site))
+    third = c3.run(["sectalks-hobart"])
+    assert not third.added
+    assert SECTALKS_EVENT not in c3.fetcher.asked
+
+
+def test_dry_run_writes_nothing(site):
+    before = sorted(p.name for p in (site / "data" / "happening").iterdir())
+    result = collector(site, _future_meetup(site), dry_run=True).run(["sectalks-hobart"])
+    assert len(result.added) == 1
+    assert sorted(p.name for p in (site / "data" / "happening").iterdir()) == before
+    assert not (site / "collector" / "ledger.yaml").exists()
+
+
+def test_blocked_source_is_reported_not_fatal(site):
+    from hellotas_collector.fetch import Blocked
+    pages = _future_meetup(site)
+    pages["https://careerify.tas.gov.au/events/tag/ict-events/list/?ical=1"] = Blocked("refuses automated visitors")
+    result = collector(site, pages).run(["careerify", "sectalks-hobart"])
+    assert "blocked" in result.errors["careerify"]
+    assert len(result.added) == 1
+
+
+# -- AI ---------------------------------------------------------------------------------------------------------
+
+class FakeAnthropic:
+    """Stands in for anthropic.Anthropic(): returns canned JSON per task and records each request."""
+
+    def __init__(self, refuse=False):
+        self.requests = []
+        self.refuse = refuse
+        self.beta = SimpleNamespace(messages=SimpleNamespace(create=self.create))
+
+    def create(self, **params):
+        self.requests.append(params)
+        system = params["system"][0]["text"]
+        if self.refuse:
+            return SimpleNamespace(stop_reason="refusal", content=[], usage=None)
+        if "score its relevance" in system:
+            answer = {"relevant": True, "score": 88, "reason": "Local cyber security meetup open to students."}
+        else:
+            answer = {
+                "title": {"en": "SecTalks Hobart: Just Spoof the Government?", "zh": "SecTalks Hobart：冒充政府邮件？",
+                          "ne": "SecTalks Hobart: सरकारलाई नक्कल गर्ने?"},
+                "summary": {"en": "Ben walks through a real engagement — social engineering and email spoofing.",
+                            "zh": "Ben 分享一次真实的渗透测试——社会工程学与邮件伪造。", "ne": "Ben ले सामाजिक इन्जिनियरिङ र इमेल स्पुफिङबारे बताउनुहुन्छ।"},
+                "location": {"en": "Mathers House, 108 Bathurst Street, Hobart", "zh": "", "ne": ""},
+                "cost": {"en": "Free", "zh": "免费", "ne": "निःशुल्क"},
+                "host": "SecTalks Hobart", "slug": "sectalks-hobart-email-spoofing", "type": "meetup",
+                "format": "in_person", "topics": ["cyber", "community", "made-up-topic"],
+            }
+        usage = SimpleNamespace(input_tokens=1200, output_tokens=300)
+        return SimpleNamespace(stop_reason="end_turn", usage=usage,
+                               content=[SimpleNamespace(type="text", text=json.dumps(answer, ensure_ascii=False))])
+
+
+def test_ai_request_shape_and_output(site):
+    fake = FakeAnthropic()
+    c = collector(site, _future_meetup(site), use_ai=True, client=fake)
+    result = c.run(["sectalks-hobart"])
+    assert len(result.added) == 1
+    p = result.added[0]
+    assert p.written_by == "ai" and p.judgement.by == "ai" and p.slug == "sectalks-hobart-email-spoofing"
+    req = fake.requests[0]
+    assert req["model"] == "claude-opus-5-5"
+    assert req["output_config"]["format"]["type"] == "json_schema"
+    assert req["output_config"]["effort"] == "low"  # triage
+    assert req["fallbacks"] == "default" and req["betas"] == ["server-side-fallback-2026-07-01"]
+    assert "temperature" not in req and "thinking" not in req
+    assert fake.requests[1]["output_config"]["effort"] == "medium"  # write-up
+    text = (site / p.file_path).read_text(encoding="utf-8")
+    assert "—" not in text  # house style enforced even when the model slips
+    assert "zh: \"SecTalks Hobart：冒充政府邮件？\"" in text
+    assert "topics: [cyber, community]" in text  # unknown topic dropped
+    assert result.ai["calls"] == 2
+
+
+def test_ai_answers_are_cached(site):
+    fake = FakeAnthropic()
+    collector(site, _future_meetup(site), use_ai=True, client=fake, dry_run=True).run(["sectalks-hobart"])
+    assert len(fake.requests) == 2
+    (site / "collector" / ".cache" / "ai-cache.json").exists()
+    fake2 = FakeAnthropic()
+    result = collector(site, _future_meetup(site), use_ai=True, client=fake2, dry_run=True).run(["sectalks-hobart"])
+    assert fake2.requests == [] and result.ai["cache_hits"] == 2
+
+
+def test_haiku_gets_no_fallbacks(site, monkeypatch):
+    monkeypatch.setenv("COLLECTOR_MODEL", "claude-haiku-5-5")
+    fake = FakeAnthropic()
+    collector(site, _future_meetup(site), use_ai=True, client=fake, dry_run=True).run(["sectalks-hobart"])
+    assert fake.requests[0]["model"] == "claude-haiku-5-5" and "fallbacks" not in fake.requests[0]
+
+
+def test_refusal_falls_back_to_rules(site):
+    result = collector(site, _future_meetup(site), use_ai=True, client=FakeAnthropic(refuse=True)).run(
+        ["sectalks-hobart"])
+    assert len(result.added) == 1
+    assert result.added[0].written_by == "rules" and result.added[0].judgement.by == "rules"
+
+
+# -- one link at a time (hellotas-collect suggest) ---------------------------------------------------------------
+
+def test_linkedin_is_never_fetched(site):
+    c = collector(site, {})
+    result = c.suggest("https://www.linkedin.com/posts/someone_x-activity-1", pasted_text="")
+    assert "doesn't allow automated access" in result.errors["suggestion"]
+    assert c.fetcher.asked == []
+
+
+def test_suggested_humanitix_link_is_added_even_if_rules_unsure(site):
+    url = "https://events.humanitix.com/ict-awards-night"
+    c = collector(site, {url: fixture("humanitix_event.html")})
+    result = c.suggest(url, note="School of ICT's own awards night")
+    assert len(result.added) == 1
+    assert result.added[0].judgement.by == "person"
+    assert "School of ICT" in markdown(result, "Event suggestion")
+
+
+# -- AI switched off, and pictures for every event ----------------------------------------------------------------
+
+def test_ai_stays_off_even_with_a_key(site, monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-test")
+    config = load(site / "collector" / "sources.yaml")
+    assert config.ai_enabled is False
+    c = Collector(site, config, now=NOW, fetcher=FakeFetcher(_future_meetup(site)), images=False)
+    assert c.editor is None
+    result = c.run(["sectalks-hobart"])
+    assert result.added[0].written_by == "rules" and result.ai == {}
+
+
+def _picture(path, colour):
+    from PIL import Image
+    path.parent.mkdir(parents=True, exist_ok=True)
+    Image.new("RGB", (800, 450), colour).save(path, "JPEG")
+
+
+def test_default_picture_when_the_organisers_cannot_be_downloaded(site):
+    _picture(site / "static" / "images" / "home" / "step-1-forest-building.jpg", "green")
+    config = load(site / "collector" / "sources.yaml")
+    c = Collector(site, config, now=NOW, fetcher=FakeFetcher(_future_meetup(site)), use_ai=False)
+    result = c.run(["sectalks-hobart"])  # Meetup's image hosts aren't in the fake fetcher: downloads fail
+    p = result.added[0]
+    assert p.image_borrowed == "the site's default picture"
+    assert (site / "static" / p.image_path.lstrip("/")).is_file()
+    assert f'image: "{p.image_path}"' in (site / p.file_path).read_text(encoding="utf-8")
+    assert "replace it with the event's own" in markdown(result)
+
+
+def test_organisers_previous_picture_comes_first(site):
+    _picture(site / "static" / "images" / "home" / "step-1-forest-building.jpg", "green")
+    earlier = site / "static" / "images" / "happening" / "sectalks-october" / "sectalks-october-1.jpg"
+    _picture(earlier, "black")
+    (site / "data" / "happening" / "sectalks-october.yaml").write_text(
+        'title:\n  en: "SecTalks Hobart October"\nstart: "2026-10-13T18:00:00+11:00"\nend: "2026-10-13T20:00:00+11:00"\n'
+        'host: "SecTalks Hobart"\nimage: "/images/happening/sectalks-october/sectalks-october-1.jpg"\n'
+        'url: "https://www.meetup.com/sectalks-hobart/events/1/"\nsource: "sectalks-hobart"\n', encoding="utf-8")
+    config = load(site / "collector" / "sources.yaml")
+    result = Collector(site, config, now=NOW, fetcher=FakeFetcher(_future_meetup(site)), use_ai=False).run(
+        ["sectalks-hobart"])
+    p = result.added[0]
+    assert p.image_borrowed == "the picture from sectalks-october"
+    assert (site / "static" / p.image_path.lstrip("/")).read_bytes() == earlier.read_bytes()
+
+
+def test_check_data_finds_events_without_pictures(site, capsys):
+    from hellotas_collector.cli import main
+    assert main(["--root", str(site), "check-data"]) == 1  # the copied entries' picture files aren't in this site
+    assert "isn't in static/" in capsys.readouterr().out
+
+
+# -- TasICT: read from the page's own fields ------------------------------------------------------------------------
+
+def test_tasict_event_is_proposed_from_its_own_page(site):
+    listing = "https://www.tasict.com.au/about/events-2/"
+    event = "https://www.tasict.com.au/event/tapas-tech-networking-event-hobart/"
+    pages = {listing: f'<a href="{event}">Tech Jobs Showcase</a>',
+             event: fixture("tasict_event.html").replace("14 May 2026", "13 May 2027")}
+    c = collector(site, pages)
+    result = c.run(["tasict"])
+    assert result.found["tasict"] == 1 and not result.errors
+    assert len(result.added) == 1, markdown(result)
+    text = (site / result.added[0].file_path).read_text(encoding="utf-8")
+    assert 'start: "2027-05-13T17:30:00+10:00"' in text and 'end: "2027-05-13T19:30:00+10:00"' in text
+    assert f'url: "{event}"' in text and 'source: "tasict"' in text
+    assert not any("humanitix" in url for url in c.fetcher.asked)

@@ -26,6 +26,7 @@ node_modules/
 # Environment and log files
 .env
 .env.*
+!.env.example
 *.log
 
 # Fork-domain local build output (scripts/build-fork-domain.sh)
