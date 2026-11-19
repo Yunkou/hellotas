@@ -1,0 +1,45 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Tasmania Welcome//Happening en//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Tasmania Welcome: ICT events · Community
+X-WR-CALDESC:Upcoming ICT events for students in Tasmania and online\, from
+  Tasmania Welcome.
+X-WR-TIMEZONE:Australia/Hobart
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:digital-child-in-tasmania@hellotas
+DTSTAMP:20261119T070619Z
+DTSTART:20261104T060000Z
+DTEND:20261104T083000Z
+SUMMARY:The Digital Child in Tasmania
+DESCRIPTION:A conversation on digital inclusion\, literacy\, safety and wel
+ lbeing for young Tasmanians\, with educators\, researchers\, policymakers 
+ and young people. Refreshments provided.\n\nFree · registration essential
+ \n\nhttps://www.utas.edu.au/events/2026/november/the-digital-child-in-tasm
+ ania
+LOCATION:The Forest\, Melville Street\, Hobart
+URL:https://www.utas.edu.au/events/2026/november/the-digital-child-in-tasma
+ nia
+CATEGORIES:community
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:sectalks-hobart-november-just-spoof-government@hellotas
+DTSTAMP:20261119T070619Z
+DTSTART:20261110T070000Z
+DTEND:20261110T090000Z
+SUMMARY:SecTalks Hobart: Just spoof the government?
+DESCRIPTION:Hobart's security meetup: Ben talks through a recent engagement
+ \, with social engineering and email spoofing on the menu.\n\nSee the offi
+ cial page\n\nhttps://www.meetup.com/sectalks-hobart/events/317249458/
+LOCATION:Downstairs at Mathers House\, 108 Bathurst St\, Hobart
+URL:https://www.meetup.com/sectalks-hobart/events/317249458/
+CATEGORIES:cyber,community
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ictfutureintas.com/sitemap.xml
