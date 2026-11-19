@@ -1,9 +1,9 @@
 {
-  "domain": "ictfuturesintas.com",
-  "baseURL": "https://ictfuturesintas.com/",
+  "domain": "ictfutureintas.com",
+  "baseURL": "https://ictfutureintas.com/",
   "branch": "preview/aggregate-20261110",
-  "commit": "cac368c867a4515832e3c68fae6c2d98b8a0049f",
-  "builtAt": "2026-11-16T16:28:08+08:00",
+  "commit": "522ef40b6132a7d0d033d74010307604c9328980",
+  "builtAt": "2026-11-19T14:34:59+08:00",
   "css": "custom.5954ca433831e779f190cad6a40e560d1d720a86f4ca714dfb2a89f57f9957ff.css",
-  "cname": "ictfuturesintas.com"
+  "cname": "ictfutureintas.com"
 }
