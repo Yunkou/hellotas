@@ -265,8 +265,14 @@ try {
       }, page.url());
 
       rec(typo.origin === ORIGIN, `${tag} location.origin is simulated domain`, { detail: typo.origin });
-      rec(typo.canon === null, `${tag} no canonical tag (site does not emit one)`, { detail: String(typo.canon) });
-      rec(typo.hrefLang.length === 0, `${tag} no hreflang tags (site does not emit them)`, { detail: String(typo.hrefLang.length) });
+      // Upstream now emits canonical + hreflang; --baseURL must keep them on the
+      // fork singular domain, never the official plural site or /hellotas/.
+      rec(typo.canon === page.url(), `${tag} canonical is the current singular-domain URL`, { detail: String(typo.canon) });
+      rec(!String(typo.canon || '').includes('ictfuturesintas.com') && !String(typo.canon || '').includes('/hellotas'), `${tag} canonical is not the official plural domain or /hellotas/`, { detail: String(typo.canon) });
+      rec(typo.hrefLang.length === 4, `${tag} hreflang tags present`, { detail: String(typo.hrefLang.length) });
+      const hrefLangBad = typo.hrefLang.filter((l) => !l.href.startsWith(`${ORIGIN}/`) && l.href !== ORIGIN && l.href !== `${ORIGIN}/`);
+      rec(hrefLangBad.length === 0, `${tag} hreflang hrefs stay on the singular domain`, { detail: JSON.stringify(hrefLangBad) });
+      rec(typo.hrefLang.every((l) => !l.href.includes('ictfuturesintas.com') && !l.href.includes('/hellotas')), `${tag} hreflang hrefs are not the official plural domain or /hellotas/`);
 
       const badInternal = [];
       for (const item of typo.items) {
