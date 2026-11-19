@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DEST = process.env.DEST || path.join(ROOT, 'public-fork-domain');
 const OUT = process.env.E2E_OUT || path.join(ROOT, '..', 'hellotas-domain-20261116');
-const DOMAIN = 'ictfuturesintas.com';
+const DOMAIN = 'ictfutureintas.com';
 const ORIGIN = `https://${DOMAIN}`;
 const shots = path.join(OUT, 'shots');
 fs.mkdirSync(shots, { recursive: true });
@@ -84,7 +84,7 @@ async function attachRoutes(context, port) {
       let res = await tryLocal(pathname);
       // Directory URLs without a trailing slash 301 to http://127.0.0.1 on the
       // local server; follow that internally so the browser never leaves the
-      // simulated https://ictfuturesintas.com origin.
+      // simulated https://ictfutureintas.com origin.
       if (res.status >= 300 && res.status < 400) {
         const loc = res.headers.get('location');
         if (loc) {
@@ -154,7 +154,7 @@ const langs = {
     home: `${ORIGIN}/`,
     events: `${ORIGIN}/events/`,
     step3: `${ORIGIN}/journey/step-3/`,
-    community: 'Local Community',
+    community: 'Tasmania Community',
     ict: 'ICT Industry',
     eventsH1: 'ICT Events Archive & Student Voices',
     step3H1: 'Find Your Community',
@@ -164,7 +164,7 @@ const langs = {
     home: `${ORIGIN}/zh/`,
     events: `${ORIGIN}/zh/events/`,
     step3: `${ORIGIN}/zh/journey/step-3/`,
-    community: '本地社区',
+    community: '塔斯马尼亚社区',
     ict: 'ICT 行业',
     eventsH1: 'ICT活动档案与学生心声',
     step3H1: '找到你的社群',
@@ -174,7 +174,7 @@ const langs = {
     home: `${ORIGIN}/ne/`,
     events: `${ORIGIN}/ne/events/`,
     step3: `${ORIGIN}/ne/journey/step-3/`,
-    community: 'स्थानीय समुदाय',
+    community: 'तस्मानिया समुदाय',
     ict: 'ICT उद्योग',
     eventsH1: 'ICT कार्यक्रम संग्रह र विद्यार्थीहरूको आवाज',
     step3H1: 'आफ्नो समुदाय भेट्नुहोस्',
@@ -184,7 +184,7 @@ const langs = {
 
 // Static output checks (sitemap, CNAME, leftover paths) before the browser.
 const cname = fs.readFileSync(path.join(DEST, 'CNAME'), 'utf8').trim();
-rec(cname === DOMAIN, 'CNAME is ictfuturesintas.com', { detail: cname });
+rec(cname === DOMAIN, 'CNAME is ictfutureintas.com', { detail: cname });
 rec(fs.existsSync(path.join(DEST, '.nojekyll')), '.nojekyll present');
 
 function scanFiles() {
@@ -225,7 +225,7 @@ function scanFiles() {
 
 const scanned = scanFiles();
 rec(scanned.leftover.length === 0, 'build has no root-relative /hellotas/ href/src', { detail: JSON.stringify(scanned.leftover.slice(0, 5)) });
-rec(scanned.sitemapBad.length === 0, 'sitemaps use https://ictfuturesintas.com/ only', { detail: JSON.stringify(scanned.sitemapBad.slice(0, 5)) });
+rec(scanned.sitemapBad.length === 0, 'sitemaps use https://ictfutureintas.com/ only', { detail: JSON.stringify(scanned.sitemapBad.slice(0, 5)) });
 rec(scanned.absNew.length > 0, 'build contains new-domain absolute URLs', { detail: String(scanned.absNew.length) });
 const unexpectedSource = scanned.knownSource.filter((x) => !x.file.includes('events/2025/edcat/'));
 rec(unexpectedSource.length === 0, 'github.io/hellotas only remains as EDCAT source citation', { detail: unexpectedSource.length ? JSON.stringify(unexpectedSource.slice(0, 3)) : `${scanned.knownSource.length} edcat citation(s)` });
@@ -305,12 +305,12 @@ try {
         await ready(page);
       }
 
-      // Local Community -> step 3
+      // Tasmania Community -> step 3
       await openMobileNav(page, w);
       const commSel = w >= 1440 ? page.locator('.nav-links a', { hasText: cfg.community }) : page.locator('.mobile-menu a', { hasText: cfg.community });
       await commSel.click();
       await ready(page);
-      rec(page.url() === cfg.step3, `${tag} Local Community -> step-3`, { detail: page.url() });
+      rec(page.url() === cfg.step3, `${tag} Tasmania Community -> step-3`, { detail: page.url() });
       const stepH1 = (await page.locator('h1').first().innerText()).trim();
       rec(stepH1 === cfg.step3H1, `${tag} step-3 h1`, { detail: stepH1 });
       if (w === 1440) await page.screenshot({ path: path.join(shots, `after-${lang}-step3.png`) });

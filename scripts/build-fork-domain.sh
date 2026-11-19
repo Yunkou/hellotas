@@ -15,13 +15,13 @@ source "$ROOT/scripts/fork-domain.conf"
 DEST="${DEST:-$ROOT/public-fork-domain}"
 HUGO_BIN="${HUGO_BIN:-hugo}"
 
-if [[ "$FORK_DOMAIN" != "ictfuturesintas.com" ]]; then
-  echo "Refusing to build: FORK_DOMAIN must be ictfuturesintas.com (got: $FORK_DOMAIN)" >&2
+if [[ "$FORK_DOMAIN" != "ictfutureintas.com" ]]; then
+  echo "Refusing to build: FORK_DOMAIN must be ictfutureintas.com (got: $FORK_DOMAIN)" >&2
   exit 1
 fi
 
-if [[ "$FORK_BASEURL" != "https://ictfuturesintas.com/" ]]; then
-  echo "Refusing to build: FORK_BASEURL must be https://ictfuturesintas.com/ (got: $FORK_BASEURL)" >&2
+if [[ "$FORK_BASEURL" != "https://ictfutureintas.com/" ]]; then
+  echo "Refusing to build: FORK_BASEURL must be https://ictfutureintas.com/ (got: $FORK_BASEURL)" >&2
   exit 1
 fi
 
@@ -64,7 +64,7 @@ Path(sys.argv[1]).write_text(json.dumps({
     "commit": "$SOURCE_SHA",
     "builtAt": "$BUILT_AT",
     "css": "$CSS",
-    "cname": "ictfuturesintas.com",
+    "cname": "$FORK_DOMAIN",
 }, indent=2) + "\n")
 PY
 
@@ -76,7 +76,7 @@ if grep -R -l --include='*.html' --include='*.xml' --include='*.txt' --include='
   exit 1
 fi
 
-if ! grep -qx 'ictfuturesintas.com' "$DEST/CNAME"; then
+if ! grep -qx 'ictfutureintas.com' "$DEST/CNAME"; then
   echo "ERROR: CNAME missing or incorrect" >&2
   exit 1
 fi

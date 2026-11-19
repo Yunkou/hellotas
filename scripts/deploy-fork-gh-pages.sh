@@ -8,7 +8,8 @@
 #
 # WARNING: Pushing a CNAME file to the GitHub Pages source branch (gh-pages)
 # can immediately enable the custom domain. GitHub reads CNAME and may:
-#   - set Settings > Pages > Custom domain to ictfuturesintas.com
+#   - set Settings > Pages > Custom domain to ictfutureintas.com
+#     (not ictfuturesintas.com, which belongs to the upstream official site)
 #   - start HTTPS certificate issuance
 #   - redirect https://yunkou.github.io/hellotas/ to the custom domain
 # This is not a no-op static-file update. Saving a custom domain in the
@@ -113,8 +114,8 @@ if [[ ! -f "$DEST/CNAME" ]]; then
   echo "Missing $DEST/CNAME — run scripts/build-fork-domain.sh first" >&2
   exit 1
 fi
-if ! grep -qx 'ictfuturesintas.com' "$DEST/CNAME"; then
-  echo "Refusing to publish: $DEST/CNAME is not ictfuturesintas.com" >&2
+if ! grep -qx 'ictfutureintas.com' "$DEST/CNAME"; then
+  echo "Refusing to publish: $DEST/CNAME is not ictfutureintas.com" >&2
   exit 1
 fi
 if [[ ! -f "$DEST/index.html" || ! -f "$DEST/.nojekyll" ]]; then
@@ -158,7 +159,7 @@ REMOTE_TIP="$(git -C "$WORKDIR" rev-parse origin/gh-pages)"
 if ! rsync -a --delete --exclude '.git' --exclude '.git/' "$DEST/" "$WORKDIR/"; then
   leave_worktree_and_stop "Copy into the gh-pages worktree failed."
 fi
-if ! grep -qx 'ictfuturesintas.com' "$WORKDIR/CNAME"; then
+if ! grep -qx 'ictfutureintas.com' "$WORKDIR/CNAME"; then
   leave_worktree_and_stop "CNAME missing or incorrect after copy."
 fi
 if [[ ! -f "$WORKDIR/.nojekyll" ]]; then
